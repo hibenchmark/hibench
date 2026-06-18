@@ -237,7 +237,7 @@ function themeFor(agentId: string): AgentTheme {
               <span class="hidden w-full truncate text-center tabular-nums text-xs font-semibold ui-title sm:block sm:text-sm">
                 {formatNumber(agent.latest.totalTokens)}
               </span>
-              <div class="relative flex h-40 w-full max-w-[8rem] items-end justify-center sm:h-44">
+              <div class="relative flex h-40 w-full max-w-[8rem] items-end justify-center overflow-hidden sm:h-44">
                 {
                   !labelFitsInside && (
                     <span
@@ -251,9 +251,13 @@ function themeFor(agentId: string): AgentTheme {
                 }
                 <span
                   aria-hidden="true"
-                  class="absolute bottom-0 h-20 w-20 rounded-full opacity-30 blur-2xl transition-opacity duration-300 group-hover:opacity-50 sm:h-28 sm:w-28"
-                  style={`background:${theme.glow}`}
-                />
+                  class="pointer-events-none absolute inset-x-0 bottom-0 h-full overflow-hidden"
+                >
+                  <span
+                    class="absolute bottom-0 left-1/2 h-20 w-20 -translate-x-1/2 rounded-full opacity-30 blur-2xl transition-opacity duration-300 group-hover:opacity-50 sm:h-28 sm:w-28"
+                    style={`background:${theme.glow}`}
+                  />
+                </span>
                 <div
                   class="relative w-full overflow-hidden rounded-t-2xl transition-transform duration-300 group-hover:-translate-y-1"
                   style={`height:${heightPct}%; min-height:0.75rem; background:${theme.bar}; box-shadow:${theme.shadow}`}
