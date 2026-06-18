@@ -7,6 +7,8 @@ const links = [
   { href: "/rankings", label: "Rankings" },
   { href: "/agents", label: "Agents" },
 ];
+const homePath = withBase("/").replace(/\/$/, "");
+const isHome = path === homePath;
 
 function isActive(href: string): boolean {
   const target = withBase(href).replace(/\/$/, "");
@@ -45,16 +47,20 @@ function isActive(href: string): boolean {
           </li>
         ))
       }
-      <li>
-        <a
-          href="https://github.com/hibenchmark/hibench"
-          class="rounded-md px-3 py-1.5 transition-colors nav-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      </li>
+      {
+        isHome && (
+          <li>
+            <a
+              href="https://github.com/hibenchmark/hibench"
+              class="rounded-md px-3 py-1.5 transition-colors nav-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </li>
+        )
+      }
     </ul>
   </nav>
 </header>

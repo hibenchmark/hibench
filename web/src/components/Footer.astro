@@ -1,28 +1,23 @@
 ---
+import Social from "./Social.astro";
+
 const year = new Date().getFullYear();
 ---
 
 <footer class="ui-divider mt-20 border-t py-8 text-sm ui-subtle">
   <div
-    class="mx-auto flex max-w-6xl flex-col gap-2 px-4 sm:flex-row sm:items-center sm:justify-between"
+    class="mx-auto grid max-w-6xl gap-4 px-4 text-center sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:text-left"
   >
-    <p>
+    <p class="sm:justify-self-start">
       <span class="font-medium ui-muted">hibench</span>
       &middot; default footprint benchmark for coding agents &middot; {year}
     </p>
-    <p>
+    <Social platform="github" username="hibenchmark/hibench" label="Source on GitHub" />
+    <p class="sm:justify-self-end sm:text-right">
       Token counts via <code
         class="ui-code rounded px-1 py-0.5"
         >tiktoken o200k_base</code
       >
-      &middot;
-      <a
-        class="ui-link"
-        href="https://github.com/hibenchmark/hibench"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Source on GitHub</a
-      >.
     </p>
   </div>
 </footer>
