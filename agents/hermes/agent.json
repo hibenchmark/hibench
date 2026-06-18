@@ -1,0 +1,40 @@
+{
+  "id": "hermes",
+  "display_name": "Hermes Agent",
+  "version": "0.16.0",
+  "image": "hibench/hermes:0.16.0",
+  "parser_id": "hermes",
+  "version_source": {
+    "type": "pypi",
+    "package": "hermes-agent"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "dockerfile": "docker/agents/hermes/Dockerfile",
+  "command": [
+    "--provider",
+    "hibench",
+    "--model",
+    "gpt-5",
+    "-z",
+    "{prompt}"
+  ],
+  "env": {
+    "HIBENCH_HERMES_CONFIG": "model:\n  provider: hibench\n  default: gpt-5\nproviders:\n  hibench:\n    name: HiBench Recorder\n    api: {base_url}\n    api_key: hibench-dummy-key\n    transport: chat_completions\n    default_model: gpt-5\n    context_length: 200000\n    discover_models: false\n    models:\n      gpt-5:\n        context_length: 200000\nmodel_catalog:\n  enabled: false",
+    "HERMES_HOME": "/hermes-home",
+    "HOME": "/hermes-home/home",
+    "HERMES_SKIP_NODE_BOOTSTRAP": "1",
+    "HERMES_CONTAINER": "1",
+    "HERMES_SKIP_CHMOD": "1",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "notes": "The runner writes a clean Hermes config.yaml with a local OpenAI-compatible recorder provider and returns a synthetic chat completion after capturing request payloads."
+  },
+  "sources": [
+    "https://github.com/NousResearch/hermes-agent",
+    "https://pypi.org/project/hermes-agent/"
+  ]
+}

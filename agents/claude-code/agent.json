@@ -1,0 +1,47 @@
+{
+  "id": "claude-code",
+  "display_name": "Anthropic Claude Code",
+  "version": "2.1.177",
+  "image": "hibench/claude-code:2.1.177",
+  "parser_id": "claude-code",
+  "version_source": {
+    "type": "npm",
+    "package": "@anthropic-ai/claude-code"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "benchmark_exclusions": {
+    "2.1.69": "Non-comparable benchmark capture; primary request includes Claude Code deferred-tool bootstrap as a user message before the actual prompt under the current harness.",
+    "2.1.105": "Non-comparable benchmark capture; session-title generation request is captured before the primary coding-agent request under the current harness.",
+    "2.1.107": "Non-comparable benchmark capture; session-title generation request is captured before the primary coding-agent request under the current harness."
+  },
+  "dockerfile": "docker/agents/claude-code/Dockerfile",
+  "command": [
+    "-p",
+    "{prompt}",
+    "--output-format",
+    "json"
+  ],
+  "env": {
+    "ANTHROPIC_API_KEY": "hibench-dummy-key",
+    "ANTHROPIC_BASE_URL": "{base_url_root}",
+    "CLAUDE_CONFIG_DIR": "/claude-home",
+    "DISABLE_AUTOUPDATER": "1",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_UPDATES": "1",
+    "DO_NOT_TRACK": "1",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "notes": "The runner points Claude Code at a local Anthropic Messages-compatible recorder and returns a synthetic completion after capturing request payloads."
+  },
+  "sources": [
+    "https://code.claude.com/docs/llms.txt",
+    "https://code.claude.com/docs/en/setup.md",
+    "https://code.claude.com/docs/en/headless.md",
+    "https://code.claude.com/docs/en/env-vars.md",
+    "https://code.claude.com/docs/en/llm-gateway.md"
+  ]
+}

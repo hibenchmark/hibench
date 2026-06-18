@@ -1,0 +1,17 @@
+{
+  "name": "hibench",
+  "compatibility_date": "2026-06-16",
+  "assets": {
+    "directory": "./dist"
+  },
+  "routes": [
+    {
+      "pattern": "hibench.dev",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.hibench.dev",
+      "custom_domain": true
+    }
+  ]
+}

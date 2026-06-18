@@ -1,0 +1,316 @@
+---
+import { formatNumber, pct, withBase } from "../lib/format";
+import type { AgentSummary } from "../data/benchmark";
+import AgentLogo from "./AgentLogo.astro";
+
+interface Props {
+  agents: AgentSummary[];
+  limit?: number;
+  topCount?: number;
+  flopCount?: number;
+}
+
+const { agents, limit, topCount = 5, flopCount = 5 } = Astro.props;
+const sorted = [...agents].sort((a, b) => b.latest.totalTokens - a.latest.totalTokens);
+const ranked = limit
+  ? sorted.slice(0, limit)
+  : [
+      ...sorted.slice(0, topCount),
+      ...sorted.slice(-flopCount),
+    ].filter((agent, index, list) => (
+      list.findIndex((candidate) => candidate.agentId === agent.agentId) === index
+    ));
+const rankByAgentId = new Map(sorted.map((agent, index) => [agent.agentId, index + 1]));
+const max = Math.max(...ranked.map((a) => a.latest.totalTokens), 1);
+
+type AgentTheme = {
+  bar: string;
+  badgeBg: string;
+  badgeRing: string;
+  badgeText: string;
+  glow: string;
+  labelText: string;
+  shadow: string;
+};
+
+const agentThemes: Record<string, AgentTheme> = {
+  "claude-code": {
+    bar: "linear-gradient(180deg, #fde68a 0%, #fb923c 44%, #e11d48 100%)",
+    badgeBg: "rgba(251, 146, 60, 0.16)",
+    badgeRing: "rgba(251, 146, 60, 0.36)",
+    badgeText: "#fed7aa",
+    glow: "radial-gradient(circle, rgba(251, 146, 60, 0.5), transparent 68%)",
+    labelText: "#fdba74",
+    shadow:
+      "0 18px 42px rgba(251, 146, 60, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.45)",
+  },
+  cline: {
+    bar: "linear-gradient(180deg, #f8fafc 0%, #cbd5e1 36%, #64748b 70%, #1f2937 100%)",
+    badgeBg: "rgba(203, 213, 225, 0.15)",
+    badgeRing: "rgba(248, 250, 252, 0.34)",
+    badgeText: "#e2e8f0",
+    glow: "radial-gradient(circle, rgba(203, 213, 225, 0.42), transparent 68%)",
+    labelText: "#cbd5e1",
+    shadow:
+      "0 18px 42px rgba(100, 116, 139, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.46)",
+  },
+  codex: {
+    bar: "linear-gradient(180deg, #ccfbf1 0%, #22d3ee 42%, #2563eb 100%)",
+    badgeBg: "rgba(34, 211, 238, 0.14)",
+    badgeRing: "rgba(34, 211, 238, 0.36)",
+    badgeText: "#a5f3fc",
+    glow: "radial-gradient(circle, rgba(34, 211, 238, 0.48), transparent 68%)",
+    labelText: "#67e8f9",
+    shadow:
+      "0 18px 42px rgba(34, 211, 238, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.42)",
+  },
+  "cursor-cli": {
+    bar: "linear-gradient(180deg, #fafaf9 0%, #a8a29e 38%, #44403c 72%, #1c1917 100%)",
+    badgeBg: "rgba(168, 162, 158, 0.15)",
+    badgeRing: "rgba(245, 245, 244, 0.34)",
+    badgeText: "#e7e5e4",
+    glow: "radial-gradient(circle, rgba(245, 245, 244, 0.36), transparent 68%)",
+    labelText: "#d6d3d1",
+    shadow:
+      "0 18px 42px rgba(168, 162, 158, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.44)",
+  },
+  "github-cli": {
+    bar: "linear-gradient(180deg, #dcfce7 0%, #22c55e 38%, #2563eb 74%, #111827 100%)",
+    badgeBg: "rgba(34, 197, 94, 0.15)",
+    badgeRing: "rgba(59, 130, 246, 0.34)",
+    badgeText: "#bbf7d0",
+    glow: "radial-gradient(circle, rgba(59, 130, 246, 0.43), transparent 68%)",
+    labelText: "#86efac",
+    shadow:
+      "0 18px 42px rgba(59, 130, 246, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.42)",
+  },
+  "grok-cli": {
+    bar: "linear-gradient(180deg, #f8fafc 0%, #67e8f9 36%, #0891b2 70%, #0f172a 100%)",
+    badgeBg: "rgba(103, 232, 249, 0.14)",
+    badgeRing: "rgba(148, 163, 184, 0.38)",
+    badgeText: "#e0f2fe",
+    glow: "radial-gradient(circle, rgba(103, 232, 249, 0.42), transparent 68%)",
+    labelText: "#a5f3fc",
+    shadow:
+      "0 18px 42px rgba(8, 145, 178, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.46)",
+  },
+  opencode: {
+    bar: "linear-gradient(180deg, #d1fae5 0%, #18e299 34%, #16a34a 68%, #0d9373 100%)",
+    badgeBg: "rgba(24, 226, 153, 0.14)",
+    badgeRing: "rgba(74, 222, 128, 0.34)",
+    badgeText: "#bbf7d0",
+    glow: "radial-gradient(circle, rgba(24, 226, 153, 0.44), transparent 68%)",
+    labelText: "#86efac",
+    shadow:
+      "0 18px 42px rgba(24, 226, 153, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.4)",
+  },
+  openclaw: {
+    bar: "linear-gradient(180deg, #fee2e2 0%, #fb7185 38%, #e11d48 72%, #7f1d1d 100%)",
+    badgeBg: "rgba(251, 113, 133, 0.15)",
+    badgeRing: "rgba(251, 113, 133, 0.36)",
+    badgeText: "#fecdd3",
+    glow: "radial-gradient(circle, rgba(251, 113, 133, 0.44), transparent 68%)",
+    labelText: "#fda4af",
+    shadow:
+      "0 18px 42px rgba(251, 113, 133, 0.23), inset 0 1px 0 rgba(255, 255, 255, 0.42)",
+  },
+  hermes: {
+    bar: "linear-gradient(180deg, #ede9fe 0%, #a855f7 42%, #4f46e5 100%)",
+    badgeBg: "rgba(168, 85, 247, 0.15)",
+    badgeRing: "rgba(168, 85, 247, 0.36)",
+    badgeText: "#ddd6fe",
+    glow: "radial-gradient(circle, rgba(168, 85, 247, 0.46), transparent 68%)",
+    labelText: "#c4b5fd",
+    shadow:
+      "0 18px 42px rgba(168, 85, 247, 0.23), inset 0 1px 0 rgba(255, 255, 255, 0.42)",
+  },
+  kilo: {
+    bar: "linear-gradient(180deg, #fffbeb 0%, #ffe600 32%, #f5e216 60%, #7a6a00 100%)",
+    badgeBg: "rgba(255, 230, 0, 0.16)",
+    badgeRing: "rgba(255, 230, 0, 0.42)",
+    badgeText: "#f5e216",
+    glow: "radial-gradient(circle, rgba(255, 230, 0, 0.46), transparent 68%)",
+    labelText: "#f5e216",
+    shadow:
+      "0 18px 42px rgba(255, 230, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.44)",
+  },
+  pi: {
+    bar: "linear-gradient(180deg, #fef3c7 0%, #facc15 36%, #f97316 72%, #be123c 100%)",
+    badgeBg: "rgba(250, 204, 21, 0.16)",
+    badgeRing: "rgba(249, 115, 22, 0.34)",
+    badgeText: "#fef08a",
+    glow: "radial-gradient(circle, rgba(250, 204, 21, 0.44), transparent 68%)",
+    labelText: "#fde047",
+    shadow:
+      "0 18px 42px rgba(249, 115, 22, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.42)",
+  },
+};
+
+const fallbackThemes: AgentTheme[] = [
+  {
+    bar: "linear-gradient(180deg, #f0abfc 0%, #d946ef 45%, #7c3aed 100%)",
+    badgeBg: "rgba(217, 70, 239, 0.14)",
+    badgeRing: "rgba(217, 70, 239, 0.34)",
+    badgeText: "#f5d0fe",
+    glow: "radial-gradient(circle, rgba(217, 70, 239, 0.42), transparent 68%)",
+    labelText: "#f0abfc",
+    shadow:
+      "0 18px 42px rgba(217, 70, 239, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.4)",
+  },
+  {
+    bar: "linear-gradient(180deg, #bef264 0%, #84cc16 45%, #15803d 100%)",
+    badgeBg: "rgba(132, 204, 22, 0.14)",
+    badgeRing: "rgba(132, 204, 22, 0.34)",
+    badgeText: "#d9f99d",
+    glow: "radial-gradient(circle, rgba(132, 204, 22, 0.4), transparent 68%)",
+    labelText: "#bef264",
+    shadow:
+      "0 18px 42px rgba(132, 204, 22, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4)",
+  },
+  {
+    bar: "linear-gradient(180deg, #bfdbfe 0%, #60a5fa 45%, #4338ca 100%)",
+    badgeBg: "rgba(96, 165, 250, 0.14)",
+    badgeRing: "rgba(96, 165, 250, 0.34)",
+    badgeText: "#bfdbfe",
+    glow: "radial-gradient(circle, rgba(96, 165, 250, 0.42), transparent 68%)",
+    labelText: "#93c5fd",
+    shadow:
+      "0 18px 42px rgba(96, 165, 250, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.4)",
+  },
+];
+
+function themeFor(agentId: string): AgentTheme {
+  if (agentThemes[agentId]) {
+    return agentThemes[agentId];
+  }
+
+  let hash = 0;
+  for (const char of agentId) {
+    hash = (hash * 31 + char.charCodeAt(0)) % fallbackThemes.length;
+  }
+  return fallbackThemes[hash];
+}
+---
+
+<div class="ui-card rounded-xl p-4 sm:p-6">
+  <div class="flex items-start justify-between gap-3">
+    <div>
+      <p class="text-sm font-medium ui-muted">
+        Top 5 + flop 5 token ranking
+      </p>
+      <p class="mt-1 text-xs ui-subtle">
+        heaviest and lightest latest versions · total request tokens
+      </p>
+    </div>
+    <a
+      href={withBase("/rankings")}
+      class="text-xs font-medium ui-link"
+    >
+      Full ranking →
+    </a>
+  </div>
+
+  <div class="mt-6 overflow-hidden px-2 sm:px-0">
+    <div
+      class="flex min-h-64 w-full min-w-0 items-end gap-2 pb-0 sm:min-h-72 sm:gap-6"
+    >
+      {
+        ranked.map((agent) => {
+          const theme = themeFor(agent.agentId);
+          const heightPct = pct(agent.latest.totalTokens, max);
+          const labelFitsInside = heightPct >= 28;
+          const outsideLabelBottom = `calc(${Math.max(heightPct, 7.5)}% + 0.6rem)`;
+          const mobileLabelStyle = [
+            "color:#f8fafc",
+            "background:rgba(2,6,23,0.78)",
+            "box-shadow:inset 0 0 0 1px rgba(226,232,240,0.56), 0 8px 18px rgba(0,0,0,0.38)",
+            "text-shadow:0 1px 2px rgba(0,0,0,0.75)",
+            "transform:translate(-50%, -50%) rotate(-90deg)",
+          ].join(";");
+
+          return (
+            <a
+              href={withBase(`/agents/${agent.agentId}`)}
+              class="group flex min-w-0 flex-1 basis-0 flex-col items-center justify-end gap-2"
+              aria-label={`${agent.agentDisplayName}: ${formatNumber(agent.latest.totalTokens)} total request tokens`}
+            >
+              <span class="hidden w-full truncate text-center tabular-nums text-xs font-semibold ui-title sm:block sm:text-sm">
+                {formatNumber(agent.latest.totalTokens)}
+              </span>
+              <div class="relative flex h-40 w-full max-w-[8rem] items-end justify-center sm:h-44">
+                {
+                  !labelFitsInside && (
+                    <span
+                      aria-hidden="true"
+                      class="absolute left-1/2 z-20 block whitespace-nowrap rounded-full px-1.5 py-0.5 tabular-nums text-[10px] font-bold leading-none tracking-tight sm:hidden"
+                      style={`${mobileLabelStyle}; bottom:${outsideLabelBottom}`}
+                    >
+                      {formatNumber(agent.latest.totalTokens)}
+                    </span>
+                  )
+                }
+                <span
+                  aria-hidden="true"
+                  class="absolute bottom-0 h-20 w-20 rounded-full opacity-30 blur-2xl transition-opacity duration-300 group-hover:opacity-50 sm:h-28 sm:w-28"
+                  style={`background:${theme.glow}`}
+                />
+                <div
+                  class="relative w-full overflow-hidden rounded-t-2xl transition-transform duration-300 group-hover:-translate-y-1"
+                  style={`height:${heightPct}%; min-height:0.75rem; background:${theme.bar}; box-shadow:${theme.shadow}`}
+                >
+                  <span
+                    aria-hidden="true"
+                    class="absolute inset-x-3 top-2 h-7 rounded-full bg-white/35 blur-md"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent"
+                  />
+                  {
+                    labelFitsInside && (
+                      <span
+                        aria-hidden="true"
+                        class="absolute left-1/2 top-1/2 z-10 block whitespace-nowrap rounded-full px-1.5 py-0.5 tabular-nums text-[10px] font-bold leading-none tracking-tight sm:hidden"
+                        style={mobileLabelStyle}
+                      >
+                        {formatNumber(agent.latest.totalTokens)}
+                      </span>
+                    )
+                  }
+                </div>
+              </div>
+              <span class="flex max-w-full flex-col items-center text-center">
+                <AgentLogo logo={agent.agentLogo} name={agent.agentDisplayName} size="sm" />
+              </span>
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <div
+    class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs ui-subtle"
+  >
+    {
+      ranked.map((agent) => {
+        const theme = themeFor(agent.agentId);
+        const rank = rankByAgentId.get(agent.agentId) ?? 0;
+
+        return (
+          <span class="inline-flex items-center gap-1.5">
+            <span
+              class="grid h-4 w-4 place-items-center rounded-full text-[10px] font-semibold"
+              style={`background:${theme.badgeBg}; color:${theme.badgeText}; box-shadow:inset 0 0 0 1px ${theme.badgeRing}`}
+            >
+              {rank}
+            </span>
+            <span>
+              {agent.agentDisplayName}: {formatNumber(agent.latest.totalTokens)}
+            </span>
+          </span>
+        );
+      })
+    }
+  </div>
+</div>

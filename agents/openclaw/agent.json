@@ -1,0 +1,53 @@
+{
+  "id": "openclaw",
+  "display_name": "OpenClaw",
+  "version": "2026.6.6",
+  "image": "hibench/openclaw:2026.6.6",
+  "parser_id": "openclaw",
+  "version_source": {
+    "type": "npm",
+    "package": "openclaw"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "benchmark_exclusions": {
+    "0.0.1": "Placeholder package version; no usable OpenClaw agent CLI for benchmark capture.",
+    "2026.4.5": "Broken npm package for benchmark capture; CLI exits before model capture because @buape/carbon is missing.",
+    "2026.4.25": "Broken npm package for benchmark capture; local capture fails before producing a primary model request.",
+    "2026.4.26": "Broken npm package for benchmark capture; local capture fails before producing a primary model request.",
+    "2026.4.27": "Broken npm package for benchmark capture; local capture fails before producing a primary model request.",
+    "2026.5.12": "Broken npm package for benchmark capture; local capture fails before producing a primary model request."
+  },
+  "dockerfile": "docker/agents/openclaw/Dockerfile",
+  "command": [
+    "agent",
+    "--local",
+    "--agent",
+    "main",
+    "--message",
+    "{prompt}",
+    "--timeout",
+    "240"
+  ],
+  "env": {
+    "HIBENCH_OPENCLAW_CONFIG": "{\"models\":{\"mode\":\"replace\",\"providers\":{\"hibench\":{\"baseUrl\":\"{base_url}\",\"apiKey\":\"hibench-dummy-key\",\"api\":\"openai-responses\",\"models\":[{\"id\":\"gpt-5\",\"name\":\"HiBench Capture GPT-5\",\"reasoning\":false,\"input\":[\"text\"],\"contextWindow\":200000,\"maxTokens\":4096,\"cost\":{\"input\":0,\"output\":0,\"cacheRead\":0,\"cacheWrite\":0}}]}}},\"agents\":{\"defaults\":{\"model\":{\"primary\":\"hibench/gpt-5\"},\"workspace\":\"/workspace\"}}}",
+    "OPENCLAW_STATE_DIR": "/openclaw-home/state",
+    "OPENCLAW_CONFIG_PATH": "/openclaw-home/state/openclaw.json",
+    "HOME": "/openclaw-home/home",
+    "OPENCLAW_HIDE_BANNER": "1",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "host_timeout_seconds": 300,
+    "workspace_permission_cleanup_paths": [
+      "/workspace/.openclaw"
+    ],
+    "notes": "The runner writes an isolated OpenClaw config with a local OpenAI Responses-compatible recorder provider and returns a synthetic response after capturing request payloads."
+  },
+  "sources": [
+    "https://github.com/openclaw/openclaw",
+    "https://www.npmjs.com/package/openclaw"
+  ]
+}

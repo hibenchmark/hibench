@@ -1,0 +1,217 @@
+---
+import { formatNumber } from "../lib/format";
+import type { RunRow } from "../data/benchmark";
+
+interface Props {
+  runs: RunRow[];
+}
+const { runs } = Astro.props;
+
+// Geometry
+const W = 760;
+const H = 280;
+const padL = 64;
+const padR = 64;
+const padT = 16;
+const padB = 44;
+const innerW = W - padL - padR;
+const innerH = H - padT - padB;
+
+const totals = runs.map((r) => r.totalTokens);
+const toolCounts = runs.map((r) => r.toolCount);
+const n = runs.length;
+
+type Axis = {
+  min: number;
+  max: number;
+  ticks: number[];
+};
+
+const niceStep = (rawStep: number): number => {
+  if (!Number.isFinite(rawStep) || rawStep <= 0) return 1;
+  const pow = Math.pow(10, Math.floor(Math.log10(rawStep)));
+  const fraction = rawStep / pow;
+  const niceFraction =
+    fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10;
+  return niceFraction * pow;
+};
+
+const buildAxis = (values: number[], tickTarget = 5): Axis => {
+  const finite = values.filter((v) => Number.isFinite(v));
+  if (finite.length === 0) return { min: 0, max: 1, ticks: [0, 1] };
+
+  const rawMin = Math.min(...finite);
+  const rawMax = Math.max(...finite);
+  const rawSpan = rawMax - rawMin;
+  const span =
+    rawSpan > 0 ? rawSpan : Math.max(2, Math.ceil(Math.abs(rawMax) * 0.1));
+  const paddedMin = rawMin - span * 0.12;
+  const paddedMax = rawMax + span * 0.12;
+  const step = Math.max(
+    1,
+    Math.ceil(niceStep((paddedMax - paddedMin) / Math.max(1, tickTarget - 1))),
+  );
+
+  let min = Math.floor(paddedMin / step) * step;
+  let max = Math.ceil(paddedMax / step) * step;
+  if (rawMin >= 0 && min < 0) min = 0;
+  if (min === max) max = min + step;
+
+  const ticks: number[] = [];
+  for (let t = min; t <= max + step * 0.5; t += step) {
+    ticks.push(Math.round(t));
+  }
+  return { min, max, ticks };
+};
+
+const tokenAxis = buildAxis(totals);
+const toolAxis = buildAxis(toolCounts);
+
+const x = (i: number) =>
+  n <= 1 ? padL + innerW / 2 : padL + (i / (n - 1)) * innerW;
+const y = (v: number, axis: Axis) =>
+  padT + innerH - ((v - axis.min) / (axis.max - axis.min)) * innerH;
+
+const tokenLinePath = runs
+  .map(
+    (r, i) =>
+      `${i === 0 ? "M" : "L"}${x(i).toFixed(1)},${y(r.totalTokens, tokenAxis).toFixed(1)}`,
+  )
+  .join(" ");
+const toolLinePath = runs
+  .map(
+    (r, i) =>
+      `${i === 0 ? "M" : "L"}${x(i).toFixed(1)},${y(r.toolCount, toolAxis).toFixed(1)}`,
+  )
+  .join(" ");
+const areaPath =
+  n > 0
+    ? `${tokenLinePath} L${x(n - 1).toFixed(1)},${(padT + innerH).toFixed(1)} L${x(0).toFixed(1)},${(padT + innerH).toFixed(1)} Z`
+    : "";
+
+// Cap x labels to avoid clutter on agents with many versions.
+const maxLabels = 8;
+const labelStep = Math.max(1, Math.ceil(n / maxLabels));
+---
+
+<div class="w-full overflow-x-auto">
+  <svg
+    viewBox={`0 0 ${W} ${H}`}
+    class="w-full min-w-[640px]"
+    role="img"
+    aria-label="Total token footprint and tool count by version"
+  >
+    <!-- gridlines + left token axis labels -->
+    {
+      tokenAxis.ticks.map((t) => (
+        <g>
+          <line
+            x1={padL}
+            x2={W - padR}
+            y1={y(t, tokenAxis)}
+            y2={y(t, tokenAxis)}
+            stroke="rgba(128, 210, 188, 0.18)"
+            stroke-width="1"
+          />
+          <text
+            x={padL - 8}
+            y={y(t, tokenAxis) + 4}
+            text-anchor="end"
+            class="text-[11px]"
+            fill="var(--color-subtle)"
+          >
+            {formatNumber(t)}
+          </text>
+        </g>
+      ))
+    }
+
+    <!-- right tool-count axis labels -->
+    {
+      toolAxis.ticks.map((t) => (
+        <g>
+          <line
+            x1={W - padR}
+            x2={W - padR + 5}
+            y1={y(t, toolAxis)}
+            y2={y(t, toolAxis)}
+            stroke="rgba(255, 184, 107, 0.5)"
+            stroke-width="1"
+          />
+          <text
+            x={W - padR + 10}
+            y={y(t, toolAxis) + 4}
+            text-anchor="start"
+            class="text-[11px]"
+            fill="var(--color-secondary)"
+          >
+            {formatNumber(t)}
+          </text>
+        </g>
+      ))
+    }
+
+    {areaPath && <path d={areaPath} fill="url(#evoFill)" opacity="0.5" />}
+    <path
+      d={tokenLinePath}
+      fill="none"
+      stroke="url(#evoStroke)"
+      stroke-width="2.5"
+      stroke-linejoin="round"
+      stroke-linecap="round"></path>
+    <path
+      d={toolLinePath}
+      fill="none"
+      stroke="var(--color-secondary)"
+      stroke-width="2.25"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      stroke-dasharray="4 5"></path>
+
+    {
+      runs.map((r, i) => (
+        <g>
+          <circle
+            cx={x(i)}
+            cy={y(r.totalTokens, tokenAxis)}
+            r="3"
+            fill="var(--color-primary)"
+          />
+          <circle
+            cx={x(i)}
+            cy={y(r.toolCount, toolAxis)}
+            r="3"
+            fill="var(--color-secondary)"
+          />
+          <title>{`${r.version}: ${formatNumber(r.totalTokens)} tokens, ${formatNumber(r.toolCount)} tools`}</title>
+          {i % labelStep === 0 && (
+            <text
+              x={x(i)}
+              y={H - padB + 18}
+              text-anchor="middle"
+              class="text-[10px]"
+              fill="var(--color-subtle)"
+              transform={
+                n > 12 ? `rotate(35 ${x(i)} ${H - padB + 18})` : undefined
+              }
+            >
+              {r.version}
+            </text>
+          )}
+        </g>
+      ))
+    }
+
+    <defs>
+      <linearGradient id="evoStroke" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--color-primary)"></stop>
+        <stop offset="58%" stop-color="var(--color-blue)"></stop>
+        <stop offset="100%" stop-color="var(--color-secondary)"></stop>
+      </linearGradient>
+      <linearGradient id="evoFill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.28"></stop>
+        <stop offset="100%" stop-color="var(--color-secondary)" stop-opacity="0"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>

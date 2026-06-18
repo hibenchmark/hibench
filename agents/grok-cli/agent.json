@@ -1,0 +1,44 @@
+{
+  "id": "grok-cli",
+  "display_name": "Grok CLI",
+  "version": "0.2.51",
+  "image": "hibench/grok-cli:0.2.51",
+  "parser_id": "grok-cli",
+  "version_source": {
+    "type": "npm",
+    "package": "@xai-official/grok"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "dockerfile": "docker/agents/grok-cli/Dockerfile",
+  "command": [
+    "--no-auto-update",
+    "-p",
+    "{prompt}",
+    "-m",
+    "hibench",
+    "--output-format",
+    "json",
+    "--no-alt-screen",
+    "--max-turns",
+    "1"
+  ],
+  "env": {
+    "HIBENCH_GROK_CONFIG": "[cli]\nauto_update = false\ninstaller = \"npm\"\n\n[ui]\npermission_mode = \"always-approve\"\n\n[model.hibench]\nmodel = \"gpt-5\"\nbase_url = \"{base_url}\"\nname = \"HiBench Recorder\"\nenv_key = \"HIBENCH_GROK_API_KEY\"\n\n[models]\ndefault = \"hibench\"\n",
+    "HIBENCH_GROK_API_KEY": "hibench-dummy-key",
+    "HOME": "/grok-home/home",
+    "XDG_CACHE_HOME": "/grok-home/cache",
+    "XDG_CONFIG_HOME": "/grok-home/config",
+    "GROK_DISABLE_TELEMETRY": "1",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "notes": "The runner writes an isolated Grok config.toml with a custom model pointing at the local OpenAI-compatible recorder and a dummy env-key API key, then captures the main chat completion after Grok's optional session-title preflight."
+  },
+  "sources": [
+    "https://docs.x.ai/build/overview",
+    "https://www.npmjs.com/package/@xai-official/grok"
+  ]
+}

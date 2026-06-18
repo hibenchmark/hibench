@@ -1,0 +1,20 @@
+[project]
+name = "hibench"
+version = "0.1.0"
+description = "Benchmark coding-agent default context, tools, MCP, and sub-agent footprint."
+readme = "README.md"
+requires-python = ">=3.13"
+license = "MIT"
+dependencies = [
+    "packaging==25.0",
+    "rich==15.0.0",
+    "tiktoken==0.13.0",
+]
+
+[project.scripts]
+hibench = "hibench.__main__:main"
+
+[project.urls]
+Homepage = "https://hibench.dev"
+Repository = "https://github.com/hibenchmark/hibench"
+Issues = "https://github.com/hibenchmark/hibench/issues"

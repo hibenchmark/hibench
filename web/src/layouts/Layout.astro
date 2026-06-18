@@ -1,0 +1,66 @@
+---
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { withBase } from "../lib/format";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+}
+
+const {
+  title = "hibench — agent footprint",
+  description = "How much default context, tools, skills, MCP and sub-agent each coding agent consumes.",
+  ogImage = "/og-image.png",
+  ogImageAlt = "hibench social preview showing the latest coding-agent benchmark token ranking.",
+} = Astro.props;
+
+const pageUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.toString();
+const ogLogoUrl = new URL(withBase("/favicon.svg"), Astro.site ?? Astro.url).toString();
+const ogImageUrl = new URL(withBase(ogImage), Astro.site ?? Astro.url).toString();
+const imageAlt = ogImageAlt;
+---
+
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#020706" />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="hibench" />
+    <meta property="og:logo" content={ogLogoUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:secure_url" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-full antialiased">
+    <Nav />
+    <main class="mx-auto max-w-6xl px-4 py-10">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

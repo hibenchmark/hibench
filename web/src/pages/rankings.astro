@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AgentLogo from '../components/AgentLogo.astro';
+import RankingsTable, { type RankRow } from '../components/RankingsTable.tsx';
+import { withBase, formatNumber } from '../lib/format';
+import { getAgents } from '../data/benchmark';
+
+const agents = getAgents();
+const rows: RankRow[] = agents.map((a) => ({
+  agentId: a.agentId,
+  agentName: a.agentDisplayName,
+  version: a.latest.version,
+  model: a.latest.model,
+  totalTokens: a.latest.totalTokens,
+  toolCount: a.latest.toolCount,
+  skillCount: a.latest.skillCount,
+  mcpCount: a.latest.mcpCount,
+  subagentCount: a.latest.subagentCount,
+  logoSrc: withBase(a.agentLogo.path),
+  logoAlt: a.agentLogo.alt,
+  logoSource: a.agentLogo.source,
+  href: withBase(`/agents/${a.agentId}`),
+}));
+
+const heaviest = agents[0];
+const lightest = agents[agents.length - 1];
+const heaviestTokens = heaviest?.latest.totalTokens ?? 0;
+const lightestTokens = lightest?.latest.totalTokens ?? 0;
+const footprintRatio = heaviestTokens > 0 && lightestTokens > 0
+  ? heaviestTokens / lightestTokens
+  : 0;
+const ratioLabel = footprintRatio >= 10
+  ? footprintRatio.toFixed(1)
+  : footprintRatio.toFixed(2);
+const lightestMeterWidth = heaviestTokens > 0
+  ? Math.max(9, (lightestTokens / heaviestTokens) * 100)
+  : 0;
+const extremes = heaviest && lightest
+  ? [
+      {
+        agent: heaviest,
+        label: 'Heaviest',
+        eyebrow: 'Largest load',
+        badge: 'MAX',
+        tone: 'warm',
+        meterWidth: 100,
+        href: withBase(`/agents/${heaviest.agentId}`),
+      },
+      {
+        agent: lightest,
+        label: 'Lightest',
+        eyebrow: 'Leanest load',
+        badge: 'MIN',
+        tone: 'cool',
+        meterWidth: lightestMeterWidth,
+        href: withBase(`/agents/${lightest.agentId}`),
+      },
+    ]
+  : [];
+---
+
+<Layout title="Rankings — hibench">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold tracking-tight ui-heading">Default footprint ranking</h1>
+    <p class="mt-3 max-w-2xl ui-muted">
+      Coding agents ranked by the total token cost of their latest captured
+      version &mdash; the baseline a model reads on the first turn. Click a column
+      header to re-sort.
+    </p>
+  </header>
+
+  {extremes.length === 2 && (
+    <section class="mb-8" aria-label="Default footprint extremes">
+      <div class="mb-3 flex items-center justify-between gap-3">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] ui-subtle">
+          Footprint extremes
+        </p>
+        <p class="rounded-full border border-[rgba(128,210,188,0.2)] bg-[rgba(8,17,26,0.62)] px-2.5 py-1 text-[0.68rem] font-medium ui-muted">
+          {ratioLabel}× spread
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="pointer-events-none absolute left-1/2 top-3 z-10 grid h-7 w-7 -translate-x-1/2 place-items-center rounded-full border border-[rgba(128,210,188,0.24)] bg-[rgba(5,13,18,0.92)] text-[0.6rem] font-bold uppercase tracking-wide text-[var(--color-primary)] shadow-[0_0_24px_rgba(49,247,195,0.18)] sm:top-5">
+          vs
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 sm:gap-4">
+          {extremes.map((item) => (
+            <a
+              href={item.href}
+              class={`group relative min-w-0 overflow-hidden rounded-2xl border p-3 shadow-[0_20px_60px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-0.5 sm:p-5 ${
+                item.tone === 'warm'
+                  ? 'border-[rgba(255,184,107,0.34)] bg-[linear-gradient(145deg,rgba(57,35,20,0.84),rgba(8,17,26,0.8))] hover:border-[rgba(255,184,107,0.58)]'
+                  : 'border-[rgba(49,247,195,0.32)] bg-[linear-gradient(145deg,rgba(9,42,34,0.86),rgba(8,17,26,0.8))] hover:border-[rgba(49,247,195,0.56)]'
+              }`}
+            >
+              <div
+                class={`absolute inset-x-0 top-0 h-1 ${
+                  item.tone === 'warm'
+                    ? 'bg-[linear-gradient(90deg,var(--color-secondary),var(--color-hot))]'
+                    : 'bg-[linear-gradient(90deg,var(--color-primary),var(--color-blue))]'
+                }`}
+              />
+              <div
+                class={`absolute -right-10 -top-12 h-28 w-28 rounded-full blur-3xl ${
+                  item.tone === 'warm'
+                    ? 'bg-[rgba(255,184,107,0.2)]'
+                    : 'bg-[rgba(49,247,195,0.18)]'
+                }`}
+              />
+
+              <div class="relative flex min-h-36 min-w-0 flex-col justify-between gap-4 sm:min-h-40">
+                <div class="flex items-center justify-between gap-2">
+                  <span
+                    class={`rounded-full px-2 py-1 text-[0.62rem] font-bold tracking-[0.16em] ${
+                      item.tone === 'warm' ? 'ui-badge-warm' : 'ui-badge'
+                    }`}
+                  >
+                    {item.badge}
+                  </span>
+                  <span class="hidden text-[0.68rem] font-medium uppercase tracking-[0.18em] ui-subtle min-[390px]:inline">
+                    {item.eyebrow}
+                  </span>
+                </div>
+
+                <div class="min-w-0">
+                  <p class="text-[0.68rem] font-semibold uppercase tracking-[0.18em] ui-muted sm:text-xs">
+                    {item.label} tool
+                  </p>
+                  <div class="mt-1 flex min-w-0 items-center gap-2">
+                    <AgentLogo logo={item.agent.agentLogo} name={item.agent.agentDisplayName} size="sm" />
+                    <p class="truncate text-lg font-semibold leading-tight ui-title sm:text-2xl">
+                      {item.agent.agentDisplayName}
+                    </p>
+                  </div>
+                  <p class="mt-1 text-[0.68rem] ui-subtle sm:text-xs">
+                    v{item.agent.latest.version}
+                  </p>
+                </div>
+
+                <div>
+                  <p class="text-xl font-bold tabular-nums leading-none ui-title sm:text-3xl">
+                    {formatNumber(item.agent.latest.totalTokens)}
+                  </p>
+                  <p class="mt-1 text-[0.68rem] ui-subtle sm:text-xs">total tokens</p>
+                  <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-[rgba(128,210,188,0.13)]">
+                    <div
+                      class={`h-full rounded-full ${
+                        item.tone === 'warm'
+                          ? 'bg-[linear-gradient(90deg,var(--color-secondary),var(--color-hot))]'
+                          : 'bg-[linear-gradient(90deg,var(--color-primary),var(--color-blue))]'
+                      }`}
+                      style={`width: ${item.meterWidth}%`}
+                    />
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <RankingsTable client:load rows={rows} />
+
+  <p class="mt-4 text-xs ui-subtle">
+    One row per agent, using its newest version with a captured primary request.
+    Token counts use the fixed <code class="ui-code rounded px-1">o200k_base</code> tokenizer.
+  </p>
+</Layout>

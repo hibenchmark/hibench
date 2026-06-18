@@ -1,0 +1,60 @@
+---
+import { withBase } from "../lib/format";
+
+const path = Astro.url.pathname.replace(/\/$/, "");
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/rankings", label: "Rankings" },
+  { href: "/agents", label: "Agents" },
+];
+
+function isActive(href: string): boolean {
+  const target = withBase(href).replace(/\/$/, "");
+  if (target === withBase("/").replace(/\/$/, "")) return path === target;
+  return path === target || path.startsWith(`${target}/`);
+}
+---
+
+<header class="glass-nav sticky top-0 z-30">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+    <a
+      href={withBase("/")}
+      class="flex items-center gap-2 font-semibold tracking-tight"
+    >
+      <span
+        class="brand-mark grid h-7 w-7 place-items-center rounded-md text-sm font-bold"
+        >hi</span
+      >
+      <span class="brand-text">hibench</span>
+    </a>
+    <ul class="flex items-center gap-1 text-sm">
+      {
+        links.map((l) => (
+          <li>
+            <a
+              href={withBase(l.href)}
+              class:list={[
+                "rounded-md px-3 py-1.5 transition-colors",
+                isActive(l.href)
+                  ? "nav-link-active font-semibold"
+                  : "nav-link",
+              ]}
+            >
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a
+          href="https://github.com/hibenchmark/hibench"
+          class="rounded-md px-3 py-1.5 transition-colors nav-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

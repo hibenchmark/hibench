@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">hibench</title>
+  <defs>
+    <linearGradient id="tile" x1="11" y1="7" x2="55" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9bf7be"/>
+      <stop offset="0.5" stop-color="#5fd0e9"/>
+      <stop offset="1" stop-color="#ffe08a"/>
+    </linearGradient>
+    <radialGradient id="spark" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(20 18) scale(25)">
+      <stop stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-16%" y="-16%" width="132%" height="132%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="64" height="64" rx="17" fill="#020706"/>
+  <rect x="5" y="5" width="54" height="54" rx="14" fill="url(#tile)" filter="url(#shadow)"/>
+  <rect x="5" y="5" width="54" height="54" rx="14" fill="url(#spark)"/>
+
+  <g fill="none" stroke="#03100d" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 39V19" stroke-width="8"/>
+    <path d="M18 29H30c5 0 8 3 8 8v2" stroke-width="8"/>
+    <path d="M47 30v9" stroke-width="8"/>
+  </g>
+  <circle cx="47" cy="19" r="4" fill="#03100d"/>
+
+  <g transform="translate(15 55)" opacity="0.72">
+    <rect x="0" y="-4" width="4" height="4" rx="2" fill="#03100d"/>
+    <rect x="7" y="-7" width="4" height="7" rx="2" fill="#03100d"/>
+    <rect x="14" y="-3" width="4" height="3" rx="1.5" fill="#03100d"/>
+    <rect x="21" y="-8" width="4" height="8" rx="2" fill="#03100d"/>
+    <rect x="28" y="-5" width="4" height="5" rx="2" fill="#03100d"/>
+    <rect x="35" y="-2" width="4" height="2" rx="1" fill="#03100d"/>
+  </g>
+</svg>

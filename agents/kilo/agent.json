@@ -1,0 +1,51 @@
+{
+  "id": "kilo",
+  "display_name": "Kilo Code",
+  "version": "7.3.45",
+  "image": "hibench/kilo:7.3.45",
+  "parser_id": "kilo",
+  "version_source": {
+    "type": "npm",
+    "package": "@kilocode/cli"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "dockerfile": "docker/agents/kilo/Dockerfile",
+  "command": [
+    "run",
+    "--format",
+    "json",
+    "--title",
+    "hibench",
+    "--model",
+    "hibench/gpt-5",
+    "{prompt}"
+  ],
+  "env": {
+    "KILO_CONFIG_CONTENT": "{\"$schema\":\"https://app.kilo.ai/config.json\",\"model\":\"hibench/gpt-5\",\"small_model\":\"hibench/gpt-5\",\"enabled_providers\":[\"hibench\"],\"share\":\"disabled\",\"snapshot\":false,\"provider\":{\"hibench\":{\"name\":\"HiBench Recorder\",\"id\":\"hibench\",\"env\":[],\"npm\":\"@ai-sdk/openai-compatible\",\"options\":{\"apiKey\":\"hibench-dummy-key\",\"baseURL\":\"{base_url}\",\"timeout\":10000,\"headerTimeout\":false,\"chunkTimeout\":10000},\"models\":{\"gpt-5\":{\"id\":\"gpt-5\",\"name\":\"HiBench Capture GPT-5\",\"attachment\":false,\"reasoning\":false,\"temperature\":false,\"tool_call\":true,\"release_date\":\"2026-06-14\",\"limit\":{\"context\":200000,\"output\":4096},\"cost\":{\"input\":0,\"output\":0},\"options\":{}}}}}}",
+    "KILO_TEST_HOME": "/kilo-home/home",
+    "KILO_CONFIG_DIR": "/kilo-home/config",
+    "XDG_DATA_HOME": "/kilo-home/data",
+    "XDG_CACHE_HOME": "/kilo-home/cache",
+    "XDG_CONFIG_HOME": "/kilo-home/config-root",
+    "XDG_STATE_HOME": "/kilo-home/state",
+    "KILO_DISABLE_AUTOUPDATE": "1",
+    "KILO_DISABLE_MODELS_FETCH": "1",
+    "KILO_PURE": "1",
+    "KILO_DB": ":memory:",
+    "KILO_NO_DAEMON": "1",
+    "KILO_DISABLE_LSP_DOWNLOAD": "1",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "host_timeout_seconds": 90,
+    "notes": "The runner passes an inline Kilo config with a local OpenAI-compatible recorder provider and returns a synthetic completion after capturing request payloads."
+  },
+  "sources": [
+    "https://kilo.ai/cli",
+    "https://github.com/Kilo-Org/kilocode",
+    "https://www.npmjs.com/package/@kilocode/cli"
+  ]
+}

@@ -1,0 +1,42 @@
+---
+import { withBase } from "../lib/format";
+import type { AgentLogo as AgentLogoData } from "../data/benchmark";
+
+interface Props {
+  logo: AgentLogoData;
+  name: string;
+  size?: "sm" | "md" | "lg";
+  class?: string;
+}
+
+const {
+  logo,
+  name,
+  size = "md",
+  class: className = "",
+} = Astro.props;
+
+const sizeClass = {
+  sm: "h-7 w-7 rounded-lg p-1.5",
+  md: "h-10 w-10 rounded-xl p-2",
+  lg: "h-14 w-14 rounded-2xl p-3",
+}[size];
+---
+
+<span
+  class:list={[
+    "agent-logo inline-grid shrink-0 place-items-center overflow-hidden",
+    logo.source === "official" ? "agent-logo-official" : "agent-logo-generic",
+    sizeClass,
+    className,
+  ]}
+  title={name}
+>
+  <img
+    src={withBase(logo.path)}
+    alt=""
+    loading="lazy"
+    decoding="async"
+    class="h-full w-full object-contain"
+  />
+</span>

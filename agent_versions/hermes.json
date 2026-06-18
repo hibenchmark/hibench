@@ -1,0 +1,36 @@
+{
+  "schema_version": "hibench.agent_versions.v1",
+  "agent_id": "hermes",
+  "source": {
+    "type": "pypi",
+    "package": "hermes-agent"
+  },
+  "fetched_at": "2026-06-15T23:41:11Z",
+  "version_count": 6,
+  "benchmark_version_policy_id": "stable_semver",
+  "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
+  "benchmark_version_count": 6,
+  "benchmark_exclusion_count": 0,
+  "benchmark_exclusions": {},
+  "excluded_benchmark_versions": [],
+  "latest": "0.16.0",
+  "dist_tags": {
+    "latest": "0.16.0"
+  },
+  "versions": [
+    "0.13.0",
+    "0.14.0",
+    "0.15.0",
+    "0.15.1",
+    "0.15.2",
+    "0.16.0"
+  ],
+  "benchmark_versions": [
+    "0.13.0",
+    "0.14.0",
+    "0.15.0",
+    "0.15.1",
+    "0.15.2",
+    "0.16.0"
+  ]
+}

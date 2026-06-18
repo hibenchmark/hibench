@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/hibench/trace.schema.json",
+  "title": "hibench captured request",
+  "type": "object",
+  "required": ["index", "captured_at", "method", "path", "headers", "body_text"],
+  "properties": {
+    "index": {"type": "integer", "minimum": 1},
+    "captured_at": {"type": "string"},
+    "method": {"type": "string"},
+    "path": {"type": "string"},
+    "headers": {"type": "object", "additionalProperties": {"type": "string"}},
+    "body_text": {"type": "string"},
+    "json": {}
+  }
+}

@@ -1,0 +1,46 @@
+---
+import { formatNumber, pct } from "../lib/format";
+import { footprintParts, type RunRow } from "../data/benchmark";
+
+interface Props {
+  run: RunRow;
+}
+const { run } = Astro.props;
+const parts = footprintParts(run);
+const max = Math.max(...parts.map((p) => p.tokens), 1);
+---
+
+<div class="space-y-3">
+  {
+    parts.map((p) => (
+      <div>
+        <div class="mb-1 flex items-center justify-between text-sm">
+          <span class="flex items-center gap-2 ui-muted">
+            <span
+              class="h-2.5 w-2.5 rounded-sm"
+              style={`background:${p.color}`}
+            />
+            {p.label}
+          </span>
+          <span class="tabular-nums font-medium ui-title">
+            {formatNumber(p.tokens)}
+            <span class="ml-1 text-xs font-normal ui-subtle">
+              {pct(p.tokens, run.totalTokens).toFixed(0)}%
+            </span>
+          </span>
+        </div>
+        <div class="ui-track h-2 w-full overflow-hidden rounded-full">
+          <div
+            class="h-full rounded-full"
+            style={`width:${pct(p.tokens, max)}%;background:${p.color}`}
+          />
+        </div>
+      </div>
+    ))
+  }
+  <p class="pt-1 text-xs ui-subtle">
+    Bars show the largest contributors to the captured request body; categories
+    are measured independently and may overlap, so they are not a strict
+    partition of the total.
+  </p>
+</div>

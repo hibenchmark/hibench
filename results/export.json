@@ -1,0 +1,26 @@
+{
+  "schema_version": "hibench.benchmark.v1",
+  "runs_dir": "runs",
+  "out_dir": "results",
+  "unique_by": [
+    "agent_id",
+    "agent_version"
+  ],
+  "source_run_count": 765,
+  "skipped_no_primary_run_count": 31,
+  "deduplicated_run_count": 0,
+  "run_count": 734,
+  "tool_row_count": 10426,
+  "mcp_row_count": 854,
+  "subagent_row_count": 3081,
+  "skill_row_count": 1763,
+  "text_field_row_count": 2308,
+  "files": {
+    "runs": "results/runs.csv",
+    "tools": "results/tools.csv",
+    "mcp": "results/mcp.csv",
+    "subagents": "results/subagents.csv",
+    "skills": "results/skills.csv",
+    "text_fields": "results/text_fields.csv"
+  }
+}

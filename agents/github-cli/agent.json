@@ -1,0 +1,59 @@
+{
+  "id": "github-cli",
+  "display_name": "GitHub Copilot CLI",
+  "version": "1.0.62",
+  "image": "hibench/github-cli:1.0.62",
+  "parser_id": "github-cli",
+  "version_source": {
+    "type": "npm",
+    "package": "@github/copilot"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "benchmark_min_version": "1.0.8",
+  "benchmark_min_version_reason": "Versions before 1.0.8 are incompatible with the BYOK/offline benchmark call shape; early 1.0.x releases either reject --no-remote or require GitHub authentication instead of using the configured provider.",
+  "dockerfile": "docker/agents/github-cli/Dockerfile",
+  "command": [
+    "-p",
+    "{prompt}",
+    "--model",
+    "gpt-5.4",
+    "--output-format",
+    "json",
+    "--stream",
+    "off",
+    "--no-custom-instructions",
+    "--no-auto-update",
+    "--no-remote",
+    "--allow-all-tools"
+  ],
+  "env": {
+    "COPILOT_PROVIDER_BASE_URL": "{base_url}",
+    "COPILOT_PROVIDER_API_KEY": "hibench-dummy-key",
+    "COPILOT_PROVIDER_TYPE": "openai",
+    "COPILOT_PROVIDER_WIRE_API": "responses",
+    "COPILOT_MODEL": "gpt-5",
+    "COPILOT_PROVIDER_MODEL_ID": "gpt-5",
+    "COPILOT_PROVIDER_WIRE_MODEL": "gpt-5",
+    "COPILOT_PROVIDER_MAX_PROMPT_TOKENS": "200000",
+    "COPILOT_PROVIDER_MAX_OUTPUT_TOKENS": "4096",
+    "COPILOT_OFFLINE": "true",
+    "COPILOT_ALLOW_ALL": "true",
+    "COPILOT_AUTO_UPDATE": "false",
+    "COPILOT_HOME": "/copilot-home/config",
+    "HOME": "/copilot-home/home",
+    "XDG_CACHE_HOME": "/copilot-home/cache",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "notes": "The runner uses Copilot CLI BYOK mode with an OpenAI Responses-compatible local recorder provider, COPILOT_OFFLINE=true, and a synthetic completion so no GitHub Copilot or upstream model call is required.",
+    "host_timeout_seconds": 90
+  },
+  "sources": [
+    "https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli",
+    "https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/authenticate-copilot-cli",
+    "https://www.npmjs.com/package/@github/copilot"
+  ]
+}

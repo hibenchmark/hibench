@@ -1,0 +1,47 @@
+{
+  "id": "cursor-cli",
+  "display_name": "Cursor CLI",
+  "version": "2026.06.12-19-59-36-f6aba9a",
+  "image": "hibench/cursor-cli:2026.06.12-19-59-36-f6aba9a",
+  "parser_id": "cursor-cli",
+  "version_source": {
+    "type": "cursor-install",
+    "url": "https://cursor.com/install",
+    "package": "agent-cli-local-package.tar.gz"
+  },
+  "benchmark_version_policy": "all_versions",
+  "dockerfile": "docker/agents/cursor-cli/Dockerfile",
+  "command": [
+    "-p",
+    "{prompt}",
+    "--output-format",
+    "json",
+    "--model",
+    "gpt-5",
+    "--authless",
+    "--trust"
+  ],
+  "env": {
+    "CURSOR_LOCAL_AGENT_BASE_URL": "{base_url}",
+    "CURSOR_LOCAL_AGENT_API_KEY": "hibench-dummy-key",
+    "CURSOR_ENABLE_AUTHLESS": "1",
+    "AGENT_CLI_CREDENTIAL_STORE": "memory",
+    "HOME": "/cursor-home/home",
+    "XDG_CACHE_HOME": "/cursor-home/cache",
+    "XDG_CONFIG_HOME": "/cursor-home/config",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "notes": "Cursor's public install script installs the standard cursor-agent package, whose OpenAI-compatible local-provider flags are hidden and gated to the companion agent-cli-local package. The Docker image downloads the same pinned release's agent-cli-local package and runs it with authless local-provider mode pointed at the recorder, so no Cursor account, Cursor backend, or upstream model call is required.",
+    "host_timeout_seconds": 90
+  },
+  "sources": [
+    "https://docs.cursor.com/en/cli/installation",
+    "https://docs.cursor.com/en/cli/using",
+    "https://docs.cursor.com/en/cli/reference/authentication",
+    "https://cursor.com/brand"
+  ]
+}

@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AgentLogo from '../../components/AgentLogo.astro';
+import StatCard from '../../components/StatCard.astro';
+import EvolutionChart from '../../components/EvolutionChart.astro';
+import VersionExplorer, { type VersionDatum } from '../../components/VersionExplorer.tsx';
+import { withBase, formatNumber } from '../../lib/format';
+import {
+  getAgents,
+  getAgentVersions,
+  getSkillsForRun,
+  getSubagentsForRun,
+  getToolsForRun,
+  footprintParts,
+} from '../../data/benchmark';
+
+export async function getStaticPaths() {
+  return getAgents().map((a) => ({ params: { agent: a.agentId } }));
+}
+
+const { agent } = Astro.params;
+const summary = getAgents().find((a) => a.agentId === agent)!;
+const versions = getAgentVersions(agent!);
+const latest = summary.latest;
+const first = versions[0];
+const agentName = summary.agentDisplayName;
+const description = `${agentName} loads ${formatNumber(latest.totalTokens)} default tokens, ${latest.toolCount} tools, ${latest.skillCount} skills, and ${latest.subagentCount} sub-agents in its latest captured hibench request.`;
+const ogImage = `/og/agents/${summary.agentId}.png`;
+const ogImageAlt = `hibench social preview for ${agentName}, showing latest default footprint metrics.`;
+
+const delta = latest.totalTokens - first.totalTokens;
+const deltaPct = first.totalTokens ? (delta / first.totalTokens) * 100 : 0;
+
+const versionData: VersionDatum[] = versions.map((run) => ({
+  version: run.version,
+  model: run.model,
+  totalTokens: run.totalTokens,
+  bodyBytes: run.bodyBytes,
+  toolCount: run.toolCount,
+  skillCount: run.skillCount,
+  mcpCount: run.mcpCount,
+  subagentCount: run.subagentCount,
+  parts: footprintParts(run).map((p) => ({ label: p.label, tokens: p.tokens, color: p.color })),
+  tools: getToolsForRun(run.runId).map((t) => ({
+    name: t.name,
+    tokens: t.tokens,
+    isMcp: t.isMcp,
+    isSubagent: t.isSubagent,
+  })),
+  skills: getSkillsForRun(run.runId).map((s) => ({
+    name: s.name,
+    tokens: s.tokens,
+    description: s.description,
+  })),
+  subagents: getSubagentsForRun(run.runId).map((s) => ({
+    name: s.name,
+    tokens: s.tokens,
+    preview: s.preview,
+    sourceType: s.sourceType,
+  })),
+}));
+---
+
+<Layout title={`${agentName} footprint — hibench`} description={description} ogImage={ogImage} ogImageAlt={ogImageAlt}>
+  <nav class="mb-6 text-sm ui-subtle">
+    <a href={withBase('/agents')} class="ui-link">Agents</a>
+    <span class="mx-1.5">/</span>
+    <span class="ui-muted">{agentName}</span>
+  </nav>
+
+  <header class="mb-10">
+    <div class="flex items-center gap-4">
+      <AgentLogo logo={summary.agentLogo} name={agentName} size="lg" />
+      <div class="min-w-0">
+        <h1 class="truncate text-3xl font-bold tracking-tight ui-heading">{agentName}</h1>
+        <p class="mt-2 ui-muted">
+          Latest <span class="font-medium">v{latest.version}</span> · {latest.model} ·
+          {summary.versionCount} versions captured
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Latest snapshot -->
+  <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+    <StatCard
+      label="Default tokens"
+      value={formatNumber(latest.totalTokens)}
+      hint="latest request"
+    />
+    <StatCard label="Tools" value={String(latest.toolCount)} hint="tool definitions" />
+    <StatCard label="Skills" value={String(latest.skillCount)} hint="skill entries" />
+    <StatCard label="Tool tokens" value={formatNumber(latest.toolTokens)} hint="of the latest request" />
+    <StatCard
+      label={`Since v${first.version}`}
+      value={`${delta >= 0 ? '+' : ''}${formatNumber(delta)}`}
+      hint={`${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(0)}% total tokens`}
+    />
+  </section>
+
+  <!-- Evolution -->
+  <section class="mt-10">
+    <div class="ui-card rounded-2xl p-6">
+      <div class="mb-4 flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <h2 class="mb-1 text-lg font-semibold ui-title">Footprint by version</h2>
+          <p class="text-sm ui-subtle">
+            Total request tokens and tool counts across every captured release.
+          </p>
+        </div>
+        <div class="flex items-center gap-5 text-sm ui-subtle" aria-label="Chart legend">
+          <span class="inline-flex items-center gap-2">
+            <span class="h-1 w-8 rounded-full" style="background: var(--color-primary);"></span>
+            <span>Tokens</span>
+          </span>
+          <span class="inline-flex items-center gap-2">
+            <span class="w-8 border-t-[3px] border-dashed" style="border-color: var(--color-secondary);"></span>
+            <span>Tools</span>
+          </span>
+        </div>
+      </div>
+      <EvolutionChart runs={versions} />
+    </div>
+  </section>
+
+  <!-- Interactive explorer -->
+  <section class="mt-12">
+    <h2 class="mb-1 text-2xl font-semibold tracking-tight ui-title">Version explorer</h2>
+    <p class="mb-6 ui-muted">
+      Select any version to inspect its footprint composition and the token cost
+      of each tool, skill, and sub-agent declaration.
+    </p>
+    <VersionExplorer client:load versions={versionData} />
+  </section>
+</Layout>

@@ -1,0 +1,56 @@
+{
+  "id": "cline",
+  "display_name": "Cline",
+  "version": "3.0.24",
+  "image": "hibench/cline:3.0.24",
+  "parser_id": "cline",
+  "version_source": {
+    "type": "npm",
+    "package": "cline"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "benchmark_min_version": "3.0.3",
+  "benchmark_min_version_reason": "Versions before 3.0.3 either lack the current noninteractive local-state flags or reject the openai-compatible provider needed for recorder capture.",
+  "dockerfile": "docker/agents/cline/Dockerfile",
+  "command": [
+    "--json",
+    "--cwd",
+    "/workspace",
+    "--data-dir",
+    "/cline-home/data",
+    "--provider",
+    "openai-compatible",
+    "--model",
+    "gpt-5",
+    "--key",
+    "hibench-dummy-key",
+    "--timeout",
+    "20",
+    "{prompt}"
+  ],
+  "env": {
+    "HIBENCH_CLINE_PROVIDERS_JSON": "{\"version\":1,\"lastUsedProvider\":\"openai-compatible\",\"providers\":{\"openai-compatible\":{\"settings\":{\"provider\":\"openai-compatible\",\"apiKey\":\"hibench-dummy-key\",\"model\":\"gpt-5\",\"baseUrl\":\"{base_url}\"},\"updatedAt\":\"2026-06-14T00:00:00.000Z\",\"tokenSource\":\"manual\"}}}",
+    "CLINE_DATA_DIR": "/cline-home/data",
+    "HOME": "/cline-home/home",
+    "XDG_DATA_HOME": "/cline-home/xdg-data",
+    "XDG_CACHE_HOME": "/cline-home/cache",
+    "XDG_CONFIG_HOME": "/cline-home/config",
+    "XDG_STATE_HOME": "/cline-home/state",
+    "CLINE_TELEMETRY_DISABLED": "1",
+    "CLINE_DISABLE_MIGRATION_NOTICE": "1",
+    "OTEL_TELEMETRY_ENABLED": "false",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "host_timeout_seconds": 90,
+    "notes": "The container writes an isolated Cline provider settings file with an OpenAI-compatible recorder base URL and dummy key, then runs Cline in JSON one-shot mode."
+  },
+  "sources": [
+    "https://github.com/cline/cline",
+    "https://docs.cline.bot",
+    "https://www.npmjs.com/package/cline"
+  ]
+}

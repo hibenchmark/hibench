@@ -1,0 +1,49 @@
+{
+  "id": "pi",
+  "display_name": "Pi",
+  "version": "0.79.3",
+  "image": "hibench/pi:0.79.3",
+  "parser_id": "pi",
+  "version_source": {
+    "type": "npm",
+    "package": "@earendil-works/pi-coding-agent",
+    "packages": [
+      "@mariozechner/pi-coding-agent",
+      "@earendil-works/pi-coding-agent"
+    ]
+  },
+  "benchmark_version_policy": "stable_semver",
+  "benchmark_exclusions": {
+    "0.70.3": "Broken"
+  },
+  "dockerfile": "docker/agents/pi/Dockerfile",
+  "command": [
+    "-p",
+    "--provider",
+    "hibench",
+    "--model",
+    "gpt-5",
+    "--no-session",
+    "{prompt}"
+  ],
+  "env": {
+    "HIBENCH_PI_MODELS_JSON": "{\"providers\":{\"hibench\":{\"baseUrl\":\"{base_url}\",\"api\":\"openai-completions\",\"apiKey\":\"hibench-dummy-key\",\"compat\":{\"supportsDeveloperRole\":false,\"supportsReasoningEffort\":false},\"models\":[{\"id\":\"gpt-5\",\"name\":\"HiBench Capture GPT-5\",\"reasoning\":false,\"input\":[\"text\"],\"contextWindow\":200000,\"maxTokens\":4096,\"cost\":{\"input\":0,\"output\":0,\"cacheRead\":0,\"cacheWrite\":0}}]}}}",
+    "HOME": "/pi-home",
+    "PI_CODING_AGENT_DIR": "/pi-home/.pi/agent",
+    "PI_CODING_AGENT_SESSION_DIR": "/pi-home/.pi/sessions",
+    "PI_OFFLINE": "1",
+    "PI_SKIP_VERSION_CHECK": "1",
+    "PI_TELEMETRY": "0",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "notes": "The runner writes an inline Pi models.json with a local OpenAI-compatible recorder provider and returns a synthetic completion after capturing request payloads."
+  },
+  "sources": [
+    "https://pi.dev",
+    "https://www.npmjs.com/package/@earendil-works/pi-coding-agent"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": "hibench.agent_versions.v1",
+  "agent_id": "cursor-cli",
+  "source": {
+    "type": "cursor-install",
+    "url": "https://cursor.com/install",
+    "package": "agent-cli-local-package.tar.gz"
+  },
+  "fetched_at": "2026-06-15T23:41:08Z",
+  "version_count": 1,
+  "benchmark_version_policy_id": "all_versions",
+  "benchmark_version_policy": "all_versions: every fetched source version is benchmarkable unless explicitly excluded",
+  "benchmark_version_count": 1,
+  "benchmark_exclusion_count": 0,
+  "benchmark_exclusions": {},
+  "excluded_benchmark_versions": [],
+  "latest": "2026.06.15-18-00-12-6f5a2cf",
+  "dist_tags": {
+    "latest": "2026.06.15-18-00-12-6f5a2cf"
+  },
+  "versions": [
+    "2026.06.15-18-00-12-6f5a2cf"
+  ],
+  "benchmark_versions": [
+    "2026.06.15-18-00-12-6f5a2cf"
+  ]
+}

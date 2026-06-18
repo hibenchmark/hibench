@@ -1,0 +1,56 @@
+name: Deploy web dashboard
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'web/**'
+      - 'results/**'
+      - '.github/workflows/deploy-web.yml'
+  workflow_dispatch:
+
+# Allow one concurrent deployment, cancel in-progress runs of this workflow.
+concurrency:
+  group: cloudflare-web
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: cloudflare
+      url: https://hibench.dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install web dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Build Astro site
+        working-directory: web
+        env:
+          SITE_URL: https://hibench.dev
+          BASE_PATH: /
+        run: npm run build
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: web
+          packageManager: npm
+          wranglerVersion: 4.101.0
+          command: deploy

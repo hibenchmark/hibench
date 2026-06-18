@@ -1,0 +1,49 @@
+{
+  "id": "opencode",
+  "display_name": "OpenCode",
+  "version": "1.17.5",
+  "image": "hibench/opencode:1.17.5",
+  "parser_id": "opencode",
+  "version_source": {
+    "type": "npm",
+    "package": "opencode-ai"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "dockerfile": "docker/agents/opencode/Dockerfile",
+  "command": [
+    "run",
+    "--format",
+    "json",
+    "--title",
+    "hibench",
+    "--model",
+    "hibench/gpt-5",
+    "{prompt}"
+  ],
+  "env": {
+    "OPENCODE_CONFIG_CONTENT": "{\"$schema\":\"https://opencode.ai/config.json\",\"model\":\"hibench/gpt-5\",\"small_model\":\"hibench/gpt-5\",\"enabled_providers\":[\"hibench\"],\"share\":\"disabled\",\"snapshot\":false,\"provider\":{\"hibench\":{\"name\":\"HiBench Recorder\",\"id\":\"hibench\",\"env\":[],\"npm\":\"@ai-sdk/openai-compatible\",\"options\":{\"apiKey\":\"hibench-dummy-key\",\"baseURL\":\"{base_url}\",\"timeout\":10000,\"headerTimeout\":false,\"chunkTimeout\":10000},\"models\":{\"gpt-5\":{\"id\":\"gpt-5\",\"name\":\"HiBench Capture GPT-5\",\"attachment\":false,\"reasoning\":false,\"temperature\":false,\"tool_call\":true,\"release_date\":\"2026-06-13\",\"limit\":{\"context\":200000,\"output\":4096},\"cost\":{\"input\":0,\"output\":0},\"options\":{}}}}}}",
+    "OPENCODE_TEST_HOME": "/opencode-home",
+    "OPENCODE_CONFIG_DIR": "/opencode-config",
+    "XDG_DATA_HOME": "/opencode-data",
+    "XDG_CACHE_HOME": "/opencode-cache",
+    "XDG_CONFIG_HOME": "/opencode-config-root",
+    "XDG_STATE_HOME": "/opencode-state",
+    "OPENCODE_DISABLE_AUTOUPDATE": "1",
+    "OPENCODE_DISABLE_MODELS_FETCH": "1",
+    "OPENCODE_DISABLE_SHARE": "1",
+    "OPENCODE_PURE": "1",
+    "OPENCODE_DB": ":memory:",
+    "OPENAI_API_KEY": "hibench-dummy-key",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "notes": "The runner provides an inline OpenCode config with a local OpenAI-compatible recorder provider and returns a synthetic completion after capturing request payloads."
+  },
+  "sources": [
+    "https://github.com/anomalyco/opencode",
+    "https://www.npmjs.com/package/opencode-ai"
+  ]
+}

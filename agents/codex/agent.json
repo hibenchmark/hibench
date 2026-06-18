@@ -1,0 +1,46 @@
+{
+  "id": "codex",
+  "display_name": "OpenAI Codex CLI",
+  "version": "0.139.0",
+  "image": "hibench/codex:0.139.0",
+  "parser_id": "codex",
+  "version_source": {
+    "type": "npm",
+    "package": "@openai/codex"
+  },
+  "benchmark_exclusions": {
+    "0.54.0": "Deprecated npm package has bad MUSL binaries on Linux; Docker build installs it but codex --version fails because the x86_64-unknown-linux-musl vendor binary is missing (ENOENT)."
+  },
+  "dockerfile": "docker/agents/codex/Dockerfile",
+  "command": [
+    "exec",
+    "--json",
+    "-c",
+    "model_provider=\"hibench\"",
+    "-c",
+    "model_providers.hibench.name=\"HiBench Recorder\"",
+    "-c",
+    "model_providers.hibench.base_url=\"{base_url}\"",
+    "-c",
+    "model_providers.hibench.env_key=\"OPENAI_API_KEY\"",
+    "-c",
+    "model_providers.hibench.wire_api=\"responses\"",
+    "{prompt}"
+  ],
+  "env": {
+    "CODEX_API_KEY": "hibench-dummy-key",
+    "OPENAI_API_KEY": "hibench-dummy-key",
+    "CODEX_HOME": "/codex-home",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "notes": "The runner points Codex at a local OpenAI-compatible recorder and returns a synthetic completion after capturing request payloads."
+  },
+  "sources": [
+    "https://github.com/openai/codex",
+    "https://help.openai.com/en/articles/11096431"
+  ]
+}

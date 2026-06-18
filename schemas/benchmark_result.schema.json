@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/hibench/benchmark_result.schema.json",
+  "title": "hibench benchmark result",
+  "type": "object",
+  "required": ["schema_version", "run", "tools", "mcp", "subagents", "skills", "text_fields"],
+  "properties": {
+    "schema_version": {"const": "hibench.benchmark.v1"},
+    "run": {
+      "type": "object",
+      "required": ["run_id", "agent_id", "agent_version", "total_body_tokens", "tool_count"],
+      "properties": {
+        "run_id": {"type": "string"},
+        "agent_id": {"type": "string"},
+        "agent_name": {"type": "string"},
+        "agent_version": {"type": "string"},
+        "model": {"type": "string"},
+        "has_primary_request": {"type": "boolean"},
+        "tokenizer_encoding": {"enum": ["o200k_base", ""]},
+        "total_body_tokens": {"type": "integer"},
+        "system_prompt_tokens": {"type": "integer"},
+        "environment_context_tokens": {"type": "integer"},
+        "user_prompt_tokens": {"type": "integer"},
+        "main_instructions_tokens": {"type": "integer"},
+        "developer_instructions_tokens": {"type": "integer"},
+        "permissions_instructions_tokens": {"type": "integer"},
+        "skills_instructions_tokens": {"type": "integer"},
+        "injected_user_context_tokens": {"type": "integer"},
+        "instruction_tokens": {"type": "integer"},
+        "default_context_tokens": {"type": "integer"},
+        "skills_count": {"type": "integer"},
+        "skills_tokens": {"type": "integer"},
+        "skill_definition_tokens": {"type": "integer"},
+        "tool_count": {"type": "integer"},
+        "tool_definition_tokens": {"type": "integer"},
+        "mcp_count": {"type": "integer"},
+        "mcp_tokens": {"type": "integer"},
+        "mcp_mention_count": {"type": "integer"},
+        "mcp_mention_tokens": {"type": "integer"},
+        "subagent_count": {"type": "integer"},
+        "subagent_tokens": {"type": "integer"},
+        "subagent_mention_count": {"type": "integer"},
+        "subagent_mention_tokens": {"type": "integer"}
+      }
+    },
+    "tools": {"type": "array", "items": {"type": "object"}},
+    "mcp": {"type": "array", "items": {"type": "object"}},
+    "subagents": {"type": "array", "items": {"type": "object"}},
+    "skills": {"type": "array", "items": {"type": "object"}},
+    "text_fields": {"type": "array", "items": {"type": "object"}}
+  }
+}

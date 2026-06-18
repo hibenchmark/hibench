@@ -1,0 +1,28 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="ui-divider mt-20 border-t py-8 text-sm ui-subtle">
+  <div
+    class="mx-auto flex max-w-6xl flex-col gap-2 px-4 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <p>
+      <span class="font-medium ui-muted">hibench</span>
+      &middot; default footprint benchmark for coding agents &middot; {year}
+    </p>
+    <p>
+      Token counts via <code
+        class="ui-code rounded px-1 py-0.5"
+        >tiktoken o200k_base</code
+      >
+      &middot;
+      <a
+        class="ui-link"
+        href="https://github.com/hibenchmark/hibench"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Source on GitHub</a
+      >.
+    </p>
+  </div>
+</footer>
