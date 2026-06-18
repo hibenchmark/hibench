@@ -1,0 +1,227 @@
+---
+import { formatNumber } from '../lib/format';
+
+export interface RankRow {
+  agentId: string;
+  agentName: string;
+  version: string;
+  model: string;
+  totalTokens: number;
+  toolCount: number;
+  skillCount: number;
+  mcpCount: number;
+  subagentCount: number;
+  logoSrc: string;
+  logoAlt: string;
+  logoSource: 'official' | 'generic';
+  href: string;
+}
+
+type SortKey = 'totalTokens' | 'toolCount' | 'skillCount' | 'agentName' | 'model' | 'version';
+
+const { rows } = Astro.props as { rows: RankRow[] };
+
+const columns: { key: SortKey; label: string; numeric: boolean; defaultDir: 'asc' | 'desc' }[] = [
+  { key: 'agentName', label: 'Agent', numeric: false, defaultDir: 'asc' },
+  { key: 'totalTokens', label: 'Token', numeric: true, defaultDir: 'desc' },
+  { key: 'toolCount', label: 'Tools', numeric: true, defaultDir: 'desc' },
+  { key: 'skillCount', label: 'Skills', numeric: true, defaultDir: 'desc' },
+  { key: 'model', label: 'Model', numeric: false, defaultDir: 'asc' },
+  { key: 'version', label: 'Version', numeric: false, defaultDir: 'asc' },
+];
+
+const sortedRows = [...rows].sort((a, b) => b.totalTokens - a.totalTokens);
+const max = Math.max(...sortedRows.map((r) => r.totalTokens), 1);
+const initialSortKey: SortKey = 'totalTokens';
+const initialSortDir = 'desc';
+
+const dataSortAttrs = (row: RankRow) => ({
+  'data-sort-agent-name': row.agentName.toLowerCase(),
+  'data-sort-total-tokens': String(row.totalTokens),
+  'data-sort-tool-count': String(row.toolCount),
+  'data-sort-skill-count': String(row.skillCount),
+  'data-sort-model': row.model.toLowerCase(),
+  'data-sort-version': row.version.toLowerCase(),
+});
+---
+
+<div
+  class="ui-card overflow-hidden rounded-xl"
+  data-rankings-table
+  data-sort-key={initialSortKey}
+  data-sort-dir={initialSortDir}
+>
+  <div
+    class="ui-table-scroll"
+    role="region"
+    aria-label="Default footprint ranking table"
+    tabindex="0"
+  >
+    <table class="w-full text-sm">
+      <thead class="ui-table-head text-left">
+        <tr>
+          <th class="px-2 py-3 font-medium sm:px-4">#</th>
+          {columns.map((column) => {
+            const hide = column.key === 'model' || column.key === 'version'
+              ? ' hidden lg:table-cell'
+              : '';
+            const active = column.key === initialSortKey;
+            const icon = active ? '▼' : '↕';
+            const ariaSort = active ? 'descending' : 'none';
+
+            return (
+              <th
+                class={`px-2 py-3 font-medium sm:px-4 ${column.numeric ? 'text-right' : ''}${hide}`}
+                aria-sort={ariaSort}
+                data-sort-heading={column.key}
+              >
+                <button
+                  type="button"
+                  class="inline-flex items-center gap-1 hover:text-[var(--color-primary)]"
+                  data-sort-key={column.key}
+                  data-sort-numeric={String(column.numeric)}
+                  data-sort-default-dir={column.defaultDir}
+                  aria-pressed={active ? 'true' : 'false'}
+                >
+                  {column.label}
+                  <span class="text-xs" aria-hidden="true" data-sort-icon={column.key}>{icon}</span>
+                </button>
+              </th>
+            );
+          })}
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-[var(--color-line)]" data-rankings-body>
+        {sortedRows.map((row, index) => (
+          <tr
+            class="ui-table-row"
+            data-rank-row
+            {...dataSortAttrs(row)}
+          >
+            <td class="px-2 py-3 tabular-nums ui-subtle sm:px-4" data-rank-cell>{index + 1}</td>
+            <td class="max-w-[7rem] px-2 py-3 sm:max-w-none sm:px-4">
+              <div class="flex items-center gap-2 sm:gap-3">
+                <span
+                  class={`agent-logo ${
+                    row.logoSource === 'official' ? 'agent-logo-official' : 'agent-logo-generic'
+                  } grid h-6 w-6 shrink-0 place-items-center overflow-hidden rounded-md p-1 sm:h-8 sm:w-8 sm:rounded-lg sm:p-1.5`}
+                  title={row.logoAlt}
+                >
+                  <img
+                    src={row.logoSrc}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    class="h-full w-full object-contain"
+                  />
+                </span>
+                <div class="min-w-0">
+                  <a href={row.href} class="block truncate font-medium ui-link">
+                    {row.agentName}
+                  </a>
+                </div>
+              </div>
+            </td>
+            <td class="px-2 py-3 text-right sm:px-4">
+              <div class="flex items-center justify-end gap-3">
+                <div class="ui-track hidden h-2 w-28 overflow-hidden rounded-full sm:block">
+                  <div
+                    class="h-full rounded-full"
+                    style={`width: ${(row.totalTokens / max) * 100}%; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));`}
+                  />
+                </div>
+                <span class="tabular-nums font-semibold ui-title">
+                  {formatNumber(row.totalTokens)}
+                </span>
+              </div>
+            </td>
+            <td class="px-2 py-3 text-right tabular-nums sm:px-4">{row.toolCount}</td>
+            <td class="px-2 py-3 text-right tabular-nums sm:px-4">{row.skillCount}</td>
+            <td class="hidden px-2 py-3 ui-muted sm:px-4 lg:table-cell">{row.model}</td>
+            <td class="hidden px-2 py-3 whitespace-nowrap sm:px-4 lg:table-cell">
+              <span class="ui-badge rounded px-1.5 py-0.5 text-xs">
+                v{row.version}
+              </span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  const toDataName = (key: string) => key.replace(/[A-Z]/g, (char) => `-${char.toLowerCase()}`);
+
+  for (const tableRoot of document.querySelectorAll('[data-rankings-table]')) {
+    const body = tableRoot.querySelector('[data-rankings-body]');
+    const buttons = Array.from(tableRoot.querySelectorAll('button[data-sort-key]'));
+
+    if (!body || buttons.length === 0) continue;
+
+    let sortKey = tableRoot.getAttribute('data-sort-key') || 'totalTokens';
+    let sortDir = tableRoot.getAttribute('data-sort-dir') || 'desc';
+
+    const updateState = () => {
+      for (const button of buttons) {
+        const key = button.getAttribute('data-sort-key') || '';
+        const active = key === sortKey;
+        const icon = button.querySelector('[data-sort-icon]');
+        const heading = button.closest('[data-sort-heading]');
+
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        if (icon) icon.textContent = active ? (sortDir === 'asc' ? '▲' : '▼') : '↕';
+        if (heading) heading.setAttribute('aria-sort', active ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none');
+      }
+    };
+
+    const compareRows = (a: Element, b: Element, numeric: boolean) => {
+      const dataName = toDataName(sortKey);
+      const left = a.getAttribute(`data-sort-${dataName}`) || '';
+      const right = b.getAttribute(`data-sort-${dataName}`) || '';
+      const comparison = numeric
+        ? Number(left) - Number(right)
+        : left.localeCompare(right, undefined, { numeric: true, sensitivity: 'base' });
+
+      return sortDir === 'asc' ? comparison : -comparison;
+    };
+
+    const sortRows = (nextKey: string, defaultDir: string, numeric: boolean) => {
+      if (nextKey === sortKey) {
+        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        sortKey = nextKey;
+        sortDir = defaultDir;
+      }
+
+      tableRoot.setAttribute('data-sort-key', sortKey);
+      tableRoot.setAttribute('data-sort-dir', sortDir);
+
+      const rows = Array.from(body.querySelectorAll('[data-rank-row]'));
+      rows.sort((a, b) => compareRows(a, b, numeric));
+
+      rows.forEach((row, index) => {
+        const rankCell = row.querySelector('[data-rank-cell]');
+        if (rankCell) rankCell.textContent = String(index + 1);
+        body.append(row);
+      });
+
+      updateState();
+    };
+
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        const nextKey = button.getAttribute('data-sort-key');
+        if (!nextKey) return;
+
+        sortRows(
+          nextKey,
+          button.getAttribute('data-sort-default-dir') || 'desc',
+          button.getAttribute('data-sort-numeric') === 'true',
+        );
+      });
+    }
+
+    updateState();
+  }
+</script>

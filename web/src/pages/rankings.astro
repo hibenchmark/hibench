@@ -1,11 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AgentLogo from '../components/AgentLogo.astro';
-import RankingsTable, { type RankRow } from '../components/RankingsTable.tsx';
+import RankingsTable from '../components/RankingsTable.astro';
 import { withBase, formatNumber } from '../lib/format';
 import { getAgents } from '../data/benchmark';
 
 const agents = getAgents();
+type RankRow = {
+  agentId: string;
+  agentName: string;
+  version: string;
+  model: string;
+  totalTokens: number;
+  toolCount: number;
+  skillCount: number;
+  mcpCount: number;
+  subagentCount: number;
+  logoSrc: string;
+  logoAlt: string;
+  logoSource: 'official' | 'generic';
+  href: string;
+};
 const rows: RankRow[] = agents.map((a) => ({
   agentId: a.agentId,
   agentName: a.agentDisplayName,
@@ -163,7 +178,7 @@ const extremes = heaviest && lightest
     </section>
   )}
 
-  <RankingsTable client:load rows={rows} />
+  <RankingsTable rows={rows} />
 
   <p class="mt-4 text-xs ui-subtle">
     One row per agent, using its newest version with a captured primary request.

@@ -37,9 +37,7 @@ function isActive(href: string): boolean {
               href={withBase(l.href)}
               class:list={[
                 "rounded-md px-3 py-1.5 transition-colors",
-                isActive(l.href)
-                  ? "nav-link-active font-semibold"
-                  : "nav-link",
+                isActive(l.href) ? "nav-link-active font-semibold" : "nav-link",
               ]}
             >
               {l.label}
@@ -48,7 +46,7 @@ function isActive(href: string): boolean {
         ))
       }
       {
-        isHome && (
+        (
           <li>
             <a
               href="https://github.com/hibenchmark/hibench"
