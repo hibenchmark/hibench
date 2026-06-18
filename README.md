@@ -35,6 +35,7 @@ with one counting method.
 | `cursor-cli` | Cursor CLI |
 | `github-cli` | GitHub Copilot CLI |
 | `grok-cli` | Grok CLI |
+| `mistral-vibe` | Mistral Vibe |
 | `kilo` | Kilo Code |
 | `opencode` | OpenCode |
 | `openclaw` | OpenClaw |

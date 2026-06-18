@@ -54,6 +54,7 @@ export const AGENT_DISPLAY_NAMES = {
   'claude-code': 'Claude Code',
   'cursor-cli': 'Cursor CLI',
   'github-cli': 'Copilot CLI',
+  'mistral-vibe': 'Mistral Vibe',
 };
 
 export const GENERIC_AGENT_LOGO = '/agent-logos/generic-agent.svg';
@@ -107,6 +108,11 @@ export const AGENT_LOGOS = {
   kilo: {
     path: '/agent-logos/kilo.png',
     alt: 'Kilo Code logo',
+    source: 'official',
+  },
+  'mistral-vibe': {
+    path: '/agent-logos/mistral-vibe.svg',
+    alt: 'Mistral Vibe logo',
     source: 'official',
   },
   pi: {

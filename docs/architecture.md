@@ -143,6 +143,18 @@ isolated `HERMES_HOME` with a custom OpenAI-compatible provider whose `api` poin
 local recorder. The config pins context length and disables live model discovery so
 Hermes does not send preflight model-probe POSTs before the generation request.
 
+Mistral Vibe is installed in `docker/agents/mistral-vibe/Dockerfile` from the
+`mistral-vibe` PyPI package. The runner executes:
+
+```bash
+vibe -p "Hi" --max-turns 1 --output json --trust
+```
+
+inside the same generated empty Git repo. hibench writes a clean `config.toml` under an
+isolated `VIBE_HOME` with a generic OpenAI-compatible provider whose `api_base` points
+to the local recorder. Telemetry, update checks, connectors, and remote Vibe Code are
+disabled so no Mistral account, Mistral backend, or upstream model call is required.
+
 ## Version automation
 
 `hibench versions <agent-id> --refresh` fetches the configured npm or PyPI version
@@ -153,8 +165,9 @@ script release, and stores it in `agent_versions/<agent-id>.json`.
 selected agent version. The catalog still stores every npm version, but each agent selects
 only comparable benchmark versions by default. Codex uses plain `X.Y.0` stable main
 releases; Claude Code, Cline, GitHub Copilot CLI, Grok CLI, Kilo Code, OpenCode,
-OpenClaw, Pi, and Hermes use plain stable semver releases such as `2.1.177`, `3.0.24`,
-`1.0.62`, `0.2.51`, `7.3.45`, `1.17.5`, `2026.6.6`, `0.79.3`, and `0.16.0`; Cursor CLI uses the install
+OpenClaw, Pi, Hermes, and Mistral Vibe use plain stable semver releases such as
+`2.1.177`, `3.0.24`, `1.0.62`, `0.2.51`, `7.3.45`, `1.17.5`, `2026.6.6`, `0.79.3`,
+`0.16.0`, and `2.16.1`; Cursor CLI uses the install
 script's timestamped release as-is because Cursor does not publish an npm/PyPI-style
 historical package catalog for the CLI tarballs. The stable policies exclude
 prereleases, platform/system variants like `*-linux-x64`, and timestamp/internal builds.

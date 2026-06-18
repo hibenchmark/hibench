@@ -1,4 +1,5 @@
 import json
+import tomllib
 import unittest
 
 from hibench.agents import ROOT, list_agent_ids, load_agent
@@ -242,6 +243,41 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(spec.env["HERMES_HOME"], "/hermes-home")
         self.assertEqual(spec.env["HOME"], "/hermes-home/home")
 
+    def test_mistral_vibe_agent_loads(self) -> None:
+        self.assertIn("mistral-vibe", list_agent_ids())
+        spec = load_agent("mistral-vibe")
+        self.assertEqual(spec.version, "2.16.1")
+        self.assertEqual(
+            spec.command,
+            ["-p", "{prompt}", "--max-turns", "1", "--output", "json", "--trust"],
+        )
+        self.assertEqual(spec.parser_id, "mistral-vibe")
+        self.assertEqual(spec.version_build_arg, "MISTRAL_VIBE_VERSION")
+        self.assertEqual(
+            spec.version_source, {"type": "pypi", "package": "mistral-vibe"}
+        )
+        self.assertEqual(spec.raw["benchmark_version_policy"], "stable_semver")
+        self.assertIn("{base_url}", spec.env["HIBENCH_MISTRAL_VIBE_CONFIG"])
+        config = tomllib.loads(
+            spec.env["HIBENCH_MISTRAL_VIBE_CONFIG"].replace(
+                "{base_url}", "http://example.test/v1"
+            )
+        )
+        self.assertEqual(config["active_model"], "gpt-5")
+        self.assertFalse(config["enable_telemetry"])
+        self.assertFalse(config["enable_connectors"])
+        self.assertFalse(config["vibe_code_enabled"])
+        self.assertEqual(config["providers"][0]["name"], "hibench")
+        self.assertEqual(config["providers"][0]["api_base"], "http://example.test/v1")
+        self.assertEqual(config["providers"][0]["api_style"], "openai")
+        self.assertEqual(config["providers"][0]["backend"], "generic")
+        self.assertEqual(spec.env["VIBE_HOME"], "/mistral-vibe-home")
+        self.assertEqual(spec.env["HOME"], "/mistral-vibe-home/home")
+        self.assertEqual(
+            spec.env["HIBENCH_MISTRAL_VIBE_API_KEY"], "hibench-dummy-key"
+        )
+        self.assertNotIn("MISTRAL_API_KEY", spec.env)
+
     def test_pi_agent_loads(self) -> None:
         self.assertIn("pi", list_agent_ids())
         spec = load_agent("pi")
@@ -320,6 +356,11 @@ class AgentTests(unittest.TestCase):
         spec = load_agent("pi", version="0.79.2")
         self.assertEqual(spec.version, "0.79.2")
         self.assertEqual(spec.image, "hibench/pi:0.79.2")
+
+    def test_mistral_vibe_agent_version_override_updates_image_tag(self) -> None:
+        spec = load_agent("mistral-vibe", version="2.16.0")
+        self.assertEqual(spec.version, "2.16.0")
+        self.assertEqual(spec.image, "hibench/mistral-vibe:2.16.0")
 
     def test_codex_dockerfile_keeps_system_layer_version_independent(self) -> None:
         dockerfile = (ROOT / "docker/agents/codex/Dockerfile").read_text(
@@ -472,6 +513,25 @@ class AgentTests(unittest.TestCase):
         self.assertLess(browser_install_index, version_arg_index)
         self.assertLess(uv_install_index, version_arg_index)
         self.assertLess(version_arg_index, install_layer_index)
+
+    def test_mistral_vibe_dockerfile_keeps_system_layer_version_independent(
+        self,
+    ) -> None:
+        dockerfile = (ROOT / "docker/agents/mistral-vibe/Dockerfile").read_text(
+            encoding="utf-8"
+        )
+        system_layer_index = dockerfile.index("apt-get install")
+        uv_install_index = dockerfile.index("COPY --from=uv_source")
+        home_index = dockerfile.index("/mistral-vibe-home/home")
+        version_arg_index = dockerfile.index("ARG MISTRAL_VIBE_VERSION")
+        install_layer_index = dockerfile.index("uv pip install")
+
+        self.assertLess(system_layer_index, home_index)
+        self.assertLess(home_index, uv_install_index)
+        self.assertLess(uv_install_index, version_arg_index)
+        self.assertLess(version_arg_index, install_layer_index)
+        self.assertIn('"mistral-vibe==${MISTRAL_VIBE_VERSION}"', dockerfile)
+        self.assertIn("hibench-mistral-vibe-entrypoint", dockerfile)
 
     def test_pi_dockerfile_keeps_system_layer_version_independent(self) -> None:
         dockerfile = (ROOT / "docker/agents/pi/Dockerfile").read_text(encoding="utf-8")

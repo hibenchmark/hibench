@@ -449,6 +449,89 @@ A skill is a set of local instructions.
         self.assertEqual(summary["subagents"]["count"], 0)
         self.assertGreaterEqual(summary["subagents"]["mention_count"], 1)
 
+    def test_summarize_request_parses_mistral_vibe_chat_payload(self) -> None:
+        skills_xml = (
+            "<available_skills>\n"
+            "  <skill>\n"
+            "    <name>vibe</name>\n"
+            "    <description>Authoritative reference for Mistral Vibe &quot;CLI&quot;.</description>\n"
+            "    <path>/mistral-vibe/skills/vibe/SKILL.md</path>\n"
+            "  </skill>\n"
+            "</available_skills>"
+        )
+        system_text = (
+            "You are Mistral Vibe, a CLI coding agent built by Mistral AI.\n"
+            "# Available Skills\n"
+            "You have access to the following skills.\n"
+            f"{skills_xml}\n"
+            "# Available Subagents\n"
+            "The following subagents can be spawned via the Task tool:\n"
+            "- **explore**: Read-only subagent for codebase exploration\n"
+        )
+        task_description = (
+            "Delegate a task to a subagent for independent execution. "
+            "The agent parameter must be a subagent."
+        )
+        record = {
+            "method": "POST",
+            "path": "/v1/chat/completions",
+            "body_text": "{}",
+            "json": {
+                "model": "gpt-5",
+                "messages": [
+                    {"role": "system", "content": system_text},
+                    {"role": "user", "content": "Hi"},
+                ],
+                "tools": [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "task",
+                            "description": task_description,
+                            "parameters": {},
+                        },
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "skill",
+                            "description": "Load a specialized skill.",
+                            "parameters": {},
+                        },
+                    },
+                ],
+            },
+        }
+
+        summary = summarize_request(record, parser_id="mistral-vibe")
+
+        self.assertEqual(
+            summary["text_fields"]["by_source"]["main_instructions"]["tokens"],
+            count_tokens(system_text),
+        )
+        self.assertEqual(
+            summary["text_fields"]["by_category"]["user_prompt"]["tokens"],
+            count_tokens("Hi"),
+        )
+        self.assertEqual(summary["skills"]["count"], 1)
+        self.assertEqual(summary["skills"]["items"][0]["name"], "vibe")
+        self.assertEqual(
+            summary["skills"]["items"][0]["description"],
+            'Authoritative reference for Mistral Vibe "CLI".',
+        )
+        self.assertEqual(
+            summary["skills"]["items"][0]["file"],
+            "/mistral-vibe/skills/vibe/SKILL.md",
+        )
+        self.assertEqual(summary["skills"]["tokens"], count_tokens(skills_xml))
+        self.assertEqual(summary["subagents"]["count"], 1)
+        self.assertEqual(summary["subagents"]["items"][0]["name"], "explore")
+        self.assertGreaterEqual(summary["subagents"]["mention_count"], 1)
+        self.assertEqual(
+            [item["name"] for item in summary["tools"]["items"]], ["task", "skill"]
+        )
+        self.assertTrue(summary["tools"]["items"][0]["is_subagent_related"])
+
     def test_summarize_request_parses_pi_chat_payload(self) -> None:
         skills_xml = (
             "<available_skills>\n"

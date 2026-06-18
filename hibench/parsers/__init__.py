@@ -9,6 +9,7 @@ from .github_cli import GitHubCliParser
 from .grok_cli import GrokCliParser
 from .hermes import HermesParser
 from .kilo import KiloParser
+from .mistral_vibe import MistralVibeParser
 from .openclaw import OpenClawParser
 from .opencode import OpenCodeParser
 from .pi import PiParser
@@ -25,6 +26,7 @@ _PARSERS: dict[str, RequestParser] = {
     "grok-cli": GrokCliParser(),
     "hermes": HermesParser(),
     "kilo": KiloParser(),
+    "mistral-vibe": MistralVibeParser(),
     "openclaw": OpenClawParser(),
     "opencode": OpenCodeParser(),
     "pi": PiParser(),
@@ -38,6 +40,7 @@ _AGENT_PARSER_IDS: dict[str, str] = {
     "grok-cli": "grok-cli",
     "hermes": "hermes",
     "kilo": "kilo",
+    "mistral-vibe": "mistral-vibe",
     "openclaw": "openclaw",
     "opencode": "opencode",
     "pi": "pi",

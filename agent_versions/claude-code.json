@@ -5,11 +5,11 @@
     "type": "npm",
     "package": "@anthropic-ai/claude-code"
   },
-  "fetched_at": "2026-06-15T23:41:05Z",
-  "version_count": 436,
+  "fetched_at": "2026-06-18T20:10:02Z",
+  "version_count": 438,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
-  "benchmark_version_count": 433,
+  "benchmark_version_count": 435,
   "benchmark_exclusion_count": 3,
   "benchmark_exclusions": {
     "2.1.69": "Non-comparable benchmark capture; primary request includes Claude Code deferred-tool bootstrap as a user message before the actual prompt under the current harness.",
@@ -21,11 +21,11 @@
     "2.1.105",
     "2.1.107"
   ],
-  "latest": "2.1.178",
+  "latest": "2.1.181",
   "dist_tags": {
-    "stable": "2.1.153",
-    "latest": "2.1.178",
-    "next": "2.1.178"
+    "stable": "2.1.170",
+    "next": "2.1.181",
+    "latest": "2.1.181"
   },
   "versions": [
     "0.2.9",
@@ -463,7 +463,9 @@
     "2.1.175",
     "2.1.176",
     "2.1.177",
-    "2.1.178"
+    "2.1.178",
+    "2.1.179",
+    "2.1.181"
   ],
   "benchmark_versions": [
     "0.2.9",
@@ -898,6 +900,8 @@
     "2.1.175",
     "2.1.176",
     "2.1.177",
-    "2.1.178"
+    "2.1.178",
+    "2.1.179",
+    "2.1.181"
   ]
 }

@@ -5,20 +5,20 @@
     "type": "npm",
     "package": "cline"
   },
-  "fetched_at": "2026-06-15T23:41:07Z",
-  "version_count": 229,
+  "fetched_at": "2026-06-18T20:10:03Z",
+  "version_count": 235,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": "3.0.3",
   "benchmark_min_version_reason": "Versions before 3.0.3 either lack the current noninteractive local-state flags or reject the openai-compatible provider needed for recorder capture.",
-  "benchmark_version_count": 22,
+  "benchmark_version_count": 25,
   "benchmark_exclusion_count": 0,
   "benchmark_exclusions": {},
   "excluded_benchmark_versions": [],
-  "latest": "3.0.24",
+  "latest": "3.0.27",
   "dist_tags": {
-    "latest": "3.0.24",
-    "nightly": "3.0.24-nightly.1781532852"
+    "latest": "3.0.27",
+    "nightly": "3.0.27-nightly.1781788646"
   },
   "versions": [
     "0.1.0",
@@ -249,7 +249,13 @@
     "3.0.24-nightly.1781270212",
     "3.0.24-nightly.1781354604",
     "3.0.24-nightly.1781532852",
-    "3.0.24"
+    "3.0.24-nightly.1781618110",
+    "3.0.24",
+    "3.0.25",
+    "3.0.26",
+    "3.0.27-nightly.1781702630",
+    "3.0.27-nightly.1781788646",
+    "3.0.27"
   ],
   "benchmark_versions": [
     "3.0.3",
@@ -273,6 +279,9 @@
     "3.0.21",
     "3.0.22",
     "3.0.23",
-    "3.0.24"
+    "3.0.24",
+    "3.0.25",
+    "3.0.26",
+    "3.0.27"
   ]
 }

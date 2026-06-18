@@ -5,20 +5,20 @@
     "type": "npm",
     "package": "@github/copilot"
   },
-  "fetched_at": "2026-06-15T23:41:10Z",
-  "version_count": 726,
+  "fetched_at": "2026-06-18T20:10:06Z",
+  "version_count": 728,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": "1.0.8",
   "benchmark_min_version_reason": "Versions before 1.0.8 are incompatible with the BYOK/offline benchmark call shape; early 1.0.x releases either reject --no-remote or require GitHub authentication instead of using the configured provider.",
-  "benchmark_version_count": 55,
+  "benchmark_version_count": 56,
   "benchmark_exclusion_count": 0,
   "benchmark_exclusions": {},
   "excluded_benchmark_versions": [],
-  "latest": "1.0.62",
+  "latest": "1.0.63",
   "dist_tags": {
-    "prerelease": "1.0.63-0",
-    "latest": "1.0.62"
+    "prerelease": "1.0.64-0",
+    "latest": "1.0.63"
   },
   "versions": [
     "0.0.326",
@@ -746,7 +746,9 @@
     "1.0.62-1",
     "1.0.62-2",
     "1.0.62",
-    "1.0.63-0"
+    "1.0.63-0",
+    "1.0.63",
+    "1.0.64-0"
   ],
   "benchmark_versions": [
     "1.0.8",
@@ -803,6 +805,7 @@
     "1.0.59",
     "1.0.60",
     "1.0.61",
-    "1.0.62"
+    "1.0.62",
+    "1.0.63"
   ]
 }

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import html
 import re
 
 from .base import SkillEntry
@@ -18,7 +19,7 @@ SKILL_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 TAG_RE = re.compile(
-    r"<(?P<tag>name|description|location)\b[^>]*>(?P<value>.*?)</(?P=tag)>",
+    r"<(?P<tag>name|description|location|path)\b[^>]*>(?P<value>.*?)</(?P=tag)>",
     re.IGNORECASE | re.DOTALL,
 )
 
@@ -36,7 +37,7 @@ def available_skill_sections(
 
 def available_skill_tag_values(text: str) -> dict[str, str]:
     return {
-        match.group("tag").lower(): match.group("value").strip()
+        match.group("tag").lower(): html.unescape(match.group("value").strip())
         for match in TAG_RE.finditer(text)
     }
 
@@ -54,7 +55,7 @@ def parse_available_skill_entries(text: str) -> list[SkillEntry]:
             SkillEntry(
                 name=name,
                 description=description,
-                file=tags.get("location", ""),
+                file=tags.get("location") or tags.get("path", ""),
                 text=item,
             )
         )
