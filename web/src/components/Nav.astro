@@ -3,12 +3,9 @@ import { withBase } from "../lib/format";
 
 const path = Astro.url.pathname.replace(/\/$/, "");
 const links = [
-  { href: "/", label: "Home" },
   { href: "/rankings", label: "Rankings" },
   { href: "/agents", label: "Agents" },
 ];
-const homePath = withBase("/").replace(/\/$/, "");
-const isHome = path === homePath;
 
 function isActive(href: string): boolean {
   const target = withBase(href).replace(/\/$/, "");
@@ -18,10 +15,10 @@ function isActive(href: string): boolean {
 ---
 
 <header class="glass-nav sticky top-0 z-30">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-3 sm:px-4">
     <a
       href={withBase("/")}
-      class="flex items-center gap-2 font-semibold tracking-tight"
+      class="flex shrink-0 items-center gap-2 font-semibold tracking-tight"
     >
       <span
         class="brand-mark grid h-7 w-7 place-items-center rounded-md text-sm font-bold"
@@ -29,14 +26,14 @@ function isActive(href: string): boolean {
       >
       <span class="brand-text">hibench</span>
     </a>
-    <ul class="flex items-center gap-1 text-sm">
+    <ul class="flex shrink-0 items-center gap-0.5 text-xs sm:gap-1 sm:text-sm">
       {
         links.map((l) => (
           <li>
             <a
               href={withBase(l.href)}
               class:list={[
-                "rounded-md px-3 py-1.5 transition-colors",
+                "rounded-md px-2 py-1.5 transition-colors sm:px-3",
                 isActive(l.href) ? "nav-link-active font-semibold" : "nav-link",
               ]}
             >
@@ -50,7 +47,7 @@ function isActive(href: string): boolean {
           <li>
             <a
               href="https://github.com/hibenchmark/hibench"
-              class="rounded-md px-3 py-1.5 transition-colors nav-link"
+              class="rounded-md px-2 py-1.5 transition-colors nav-link sm:px-3"
               target="_blank"
               rel="noopener noreferrer"
             >
