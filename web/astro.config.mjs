@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
-import react from '@astrojs/react';
 
 const site = process.env.SITE_URL || 'https://hibench.dev';
 const base = process.env.BASE_PATH || undefined;
@@ -14,5 +13,4 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [react()],
 });

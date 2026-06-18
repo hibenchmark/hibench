@@ -1,0 +1,264 @@
+---
+import { formatNumber } from '../lib/format';
+
+interface VersionPart {
+  label: string;
+  tokens: number;
+  color: string;
+}
+
+interface VersionTool {
+  name: string;
+  tokens: number;
+  isMcp: boolean;
+  isSubagent: boolean;
+}
+
+interface VersionSkill {
+  name: string;
+  tokens: number;
+  description: string;
+}
+
+interface VersionSubagent {
+  name: string;
+  tokens: number;
+  preview: string;
+  sourceType: string;
+}
+
+interface VersionDatum {
+  version: string;
+  model: string;
+  totalTokens: number;
+  bodyBytes: number;
+  toolCount: number;
+  skillCount: number;
+  mcpCount: number;
+  subagentCount: number;
+  parts: VersionPart[];
+  tools: VersionTool[];
+  skills: VersionSkill[];
+  subagents: VersionSubagent[];
+}
+
+interface TokenBadge {
+  label: string;
+  className: string;
+}
+
+interface TokenListItem {
+  name: string;
+  tokens: number;
+  title: string;
+  badges: TokenBadge[];
+}
+
+interface TokenListCard {
+  title: string;
+  items: TokenListItem[];
+  emptyText: string;
+  accent: string;
+  maxTokens: number;
+}
+
+interface Props {
+  versions: VersionDatum[];
+}
+
+const { versions } = Astro.props;
+const selectedIndex = Math.max(versions.length - 1, 0);
+const selected = versions[selectedIndex];
+const percent = (tokens: number, max: number) => (max > 0 ? (tokens / max) * 100 : 0);
+
+function buildCards(v: VersionDatum): TokenListCard[] {
+  const cards = [
+    {
+      title: `Tools by token · ${v.tools.length}`,
+      emptyText: 'No tool definitions captured for this version.',
+      accent: 'linear-gradient(90deg, var(--color-primary), var(--color-secondary))',
+      items: v.tools.map((tool) => ({
+        name: tool.name,
+        tokens: tool.tokens,
+        title: tool.name,
+        badges: [
+          ...(tool.isSubagent ? [{ label: 'sub', className: 'text-amber-600' }] : []),
+          ...(tool.isMcp ? [{ label: 'mcp', className: 'text-pink-600' }] : []),
+        ],
+      })),
+    },
+    {
+      title: `Sub-agents by token · ${v.subagents.length}`,
+      emptyText: 'No sub-agent declarations captured for this version.',
+      accent: 'linear-gradient(90deg, #f59e0b, var(--color-primary))',
+      items: v.subagents.map((subagent) => ({
+        name: subagent.name,
+        tokens: subagent.tokens,
+        title: subagent.preview || subagent.sourceType || subagent.name,
+        badges: [],
+      })),
+    },
+    {
+      title: `Skills by token · ${v.skills.length}`,
+      emptyText: 'No skill entries captured for this version.',
+      accent: 'linear-gradient(90deg, #10b981, var(--color-secondary))',
+      items: v.skills.map((skill) => ({
+        name: skill.name,
+        tokens: skill.tokens,
+        title: skill.description || skill.name,
+        badges: [],
+      })),
+    },
+  ];
+
+  return cards.map((card) => ({
+    ...card,
+    maxTokens: Math.max(...card.items.map((item) => item.tokens), 1),
+  }));
+}
+
+const versionPanels = versions.map((version, index) => ({
+  version,
+  index,
+  maxPart: Math.max(...version.parts.map((part) => part.tokens), 1),
+  cards: buildCards(version),
+}));
+---
+
+<div class="space-y-6" data-version-explorer>
+  {
+    selected ? (
+      <>
+        <div class="flex flex-wrap items-center gap-3">
+          <label class="text-sm font-medium ui-muted" for="version-select">
+            Version
+          </label>
+          <select id="version-select" class="ui-input rounded-lg px-3 py-1.5 text-sm" data-version-select>
+            {versions.map((version, index) => (
+              <option value={String(index)} selected={index === selectedIndex}>
+                v{version.version} — {formatNumber(version.totalTokens)} tokens
+              </option>
+            ))}
+          </select>
+          <span class="text-xs ui-subtle">{versions.length} versions captured</span>
+        </div>
+
+        <div data-version-details>
+          {versionPanels.map(({ version, index, maxPart, cards }) => (
+            <div class="space-y-6" data-version-panel={String(index)} hidden={index !== selectedIndex}>
+              <div class="grid gap-3 sm:grid-cols-4">
+                <div class="ui-card rounded-xl p-4">
+                  <p class="text-xs font-medium ui-muted">Total tokens</p>
+                  <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
+                    {formatNumber(version.totalTokens)}
+                  </p>
+                </div>
+                <div class="ui-card rounded-xl p-4">
+                  <p class="text-xs font-medium ui-muted">Tools</p>
+                  <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
+                    {version.toolCount}
+                  </p>
+                </div>
+                <div class="ui-card rounded-xl p-4">
+                  <p class="text-xs font-medium ui-muted">Skills</p>
+                  <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
+                    {version.skillCount}
+                  </p>
+                </div>
+                <div class="ui-card rounded-xl p-4">
+                  <p class="text-xs font-medium ui-muted">Body size</p>
+                  <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
+                    {(version.bodyBytes / 1024).toFixed(0)} KB
+                  </p>
+                </div>
+              </div>
+
+              <div class="grid gap-4 lg:grid-cols-2">
+                <div class="ui-card rounded-xl p-4 sm:p-5">
+                  <h3 class="mb-4 text-sm font-semibold ui-title">
+                    Footprint composition · v{version.version}
+                  </h3>
+                  <div class="space-y-3">
+                    {version.parts.map((part) => (
+                      <div>
+                        <div class="mb-1 flex justify-between text-sm">
+                          <span class="flex items-center gap-2 ui-muted">
+                            <span class="h-2.5 w-2.5 rounded-sm" style={`background: ${part.color};`}></span>
+                            {part.label}
+                          </span>
+                          <span class="tabular-nums font-medium">{formatNumber(part.tokens)}</span>
+                        </div>
+                        <div class="ui-track h-2 w-full overflow-hidden rounded-full">
+                          <div
+                            class="h-full rounded-full"
+                            style={`width: ${percent(part.tokens, maxPart)}%; background: ${part.color};`}
+                          >
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {cards.map((card) => (
+                  <div class="ui-card rounded-xl p-4 sm:p-5">
+                    <h3 class="mb-4 text-sm font-semibold ui-title">{card.title}</h3>
+                    <div class="max-h-72 space-y-2 overflow-y-auto pr-5 [scrollbar-gutter:stable]">
+                      {card.items.map((item) => (
+                        <div class="flex min-w-0 items-center gap-3 text-sm">
+                          <span class="flex w-36 shrink-0 items-center gap-1 truncate ui-muted" title={item.title}>
+                            <span class="truncate">{item.name}</span>
+                            {item.badges.map((badge) => (
+                              <span class={`shrink-0 text-[10px] ${badge.className}`}>
+                                {badge.label}
+                              </span>
+                            ))}
+                          </span>
+                          <div class="ui-track h-2 min-w-0 flex-1 overflow-hidden rounded-full">
+                            <div
+                              class="h-full rounded-full"
+                              style={`width: ${percent(item.tokens, card.maxTokens)}%; background: ${card.accent};`}
+                            >
+                            </div>
+                          </div>
+                          <span class="w-16 shrink-0 text-right tabular-nums ui-subtle">
+                            {formatNumber(item.tokens)}
+                          </span>
+                        </div>
+                      ))}
+                      {card.items.length === 0 && <p class="text-sm ui-subtle">{card.emptyText}</p>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </>
+    ) : (
+      <div class="ui-card rounded-xl p-5">
+        <p class="text-sm ui-subtle">No benchmark versions available.</p>
+      </div>
+    )
+  }
+</div>
+
+<script is:inline>
+  (() => {
+    document.querySelectorAll('[data-version-explorer]').forEach((root) => {
+      const select = root.querySelector('[data-version-select]');
+      const panels = Array.from(root.querySelectorAll('[data-version-panel]'));
+      if (!select || panels.length === 0) return;
+
+      const showSelectedPanel = () => {
+        const selectedPanel = String(select.value);
+        panels.forEach((panel) => {
+          panel.hidden = panel.getAttribute('data-version-panel') !== selectedPanel;
+        });
+      };
+
+      select.addEventListener('change', showSelectedPanel);
+      showSelectedPanel();
+    });
+  })();
+</script>

@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import AgentLogo from '../../components/AgentLogo.astro';
 import StatCard from '../../components/StatCard.astro';
 import EvolutionChart from '../../components/EvolutionChart.astro';
-import VersionExplorer, { type VersionDatum } from '../../components/VersionExplorer.tsx';
+import VersionExplorer from '../../components/VersionExplorer.astro';
 import { withBase, formatNumber } from '../../lib/format';
 import {
   getAgents,
@@ -31,7 +31,7 @@ const ogImageAlt = `hibench social preview for ${agentName}, showing latest defa
 const delta = latest.totalTokens - first.totalTokens;
 const deltaPct = first.totalTokens ? (delta / first.totalTokens) * 100 : 0;
 
-const versionData: VersionDatum[] = versions.map((run) => ({
+const versionData = versions.map((run) => ({
   version: run.version,
   model: run.model,
   totalTokens: run.totalTokens,
@@ -130,6 +130,6 @@ const versionData: VersionDatum[] = versions.map((run) => ({
       Select any version to inspect its footprint composition and the token cost
       of each tool, skill, and sub-agent declaration.
     </p>
-    <VersionExplorer client:load versions={versionData} />
+    <VersionExplorer versions={versionData} />
   </section>
 </Layout>
