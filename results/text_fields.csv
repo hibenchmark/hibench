@@ -5466,6 +5466,51 @@ hibench.benchmark.v1,opencode-1.4.9-hi,opencode,1.4.9,1,1,system_prompt,main_ins
 You are a deep"
 hibench.benchmark.v1,opencode-1.4.9-hi,opencode,1.4.9,1,2,user_prompt,user_prompt,user,messages.1.content,3,2,"Hi
 "
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,1,user_prompt,user_prompt,user,input.0.content.0.text,2,1,Hi
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,2,system_prompt,main_instructions,,instructions,154447,36633,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.12.0-hi,openhands,1.12.0,1,1,user_prompt,user_prompt,user,input.0.content.0.text,2,1,Hi
+hibench.benchmark.v1,openhands-1.12.0-hi,openhands,1.12.0,1,2,system_prompt,main_instructions,,instructions,154447,36633,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.12.1-hi,openhands,1.12.1,1,1,user_prompt,user_prompt,user,input.0.content.0.text,2,1,Hi
+hibench.benchmark.v1,openhands-1.12.1-hi,openhands,1.12.1,1,2,system_prompt,main_instructions,,instructions,35603,7956,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.12.2-hi,openhands,1.12.2,1,1,user_prompt,user_prompt,user,input.0.content.0.text,2,1,Hi
+hibench.benchmark.v1,openhands-1.12.2-hi,openhands,1.12.2,1,2,system_prompt,main_instructions,,instructions,35603,7956,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.13.0-hi,openhands,1.13.0,1,1,user_prompt,user_prompt,user,input.0.content.0.text,2,1,Hi
+hibench.benchmark.v1,openhands-1.13.0-hi,openhands,1.13.0,1,2,system_prompt,main_instructions,,instructions,35702,7990,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.13.1-hi,openhands,1.13.1,1,1,user_prompt,user_prompt,user,input.0.content.0.text,2,1,Hi
+hibench.benchmark.v1,openhands-1.13.1-hi,openhands,1.13.1,1,2,system_prompt,main_instructions,,instructions,35702,7990,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.14.0-hi,openhands,1.14.0,1,1,user_prompt,user_prompt,user,input.0.content.0.text,2,1,Hi
+hibench.benchmark.v1,openhands-1.14.0-hi,openhands,1.14.0,1,2,system_prompt,main_instructions,,instructions,35045,7778,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.15.0-hi,openhands,1.15.0,1,1,user_prompt,user_prompt,user,input.0.content.0.text,2,1,Hi
+hibench.benchmark.v1,openhands-1.15.0-hi,openhands,1.15.0,1,2,system_prompt,main_instructions,,instructions,36676,8147,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.16.0-hi,openhands,1.16.0,1,1,user_prompt,user_prompt,user,input.0.content.0.text,2,1,Hi
+hibench.benchmark.v1,openhands-1.16.0-hi,openhands,1.16.0,1,2,system_prompt,main_instructions,,instructions,31157,6725,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
 hibench.benchmark.v1,pi-0.50.7-hi,pi,0.50.7,1,1,system_prompt,main_instructions,system,messages.0.content,2043,469,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
 hibench.benchmark.v1,pi-0.50.7-hi,pi,0.50.7,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
 hibench.benchmark.v1,pi-0.50.8-hi,pi,0.50.8,1,1,system_prompt,main_instructions,system,messages.0.content,2043,469,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"

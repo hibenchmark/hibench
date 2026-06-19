@@ -278,6 +278,28 @@ class AgentTests(unittest.TestCase):
         )
         self.assertNotIn("MISTRAL_API_KEY", spec.env)
 
+    def test_openhands_agent_loads(self) -> None:
+        self.assertIn("openhands", list_agent_ids())
+        spec = load_agent("openhands")
+        self.assertEqual(spec.version, "1.16.0")
+        self.assertEqual(
+            spec.command,
+            ["--headless", "--json", "--override-with-envs", "-t", "{prompt}"],
+        )
+        self.assertEqual(spec.parser_id, "openhands")
+        self.assertEqual(spec.version_build_arg, "OPENHANDS_VERSION")
+        self.assertEqual(spec.version_source, {"type": "pypi", "package": "openhands"})
+        self.assertEqual(spec.raw["benchmark_version_policy"], "stable_semver")
+        self.assertEqual(spec.raw["benchmark_min_version"], "1.11.0")
+        self.assertIn("1.15.1", spec.raw["benchmark_exclusions"])
+        self.assertEqual(spec.env["LLM_BASE_URL"], "{base_url}")
+        self.assertEqual(spec.env["LLM_MODEL"], "openai/gpt-5")
+        self.assertEqual(spec.env["LLM_API_KEY"], "hibench-dummy-key")
+        self.assertEqual(spec.env["OPENHANDS_HOME"], "/openhands-home")
+        self.assertEqual(spec.env["HOME"], "/openhands-home/home")
+        self.assertEqual(spec.env["OPENHANDS_SUPPRESS_BANNER"], "1")
+        self.assertEqual(spec.raw["capture"]["host_timeout_seconds"], 120)
+
     def test_pi_agent_loads(self) -> None:
         self.assertIn("pi", list_agent_ids())
         spec = load_agent("pi")
@@ -361,6 +383,11 @@ class AgentTests(unittest.TestCase):
         spec = load_agent("mistral-vibe", version="2.16.0")
         self.assertEqual(spec.version, "2.16.0")
         self.assertEqual(spec.image, "hibench/mistral-vibe:2.16.0")
+
+    def test_openhands_agent_version_override_updates_image_tag(self) -> None:
+        spec = load_agent("openhands", version="1.15.0")
+        self.assertEqual(spec.version, "1.15.0")
+        self.assertEqual(spec.image, "hibench/openhands:1.15.0")
 
     def test_codex_dockerfile_keeps_system_layer_version_independent(self) -> None:
         dockerfile = (ROOT / "docker/agents/codex/Dockerfile").read_text(
@@ -532,6 +559,23 @@ class AgentTests(unittest.TestCase):
         self.assertLess(version_arg_index, install_layer_index)
         self.assertIn('"mistral-vibe==${MISTRAL_VIBE_VERSION}"', dockerfile)
         self.assertIn("hibench-mistral-vibe-entrypoint", dockerfile)
+
+    def test_openhands_dockerfile_keeps_system_layer_version_independent(self) -> None:
+        dockerfile = (ROOT / "docker/agents/openhands/Dockerfile").read_text(
+            encoding="utf-8"
+        )
+        system_layer_index = dockerfile.index("apt-get install")
+        home_index = dockerfile.index("/openhands-home/home")
+        uv_install_index = dockerfile.index("COPY --from=uv_source")
+        version_arg_index = dockerfile.index("ARG OPENHANDS_VERSION")
+        install_layer_index = dockerfile.index("uv pip install")
+
+        self.assertLess(system_layer_index, home_index)
+        self.assertLess(home_index, uv_install_index)
+        self.assertLess(uv_install_index, version_arg_index)
+        self.assertLess(version_arg_index, install_layer_index)
+        self.assertIn('"openhands==${OPENHANDS_VERSION}"', dockerfile)
+        self.assertIn("openhands --version", dockerfile)
 
     def test_pi_dockerfile_keeps_system_layer_version_independent(self) -> None:
         dockerfile = (ROOT / "docker/agents/pi/Dockerfile").read_text(encoding="utf-8")

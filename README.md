@@ -38,6 +38,7 @@ with one counting method.
 | `mistral-vibe` | Mistral Vibe |
 | `kilo` | Kilo Code |
 | `opencode` | OpenCode |
+| `openhands` | OpenHands |
 | `openclaw` | OpenClaw |
 | `pi` | Pi |
 | `hermes` | Hermes Agent |

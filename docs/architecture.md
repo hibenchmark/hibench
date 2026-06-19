@@ -155,6 +155,19 @@ isolated `VIBE_HOME` with a generic OpenAI-compatible provider whose `api_base` 
 to the local recorder. Telemetry, update checks, connectors, and remote Vibe Code are
 disabled so no Mistral account, Mistral backend, or upstream model call is required.
 
+OpenHands is installed in `docker/agents/openhands/Dockerfile` from the `openhands`
+PyPI package. The runner executes:
+
+```bash
+openhands --headless --json --override-with-envs -t "Hi"
+```
+
+inside the same generated empty Git repo. hibench sets `LLM_API_KEY`,
+`LLM_BASE_URL`, and `LLM_MODEL=openai/gpt-5`, and uses OpenHands' documented env
+override flag so model traffic goes to the local OpenAI Responses-compatible recorder.
+OpenHands state and XDG paths are isolated under `/openhands-home`, so no OpenHands
+Cloud account, saved settings, or upstream model call is required.
+
 ## Version automation
 
 `hibench versions <agent-id> --refresh` fetches the configured npm or PyPI version
@@ -165,9 +178,9 @@ script release, and stores it in `agent_versions/<agent-id>.json`.
 selected agent version. The catalog still stores every npm version, but each agent selects
 only comparable benchmark versions by default. Codex uses plain `X.Y.0` stable main
 releases; Claude Code, Cline, GitHub Copilot CLI, Grok CLI, Kilo Code, OpenCode,
-OpenClaw, Pi, Hermes, and Mistral Vibe use plain stable semver releases such as
-`2.1.177`, `3.0.24`, `1.0.62`, `0.2.51`, `7.3.45`, `1.17.5`, `2026.6.6`, `0.79.3`,
-`0.16.0`, and `2.16.1`; Cursor CLI uses the install
+OpenHands, OpenClaw, Pi, Hermes, and Mistral Vibe use plain stable semver releases such as
+`2.1.177`, `3.0.24`, `1.0.62`, `0.2.51`, `7.3.45`, `1.17.5`, `1.16.0`, `2026.6.6`,
+`0.79.3`, `0.16.0`, and `2.16.1`; Cursor CLI uses the install
 script's timestamped release as-is because Cursor does not publish an npm/PyPI-style
 historical package catalog for the CLI tarballs. The stable policies exclude
 prereleases, platform/system variants like `*-linux-x64`, and timestamp/internal builds.

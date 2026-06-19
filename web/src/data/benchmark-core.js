@@ -55,6 +55,7 @@ export const AGENT_DISPLAY_NAMES = {
   'cursor-cli': 'Cursor CLI',
   'github-cli': 'Copilot CLI',
   'mistral-vibe': 'Mistral Vibe',
+  openhands: 'OpenHands',
 };
 
 export const GENERIC_AGENT_LOGO = '/agent-logos/generic-agent.svg';
@@ -113,6 +114,11 @@ export const AGENT_LOGOS = {
   'mistral-vibe': {
     path: '/agent-logos/mistral-vibe.svg',
     alt: 'Mistral Vibe logo',
+    source: 'official',
+  },
+  openhands: {
+    path: '/agent-logos/openhands.svg',
+    alt: 'OpenHands logo',
     source: 'official',
   },
   pi: {

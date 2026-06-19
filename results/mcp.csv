@@ -1845,3 +1845,39 @@ You are a deep"
 hibench.benchmark.v1,opencode-1.17.8-hi,opencode,1.17.8,1,1,mcp_1,text_mention,False,messages.0.content,10296,2094,"You are OpenCode, You and the user share the same workspace and collaborate to achieve the user's goals.
 
 You are a deep"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,1,mcp_1,text_mention,False,instructions,154447,36633,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.12.0-hi,openhands,1.12.0,1,1,mcp_1,text_mention,False,instructions,154447,36633,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.12.1-hi,openhands,1.12.1,1,1,mcp_1,text_mention,False,instructions,35603,7956,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.12.2-hi,openhands,1.12.2,1,1,mcp_1,text_mention,False,instructions,35603,7956,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.13.0-hi,openhands,1.13.0,1,1,mcp_1,text_mention,False,instructions,35702,7990,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.13.1-hi,openhands,1.13.1,1,1,mcp_1,text_mention,False,instructions,35702,7990,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.14.0-hi,openhands,1.14.0,1,1,mcp_1,text_mention,False,instructions,35045,7778,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.15.0-hi,openhands,1.15.0,1,1,mcp_1,text_mention,False,instructions,36676,8147,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.16.0-hi,openhands,1.16.0,1,1,mcp_1,text_mention,False,instructions,31157,6725,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"

@@ -12,6 +12,7 @@ from .kilo import KiloParser
 from .mistral_vibe import MistralVibeParser
 from .openclaw import OpenClawParser
 from .opencode import OpenCodeParser
+from .openhands import OpenHandsParser
 from .pi import PiParser
 
 DEFAULT_PARSER_ID = "generic"
@@ -29,6 +30,7 @@ _PARSERS: dict[str, RequestParser] = {
     "mistral-vibe": MistralVibeParser(),
     "openclaw": OpenClawParser(),
     "opencode": OpenCodeParser(),
+    "openhands": OpenHandsParser(),
     "pi": PiParser(),
 }
 _AGENT_PARSER_IDS: dict[str, str] = {
@@ -43,6 +45,7 @@ _AGENT_PARSER_IDS: dict[str, str] = {
     "mistral-vibe": "mistral-vibe",
     "openclaw": "openclaw",
     "opencode": "opencode",
+    "openhands": "openhands",
     "pi": "pi",
 }
 

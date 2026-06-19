@@ -344,6 +344,104 @@ A skill is a set of local instructions.
         )
         self.assertTrue(summary["tools"]["items"][0]["is_subagent_related"])
 
+    def test_summarize_request_parses_openhands_responses_payload(self) -> None:
+        skills_xml = (
+            "<available_skills>\n"
+            "  <skill>\n"
+            "    <name>github-actions</name>\n"
+            "    <description>Create and debug GitHub Actions workflows.</description>\n"
+            "  </skill>\n"
+            "  <skill>\n"
+            "    <name>release-notes</name>\n"
+            "    <description>Generate formatted changelogs from git history.</description>\n"
+            "  </skill>\n"
+            "</available_skills>"
+        )
+        instructions = (
+            "You are OpenHands agent, a helpful AI assistant that can interact "
+            "with a computer to solve tasks.\n"
+            "<SKILLS>\n"
+            "Use the invoke_skill tool to load a matching skill.\n"
+            f"{skills_xml}\n"
+            "</SKILLS>\n"
+            "Your current working directory is: /workspace\n"
+            "User operating system: Linux"
+        )
+        task_description = (
+            "Launch a subagent to handle complex, multi-step tasks autonomously.\n\n"
+            "Available agent types and the tools they have access to:\n"
+            "- **bash-runner**: Execute shell commands and inspect repositories. (Tools: terminal)\n"
+            "- **code-reviewer**: Review a source diff for defects. (Tools: file_editor)\n"
+        )
+        record = {
+            "method": "POST",
+            "path": "/v1/responses",
+            "body_text": "{}",
+            "json": {
+                "model": "gpt-5",
+                "instructions": instructions,
+                "input": [
+                    {
+                        "type": "message",
+                        "role": "user",
+                        "content": [{"type": "input_text", "text": "Hi"}],
+                    }
+                ],
+                "tools": [
+                    {
+                        "type": "function",
+                        "name": "task",
+                        "description": task_description,
+                        "parameters": {},
+                    },
+                    {
+                        "type": "function",
+                        "name": "terminal",
+                        "description": "Execute a shell command.",
+                        "parameters": {},
+                    },
+                    {
+                        "type": "function",
+                        "name": "invoke_skill",
+                        "description": "Invoke a skill by name.",
+                        "parameters": {},
+                    },
+                ],
+            },
+        }
+
+        summary = summarize_request(record, parser_id="openhands")
+
+        self.assertEqual(
+            summary["text_fields"]["by_source"]["main_instructions"]["tokens"],
+            count_tokens(instructions),
+        )
+        self.assertEqual(
+            summary["text_fields"]["by_category"]["user_prompt"]["tokens"],
+            count_tokens("Hi"),
+        )
+        self.assertEqual(summary["skills"]["count"], 2)
+        self.assertEqual(
+            [item["name"] for item in summary["skills"]["items"]],
+            ["github-actions", "release-notes"],
+        )
+        self.assertEqual(summary["skills"]["tokens"], count_tokens(skills_xml))
+        self.assertEqual(summary["tools"]["count"], 3)
+        self.assertEqual(
+            [item["name"] for item in summary["tools"]["items"]],
+            ["task", "terminal", "invoke_skill"],
+        )
+        self.assertEqual(summary["subagents"]["count"], 2)
+        self.assertEqual(
+            [
+                item["name"]
+                for item in summary["subagents"]["items"]
+                if item["is_counted"]
+            ],
+            ["bash-runner", "code-reviewer"],
+        )
+        self.assertTrue(summary["tools"]["items"][0]["is_subagent_related"])
+
     def test_summarize_request_parses_kilo_chat_payload(self) -> None:
         skills_xml = (
             "<available_skills>\n"
