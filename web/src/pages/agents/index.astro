@@ -17,7 +17,8 @@ const agents = getAgents();
   </header>
 
   <div class="grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-2">
-    {agents.map((a) => {
+    {agents.map((a, index) => {
+      const rank = index + 1;
       return (
         <a
           href={withBase(`/agents/${a.agentId}`)}
@@ -35,9 +36,17 @@ const agents = getAgents();
                 </p>
               </div>
             </div>
-            <span class="ui-badge shrink-0 rounded-full px-2.5 py-1 text-xs font-medium">
-              {a.versionCount} versions
-            </span>
+            <div class="flex shrink-0 flex-col items-end gap-1.5">
+              <span
+                class="ui-badge rounded-full px-2.5 py-1 text-xs font-semibold tabular-nums"
+                title={`#${rank} of ${agents.length} agents by default request tokens`}
+              >
+                Rank #{rank}
+              </span>
+              <span class="text-[0.68rem] ui-subtle tabular-nums">
+                {a.versionCount} versions
+              </span>
+            </div>
           </div>
 
           <div class="mt-6 grid min-w-0 grid-cols-3 gap-3 sm:gap-4">

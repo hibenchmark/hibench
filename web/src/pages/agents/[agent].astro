@@ -24,6 +24,11 @@ const versions = getAgentVersions(agent!);
 const latest = summary.latest;
 const first = versions[0];
 const agentName = summary.agentDisplayName;
+
+// Footprint rank heaviest-first across all agents (getAgents() is already
+// sorted by descending latest totalTokens).
+const allAgents = getAgents();
+const rank = allAgents.findIndex((a) => a.agentId === agent) + 1;
 const description = `${agentName} loads ${formatNumber(latest.totalTokens)} default tokens, ${latest.toolCount} tools, ${latest.skillCount} skills, and ${latest.subagentCount} sub-agents in its latest captured hibench request.`;
 const ogImage = `/og/agents/${summary.agentId}.png`;
 const ogImageAlt = `hibench social preview for ${agentName}, showing latest default footprint metrics.`;
@@ -77,6 +82,15 @@ const versionData = versions.map((run) => ({
           Latest <span class="font-medium">v{latest.version}</span> · {latest.model} ·
           {summary.versionCount} versions captured
         </p>
+        <div class="mt-3 flex items-center gap-2">
+          <span
+            class="ui-badge rounded-full px-2.5 py-1 text-xs font-semibold tabular-nums"
+            title={`#${rank} of ${allAgents.length} agents by default request tokens`}
+          >
+            Rank #{rank} of {allAgents.length}
+          </span>
+          <span class="text-xs ui-subtle">by default footprint</span>
+        </div>
       </div>
     </div>
   </header>
