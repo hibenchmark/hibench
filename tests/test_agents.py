@@ -119,6 +119,32 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(spec.env["COPILOT_OFFLINE"], "true")
         self.assertEqual(spec.env["COPILOT_HOME"], "/copilot-home/config")
 
+    def test_droid_agent_loads(self) -> None:
+        self.assertIn("droid", list_agent_ids())
+        spec = load_agent("droid")
+        self.assertEqual(spec.version, "0.153.1")
+        self.assertEqual(spec.command[:3], ["exec", "{prompt}", "--cwd"])
+        self.assertIn("--output-format", spec.command)
+        self.assertEqual(spec.parser_id, "droid")
+        self.assertEqual(spec.version_build_arg, "DROID_VERSION")
+        self.assertEqual(spec.version_source, {"type": "npm", "package": "droid"})
+        self.assertEqual(spec.raw["benchmark_version_policy"], "stable_semver")
+        self.assertEqual(spec.raw["benchmark_min_version"], "0.62.1")
+        self.assertEqual(spec.env["FACTORY_API_KEY"], "fk-hibench-dummy")
+        self.assertEqual(spec.env["FACTORY_DROID_AUTO_UPDATE_ENABLED"], "false")
+        self.assertEqual(spec.env["HOME"], "/droid-home/home")
+        settings = json.loads(
+            spec.env["HIBENCH_DROID_SETTINGS"].replace(
+                "{base_url}", "http://example.test/v1"
+            )
+        )
+        self.assertFalse(settings["cloudSessionSync"])
+        self.assertFalse(settings["enableDroidShield"])
+        self.assertEqual(settings["model"], "custom:HiBench-Droid-0")
+        custom_model = settings["customModels"][0]
+        self.assertEqual(custom_model["provider"], "openai")
+        self.assertEqual(custom_model["baseUrl"], "http://example.test/v1")
+
     def test_cursor_cli_agent_loads(self) -> None:
         self.assertIn("cursor-cli", list_agent_ids())
         spec = load_agent("cursor-cli")
@@ -354,6 +380,11 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(spec.version, "1.0.61")
         self.assertEqual(spec.image, "hibench/github-cli:1.0.61")
 
+    def test_droid_agent_version_override_updates_image_tag(self) -> None:
+        spec = load_agent("droid", version="0.153.0")
+        self.assertEqual(spec.version, "0.153.0")
+        self.assertEqual(spec.image, "hibench/droid:0.153.0")
+
     def test_cursor_cli_agent_version_override_updates_image_tag(self) -> None:
         spec = load_agent("cursor-cli", version="2026.06.13-00-00-00-test")
         self.assertEqual(spec.version, "2026.06.13-00-00-00-test")
@@ -476,6 +507,23 @@ class AgentTests(unittest.TestCase):
         self.assertLess(system_layer_index, version_arg_index)
         self.assertLess(version_arg_index, install_layer_index)
         self.assertIn('"@github/copilot@${GITHUB_CLI_VERSION}"', dockerfile)
+
+    def test_droid_dockerfile_keeps_system_layer_version_independent(self) -> None:
+        dockerfile = (ROOT / "docker/agents/droid/Dockerfile").read_text(
+            encoding="utf-8"
+        )
+        system_layer_index = dockerfile.index("apt-get install")
+        bun_install_index = dockerfile.index("https://bun.com/install")
+        home_index = dockerfile.index("/droid-home/home")
+        version_arg_index = dockerfile.index("ARG DROID_VERSION")
+        install_layer_index = dockerfile.index("bun install --global")
+
+        self.assertLess(system_layer_index, bun_install_index)
+        self.assertLess(bun_install_index, home_index)
+        self.assertLess(home_index, version_arg_index)
+        self.assertLess(version_arg_index, install_layer_index)
+        self.assertIn('"droid@${DROID_VERSION}"', dockerfile)
+        self.assertIn("hibench-droid-entrypoint", dockerfile)
 
     def test_cursor_cli_dockerfile_keeps_system_layer_version_independent(self) -> None:
         dockerfile = (ROOT / "docker/agents/cursor-cli/Dockerfile").read_text(

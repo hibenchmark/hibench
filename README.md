@@ -33,6 +33,7 @@ with one counting method.
 | `claude-code` | Anthropic Claude Code |
 | `cline` | Cline |
 | `cursor-cli` | Cursor CLI |
+| `droid` | Droid |
 | `github-cli` | GitHub Copilot CLI |
 | `grok-cli` | Grok CLI |
 | `mistral-vibe` | Mistral Vibe |

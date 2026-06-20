@@ -1,0 +1,52 @@
+{
+  "id": "droid",
+  "display_name": "Droid",
+  "version": "0.153.1",
+  "image": "hibench/droid:0.153.1",
+  "parser_id": "droid",
+  "version_source": {
+    "type": "npm",
+    "package": "droid"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "benchmark_min_version": "0.62.1",
+  "benchmark_min_version_reason": "Versions before 0.62.1 do not honor the benchmark's local custom-model configuration and stop before a provider request with Factory authentication required.",
+  "dockerfile": "docker/agents/droid/Dockerfile",
+  "command": [
+    "exec",
+    "{prompt}",
+    "--cwd",
+    "/workspace",
+    "--model",
+    "custom:HiBench-Droid-0",
+    "--output-format",
+    "json"
+  ],
+  "env": {
+    "HIBENCH_DROID_SETTINGS": "{\"model\":\"custom:HiBench-Droid-0\",\"cloudSessionSync\":false,\"enableDroidShield\":false,\"hooksDisabled\":true,\"ideAutoConnect\":false,\"completionSound\":\"off\",\"awaitingInputSound\":\"off\",\"logoAnimation\":\"off\",\"showThinkingInMainView\":false,\"showTokenUsageIndicator\":false,\"disableAutoUpdate\":true,\"customModels\":[{\"model\":\"gpt-5\",\"displayName\":\"HiBench Droid\",\"baseUrl\":\"{base_url}\",\"apiKey\":\"hibench-dummy-key\",\"provider\":\"openai\",\"maxOutputTokens\":4096,\"noImageSupport\":true}]}",
+    "FACTORY_API_KEY": "fk-hibench-dummy",
+    "FACTORY_DROID_AUTO_UPDATE_ENABLED": "false",
+    "FACTORYD_DISABLE_AUTO_UPDATE": "1",
+    "FACTORY_DISABLE_KEYRING": "1",
+    "HOME": "/droid-home/home",
+    "XDG_CACHE_HOME": "/droid-home/cache",
+    "XDG_CONFIG_HOME": "/droid-home/config",
+    "XDG_DATA_HOME": "/droid-home/data",
+    "NO_COLOR": "1",
+    "CI": "1"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "notes": "The runner writes an isolated ~/.factory/settings.json with a BYOK custom OpenAI Responses model whose baseUrl points at the local recorder. Factory API/session sync, keyring use, hooks, sounds, IDE auto-connect, and auto-update are disabled, and the dummy Factory key is only used to satisfy local CLI startup checks."
+  },
+  "sources": [
+    "https://docs.factory.ai/llms.txt",
+    "https://docs.factory.ai/cli/droid-exec/overview",
+    "https://docs.factory.ai/cli/byok/overview",
+    "https://docs.factory.ai/cli/configuration/settings",
+    "https://docs.factory.ai/reference/cli-reference",
+    "https://www.npmjs.com/package/droid",
+    "Factory.html"
+  ]
+}

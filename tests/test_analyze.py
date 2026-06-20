@@ -91,6 +91,99 @@ class AnalyzeTests(unittest.TestCase):
             count_tokens("hello world"),
         )
 
+    def test_droid_parser_classifies_reminders_and_skills(self) -> None:
+        record = {
+            "method": "POST",
+            "path": "/v1/responses",
+            "body_text": "{}",
+            "json": {
+                "model": "gpt-5",
+                "instructions": "You are Droid.",
+                "input": [
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "input_text",
+                                "text": (
+                                    "<system-reminder>\n"
+                                    "The tools listed below are available.\n"
+                                    "Deferred tools:\n"
+                                    "CronList: List scheduled crons.\n"
+                                    "</system-reminder>"
+                                ),
+                            },
+                            {
+                                "type": "input_text",
+                                "text": (
+                                    "<system-reminder>IMPORTANT - Current date for web "
+                                    "search relevance:\n- Today's date is 2026-06-20."
+                                    "</system-reminder>"
+                                ),
+                            },
+                            {
+                                "type": "input_text",
+                                "text": (
+                                    "<system-reminder>\n"
+                                    "Available skills for the Skill tool are listed below.\n"
+                                    "\n"
+                                    "Available skills:\n"
+                                    "review: Review code changes.\n"
+                                    "incident: Investigate production incidents.\n"
+                                    "\n"
+                                    "Proactively invoke a listed skill when warranted.\n"
+                                    "</system-reminder>"
+                                ),
+                            },
+                            {
+                                "type": "input_text",
+                                "text": (
+                                    "<system-reminder>\n"
+                                    "User system info (linux)\n"
+                                    "% git status --porcelain\n"
+                                    "</system-reminder>"
+                                ),
+                            },
+                        ],
+                    },
+                    {
+                        "role": "user",
+                        "content": [{"type": "input_text", "text": "Hi"}],
+                    },
+                ],
+                "tools": [{"type": "function", "name": "Read"}],
+            },
+        }
+        summary = summarize_request(record, parser_id="droid")
+
+        self.assertEqual(summary["tools"]["count"], 1)
+        self.assertEqual(summary["skills"]["count"], 2)
+        self.assertEqual(
+            [item["name"] for item in summary["skills"]["items"]],
+            ["review", "incident"],
+        )
+        self.assertEqual(
+            [item["description"] for item in summary["skills"]["items"]],
+            ["Review code changes.", "Investigate production incidents."],
+        )
+        self.assertEqual(
+            summary["text_fields"]["by_category"]["user_prompt"]["tokens"],
+            count_tokens("Hi"),
+        )
+        self.assertGreater(
+            summary["text_fields"]["by_category"]["system_prompt"]["tokens"],
+            count_tokens("You are Droid."),
+        )
+        self.assertIn(
+            "environment_context", summary["text_fields"]["by_category"]
+        )
+        self.assertIn(
+            "skills_instructions", summary["text_fields"]["by_source"]
+        )
+        self.assertIn(
+            "developer_instructions", summary["text_fields"]["by_source"]
+        )
+
     def test_schema_allows_blank_tokenizer_encoding_for_no_primary_runs(self) -> None:
         schema = json.loads(
             Path("schemas/benchmark_result.schema.json").read_text(encoding="utf-8")

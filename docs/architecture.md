@@ -80,6 +80,19 @@ package directly, sets `CURSOR_ENABLE_AUTHLESS=1`, and points
 `CURSOR_LOCAL_AGENT_BASE_URL` plus a dummy provider key at the OpenAI-compatible recorder,
 so no Cursor account, Cursor backend, or upstream model call is required.
 
+Droid is installed in `docker/agents/droid/Dockerfile` from Factory's `droid` npm
+package. The runner executes:
+
+```bash
+droid exec "Hi" --cwd /workspace --model custom:HiBench-Droid-0 --output-format json
+```
+
+inside the same generated empty Git repo. hibench writes an isolated
+`~/.factory/settings.json` with `cloudSessionSync=false` and a BYOK custom OpenAI
+Responses model whose `baseUrl` points at the local recorder. The Docker environment uses
+dummy Factory/model keys and disables keyring access, hooks, IDE auto-connect, sounds, and
+auto-update so no Factory account, synced session, or upstream model call is required.
+
 Grok CLI is installed in `docker/agents/grok-cli/Dockerfile` from the official
 `@xai-official/grok` npm package. The runner executes:
 
@@ -177,10 +190,10 @@ script release, and stores it in `agent_versions/<agent-id>.json`.
 `hibench benchmark <agent-id>` uses that catalog to run one canonical benchmark per
 selected agent version. The catalog still stores every npm version, but each agent selects
 only comparable benchmark versions by default. Codex uses plain `X.Y.0` stable main
-releases; Claude Code, Cline, GitHub Copilot CLI, Grok CLI, Kilo Code, OpenCode,
+releases; Claude Code, Cline, Droid, GitHub Copilot CLI, Grok CLI, Kilo Code, OpenCode,
 OpenHands, OpenClaw, Pi, Hermes, and Mistral Vibe use plain stable semver releases such as
-`2.1.177`, `3.0.24`, `1.0.62`, `0.2.51`, `7.3.45`, `1.17.5`, `1.16.0`, `2026.6.6`,
-`0.79.3`, `0.16.0`, and `2.16.1`; Cursor CLI uses the install
+`2.1.177`, `3.0.24`, `0.153.1`, `1.0.62`, `0.2.51`, `7.3.45`, `1.17.5`, `1.16.0`,
+`2026.6.6`, `0.79.3`, `0.16.0`, and `2.16.1`; Cursor CLI uses the install
 script's timestamped release as-is because Cursor does not publish an npm/PyPI-style
 historical package catalog for the CLI tarballs. The stable policies exclude
 prereleases, platform/system variants like `*-linux-x64`, and timestamp/internal builds.
