@@ -5,17 +5,17 @@
     "type": "pypi",
     "package": "hermes-agent"
   },
-  "fetched_at": "2026-06-18T20:10:07Z",
-  "version_count": 6,
+  "fetched_at": "2026-06-20T17:33:59Z",
+  "version_count": 7,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
-  "benchmark_version_count": 6,
+  "benchmark_version_count": 7,
   "benchmark_exclusion_count": 0,
   "benchmark_exclusions": {},
   "excluded_benchmark_versions": [],
-  "latest": "0.16.0",
+  "latest": "0.17.0",
   "dist_tags": {
-    "latest": "0.16.0"
+    "latest": "0.17.0"
   },
   "versions": [
     "0.13.0",
@@ -23,7 +23,8 @@
     "0.15.0",
     "0.15.1",
     "0.15.2",
-    "0.16.0"
+    "0.16.0",
+    "0.17.0"
   ],
   "benchmark_versions": [
     "0.13.0",
@@ -31,6 +32,7 @@
     "0.15.0",
     "0.15.1",
     "0.15.2",
-    "0.16.0"
+    "0.16.0",
+    "0.17.0"
   ]
 }

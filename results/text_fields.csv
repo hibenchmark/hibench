@@ -4016,6 +4016,8 @@ hibench.benchmark.v1,hermes-0.15.2-hi,hermes,0.15.2,2,1,system_prompt,main_instr
 hibench.benchmark.v1,hermes-0.15.2-hi,hermes,0.15.2,2,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
 hibench.benchmark.v1,hermes-0.16.0-hi,hermes,0.16.0,2,1,system_prompt,main_instructions,developer,messages.0.content,8785,1840,"You are Hermes Agent, an intelligent AI assistant created by Nous Research. You are helpful, knowledgeable, and direct. "
 hibench.benchmark.v1,hermes-0.16.0-hi,hermes,0.16.0,2,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
+hibench.benchmark.v1,hermes-0.17.0-hi,hermes,0.17.0,2,1,system_prompt,main_instructions,developer,messages.0.content,13034,2758,"You are Hermes Agent, an intelligent AI assistant created by Nous Research. You are helpful, knowledgeable, and direct."
+hibench.benchmark.v1,hermes-0.17.0-hi,hermes,0.17.0,2,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
 hibench.benchmark.v1,kilo-7.0.46-hi,kilo,7.0.46,1,1,system_prompt,main_instructions,system,messages.0.content,9197,1935,"You are Kilo, a highly skilled software engineer with extensive knowledge in many programming languages, frameworks, des"
 hibench.benchmark.v1,kilo-7.0.46-hi,kilo,7.0.46,1,2,user_prompt,user_prompt,user,messages.1.content,3,2,Hi
 hibench.benchmark.v1,kilo-7.0.47-hi,kilo,7.0.47,1,1,system_prompt,main_instructions,system,messages.0.content,9197,1935,"You are Kilo, a highly skilled software engineer with extensive knowledge in many programming languages, frameworks, des"
