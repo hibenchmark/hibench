@@ -1,0 +1,1632 @@
+{
+  "run_dir": "runs/openclaw-2026.6.6-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 80003,
+    "body_chars": 79874,
+    "body_tokens": 18540,
+    "text_fields": {
+      "count": 2,
+      "chars": 27681,
+      "tokens": 6259,
+      "by_category": {
+        "system_prompt": {
+          "count": 1,
+          "chars": 27652,
+          "tokens": 6243
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 29,
+          "tokens": 16
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 27652,
+          "tokens": 6243
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 29,
+          "tokens": 16
+        }
+      },
+      "fields": [
+        {
+          "path": "input.0.content.0.text",
+          "role": "system",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 27652,
+          "tokens": 6243,
+          "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nAvailable tools are policy-filtered. Names are case-sen"
+        },
+        {
+          "path": "input.1.content.0.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 29,
+          "tokens": 16,
+          "preview": "[Sun 2026-06-14 12:18 UTC] Hi"
+        }
+      ]
+    },
+    "skills": {
+      "count": 0,
+      "tokens": 0,
+      "definition_tokens": 0,
+      "instruction_field_count": 0,
+      "instruction_fields": [],
+      "items": []
+    },
+    "tools": {
+      "count": 33,
+      "names": [
+        "agents_list",
+        "apply_patch",
+        "browser",
+        "canvas",
+        "create_goal",
+        "cron",
+        "dir_fetch",
+        "dir_list",
+        "edit",
+        "exec",
+        "file_fetch",
+        "file_write",
+        "gateway",
+        "get_goal",
+        "memory_get",
+        "memory_search",
+        "message",
+        "nodes",
+        "process",
+        "read",
+        "session_status",
+        "sessions_history",
+        "sessions_list",
+        "sessions_send",
+        "sessions_spawn",
+        "sessions_yield",
+        "skill_workshop",
+        "subagents",
+        "tts",
+        "update_goal",
+        "web_fetch",
+        "web_search",
+        "write"
+      ],
+      "tokens": 11916,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "agents_list",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 169,
+          "tokens": 38,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "apply_patch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 356,
+          "tokens": 74,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "browser",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 5184,
+          "tokens": 1292,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "canvas",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 896,
+          "tokens": 239,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "create_goal",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 493,
+          "tokens": 95,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "cron",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 12622,
+          "tokens": 3061,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "dir_fetch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1434,
+          "tokens": 324,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "dir_list",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1369,
+          "tokens": 296,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "edit",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1224,
+          "tokens": 252,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 10,
+          "array_index": 9,
+          "path": "tools.9",
+          "name": "exec",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1886,
+          "tokens": 401,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 11,
+          "array_index": 10,
+          "path": "tools.10",
+          "name": "file_fetch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1318,
+          "tokens": 296,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 12,
+          "array_index": 11,
+          "path": "tools.11",
+          "name": "file_write",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1595,
+          "tokens": 332,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 13,
+          "array_index": 12,
+          "path": "tools.12",
+          "name": "gateway",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1282,
+          "tokens": 287,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 14,
+          "array_index": 13,
+          "path": "tools.13",
+          "name": "get_goal",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 172,
+          "tokens": 37,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 15,
+          "array_index": 14,
+          "path": "tools.14",
+          "name": "memory_get",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 550,
+          "tokens": 126,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 16,
+          "array_index": 15,
+          "path": "tools.15",
+          "name": "memory_search",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 928,
+          "tokens": 198,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 17,
+          "array_index": 16,
+          "path": "tools.16",
+          "name": "message",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 5848,
+          "tokens": 1401,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 18,
+          "array_index": 17,
+          "path": "tools.17",
+          "name": "nodes",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1972,
+          "tokens": 481,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 19,
+          "array_index": 18,
+          "path": "tools.18",
+          "name": "process",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1597,
+          "tokens": 367,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 20,
+          "array_index": 19,
+          "path": "tools.19",
+          "name": "read",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 666,
+          "tokens": 155,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 21,
+          "array_index": 20,
+          "path": "tools.20",
+          "name": "session_status",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 443,
+          "tokens": 105,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 22,
+          "array_index": 21,
+          "path": "tools.21",
+          "name": "sessions_history",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 355,
+          "tokens": 75,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 23,
+          "array_index": 22,
+          "path": "tools.22",
+          "name": "sessions_list",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 643,
+          "tokens": 158,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 24,
+          "array_index": 23,
+          "path": "tools.23",
+          "name": "sessions_send",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 630,
+          "tokens": 140,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 25,
+          "array_index": 24,
+          "path": "tools.24",
+          "name": "sessions_spawn",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1563,
+          "tokens": 375,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 26,
+          "array_index": 25,
+          "path": "tools.25",
+          "name": "sessions_yield",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 213,
+          "tokens": 45,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 27,
+          "array_index": 26,
+          "path": "tools.26",
+          "name": "skill_workshop",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 2518,
+          "tokens": 535,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 28,
+          "array_index": 27,
+          "path": "tools.27",
+          "name": "subagents",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 323,
+          "tokens": 73,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 29,
+          "array_index": 28,
+          "path": "tools.28",
+          "name": "tts",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 544,
+          "tokens": 117,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 30,
+          "array_index": 29,
+          "path": "tools.29",
+          "name": "update_goal",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 490,
+          "tokens": 97,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 31,
+          "array_index": 30,
+          "path": "tools.30",
+          "name": "web_fetch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 479,
+          "tokens": 103,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 32,
+          "array_index": 31,
+          "path": "tools.31",
+          "name": "web_search",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1126,
+          "tokens": 252,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 33,
+          "array_index": 32,
+          "path": "tools.32",
+          "name": "write",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 417,
+          "tokens": 89,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    },
+    "subagents": {
+      "marker_count": 9,
+      "paths": [
+        "input.0.content.0.text",
+        "tools.0.description",
+        "tools.24.description",
+        "tools.24.parameters.properties.lightContext.description",
+        "tools.24.parameters.properties.runtime.enum.0",
+        "tools.25.description",
+        "tools.27",
+        "tools.27.description",
+        "tools.27.name"
+      ],
+      "count": 1,
+      "tokens": 73,
+      "mention_count": 6,
+      "mention_tokens": 6360,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "subagent_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "input.0.content.0.text",
+          "chars": 27652,
+          "tokens": 6243,
+          "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nAvailable tools are policy-filtered. Names are case-sen"
+        },
+        {
+          "marker_index": 2,
+          "name": "subagent_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.0.description",
+          "chars": 63,
+          "tokens": 14,
+          "preview": "List agent ids allowed for `sessions_spawn runtime=\"subagent\"`."
+        },
+        {
+          "marker_index": 3,
+          "name": "subagent_3",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.24.description",
+          "chars": 332,
+          "tokens": 74,
+          "preview": "Spawn clean child session; default `runtime=\"subagent\"`. `mode=\"run\"` one-shot background work. Subagents inherit parent"
+        },
+        {
+          "marker_index": 4,
+          "name": "subagent_4",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.24.parameters.properties.runtime.enum.0",
+          "chars": 8,
+          "tokens": 2,
+          "preview": "subagent"
+        },
+        {
+          "marker_index": 5,
+          "name": "subagent_5",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.24.parameters.properties.lightContext.description",
+          "chars": 49,
+          "tokens": 11,
+          "preview": "Light bootstrap context; runtime=\"subagent\" only."
+        },
+        {
+          "marker_index": 6,
+          "name": "subagent_6",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.25.description",
+          "chars": 79,
+          "tokens": 16,
+          "preview": "End current turn. Use after spawning subagents; results arrive as next message."
+        },
+        {
+          "marker_index": 7,
+          "name": "subagents",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.27",
+          "chars": 323,
+          "tokens": 73,
+          "preview": "{\"description\":\"List active and recent subagents for the requester session. If sessions_yield exists, use it for complet"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "model": "gpt-5",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 80003,
+      "body_chars": 79874,
+      "body_tokens": 18540,
+      "text_fields": {
+        "count": 2,
+        "chars": 27681,
+        "tokens": 6259,
+        "by_category": {
+          "system_prompt": {
+            "count": 1,
+            "chars": 27652,
+            "tokens": 6243
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 29,
+            "tokens": 16
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 27652,
+            "tokens": 6243
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 29,
+            "tokens": 16
+          }
+        },
+        "fields": [
+          {
+            "path": "input.0.content.0.text",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 27652,
+            "tokens": 6243,
+            "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nAvailable tools are policy-filtered. Names are case-sen"
+          },
+          {
+            "path": "input.1.content.0.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 29,
+            "tokens": 16,
+            "preview": "[Sun 2026-06-14 12:18 UTC] Hi"
+          }
+        ]
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 33,
+        "names": [
+          "agents_list",
+          "apply_patch",
+          "browser",
+          "canvas",
+          "create_goal",
+          "cron",
+          "dir_fetch",
+          "dir_list",
+          "edit",
+          "exec",
+          "file_fetch",
+          "file_write",
+          "gateway",
+          "get_goal",
+          "memory_get",
+          "memory_search",
+          "message",
+          "nodes",
+          "process",
+          "read",
+          "session_status",
+          "sessions_history",
+          "sessions_list",
+          "sessions_send",
+          "sessions_spawn",
+          "sessions_yield",
+          "skill_workshop",
+          "subagents",
+          "tts",
+          "update_goal",
+          "web_fetch",
+          "web_search",
+          "write"
+        ],
+        "tokens": 11916,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "agents_list",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 169,
+            "tokens": 38,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "apply_patch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 356,
+            "tokens": 74,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "browser",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 5184,
+            "tokens": 1292,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "canvas",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 896,
+            "tokens": 239,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "create_goal",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 493,
+            "tokens": 95,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "cron",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 12622,
+            "tokens": 3061,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "dir_fetch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1434,
+            "tokens": 324,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "dir_list",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1369,
+            "tokens": 296,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "edit",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1224,
+            "tokens": 252,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "exec",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1886,
+            "tokens": 401,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 11,
+            "array_index": 10,
+            "path": "tools.10",
+            "name": "file_fetch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1318,
+            "tokens": 296,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 12,
+            "array_index": 11,
+            "path": "tools.11",
+            "name": "file_write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1595,
+            "tokens": 332,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 13,
+            "array_index": 12,
+            "path": "tools.12",
+            "name": "gateway",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1282,
+            "tokens": 287,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 14,
+            "array_index": 13,
+            "path": "tools.13",
+            "name": "get_goal",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 172,
+            "tokens": 37,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 15,
+            "array_index": 14,
+            "path": "tools.14",
+            "name": "memory_get",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 550,
+            "tokens": 126,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 16,
+            "array_index": 15,
+            "path": "tools.15",
+            "name": "memory_search",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 928,
+            "tokens": 198,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 17,
+            "array_index": 16,
+            "path": "tools.16",
+            "name": "message",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 5848,
+            "tokens": 1401,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 18,
+            "array_index": 17,
+            "path": "tools.17",
+            "name": "nodes",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1972,
+            "tokens": 481,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 19,
+            "array_index": 18,
+            "path": "tools.18",
+            "name": "process",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1597,
+            "tokens": 367,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 20,
+            "array_index": 19,
+            "path": "tools.19",
+            "name": "read",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 666,
+            "tokens": 155,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 21,
+            "array_index": 20,
+            "path": "tools.20",
+            "name": "session_status",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 443,
+            "tokens": 105,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 22,
+            "array_index": 21,
+            "path": "tools.21",
+            "name": "sessions_history",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 355,
+            "tokens": 75,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 23,
+            "array_index": 22,
+            "path": "tools.22",
+            "name": "sessions_list",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 643,
+            "tokens": 158,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 24,
+            "array_index": 23,
+            "path": "tools.23",
+            "name": "sessions_send",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 630,
+            "tokens": 140,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 25,
+            "array_index": 24,
+            "path": "tools.24",
+            "name": "sessions_spawn",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1563,
+            "tokens": 375,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 26,
+            "array_index": 25,
+            "path": "tools.25",
+            "name": "sessions_yield",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 213,
+            "tokens": 45,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 27,
+            "array_index": 26,
+            "path": "tools.26",
+            "name": "skill_workshop",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 2518,
+            "tokens": 535,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 28,
+            "array_index": 27,
+            "path": "tools.27",
+            "name": "subagents",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 323,
+            "tokens": 73,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 29,
+            "array_index": 28,
+            "path": "tools.28",
+            "name": "tts",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 544,
+            "tokens": 117,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 30,
+            "array_index": 29,
+            "path": "tools.29",
+            "name": "update_goal",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 490,
+            "tokens": 97,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 31,
+            "array_index": 30,
+            "path": "tools.30",
+            "name": "web_fetch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 479,
+            "tokens": 103,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 32,
+            "array_index": 31,
+            "path": "tools.31",
+            "name": "web_search",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1126,
+            "tokens": 252,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 33,
+            "array_index": 32,
+            "path": "tools.32",
+            "name": "write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 417,
+            "tokens": 89,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 9,
+        "paths": [
+          "input.0.content.0.text",
+          "tools.0.description",
+          "tools.24.description",
+          "tools.24.parameters.properties.lightContext.description",
+          "tools.24.parameters.properties.runtime.enum.0",
+          "tools.25.description",
+          "tools.27",
+          "tools.27.description",
+          "tools.27.name"
+        ],
+        "count": 1,
+        "tokens": 73,
+        "mention_count": 6,
+        "mention_tokens": 6360,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "input.0.content.0.text",
+            "chars": 27652,
+            "tokens": 6243,
+            "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nAvailable tools are policy-filtered. Names are case-sen"
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.0.description",
+            "chars": 63,
+            "tokens": 14,
+            "preview": "List agent ids allowed for `sessions_spawn runtime=\"subagent\"`."
+          },
+          {
+            "marker_index": 3,
+            "name": "subagent_3",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.24.description",
+            "chars": 332,
+            "tokens": 74,
+            "preview": "Spawn clean child session; default `runtime=\"subagent\"`. `mode=\"run\"` one-shot background work. Subagents inherit parent"
+          },
+          {
+            "marker_index": 4,
+            "name": "subagent_4",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.24.parameters.properties.runtime.enum.0",
+            "chars": 8,
+            "tokens": 2,
+            "preview": "subagent"
+          },
+          {
+            "marker_index": 5,
+            "name": "subagent_5",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.24.parameters.properties.lightContext.description",
+            "chars": 49,
+            "tokens": 11,
+            "preview": "Light bootstrap context; runtime=\"subagent\" only."
+          },
+          {
+            "marker_index": 6,
+            "name": "subagent_6",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.25.description",
+            "chars": 79,
+            "tokens": 16,
+            "preview": "End current turn. Use after spawning subagents; results arrive as next message."
+          },
+          {
+            "marker_index": 7,
+            "name": "subagents",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.27",
+            "chars": 323,
+            "tokens": 73,
+            "preview": "{\"description\":\"List active and recent subagents for the requester session. If sessions_yield exists, use it for complet"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 80003,
+    "body_tokens": 18540,
+    "skill_count": 0,
+    "tool_count": 33,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 9,
+    "subagent_mention_count": 6
+  },
+  "post_totals": {
+    "body_bytes": 80003,
+    "body_tokens": 18540,
+    "skill_count": 0,
+    "tool_count": 33,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 9,
+    "subagent_mention_count": 6
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "openclaw-2026.6.6-hi",
+    "agent_id": "openclaw",
+    "agent_version": "2026.6.6",
+    "run_dir": "runs/openclaw-2026.6.6-hi",
+    "agent_name": "OpenClaw",
+    "agent_image": "hibench/openclaw:2026.6.6",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-14T12:17:56Z",
+    "ended_at": "2026-06-14T12:18:06Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 18540,
+    "body_tokens": 18540,
+    "body_bytes": 80003,
+    "body_chars": 79874,
+    "text_field_count": 2,
+    "text_tokens": 6259,
+    "system_prompt_tokens": 6243,
+    "environment_context_tokens": 0,
+    "user_prompt_tokens": 16,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 6243,
+    "developer_instructions_tokens": 0,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 0,
+    "instruction_tokens": 6243,
+    "default_context_tokens": 18159,
+    "skills_count": 0,
+    "skills_tokens": 0,
+    "skill_definition_tokens": 0,
+    "tool_count": 33,
+    "tool_definition_tokens": 11916,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "mcp_mention_tokens": 0,
+    "subagent_count": 1,
+    "subagent_tokens": 73,
+    "subagent_marker_count": 9,
+    "subagent_mention_count": 6,
+    "subagent_mention_tokens": 6360
+  }
+}

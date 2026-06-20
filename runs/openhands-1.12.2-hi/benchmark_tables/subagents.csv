@@ -1,0 +1,12 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,openhands-1.12.2-hi,openhands,1.12.2,1,1,subagent_1,text_mention,False,instructions,35603,7956,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.12.2-hi,openhands,1.12.2,1,2,subagent_2,text_mention,False,tools.3.description,1694,371,"Delegation tool for spawning sub-agents and delegating tasks to them.
+
+This tool provides two commands:
+
+**spawn**: Init"
+hibench.benchmark.v1,openhands-1.12.2-hi,openhands,1.12.2,1,3,subagent_3,text_mention,False,tools.3.parameters.properties.ids.description,89,18,Required parameter of `spawn` command. List of identifiers to initialize sub-agents with.
+hibench.benchmark.v1,openhands-1.12.2-hi,openhands,1.12.2,1,4,subagent_4,text_mention,False,tools.3.parameters.properties.tasks.description,104,17,Required parameter of `delegate` command. Dictionary mapping sub-agent identifiers to task descriptions.

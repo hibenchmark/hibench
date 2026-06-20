@@ -1,0 +1,2 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,claude-code-2.1.83-hi,claude-code,2.1.83,2,1,mcp_1,text_mention,False,tools.19.description,1479,327,"IMPORTANT: WebFetch WILL FAIL for authenticated or private URLs. Before using this tool, check if the URL points to an a"

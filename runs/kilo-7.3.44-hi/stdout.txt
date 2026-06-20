@@ -1,0 +1,2 @@
+{"type":"step_start","timestamp":1781481974398,"sessionID":"ses_137665744ffec1WYYQdVt4BR5Q","part":{"id":"prt_ec899aa69001yUGnj149FtYQxC","messageID":"msg_ec899a9e3001Zh4W3TGZ9Vfbuc","sessionID":"ses_137665744ffec1WYYQdVt4BR5Q","type":"step-start"}}
+{"type":"text","timestamp":1781481974398,"sessionID":"ses_137665744ffec1WYYQdVt4BR5Q","part":{"id":"prt_ec899aa6a001ry7B4GBQRsf1L0","messageID":"msg_ec899a9e3001Zh4W3TGZ9Vfbuc","sessionID":"ses_137665744ffec1WYYQdVt4BR5Q","type":"text","text":"HiBench capture complete.","time":{"start":1781481974378,"end":1781481974380}}}

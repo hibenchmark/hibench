@@ -1,0 +1,964 @@
+{
+  "run_dir": "runs/github-cli-1.0.14-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "model": "gpt-5.4",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5.4",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 52951,
+    "body_chars": 52903,
+    "body_tokens": 11944,
+    "text_fields": {
+      "count": 2,
+      "chars": 32609,
+      "tokens": 7023,
+      "by_category": {
+        "system_prompt": {
+          "count": 1,
+          "chars": 32371,
+          "tokens": 6958
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 238,
+          "tokens": 65
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 32371,
+          "tokens": 6958
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 238,
+          "tokens": 65
+        }
+      },
+      "fields": [
+        {
+          "path": "instructions",
+          "role": "",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 32371,
+          "tokens": 6958,
+          "preview": "You are the GitHub Copilot CLI, a terminal assistant built by GitHub. You are running in non-interactive mode and have n"
+        },
+        {
+          "path": "input.0.content.0.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 238,
+          "tokens": 65,
+          "preview": "<current_datetime>2026-06-14T19:12:31.488Z</current_datetime>\n\nHi\n\n<reminder>\n<sql_tables>No tables currently exist. Def"
+        }
+      ]
+    },
+    "skills": {
+      "count": 0,
+      "tokens": 0,
+      "definition_tokens": 0,
+      "instruction_field_count": 0,
+      "instruction_fields": [],
+      "items": []
+    },
+    "tools": {
+      "count": 15,
+      "names": [
+        "apply_patch",
+        "bash",
+        "fetch_copilot_cli_documentation",
+        "glob",
+        "list_agents",
+        "list_bash",
+        "read_agent",
+        "read_bash",
+        "report_intent",
+        "rg",
+        "sql",
+        "stop_bash",
+        "task",
+        "view",
+        "write_bash"
+      ],
+      "tokens": 4447,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "bash",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 2458,
+          "tokens": 549,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "write_bash",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1413,
+          "tokens": 321,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "read_bash",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1040,
+          "tokens": 226,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "stop_bash",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 642,
+          "tokens": 141,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "list_bash",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 394,
+          "tokens": 92,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "apply_patch",
+          "type": "custom",
+          "keys": [
+            "description",
+            "format",
+            "name",
+            "type"
+          ],
+          "chars": 836,
+          "tokens": 250,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "view",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1308,
+          "tokens": 330,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "report_intent",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1767,
+          "tokens": 439,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "fetch_copilot_cli_documentation",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 338,
+          "tokens": 78,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 10,
+          "array_index": 9,
+          "path": "tools.9",
+          "name": "sql",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 849,
+          "tokens": 187,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 11,
+          "array_index": 10,
+          "path": "tools.10",
+          "name": "read_agent",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1831,
+          "tokens": 406,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 12,
+          "array_index": 11,
+          "path": "tools.11",
+          "name": "list_agents",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 622,
+          "tokens": 128,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 13,
+          "array_index": 12,
+          "path": "tools.12",
+          "name": "rg",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1658,
+          "tokens": 371,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 14,
+          "array_index": 13,
+          "path": "tools.13",
+          "name": "glob",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 565,
+          "tokens": 129,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 15,
+          "array_index": 14,
+          "path": "tools.14",
+          "name": "task",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 3787,
+          "tokens": 800,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    },
+    "subagents": {
+      "marker_count": 5,
+      "paths": [
+        "instructions",
+        "tools.14.description.subagent.0",
+        "tools.14.description.subagent.1",
+        "tools.14.description.subagent.2",
+        "tools.14.description.subagent.3"
+      ],
+      "count": 4,
+      "tokens": 334,
+      "mention_count": 1,
+      "mention_tokens": 6958,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "subagent_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "instructions",
+          "chars": 32371,
+          "tokens": 6958,
+          "preview": "You are the GitHub Copilot CLI, a terminal assistant built by GitHub. You are running in non-interactive mode and have n"
+        },
+        {
+          "marker_index": 2,
+          "name": "explore",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.14.description.subagent.0",
+          "chars": 566,
+          "tokens": 122,
+          "preview": "- **explore**: Fast agent specialized for exploring codebases and answering questions about code. Use this when you need"
+        },
+        {
+          "marker_index": 3,
+          "name": "task",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.14.description.subagent.1",
+          "chars": 399,
+          "tokens": 84,
+          "preview": "- **task**: Agent for executing commands with verbose output (tests, builds, lints, dependency installs). Returns brief"
+        },
+        {
+          "marker_index": 4,
+          "name": "general-purpose",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.14.description.subagent.2",
+          "chars": 270,
+          "tokens": 55,
+          "preview": "- **general-purpose**: Full-capability agent running in a subprocess. Use for complex multi-step tasks requiring the com"
+        },
+        {
+          "marker_index": 5,
+          "name": "code-review",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.14.description.subagent.3",
+          "chars": 356,
+          "tokens": 73,
+          "preview": "- **code-review**: Agent for reviewing code changes with extremely high signal-to-noise ratio. Analyzes staged/unstaged"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "model": "gpt-5.4",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5.4",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 52951,
+      "body_chars": 52903,
+      "body_tokens": 11944,
+      "text_fields": {
+        "count": 2,
+        "chars": 32609,
+        "tokens": 7023,
+        "by_category": {
+          "system_prompt": {
+            "count": 1,
+            "chars": 32371,
+            "tokens": 6958
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 238,
+            "tokens": 65
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 32371,
+            "tokens": 6958
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 238,
+            "tokens": 65
+          }
+        },
+        "fields": [
+          {
+            "path": "instructions",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 32371,
+            "tokens": 6958,
+            "preview": "You are the GitHub Copilot CLI, a terminal assistant built by GitHub. You are running in non-interactive mode and have n"
+          },
+          {
+            "path": "input.0.content.0.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 238,
+            "tokens": 65,
+            "preview": "<current_datetime>2026-06-14T19:12:31.488Z</current_datetime>\n\nHi\n\n<reminder>\n<sql_tables>No tables currently exist. Def"
+          }
+        ]
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 15,
+        "names": [
+          "apply_patch",
+          "bash",
+          "fetch_copilot_cli_documentation",
+          "glob",
+          "list_agents",
+          "list_bash",
+          "read_agent",
+          "read_bash",
+          "report_intent",
+          "rg",
+          "sql",
+          "stop_bash",
+          "task",
+          "view",
+          "write_bash"
+        ],
+        "tokens": 4447,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "bash",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 2458,
+            "tokens": 549,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "write_bash",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1413,
+            "tokens": 321,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "read_bash",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1040,
+            "tokens": 226,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "stop_bash",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 642,
+            "tokens": 141,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "list_bash",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 394,
+            "tokens": 92,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "apply_patch",
+            "type": "custom",
+            "keys": [
+              "description",
+              "format",
+              "name",
+              "type"
+            ],
+            "chars": 836,
+            "tokens": 250,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "view",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1308,
+            "tokens": 330,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "report_intent",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1767,
+            "tokens": 439,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "fetch_copilot_cli_documentation",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 338,
+            "tokens": 78,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "sql",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 849,
+            "tokens": 187,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 11,
+            "array_index": 10,
+            "path": "tools.10",
+            "name": "read_agent",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1831,
+            "tokens": 406,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 12,
+            "array_index": 11,
+            "path": "tools.11",
+            "name": "list_agents",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 622,
+            "tokens": 128,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 13,
+            "array_index": 12,
+            "path": "tools.12",
+            "name": "rg",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1658,
+            "tokens": 371,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 14,
+            "array_index": 13,
+            "path": "tools.13",
+            "name": "glob",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 565,
+            "tokens": 129,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 15,
+            "array_index": 14,
+            "path": "tools.14",
+            "name": "task",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 3787,
+            "tokens": 800,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 5,
+        "paths": [
+          "instructions",
+          "tools.14.description.subagent.0",
+          "tools.14.description.subagent.1",
+          "tools.14.description.subagent.2",
+          "tools.14.description.subagent.3"
+        ],
+        "count": 4,
+        "tokens": 334,
+        "mention_count": 1,
+        "mention_tokens": 6958,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "instructions",
+            "chars": 32371,
+            "tokens": 6958,
+            "preview": "You are the GitHub Copilot CLI, a terminal assistant built by GitHub. You are running in non-interactive mode and have n"
+          },
+          {
+            "marker_index": 2,
+            "name": "explore",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.14.description.subagent.0",
+            "chars": 566,
+            "tokens": 122,
+            "preview": "- **explore**: Fast agent specialized for exploring codebases and answering questions about code. Use this when you need"
+          },
+          {
+            "marker_index": 3,
+            "name": "task",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.14.description.subagent.1",
+            "chars": 399,
+            "tokens": 84,
+            "preview": "- **task**: Agent for executing commands with verbose output (tests, builds, lints, dependency installs). Returns brief"
+          },
+          {
+            "marker_index": 4,
+            "name": "general-purpose",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.14.description.subagent.2",
+            "chars": 270,
+            "tokens": 55,
+            "preview": "- **general-purpose**: Full-capability agent running in a subprocess. Use for complex multi-step tasks requiring the com"
+          },
+          {
+            "marker_index": 5,
+            "name": "code-review",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.14.description.subagent.3",
+            "chars": 356,
+            "tokens": 73,
+            "preview": "- **code-review**: Agent for reviewing code changes with extremely high signal-to-noise ratio. Analyzes staged/unstaged"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 52951,
+    "body_tokens": 11944,
+    "skill_count": 0,
+    "tool_count": 15,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 5,
+    "subagent_mention_count": 1
+  },
+  "post_totals": {
+    "body_bytes": 52951,
+    "body_tokens": 11944,
+    "skill_count": 0,
+    "tool_count": 15,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 5,
+    "subagent_mention_count": 1
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "github-cli-1.0.14-hi",
+    "agent_id": "github-cli",
+    "agent_version": "1.0.14",
+    "run_dir": "runs/github-cli-1.0.14-hi",
+    "agent_name": "GitHub Copilot CLI",
+    "agent_image": "hibench/github-cli:1.0.14",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-14T19:12:30Z",
+    "ended_at": "2026-06-14T19:12:32Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/responses",
+    "model": "gpt-5.4",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 11944,
+    "body_tokens": 11944,
+    "body_bytes": 52951,
+    "body_chars": 52903,
+    "text_field_count": 2,
+    "text_tokens": 7023,
+    "system_prompt_tokens": 6958,
+    "environment_context_tokens": 0,
+    "user_prompt_tokens": 65,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 6958,
+    "developer_instructions_tokens": 0,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 0,
+    "instruction_tokens": 6958,
+    "default_context_tokens": 11405,
+    "skills_count": 0,
+    "skills_tokens": 0,
+    "skill_definition_tokens": 0,
+    "tool_count": 15,
+    "tool_definition_tokens": 4447,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "mcp_mention_tokens": 0,
+    "subagent_count": 4,
+    "subagent_tokens": 334,
+    "subagent_marker_count": 5,
+    "subagent_mention_count": 1,
+    "subagent_mention_tokens": 6958
+  }
+}

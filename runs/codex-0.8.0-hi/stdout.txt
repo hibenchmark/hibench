@@ -1,0 +1,6 @@
+{"reasoning summaries":"auto","provider":"hibench","approval":"Never","workdir":"/workspace","sandbox":"read-only","model":"codex-mini-latest","reasoning effort":"medium"}
+{"prompt":"Hi"}
+{"id":"1","msg":{"type":"task_started"}}
+{"id":"1","msg":{"type":"agent_message","message":"HiBench capture complete."}}
+{"id":"1","msg":{"type":"token_count","input_tokens":0,"cached_input_tokens":0,"output_tokens":1,"reasoning_output_tokens":0,"total_tokens":1}}
+{"id":"1","msg":{"type":"task_complete","last_agent_message":"HiBench capture complete."}}

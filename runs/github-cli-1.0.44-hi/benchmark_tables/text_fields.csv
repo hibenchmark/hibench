@@ -1,0 +1,8 @@
+schema_version,run_id,agent_id,agent_version,request_index,text_index,category,source,role,path,chars,tokens,preview
+hibench.benchmark.v1,github-cli-1.0.44-hi,github-cli,1.0.44,1,1,system_prompt,main_instructions,,instructions,30963,6825,"You are the GitHub Copilot CLI, a terminal assistant built by GitHub. You are running in non-interactive mode and have n"
+hibench.benchmark.v1,github-cli-1.0.44-hi,github-cli,1.0.44,1,2,user_prompt,user_prompt,user,input.0.content.0.text,268,72,"<current_datetime>2026-06-14T19:20:43.837+00:00</current_datetime>
+
+Hi
+
+<system_reminder>
+<sql_tables>No tables currentl"

@@ -1,0 +1,8 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,claude-code-2.1.96-hi,claude-code,2.1.96,2,1,subagent_1,text_mention,False,system.3.text,15150,3249,"# Session-specific guidance
+ - If you do not understand why the user has denied a tool call, use the AskUserQuestion to "
+hibench.benchmark.v1,claude-code-2.1.96-hi,claude-code,2.1.96,2,2,general-purpose,declaration,True,tools.0.description.subagent.0,309,61,"- general-purpose: General-purpose agent for researching complex questions, searching for code, and executing multi-step"
+hibench.benchmark.v1,claude-code-2.1.96-hi,claude-code,2.1.96,2,3,statusline-setup,declaration,True,tools.0.description.subagent.1,111,26,"- statusline-setup: Use this agent to configure the user's Claude Code status line setting. (Tools: Read, Edit)"
+hibench.benchmark.v1,claude-code-2.1.96-hi,claude-code,2.1.96,2,4,Explore,declaration,True,tools.0.description.subagent.2,568,120,- Explore: Fast agent specialized for exploring codebases. Use this when you need to quickly find files by patterns (eg.
+hibench.benchmark.v1,claude-code-2.1.96-hi,claude-code,2.1.96,2,5,Plan,declaration,True,tools.0.description.subagent.3,307,60,- Plan: Software architect agent for designing implementation plans. Use this when you need to plan the implementation s
+hibench.benchmark.v1,claude-code-2.1.96-hi,claude-code,2.1.96,2,6,Lookups,declaration,True,tools.0.description.subagent.4,143,29,- Lookups: hand over the exact command. Investigations: hand over the question — prescribed steps become dead weight whe

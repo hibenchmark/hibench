@@ -1,0 +1,5 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,droid-0.104.0-hi,droid,0.104.0,1,1,mcp_1,text_mention,False,tools.8.description,4361,958,"Execute a skill within the main conversation
+
+<skills_instructions>
+When users ask you to perform tasks, check if any of"

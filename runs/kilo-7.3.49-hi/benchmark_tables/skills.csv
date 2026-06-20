@@ -1,0 +1,4 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,kilo-7.3.49-hi,kilo,7.3.49,1,1,kilo-config,file:///workspace/builtin,messages.0.content,569,127,"Guide for Kilo configuration: config paths, kilo.json fields, commands, agents, skills, permissions, MCPs, providers, TUI settings, plus Agent Manager worktree setup/run scripts, workflows, and state. Use for Kilo config questions, locating loaded config, changing settings, or Agent Manager questions about run/setup scripts, worktree setup/workflows, apply/merge/PR/conflicts, missing sessions/worktrees, and agent-manager.json recovery.","<skill>
+    <name>kilo-config</name>
+    <description>Guide for Kilo configuration: config paths, kilo.json fields, comm"

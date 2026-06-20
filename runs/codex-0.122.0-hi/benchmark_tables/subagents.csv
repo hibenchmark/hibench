@@ -1,0 +1,4 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,codex-0.122.0-hi,codex,0.122.0,1,1,subagent_1,text_mention,False,tools.7.description,6181,1246,"
+        
+        - gpt-5.3-codex (`gpt-5.3-codex`): Latest frontier agentic coding model. Default reasoning effort: med"

@@ -1,0 +1,10 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,openclaw-2026.5.22-hi,openclaw,2026.5.22,1,1,subagent_1,text_mention,False,input.0.content,24778,5644,"You are a personal assistant running inside OpenClaw.
+## Tooling
+Available tools are policy-filtered. Names are case-sen"
+hibench.benchmark.v1,openclaw-2026.5.22-hi,openclaw,2026.5.22,1,2,subagent_2,text_mention,False,tools.0.description,63,14,"List agent ids allowed for `sessions_spawn runtime=""subagent""`."
+hibench.benchmark.v1,openclaw-2026.5.22-hi,openclaw,2026.5.22,1,3,subagent_3,text_mention,False,tools.21.description,332,74,"Spawn clean child session; default `runtime=""subagent""`. `mode=""run""` one-shot background work. Subagents inherit parent"
+hibench.benchmark.v1,openclaw-2026.5.22-hi,openclaw,2026.5.22,1,4,subagent_4,text_mention,False,tools.21.parameters.properties.runtime.enum.0,8,2,subagent
+hibench.benchmark.v1,openclaw-2026.5.22-hi,openclaw,2026.5.22,1,5,subagent_5,text_mention,False,tools.21.parameters.properties.lightContext.description,49,11,"Light bootstrap context; runtime=""subagent"" only."
+hibench.benchmark.v1,openclaw-2026.5.22-hi,openclaw,2026.5.22,1,6,subagent_6,text_mention,False,tools.22.description,79,16,End current turn. Use after spawning subagents; results arrive as next message.
+hibench.benchmark.v1,openclaw-2026.5.22-hi,openclaw,2026.5.22,1,7,subagents,tool_declaration,True,tools.23,389,94,"{""description"":""List/kill/steer spawned subagents for requester session. If sessions_yield exists, use it for completion"

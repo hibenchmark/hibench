@@ -1,0 +1,4 @@
+You appear to have multiple instances of Solid. This can lead to unexpected behavior.
+Performing one time database migration, may take a few minutes...
+sqlite-migration:done
+Database migration complete.

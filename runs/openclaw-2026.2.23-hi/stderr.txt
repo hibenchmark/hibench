@@ -1,0 +1,1 @@
+[agent/embedded] embedded run agent end: runId=f1c249d3-86b7-4afe-9d27-ebe493378aba isError=true error=Connection error.

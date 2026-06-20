@@ -1,0 +1,148 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,1,slack-standup-digest,/openhands-home/home/.openhands/cache/skills/public-skills/skills/slack-standup-digest/SKILL.md,instructions,565,130,"Create an automation that generates an async standup digest from Slack. Searches selected channels for messages since the previous workday, groups updates by project, highlights blockers and decisions... [43 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/slack-standup-digest/SKILL.md for complete information]","<skill>
+    <name>slack-standup-digest</name>
+    <description>Create an automation that generates an async standup dige"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,2,theme-factory,/openhands-home/home/.openhands/cache/skills/public-skills/skills/theme-factory/SKILL.md,instructions,544,129,"Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact t... [62 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/theme-factory/SKILL.md for complete information]","<skill>
+    <name>theme-factory</name>
+    <description>Toolkit for styling artifacts with a theme. These artifacts can"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,3,incident-retrospective,/openhands-home/home/.openhands/cache/skills/public-skills/skills/incident-retrospective/SKILL.md,instructions,571,124,"Create an automation that drafts incident retrospectives. Gathers incident-channel messages from Slack, collects linked tickets and follow-ups from Linear, and publishes a retrospective draft to Notio... [76 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/incident-retrospective/SKILL.md for complete information]","<skill>
+    <name>incident-retrospective</name>
+    <description>Create an automation that drafts incident retrospective"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,4,flarglebargle,/openhands-home/home/.openhands/cache/skills/public-skills/skills/flarglebargle/SKILL.md,instructions,334,84,"A test skill that responds to the magic word ""flarglebargle"" with a compliment. Use for testing skill activation and trigger functionality.","<skill>
+    <name>flarglebargle</name>
+    <description>A test skill that responds to the magic word ""flarglebargle"" wit"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,5,iterate,/openhands-home/home/.openhands/cache/skills/public-skills/skills/iterate/SKILL.md,instructions,526,127,"Iterate on a GitHub pull request — drive it through CI, code review, and QA until it is merge-ready. Poll verification layers with `gh` CLI, diagnose and fix CI failures, address review feedback, retr... [76 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/iterate/SKILL.md for complete information]","<skill>
+    <name>iterate</name>
+    <description>Iterate on a GitHub pull request — drive it through CI, code review, a"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,6,openhands-api,/openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-api/SKILL.md,instructions,544,126,"Reference skill for the OpenHands Cloud REST API (V1), including how to start additional cloud conversations for fresh-context or delegated work. Use when you need to automate common OpenHands Cloud a... [79 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-api/SKILL.md for complete information]","<skill>
+    <name>openhands-api</name>
+    <description>Reference skill for the OpenHands Cloud REST API (V1), including"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,7,discord,/openhands-home/home/.openhands/cache/skills/public-skills/skills/discord/SKILL.md,instructions,526,124,"Build and automate Discord integrations (bots, webhooks, slash commands, and REST API workflows). Use when the user mentions Discord, a Discord server/guild, channels, webhooks, bot tokens, slash comm... [53 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/discord/SKILL.md for complete information]","<skill>
+    <name>discord</name>
+    <description>Build and automate Discord integrations (bots, webhooks, slash command"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,8,datadog,/openhands-home/home/.openhands/cache/skills/public-skills/skills/datadog/SKILL.md,instructions,370,89,"Query and analyze Datadog logs, metrics, APM traces, and monitors using the Datadog API. Use when debugging production issues, monitoring application performance, or investigating alerts.","<skill>
+    <name>datadog</name>
+    <description>Query and analyze Datadog logs, metrics, APM traces, and monitors usin"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,9,agent-memory,/openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-memory/SKILL.md,instructions,392,88,"Persist and retrieve repository-specific knowledge using AGENTS.md files. Use when you want to save important information about a codebase (build commands, code style, workflows) for future sessions.","<skill>
+    <name>agent-memory</name>
+    <description>Persist and retrieve repository-specific knowledge using AGENTS.m"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,10,code-review,/openhands-home/home/.openhands/cache/skills/public-skills/skills/code-review/SKILL.md,instructions,538,120,"Rigorous code review focusing on data structures, simplicity, security, pragmatism, and risk/safety evaluation. Provides brutally honest, actionable feedback on pull requests or merge requests, includ... [72 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/code-review/SKILL.md for complete information]","<skill>
+    <name>code-review</name>
+    <description>Rigorous code review focusing on data structures, simplicity, secu"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,11,qa-changes,/openhands-home/home/.openhands/cache/skills/public-skills/skills/qa-changes/SKILL.md,instructions,536,131,"This skill should be used when the user asks to ""QA a pull request"", ""test PR changes"", ""verify a PR works"", ""functionally test changes"", or when an automated workflow triggers QA validation of code c... [125 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/qa-changes/SKILL.md for complete information]","<skill>
+    <name>qa-changes</name>
+    <description>This skill should be used when the user asks to ""QA a pull request"""
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,12,frontend-design,/openhands-home/home/.openhands/cache/skills/public-skills/skills/frontend-design/SKILL.md,instructions,551,117,"Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples inclu... [199 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/frontend-design/SKILL.md for complete information]","<skill>
+    <name>frontend-design</name>
+    <description>Create distinctive, production-grade frontend interfaces with"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,13,github-repo-monitor,/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-repo-monitor/SKILL.md,instructions,563,136,"This skill should be used when the user asks to ""monitor a GitHub repository"", ""watch GitHub for issues or PRs"", ""respond to @OpenHands mentions on GitHub"", ""set up an OpenHands GitHub integration"", ""... [285 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/github-repo-monitor/SKILL.md for complete information]","<skill>
+    <name>github-repo-monitor</name>
+    <description>This skill should be used when the user asks to ""monitor a"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,14,gitlab,/openhands-home/home/.openhands/cache/skills/public-skills/skills/gitlab/SKILL.md,instructions,359,85,"Interact with GitLab repositories, merge requests, and APIs using the GITLAB_TOKEN environment variable. Use when working with code hosted on GitLab or managing GitLab resources.","<skill>
+    <name>gitlab</name>
+    <description>Interact with GitLab repositories, merge requests, and APIs using the G"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,15,skill-creator,/openhands-home/home/.openhands/cache/skills/public-skills/skills/skill-creator/SKILL.md,instructions,544,130,"This skill should be used when the user wants to ""create a skill"", ""write a new skill"", ""improve skill description"", ""organize skill content"", or needs guidance on skill structure, progressive disclos... [41 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/skill-creator/SKILL.md for complete information]","<skill>
+    <name>skill-creator</name>
+    <description>This skill should be used when the user wants to ""create a skill"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,16,research-brief,/openhands-home/home/.openhands/cache/skills/public-skills/skills/research-brief/SKILL.md,instructions,392,88,"Create an automation that writes a recurring research brief. Uses Tavily MCP for web research and Notion MCP to publish the final brief with executive summary, implications, and source citations.","<skill>
+    <name>research-brief</name>
+    <description>Create an automation that writes a recurring research brief. Us"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,17,security,/openhands-home/home/.openhands/cache/skills/public-skills/skills/security/SKILL.md,instructions,385,80,"Security best practices for secure coding, authentication, authorization, and data protection. Use when developing features that handle sensitive data, user authentication, or require security review.","<skill>
+    <name>security</name>
+    <description>Security best practices for secure coding, authentication, authorizat"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,18,deno,/openhands-home/home/.openhands/cache/skills/public-skills/skills/deno/SKILL.md,instructions,517,127,"If the project uses deno, use this skill. Use this skill to initialize and work with Deno projects, add/remove dependencies (JSR and npm), run tasks and scripts with appropriate permissions, and use b... [32 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/deno/SKILL.md for complete information]","<skill>
+    <name>deno</name>
+    <description>If the project uses deno, use this skill. Use this skill to initialize an"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,19,evidence-based-citations,/openhands-home/home/.openhands/cache/skills/public-skills/skills/evidence-based-citations/SKILL.md,instructions,576,131,"Back factual claims and field values with official, verifiable sources. Use when the user asks to fill fields, answer questions, or make claims that must be supported by an exact quote and an official... [6 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/evidence-based-citations/SKILL.md for complete information]","<skill>
+    <name>evidence-based-citations</name>
+    <description>Back factual claims and field values with official, v"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,20,linear,/openhands-home/home/.openhands/cache/skills/public-skills/skills/linear/SKILL.md,instructions,522,120,"Interact with Linear project management - query issues, update status, create tickets, and manage workflows using the Linear GraphQL API. Use when working with Linear tickets, sprints, or project trac... [5 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/linear/SKILL.md for complete information]","<skill>
+    <name>linear</name>
+    <description>Interact with Linear project management - query issues, update status,"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,21,add-skill,/openhands-home/home/.openhands/cache/skills/public-skills/skills/add-skill/SKILL.md,instructions,533,133,"Add an external skill from a GitHub repository to the current workspace. Use when users want to import, install, or add a skill from a GitHub URL (e.g., `/add-skill https://github.com/OpenHands/extens... [181 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/add-skill/SKILL.md for complete information]","<skill>
+    <name>add-skill</name>
+    <description>Add an external skill from a GitHub repository to the current worksp"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,22,uv,/openhands-home/home/.openhands/cache/skills/public-skills/skills/uv/SKILL.md,instructions,511,123,"If the project uses uv, use this skill. Use this skill to create/manage Python projects and environments with `uv`, add/remove dependencies, sync a project from `uv.lock`, and run commands in the proj... [16 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/uv/SKILL.md for complete information]","<skill>
+    <name>uv</name>
+    <description>If the project uses uv, use this skill. Use this skill to create/manage Pyt"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,23,agent-sdk-builder,/openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-sdk-builder/SKILL.md,instructions,556,123,Guided workflow for building custom AI agents using the OpenHands Software Agent SDK. Use when you want to create a new agent through an interactive interview process that gathers requirements and gen... [28 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-sdk-builder/SKILL.md for complete information],"<skill>
+    <name>agent-sdk-builder</name>
+    <description>Guided workflow for building custom AI agents using the Open"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,24,slack-channel-monitor,/openhands-home/home/.openhands/cache/skills/public-skills/skills/slack-channel-monitor/SKILL.md,instructions,569,131,"This skill should be used when the user asks to ""monitor a Slack channel"", ""watch Slack for messages"", ""create a Slack bot that responds to mentions"", ""set up an OpenHands Slack integration"", ""trigger... [282 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/slack-channel-monitor/SKILL.md for complete information]","<skill>
+    <name>slack-channel-monitor</name>
+    <description>This skill should be used when the user asks to ""monitor"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,25,bitbucket,/openhands-home/home/.openhands/cache/skills/public-skills/skills/bitbucket/SKILL.md,instructions,377,85,Interact with Bitbucket repositories and pull requests using the BITBUCKET_TOKEN environment variable. Use when working with code hosted on Bitbucket or managing Bitbucket resources via API.,"<skill>
+    <name>bitbucket</name>
+    <description>Interact with Bitbucket repositories and pull requests using the BIT"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,26,swift-linux,/openhands-home/home/.openhands/cache/skills/public-skills/skills/swift-linux/SKILL.md,instructions,377,80,Install and configure Swift programming language on Debian Linux for server-side development. Use when building Swift applications on Linux or setting up a Swift development environment.,"<skill>
+    <name>swift-linux</name>
+    <description>Install and configure Swift programming language on Debian Linux f"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,27,code-simplifier,/openhands-home/home/.openhands/cache/skills/public-skills/skills/code-simplifier/SKILL.md,instructions,551,126,"Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Analyzes recently modified code across three dimensions - code reuse, code quality, and ef... [235 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/code-simplifier/SKILL.md for complete information]","<skill>
+    <name>code-simplifier</name>
+    <description>Simplifies and refines code for clarity, consistency, and main"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,28,openhands-automation,/openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-automation/SKILL.md,instructions,565,134,"This skill should be used when the user asks to ""create an automation"", ""schedule a task"", ""set up a cron job"", ""webhook integration"", ""event-triggered automation"", or mentions automations, scheduled ... [61 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-automation/SKILL.md for complete information]","<skill>
+    <name>openhands-automation</name>
+    <description>This skill should be used when the user asks to ""create a"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,29,agent-creator,/openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-creator/SKILL.md,instructions,545,124,"Create file-based sub-agents as Markdown files following the OpenHands SDK format. Guides the user through a structured interview to collect requirements, then generates a ready-to-deploy agent file. ... [131 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-creator/SKILL.md for complete information]","<skill>
+    <name>agent-creator</name>
+    <description>Create file-based sub-agents as Markdown files following the Ope"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,30,pdflatex,/openhands-home/home/.openhands/cache/skills/public-skills/skills/pdflatex/SKILL.md,instructions,351,88,"Install and use pdflatex to compile LaTeX documents into PDFs on Linux. Use when generating academic papers, research publications, or any documents written in LaTeX.","<skill>
+    <name>pdflatex</name>
+    <description>Install and use pdflatex to compile LaTeX documents into PDFs on Linu"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,31,ssh,/openhands-home/home/.openhands/cache/skills/public-skills/skills/ssh/SKILL.md,instructions,514,115,"Establish and manage SSH connections to remote machines, including key generation, configuration, and file transfers. Use when connecting to remote servers, executing remote commands, or transferring ... [14 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/ssh/SKILL.md for complete information]","<skill>
+    <name>ssh</name>
+    <description>Establish and manage SSH connections to remote machines, including key gen"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,32,prd,/openhands-home/home/.openhands/cache/skills/public-skills/skills/prd/SKILL.md,instructions,324,83,"Generate a Product Requirements Document (PRD) for a new feature. Use when planning a feature, starting a new project, or when asked to create a PRD.","<skill>
+    <name>prd</name>
+    <description>Generate a Product Requirements Document (PRD) for a new feature. Use when"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,33,spark-version-upgrade,/openhands-home/home/.openhands/cache/skills/public-skills/skills/spark-version-upgrade/SKILL.md,instructions,391,95,"Upgrade Apache Spark applications between major versions (2.x→3.x, 3.x→4.x). Covers build files, deprecated APIs, configuration changes, SQL/DataFrame updates, and test validation.","<skill>
+    <name>spark-version-upgrade</name>
+    <description>Upgrade Apache Spark applications between major versions"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,34,vercel,/openhands-home/home/.openhands/cache/skills/public-skills/skills/vercel/SKILL.md,instructions,359,83,"Deploy and manage applications on Vercel, including preview deployments and deployment protection. Use when working with Vercel-hosted projects or configuring Vercel deployments.","<skill>
+    <name>vercel</name>
+    <description>Deploy and manage applications on Vercel, including preview deployments"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,35,release-notes,/openhands-home/home/.openhands/cache/skills/public-skills/skills/release-notes/SKILL.md,instructions,386,87,"Generate formatted changelogs from git history since the last release tag. Use when preparing release notes that categorize changes into breaking changes, features, fixes, and other sections.","<skill>
+    <name>release-notes</name>
+    <description>Generate formatted changelogs from git history since the last re"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,36,github-pr-review,/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-pr-review/SKILL.md,instructions,301,71,"Post PR review comments using the GitHub API with inline comments, suggestions, and priority labels.","<skill>
+    <name>github-pr-review</name>
+    <description>Post PR review comments using the GitHub API with inline comm"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,37,openhands-sdk,/openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-sdk/SKILL.md,instructions,544,126,"Reference skill for the OpenHands Software Agent SDK - the Python framework for building AI agents that write software. Use when you need to build agents with the SDK, create custom tools, configure L... [88 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-sdk/SKILL.md for complete information]","<skill>
+    <name>openhands-sdk</name>
+    <description>Reference skill for the OpenHands Software Agent SDK - the Pytho"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,38,azure-devops,/openhands-home/home/.openhands/cache/skills/public-skills/skills/azure-devops/SKILL.md,instructions,540,126,"Interact with Azure DevOps repositories, pull requests, and APIs using the AZURE_DEVOPS_TOKEN environment variable. Use when working with code hosted on Azure DevOps or managing Azure DevOps resources... [1 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/azure-devops/SKILL.md for complete information]","<skill>
+    <name>azure-devops</name>
+    <description>Interact with Azure DevOps repositories, pull requests, and APIs"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,39,npm,/openhands-home/home/.openhands/cache/skills/public-skills/skills/npm/SKILL.md,instructions,340,73,Handle npm package installation in non-interactive environments by piping confirmations. Use when installing Node.js packages that require user confirmation prompts.,"<skill>
+    <name>npm</name>
+    <description>Handle npm package installation in non-interactive environments by piping"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,40,docker,/openhands-home/home/.openhands/cache/skills/public-skills/skills/docker/SKILL.md,instructions,364,78,"Run Docker commands within a container environment, including starting the Docker daemon and managing containers. Use when building, running, or managing Docker containers and images.","<skill>
+    <name>docker</name>
+    <description>Run Docker commands within a container environment, including starting"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,41,jupyter,/openhands-home/home/.openhands/cache/skills/public-skills/skills/jupyter/SKILL.md,instructions,525,122,"Read, modify, execute, and convert Jupyter notebooks programmatically. Use when working with .ipynb files for data science workflows, including editing cells, clearing outputs, or converting to other ... [8 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/jupyter/SKILL.md for complete information]","<skill>
+    <name>jupyter</name>
+    <description>Read, modify, execute, and convert Jupyter notebooks programmatically."
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,42,learn-from-code-review,/openhands-home/home/.openhands/cache/skills/public-skills/skills/learn-from-code-review/SKILL.md,instructions,572,133,"Distill code review feedback from GitHub PRs into reusable skills and guidelines. This skill should be used when users ask to ""learn from code reviews"", ""distill PR feedback"", ""improve coding standard... [108 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/learn-from-code-review/SKILL.md for complete information]","<skill>
+    <name>learn-from-code-review</name>
+    <description>Distill code review feedback from GitHub PRs into reusa"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,43,linear-triage,/openhands-home/home/.openhands/cache/skills/public-skills/skills/linear-triage/SKILL.md,instructions,544,130,"Create an automation that triages new Linear issues. Inspects the issue title, description, team, customer, priority, and recent related issues via Linear MCP. Suggests labels, priority, likely owner,... [45 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/linear-triage/SKILL.md for complete information]","<skill>
+    <name>linear-triage</name>
+    <description>Create an automation that triages new Linear issues. Inspects th"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,44,github,/openhands-home/home/.openhands/cache/skills/public-skills/skills/github/SKILL.md,instructions,522,120,"Interact with GitHub repositories, pull requests, issues, and workflows using the GITHUB_TOKEN environment variable and GitHub CLI. Use when working with code hosted on GitHub or managing GitHub resou... [5 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/github/SKILL.md for complete information]","<skill>
+    <name>github</name>
+    <description>Interact with GitHub repositories, pull requests, issues, and workflows"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,45,notion,/openhands-home/home/.openhands/cache/skills/public-skills/skills/notion/SKILL.md,instructions,338,82,"Create, search, and update Notion pages/databases using the Notion API. Use for documenting work, generating runbooks, and automating knowledge base updates.","<skill>
+    <name>notion</name>
+    <description>Create, search, and update Notion pages/databases using the Notion API."
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,46,github-actions,/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-actions/SKILL.md,instructions,357,80,"Create, debug, and test GitHub Actions workflows and custom actions. Use when building CI/CD pipelines, automating workflows, or troubleshooting GitHub Actions.","<skill>
+    <name>github-actions</name>
+    <description>Create, debug, and test GitHub Actions workflows and custom act"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,47,kubernetes,/openhands-home/home/.openhands/cache/skills/public-skills/skills/kubernetes/SKILL.md,instructions,354,77,Set up and manage local Kubernetes clusters using KIND (Kubernetes IN Docker). Use when testing Kubernetes applications locally or developing cloud-native workloads.,"<skill>
+    <name>kubernetes</name>
+    <description>Set up and manage local Kubernetes clusters using KIND (Kubernetes"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,48,add-javadoc,/openhands-home/home/.openhands/cache/skills/public-skills/skills/add-javadoc/SKILL.md,instructions,350,77,"Add comprehensive JavaDoc documentation to Java classes and methods. Use when documenting Java code, adding API documentation, or improving code documentation.","<skill>
+    <name>add-javadoc</name>
+    <description>Add comprehensive JavaDoc documentation to Java classes and method"
+hibench.benchmark.v1,openhands-1.11.0-hi,openhands,1.11.0,1,49,github-pr-reviewer,/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-pr-reviewer/SKILL.md,instructions,559,124,"Create an automation that reviews GitHub pull requests when a configurable trigger label is applied. Polls GitHub deterministically, starts one OpenHands review conversation per label event, inspects ... [83 characters truncated. View /openhands-home/home/.openhands/cache/skills/public-skills/skills/github-pr-reviewer/SKILL.md for complete information]","<skill>
+    <name>github-pr-reviewer</name>
+    <description>Create an automation that reviews GitHub pull requests when"

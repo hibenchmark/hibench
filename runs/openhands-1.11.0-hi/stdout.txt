@@ -1,0 +1,82 @@
+OpenHands CLI terminal UI may not work correctly in this environment: Rich detected a non-interactive or unsupported terminal; interactive UI may not render correctly
+To override Rich's detection, you can set TTY_INTERACTIVE=1 (and optionally TTY_COMPATIBLE=1).
+Initializing agent...
+✓ Agent initialized with model: openai/gpt-[1m5[0m
+--JSON Event--
+{
+  "activated_skills": [],
+  "critic_result": null,
+  "extended_content": [],
+  "id": "e29a0146-e0b7-4962-a1d3-4e70ff1ab607",
+  "kind": "MessageEvent",
+  "llm_message": {
+    "content": [
+      {
+        "cache_prompt": false,
+        "enable_truncation": true,
+        "text": "Hi",
+        "type": "text"
+      }
+    ],
+    "name": null,
+    "reasoning_content": null,
+    "responses_reasoning_item": null,
+    "role": "user",
+    "thinking_blocks": [],
+    "tool_call_id": null,
+    "tool_calls": null
+  },
+  "llm_response_id": null,
+  "sender": null,
+  "source": "user",
+  "timestamp": "2026-06-19T13:37:03.374137"
+}
+[?25l⠋ Agent is working
+[2K--JSON Event--
+⠋ Agent is working
+[2K{
+  "activated_skills": [],
+  "critic_result": null,
+  "extended_content": [],
+  "id": "50a600ba-f09f-4853-a918-b5dbf745e890",
+  "kind": "MessageEvent",
+  "llm_message": {
+    "content": [
+      {
+        "cache_prompt": false,
+        "enable_truncation": true,
+        "text": "HiBench capture complete.",
+        "type": "text"
+      }
+    ],
+    "name": null,
+    "reasoning_content": null,
+    "responses_reasoning_item": null,
+    "role": "assistant",
+    "thinking_blocks": [],
+    "tool_call_id": null,
+    "tool_calls": null
+  },
+  "llm_response_id": 
+"resp_bGl0ZWxsbTpjdXN0b21fbGxtX3Byb3ZpZGVyOm9wZW5haTttb2RlbF9pZDpOb25lO3Jlc3Bvbn
+NlX2lkOnJlc3BfaGliZW5jaF9jYXB0dXJl",
+  "sender": null,
+  "source": "agent",
+  "timestamp": "2026-06-19T13:37:03.460745"
+⠋ Agent is working
+[2K}
+⠋ Agent is working
+[2K⠋ Agent finished
+[?25h
+[1A[2K
+───────────────────────────── CONVERSATION SUMMARY ─────────────────────────────
+[1mNumber of agent messages:[0m [1m2[0m
+[1mLast message sent by the agent:[0m
+╭─ Agent ───────────────────╮
+│ HiBench capture complete. │
+╰───────────────────────────╯
+────────────────────────────────────────────────────────────────────────────────
+Goodbye! 👋
+Conversation ID: cbdfd9094af24bb594b2c729497d5787
+Hint: run openhands --resume cbdfd909-4af2-4bb5-94b2-c729497d5787 to resume this
+conversation.

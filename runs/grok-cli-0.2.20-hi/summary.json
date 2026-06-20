@@ -1,0 +1,1781 @@
+{
+  "run_dir": "runs/grok-cli-0.2.20-hi",
+  "request_count": 2,
+  "post_request_count": 2,
+  "primary_request_index": 2,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 71039,
+    "body_chars": 70945,
+    "body_tokens": 15793,
+    "text_fields": {
+      "count": 4,
+      "chars": 16015,
+      "tokens": 3367,
+      "by_category": {
+        "system_prompt": {
+          "count": 2,
+          "chars": 15815,
+          "tokens": 3316
+        },
+        "environment_context": {
+          "count": 1,
+          "chars": 171,
+          "tokens": 41
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 29,
+          "tokens": 10
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 12549,
+          "tokens": 2523
+        },
+        "injected_user_context": {
+          "count": 1,
+          "chars": 171,
+          "tokens": 41
+        },
+        "skills_instructions": {
+          "count": 1,
+          "chars": 3266,
+          "tokens": 793
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 29,
+          "tokens": 10
+        }
+      },
+      "fields": [
+        {
+          "path": "messages.0.content",
+          "role": "system",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 12549,
+          "tokens": 2523,
+          "preview": "You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y"
+        },
+        {
+          "path": "messages.1.content",
+          "role": "user",
+          "category": "environment_context",
+          "source": "injected_user_context",
+          "chars": 171,
+          "tokens": 41,
+          "preview": "<user_info>\nOS Version: linux\nShell: /bin/sh\nWorkspace Path: /workspace\nNote: Prefer using relative paths over absolute"
+        },
+        {
+          "path": "messages.2.content",
+          "role": "user",
+          "category": "system_prompt",
+          "source": "skills_instructions",
+          "chars": 3266,
+          "tokens": 793,
+          "preview": "<system-reminder>\nThe following skills are available for use:\n\n- create-skill: Interactively create a new Grok skill (SK"
+        },
+        {
+          "path": "messages.3.content",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 29,
+          "tokens": 10,
+          "preview": "<user_query>\nHi\n</user_query>"
+        }
+      ]
+    },
+    "skills": {
+      "count": 8,
+      "tokens": 793,
+      "definition_tokens": 773,
+      "instruction_field_count": 1,
+      "instruction_fields": [
+        {
+          "path": "messages.2.content",
+          "role": "user",
+          "chars": 3266,
+          "tokens": 793,
+          "preview": "<system-reminder>\nThe following skills are available for use:\n\n- create-skill: Interactively create a new Grok skill (SK"
+        }
+      ],
+      "items": [
+        {
+          "skill_index": 1,
+          "name": "create-skill",
+          "description": "Interactively create a new Grok skill (SKILL.md + optional scripts/references)",
+          "file": "/grok-home/home/.grok/skills/create-skill/SKILL.md",
+          "source_path": "messages.2.content",
+          "chars": 259,
+          "tokens": 69,
+          "preview": "- create-skill: Interactively create a new Grok skill (SKILL.md + optional scripts/references)\n  Use when: Use when the"
+        },
+        {
+          "skill_index": 2,
+          "name": "help",
+          "description": "Grok documentation and configuration help",
+          "file": "/grok-home/home/.grok/skills/help/SKILL.md",
+          "source_path": "messages.2.content",
+          "chars": 351,
+          "tokens": 77,
+          "preview": "- help: Grok documentation and configuration help\n  Use when: Use when users ask about setup, configuration, MCP servers"
+        },
+        {
+          "skill_index": 3,
+          "name": "docx",
+          "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing ima…",
+          "file": "/grok-home/home/.grok/skills/docx/SKILL.md",
+          "source_path": "messages.2.content",
+          "chars": 466,
+          "tokens": 107,
+          "preview": "- docx: Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Trigge"
+        },
+        {
+          "skill_index": 4,
+          "name": "pptx",
+          "description": "Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; work…",
+          "file": "/grok-home/home/.grok/skills/pptx/SKILL.md",
+          "source_path": "messages.2.content",
+          "chars": 464,
+          "tokens": 110,
+          "preview": "- pptx: Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating"
+        },
+        {
+          "skill_index": 5,
+          "name": "best-of-n",
+          "description": "Implement a task N ways in parallel and pick the best. Spawns multiple subagents in isolated worktrees, evaluates all candidates, and applies the winner",
+          "file": "/grok-home/home/.grok/skills/best-of-n/SKILL.md",
+          "source_path": "messages.2.content",
+          "chars": 354,
+          "tokens": 89,
+          "preview": "- best-of-n: Implement a task N ways in parallel and pick the best. Spawns multiple subagents in isolated worktrees, eva"
+        },
+        {
+          "skill_index": 6,
+          "name": "check-work",
+          "description": "Check your work with a verification subagent. Spawns a verifier that reviews diffs, runs builds and tests, and evaluates correctness",
+          "file": "/grok-home/home/.grok/skills/check-work/SKILL.md",
+          "source_path": "messages.2.content",
+          "chars": 345,
+          "tokens": 88,
+          "preview": "- check-work: Check your work with a verification subagent. Spawns a verifier that reviews diffs, runs builds and tests,"
+        },
+        {
+          "skill_index": 7,
+          "name": "imagine",
+          "description": "How to use the image_gen and image_edit tool calls in Grok Build: when to build a visual with code instead of generating it, prompt-craft, reference-first handling of real people, factual grounding, and asset-consistency. Load this whenever generating or editing an image is on the table, i.e. when an image_gen or image_edit call is being considered or about to be made. Tool-usage-driven, not tr…",
+          "file": "/grok-home/home/.grok/skills/imagine/SKILL.md",
+          "source_path": "messages.2.content",
+          "chars": 472,
+          "tokens": 111,
+          "preview": "- imagine: How to use the image_gen and image_edit tool calls in Grok Build: when to build a visual with code instead of"
+        },
+        {
+          "skill_index": 8,
+          "name": "xlsx",
+          "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger espec…",
+          "file": "/grok-home/home/.grok/skills/xlsx/SKILL.md",
+          "source_path": "messages.2.content",
+          "chars": 485,
+          "tokens": 122,
+          "preview": "- xlsx: Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wa"
+        }
+      ]
+    },
+    "tools": {
+      "count": 25,
+      "names": [
+        "ask_user_question",
+        "enter_plan_mode",
+        "exit_plan_mode",
+        "get_command_or_subagent_output",
+        "grep",
+        "image_edit",
+        "image_gen",
+        "image_to_video",
+        "kill_command_or_subagent",
+        "list_dir",
+        "monitor",
+        "read_file",
+        "reference_to_video",
+        "run_terminal_command",
+        "scheduler_create",
+        "scheduler_delete",
+        "scheduler_list",
+        "search_replace",
+        "search_tool",
+        "spawn_subagent",
+        "todo_write",
+        "update_goal",
+        "use_tool",
+        "wait_commands_or_subagents",
+        "write"
+      ],
+      "tokens": 12247,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "run_terminal_command",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 4905,
+          "tokens": 1110,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "read_file",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 3325,
+          "tokens": 761,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "search_replace",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 2062,
+          "tokens": 440,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "list_dir",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 755,
+          "tokens": 160,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "grep",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 3515,
+          "tokens": 826,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "kill_command_or_subagent",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 785,
+          "tokens": 186,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "todo_write",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1553,
+          "tokens": 345,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "get_command_or_subagent_output",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 938,
+          "tokens": 222,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "wait_commands_or_subagents",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 989,
+          "tokens": 243,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 10,
+          "array_index": 9,
+          "path": "tools.9",
+          "name": "spawn_subagent",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 10214,
+          "tokens": 2160,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 11,
+          "array_index": 10,
+          "path": "tools.10",
+          "name": "scheduler_create",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1346,
+          "tokens": 321,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 12,
+          "array_index": 11,
+          "path": "tools.11",
+          "name": "scheduler_delete",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 761,
+          "tokens": 162,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 13,
+          "array_index": 12,
+          "path": "tools.12",
+          "name": "scheduler_list",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 303,
+          "tokens": 67,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 14,
+          "array_index": 13,
+          "path": "tools.13",
+          "name": "monitor",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 2732,
+          "tokens": 686,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 15,
+          "array_index": 14,
+          "path": "tools.14",
+          "name": "search_tool",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 782,
+          "tokens": 177,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 16,
+          "array_index": 15,
+          "path": "tools.15",
+          "name": "use_tool",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 987,
+          "tokens": 226,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 17,
+          "array_index": 16,
+          "path": "tools.16",
+          "name": "update_goal",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1455,
+          "tokens": 317,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 18,
+          "array_index": 17,
+          "path": "tools.17",
+          "name": "enter_plan_mode",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 3616,
+          "tokens": 797,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 19,
+          "array_index": 18,
+          "path": "tools.18",
+          "name": "exit_plan_mode",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 2446,
+          "tokens": 527,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 20,
+          "array_index": 19,
+          "path": "tools.19",
+          "name": "ask_user_question",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 2751,
+          "tokens": 588,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 21,
+          "array_index": 20,
+          "path": "tools.20",
+          "name": "image_gen",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 987,
+          "tokens": 215,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 22,
+          "array_index": 21,
+          "path": "tools.21",
+          "name": "image_edit",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1837,
+          "tokens": 485,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 23,
+          "array_index": 22,
+          "path": "tools.22",
+          "name": "image_to_video",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1990,
+          "tokens": 434,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 24,
+          "array_index": 23,
+          "path": "tools.23",
+          "name": "reference_to_video",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 2402,
+          "tokens": 565,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 25,
+          "array_index": 24,
+          "path": "tools.24",
+          "name": "write",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1056,
+          "tokens": 227,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 4,
+      "paths": [
+        "messages.0.content",
+        "messages.2.content",
+        "tools.14.function.description",
+        "tools.15.function.description"
+      ],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 4,
+      "mention_tokens": 3410,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "mcp_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "messages.0.content",
+          "chars": 12549,
+          "tokens": 2523,
+          "preview": "You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y"
+        },
+        {
+          "marker_index": 2,
+          "name": "mcp_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "messages.2.content",
+          "chars": 3266,
+          "tokens": 793,
+          "preview": "<system-reminder>\nThe following skills are available for use:\n\n- create-skill: Interactively create a new Grok skill (SK"
+        },
+        {
+          "marker_index": 3,
+          "name": "mcp_3",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.14.function.description",
+          "chars": 128,
+          "tokens": 25,
+          "preview": "Search for MCP tools by keyword and retrieve their input schemas.\n\nIf status is \"partial\", some servers may still be con"
+        },
+        {
+          "marker_index": 4,
+          "name": "mcp_4",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.15.function.description",
+          "chars": 313,
+          "tokens": 69,
+          "preview": "Call an MCP integration tool. You MUST call `search_tool` first to retrieve the tool’s input schema before calling this"
+        }
+      ]
+    },
+    "subagents": {
+      "marker_count": 23,
+      "paths": [
+        "messages.0.content",
+        "messages.2.content",
+        "tools.0.function.description",
+        "tools.13.function.description",
+        "tools.13.function.parameters.properties.persistent.description",
+        "tools.17.function.description",
+        "tools.5",
+        "tools.5.function.description",
+        "tools.5.function.name",
+        "tools.7",
+        "tools.7.function.description",
+        "tools.7.function.name",
+        "tools.8",
+        "tools.8.function.description",
+        "tools.8.function.name",
+        "tools.9",
+        "tools.9.function.description",
+        "tools.9.function.name",
+        "tools.9.function.parameters.properties.background.description",
+        "tools.9.function.parameters.properties.cwd.description",
+        "tools.9.function.parameters.properties.prompt.description",
+        "tools.9.function.parameters.properties.resume_from.description",
+        "tools.9.function.parameters.properties.subagent_type.description"
+      ],
+      "count": 4,
+      "tokens": 2811,
+      "mention_count": 6,
+      "mention_tokens": 5298,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "subagent_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "messages.0.content",
+          "chars": 12549,
+          "tokens": 2523,
+          "preview": "You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y"
+        },
+        {
+          "marker_index": 2,
+          "name": "subagent_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "messages.2.content",
+          "chars": 3266,
+          "tokens": 793,
+          "preview": "<system-reminder>\nThe following skills are available for use:\n\n- create-skill: Interactively create a new Grok skill (SK"
+        },
+        {
+          "marker_index": 3,
+          "name": "subagent_3",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.0.function.description",
+          "chars": 3760,
+          "tokens": 840,
+          "preview": "Run a bash command and return its output.\nIMPORTANT: This tool is for terminal operations like git, npm, docker, etc. DO"
+        },
+        {
+          "marker_index": 4,
+          "name": "kill_command_or_subagent",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.5",
+          "chars": 785,
+          "tokens": 186,
+          "preview": "{\"function\":{\"description\":\"Terminate a running background task, monitor, or subagent.\\n\\nUsage notes:\\n- Pass the task_"
+        },
+        {
+          "marker_index": 5,
+          "name": "get_command_or_subagent_output",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.7",
+          "chars": 938,
+          "tokens": 222,
+          "preview": "{\"function\":{\"description\":\"Get output and status from a background task or subagent.\\n\\nUsage notes:\\n- Use the task_id"
+        },
+        {
+          "marker_index": 6,
+          "name": "wait_commands_or_subagents",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.8",
+          "chars": 989,
+          "tokens": 243,
+          "preview": "{\"function\":{\"description\":\"Wait for multiple background tasks or subagents to complete.\\n\\nUsage notes:\\n- task_ids: li"
+        },
+        {
+          "marker_index": 7,
+          "name": "spawn_subagent",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.9",
+          "chars": 10214,
+          "tokens": 2160,
+          "preview": "{\"function\":{\"description\":\"Launch a new agent to handle complex, multi-step tasks autonomously.\\n\\nThe spawn_subagent t"
+        },
+        {
+          "marker_index": 8,
+          "name": "subagent_8",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.13.function.description",
+          "chars": 1876,
+          "tokens": 475,
+          "preview": "Start a background monitor that streams events from a long-running script. Each stdout line is an event - you can keep w"
+        },
+        {
+          "marker_index": 9,
+          "name": "subagent_9",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.13.function.parameters.properties.persistent.description",
+          "chars": 85,
+          "tokens": 19,
+          "preview": "Run for the lifetime of the session (no timeout). Stop with kill_command_or_subagent."
+        },
+        {
+          "marker_index": 10,
+          "name": "subagent_10",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.17.function.description",
+          "chars": 3031,
+          "tokens": 648,
+          "preview": "Use this tool when a task has genuine ambiguity about the right approach and getting user input before coding would prev"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "model": "grok-build",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "grok-build",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 1112,
+      "body_chars": 1112,
+      "body_tokens": 246,
+      "text_fields": {
+        "count": 2,
+        "chars": 452,
+        "tokens": 94,
+        "by_category": {
+          "system_prompt": {
+            "count": 1,
+            "chars": 423,
+            "tokens": 84
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 29,
+            "tokens": 10
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 423,
+            "tokens": 84
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 29,
+            "tokens": 10
+          }
+        },
+        "fields": [
+          {
+            "path": "messages.0.content",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 423,
+            "tokens": 84,
+            "preview": "You are tasked with generating the session title. The user is asking almost always software engineering related question"
+          },
+          {
+            "path": "messages.1.content",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 29,
+            "tokens": 10,
+            "preview": "<user_query>\nHi\n</user_query>"
+          }
+        ]
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 1,
+        "names": [
+          "session_title"
+        ],
+        "tokens": 79,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "session_title",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 386,
+            "tokens": 79,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "model": "gpt-5",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 71039,
+      "body_chars": 70945,
+      "body_tokens": 15793,
+      "text_fields": {
+        "count": 4,
+        "chars": 16015,
+        "tokens": 3367,
+        "by_category": {
+          "system_prompt": {
+            "count": 2,
+            "chars": 15815,
+            "tokens": 3316
+          },
+          "environment_context": {
+            "count": 1,
+            "chars": 171,
+            "tokens": 41
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 29,
+            "tokens": 10
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 12549,
+            "tokens": 2523
+          },
+          "injected_user_context": {
+            "count": 1,
+            "chars": 171,
+            "tokens": 41
+          },
+          "skills_instructions": {
+            "count": 1,
+            "chars": 3266,
+            "tokens": 793
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 29,
+            "tokens": 10
+          }
+        },
+        "fields": [
+          {
+            "path": "messages.0.content",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 12549,
+            "tokens": 2523,
+            "preview": "You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y"
+          },
+          {
+            "path": "messages.1.content",
+            "role": "user",
+            "category": "environment_context",
+            "source": "injected_user_context",
+            "chars": 171,
+            "tokens": 41,
+            "preview": "<user_info>\nOS Version: linux\nShell: /bin/sh\nWorkspace Path: /workspace\nNote: Prefer using relative paths over absolute"
+          },
+          {
+            "path": "messages.2.content",
+            "role": "user",
+            "category": "system_prompt",
+            "source": "skills_instructions",
+            "chars": 3266,
+            "tokens": 793,
+            "preview": "<system-reminder>\nThe following skills are available for use:\n\n- create-skill: Interactively create a new Grok skill (SK"
+          },
+          {
+            "path": "messages.3.content",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 29,
+            "tokens": 10,
+            "preview": "<user_query>\nHi\n</user_query>"
+          }
+        ]
+      },
+      "skills": {
+        "count": 8,
+        "tokens": 793,
+        "definition_tokens": 773,
+        "instruction_field_count": 1,
+        "instruction_fields": [
+          {
+            "path": "messages.2.content",
+            "role": "user",
+            "chars": 3266,
+            "tokens": 793,
+            "preview": "<system-reminder>\nThe following skills are available for use:\n\n- create-skill: Interactively create a new Grok skill (SK"
+          }
+        ],
+        "items": [
+          {
+            "skill_index": 1,
+            "name": "create-skill",
+            "description": "Interactively create a new Grok skill (SKILL.md + optional scripts/references)",
+            "file": "/grok-home/home/.grok/skills/create-skill/SKILL.md",
+            "source_path": "messages.2.content",
+            "chars": 259,
+            "tokens": 69,
+            "preview": "- create-skill: Interactively create a new Grok skill (SKILL.md + optional scripts/references)\n  Use when: Use when the"
+          },
+          {
+            "skill_index": 2,
+            "name": "help",
+            "description": "Grok documentation and configuration help",
+            "file": "/grok-home/home/.grok/skills/help/SKILL.md",
+            "source_path": "messages.2.content",
+            "chars": 351,
+            "tokens": 77,
+            "preview": "- help: Grok documentation and configuration help\n  Use when: Use when users ask about setup, configuration, MCP servers"
+          },
+          {
+            "skill_index": 3,
+            "name": "docx",
+            "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing ima…",
+            "file": "/grok-home/home/.grok/skills/docx/SKILL.md",
+            "source_path": "messages.2.content",
+            "chars": 466,
+            "tokens": 107,
+            "preview": "- docx: Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Trigge"
+          },
+          {
+            "skill_index": 4,
+            "name": "pptx",
+            "description": "Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; work…",
+            "file": "/grok-home/home/.grok/skills/pptx/SKILL.md",
+            "source_path": "messages.2.content",
+            "chars": 464,
+            "tokens": 110,
+            "preview": "- pptx: Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating"
+          },
+          {
+            "skill_index": 5,
+            "name": "best-of-n",
+            "description": "Implement a task N ways in parallel and pick the best. Spawns multiple subagents in isolated worktrees, evaluates all candidates, and applies the winner",
+            "file": "/grok-home/home/.grok/skills/best-of-n/SKILL.md",
+            "source_path": "messages.2.content",
+            "chars": 354,
+            "tokens": 89,
+            "preview": "- best-of-n: Implement a task N ways in parallel and pick the best. Spawns multiple subagents in isolated worktrees, eva"
+          },
+          {
+            "skill_index": 6,
+            "name": "check-work",
+            "description": "Check your work with a verification subagent. Spawns a verifier that reviews diffs, runs builds and tests, and evaluates correctness",
+            "file": "/grok-home/home/.grok/skills/check-work/SKILL.md",
+            "source_path": "messages.2.content",
+            "chars": 345,
+            "tokens": 88,
+            "preview": "- check-work: Check your work with a verification subagent. Spawns a verifier that reviews diffs, runs builds and tests,"
+          },
+          {
+            "skill_index": 7,
+            "name": "imagine",
+            "description": "How to use the image_gen and image_edit tool calls in Grok Build: when to build a visual with code instead of generating it, prompt-craft, reference-first handling of real people, factual grounding, and asset-consistency. Load this whenever generating or editing an image is on the table, i.e. when an image_gen or image_edit call is being considered or about to be made. Tool-usage-driven, not tr…",
+            "file": "/grok-home/home/.grok/skills/imagine/SKILL.md",
+            "source_path": "messages.2.content",
+            "chars": 472,
+            "tokens": 111,
+            "preview": "- imagine: How to use the image_gen and image_edit tool calls in Grok Build: when to build a visual with code instead of"
+          },
+          {
+            "skill_index": 8,
+            "name": "xlsx",
+            "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger espec…",
+            "file": "/grok-home/home/.grok/skills/xlsx/SKILL.md",
+            "source_path": "messages.2.content",
+            "chars": 485,
+            "tokens": 122,
+            "preview": "- xlsx: Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wa"
+          }
+        ]
+      },
+      "tools": {
+        "count": 25,
+        "names": [
+          "ask_user_question",
+          "enter_plan_mode",
+          "exit_plan_mode",
+          "get_command_or_subagent_output",
+          "grep",
+          "image_edit",
+          "image_gen",
+          "image_to_video",
+          "kill_command_or_subagent",
+          "list_dir",
+          "monitor",
+          "read_file",
+          "reference_to_video",
+          "run_terminal_command",
+          "scheduler_create",
+          "scheduler_delete",
+          "scheduler_list",
+          "search_replace",
+          "search_tool",
+          "spawn_subagent",
+          "todo_write",
+          "update_goal",
+          "use_tool",
+          "wait_commands_or_subagents",
+          "write"
+        ],
+        "tokens": 12247,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "run_terminal_command",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 4905,
+            "tokens": 1110,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "read_file",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 3325,
+            "tokens": 761,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "search_replace",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 2062,
+            "tokens": 440,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "list_dir",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 755,
+            "tokens": 160,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "grep",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 3515,
+            "tokens": 826,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "kill_command_or_subagent",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 785,
+            "tokens": 186,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "todo_write",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1553,
+            "tokens": 345,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "get_command_or_subagent_output",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 938,
+            "tokens": 222,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "wait_commands_or_subagents",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 989,
+            "tokens": 243,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "spawn_subagent",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 10214,
+            "tokens": 2160,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 11,
+            "array_index": 10,
+            "path": "tools.10",
+            "name": "scheduler_create",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1346,
+            "tokens": 321,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 12,
+            "array_index": 11,
+            "path": "tools.11",
+            "name": "scheduler_delete",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 761,
+            "tokens": 162,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 13,
+            "array_index": 12,
+            "path": "tools.12",
+            "name": "scheduler_list",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 303,
+            "tokens": 67,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 14,
+            "array_index": 13,
+            "path": "tools.13",
+            "name": "monitor",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 2732,
+            "tokens": 686,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 15,
+            "array_index": 14,
+            "path": "tools.14",
+            "name": "search_tool",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 782,
+            "tokens": 177,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 16,
+            "array_index": 15,
+            "path": "tools.15",
+            "name": "use_tool",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 987,
+            "tokens": 226,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 17,
+            "array_index": 16,
+            "path": "tools.16",
+            "name": "update_goal",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1455,
+            "tokens": 317,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 18,
+            "array_index": 17,
+            "path": "tools.17",
+            "name": "enter_plan_mode",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 3616,
+            "tokens": 797,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 19,
+            "array_index": 18,
+            "path": "tools.18",
+            "name": "exit_plan_mode",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 2446,
+            "tokens": 527,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 20,
+            "array_index": 19,
+            "path": "tools.19",
+            "name": "ask_user_question",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 2751,
+            "tokens": 588,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 21,
+            "array_index": 20,
+            "path": "tools.20",
+            "name": "image_gen",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 987,
+            "tokens": 215,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 22,
+            "array_index": 21,
+            "path": "tools.21",
+            "name": "image_edit",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1837,
+            "tokens": 485,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 23,
+            "array_index": 22,
+            "path": "tools.22",
+            "name": "image_to_video",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1990,
+            "tokens": 434,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 24,
+            "array_index": 23,
+            "path": "tools.23",
+            "name": "reference_to_video",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 2402,
+            "tokens": 565,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 25,
+            "array_index": 24,
+            "path": "tools.24",
+            "name": "write",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1056,
+            "tokens": 227,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 4,
+        "paths": [
+          "messages.0.content",
+          "messages.2.content",
+          "tools.14.function.description",
+          "tools.15.function.description"
+        ],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 4,
+        "mention_tokens": 3410,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "mcp_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "messages.0.content",
+            "chars": 12549,
+            "tokens": 2523,
+            "preview": "You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y"
+          },
+          {
+            "marker_index": 2,
+            "name": "mcp_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "messages.2.content",
+            "chars": 3266,
+            "tokens": 793,
+            "preview": "<system-reminder>\nThe following skills are available for use:\n\n- create-skill: Interactively create a new Grok skill (SK"
+          },
+          {
+            "marker_index": 3,
+            "name": "mcp_3",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.14.function.description",
+            "chars": 128,
+            "tokens": 25,
+            "preview": "Search for MCP tools by keyword and retrieve their input schemas.\n\nIf status is \"partial\", some servers may still be con"
+          },
+          {
+            "marker_index": 4,
+            "name": "mcp_4",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.15.function.description",
+            "chars": 313,
+            "tokens": 69,
+            "preview": "Call an MCP integration tool. You MUST call `search_tool` first to retrieve the tool’s input schema before calling this"
+          }
+        ]
+      },
+      "subagents": {
+        "marker_count": 23,
+        "paths": [
+          "messages.0.content",
+          "messages.2.content",
+          "tools.0.function.description",
+          "tools.13.function.description",
+          "tools.13.function.parameters.properties.persistent.description",
+          "tools.17.function.description",
+          "tools.5",
+          "tools.5.function.description",
+          "tools.5.function.name",
+          "tools.7",
+          "tools.7.function.description",
+          "tools.7.function.name",
+          "tools.8",
+          "tools.8.function.description",
+          "tools.8.function.name",
+          "tools.9",
+          "tools.9.function.description",
+          "tools.9.function.name",
+          "tools.9.function.parameters.properties.background.description",
+          "tools.9.function.parameters.properties.cwd.description",
+          "tools.9.function.parameters.properties.prompt.description",
+          "tools.9.function.parameters.properties.resume_from.description",
+          "tools.9.function.parameters.properties.subagent_type.description"
+        ],
+        "count": 4,
+        "tokens": 2811,
+        "mention_count": 6,
+        "mention_tokens": 5298,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "messages.0.content",
+            "chars": 12549,
+            "tokens": 2523,
+            "preview": "You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y"
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "messages.2.content",
+            "chars": 3266,
+            "tokens": 793,
+            "preview": "<system-reminder>\nThe following skills are available for use:\n\n- create-skill: Interactively create a new Grok skill (SK"
+          },
+          {
+            "marker_index": 3,
+            "name": "subagent_3",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.0.function.description",
+            "chars": 3760,
+            "tokens": 840,
+            "preview": "Run a bash command and return its output.\nIMPORTANT: This tool is for terminal operations like git, npm, docker, etc. DO"
+          },
+          {
+            "marker_index": 4,
+            "name": "kill_command_or_subagent",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.5",
+            "chars": 785,
+            "tokens": 186,
+            "preview": "{\"function\":{\"description\":\"Terminate a running background task, monitor, or subagent.\\n\\nUsage notes:\\n- Pass the task_"
+          },
+          {
+            "marker_index": 5,
+            "name": "get_command_or_subagent_output",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.7",
+            "chars": 938,
+            "tokens": 222,
+            "preview": "{\"function\":{\"description\":\"Get output and status from a background task or subagent.\\n\\nUsage notes:\\n- Use the task_id"
+          },
+          {
+            "marker_index": 6,
+            "name": "wait_commands_or_subagents",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.8",
+            "chars": 989,
+            "tokens": 243,
+            "preview": "{\"function\":{\"description\":\"Wait for multiple background tasks or subagents to complete.\\n\\nUsage notes:\\n- task_ids: li"
+          },
+          {
+            "marker_index": 7,
+            "name": "spawn_subagent",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.9",
+            "chars": 10214,
+            "tokens": 2160,
+            "preview": "{\"function\":{\"description\":\"Launch a new agent to handle complex, multi-step tasks autonomously.\\n\\nThe spawn_subagent t"
+          },
+          {
+            "marker_index": 8,
+            "name": "subagent_8",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.13.function.description",
+            "chars": 1876,
+            "tokens": 475,
+            "preview": "Start a background monitor that streams events from a long-running script. Each stdout line is an event - you can keep w"
+          },
+          {
+            "marker_index": 9,
+            "name": "subagent_9",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.13.function.parameters.properties.persistent.description",
+            "chars": 85,
+            "tokens": 19,
+            "preview": "Run for the lifetime of the session (no timeout). Stop with kill_command_or_subagent."
+          },
+          {
+            "marker_index": 10,
+            "name": "subagent_10",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.17.function.description",
+            "chars": 3031,
+            "tokens": 648,
+            "preview": "Use this tool when a task has genuine ambiguity about the right approach and getting user input before coding would prev"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 72151,
+    "body_tokens": 16039,
+    "skill_count": 8,
+    "tool_count": 26,
+    "mcp_marker_count": 4,
+    "mcp_mention_count": 4,
+    "subagent_marker_count": 23,
+    "subagent_mention_count": 6
+  },
+  "post_totals": {
+    "body_bytes": 72151,
+    "body_tokens": 16039,
+    "skill_count": 8,
+    "tool_count": 26,
+    "mcp_marker_count": 4,
+    "mcp_mention_count": 4,
+    "subagent_marker_count": 23,
+    "subagent_mention_count": 6
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "grok-cli-0.2.20-hi",
+    "agent_id": "grok-cli",
+    "agent_version": "0.2.20",
+    "run_dir": "runs/grok-cli-0.2.20-hi",
+    "agent_name": "Grok CLI",
+    "agent_image": "hibench/grok-cli:0.2.20",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-14T20:47:12Z",
+    "ended_at": "2026-06-14T20:47:14Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 2,
+    "post_request_count": 2,
+    "has_primary_request": true,
+    "primary_request_index": 2,
+    "request_method": "POST",
+    "request_path": "/v1/chat/completions",
+    "model": "gpt-5",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 15793,
+    "body_tokens": 15793,
+    "body_bytes": 71039,
+    "body_chars": 70945,
+    "text_field_count": 4,
+    "text_tokens": 3367,
+    "system_prompt_tokens": 3316,
+    "environment_context_tokens": 41,
+    "user_prompt_tokens": 10,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 2523,
+    "developer_instructions_tokens": 793,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 793,
+    "injected_user_context_tokens": 41,
+    "instruction_tokens": 3357,
+    "default_context_tokens": 15604,
+    "skills_count": 8,
+    "skills_tokens": 793,
+    "skill_definition_tokens": 773,
+    "tool_count": 25,
+    "tool_definition_tokens": 12247,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 4,
+    "mcp_mention_count": 4,
+    "mcp_mention_tokens": 3410,
+    "subagent_count": 4,
+    "subagent_tokens": 2811,
+    "subagent_marker_count": 23,
+    "subagent_mention_count": 6,
+    "subagent_mention_tokens": 5298
+  }
+}

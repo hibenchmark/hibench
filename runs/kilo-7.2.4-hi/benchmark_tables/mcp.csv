@@ -1,0 +1,5 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,kilo-7.2.4-hi,kilo,7.2.4,1,1,mcp_1,text_mention,False,messages.0.content,10079,2143,"You are Kilo, a highly skilled software engineer with extensive knowledge in many programming languages, frameworks, des"
+hibench.benchmark.v1,kilo-7.2.4-hi,kilo,7.2.4,1,2,mcp_2,text_mention,False,tools.9.function.description,1033,202,"Load a specialized skill that provides domain-specific instructions and workflows.
+
+When you recognize that a task match"

@@ -1,0 +1,20 @@
+OpenHands CLI terminal UI may not work correctly in this environment: Rich detected a non-interactive or unsupported terminal; interactive UI may not render correctly
+To override Rich's detection, you can set TTY_INTERACTIVE=1 (and optionally TTY_COMPATIBLE=1).
+Initializing agent...
+✓ Agent initialized with model: openai/gpt-[1m5[0m
+{"id": "d4654cfc-da3c-4cc2-9362-cd9d768f2ae5", "timestamp": "2026-06-19T13:46:24.214274", "source": "user", "llm_message": {"role": "user", "content": [{"cache_prompt": false, "type": "text", "text": "Hi"}], "tool_calls": null, "tool_call_id": null, "name": null, "reasoning_content": null, "thinking_blocks": [], "responses_reasoning_item": null}, "llm_response_id": null, "activated_skills": [], "extended_content": [], "sender": null, "critic_result": null, "kind": "MessageEvent"}
+Agent is working
+{"id": "4ec874a3-02f6-4607-aedc-bc6285e04a5a", "timestamp": "2026-06-19T13:47:02.536652", "source": "agent", "llm_message": {"role": "assistant", "content": [{"cache_prompt": false, "type": "text", "text": "HiBench capture complete."}], "tool_calls": null, "tool_call_id": null, "name": null, "reasoning_content": null, "thinking_blocks": [], "responses_reasoning_item": null}, "llm_response_id": "resp_bGl0ZWxsbTpjdXN0b21fbGxtX3Byb3ZpZGVyOm9wZW5haTttb2RlbF9pZDpOb25lO3Jlc3BvbnNlX2lkOnJlc3BfaGliZW5jaF9jYXB0dXJl", "activated_skills": [], "extended_content": [], "sender": null, "critic_result": null, "kind": "MessageEvent"}
+Agent finished
+
+───────────────────────────── CONVERSATION SUMMARY ─────────────────────────────
+[1mNumber of agent messages:[0m [1m2[0m
+[1mLast message sent by the agent:[0m
+╭─ Agent ───────────────────╮
+│ HiBench capture complete. │
+╰───────────────────────────╯
+────────────────────────────────────────────────────────────────────────────────
+Goodbye! 👋
+Conversation ID: 3a0e17cce8b84a26be31ffbbc127c594
+Hint: run openhands --resume 3a0e17cc-e8b8-4a26-be31-ffbbc127c594 to resume this
+conversation.

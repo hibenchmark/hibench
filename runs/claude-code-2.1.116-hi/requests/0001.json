@@ -1,0 +1,15 @@
+{
+  "index": 1,
+  "captured_at": "2026-06-13T16:34:59Z",
+  "method": "HEAD",
+  "path": "/",
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate, br, zstd",
+    "Connection": "keep-alive",
+    "Host": "host.docker.internal:45639",
+    "User-Agent": "Bun/1.3.13"
+  },
+  "body_text": "",
+  "json": null
+}

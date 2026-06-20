@@ -1,0 +1,23 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,1,subagent_1,text_mention,False,messages.0.content,13668,2751,"You are Grok 4.3, a Grok Build agent released by xAI in April 2026. You are an autonomous agent that completes software"
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,2,subagent_2,text_mention,False,tools.5.function.description,380,84,"Terminate a running background task or subagent.
+
+Usage notes:
+- Use the task_id from a command run with is_background=t"
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,3,subagent_3,text_mention,False,tools.7.function.description,419,95,"Get output and status from a background task or subagent.
+
+Usage notes:
+- Use the task_id from a command run with is_bac"
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,4,subagent_4,text_mention,False,tools.8.function.description,394,87,"Wait for multiple background tasks or subagents to complete.
+
+Usage notes:
+- task_ids: list of task IDs to wait for (fro"
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,5,subagent_5,text_mention,False,tools.9.function.description,14022,2975,"Launch a new agent to handle complex, multi-step tasks autonomously.
+
+The task tool launches specialized agents (subproc"
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,6,subagent_6,text_mention,False,tools.9.function.parameters.properties.prompt.description,49,11,The full task prompt for the subagent to execute.
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,7,subagent_7,text_mention,False,tools.9.function.parameters.properties.subagent_type.description,143,33,"Name of the subagent type to launch. Built-in types: ""general-purpose"", ""explore"", ""plan"". Additional user-defined types"
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,8,subagent_8,text_mention,False,tools.9.function.parameters.properties.run_in_background.description,137,29,Set to true to run this subagent in the background. Returns immediately with a subagent_id. Use the task output tool to
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,9,subagent_9,text_mention,False,tools.9.function.parameters.properties.model.description,78,17,"Override the model for this subagent. If not set, inherits the parent's model."
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,10,subagent_10,text_mention,False,tools.9.function.parameters.properties.resume_from.description,485,96,Resume from a previously completed subagent's conversation. Pass the subagent_id returned by a prior task call. The new
+hibench.benchmark.v1,grok-cli-0.1.206-hi,grok-cli,0.1.206,1,11,subagent_11,text_mention,False,tools.9.function.parameters.properties.cwd.description,218,45,"Explicit working directory for the subagent. The path must exist and be a directory. Mutually exclusive with isolation="""

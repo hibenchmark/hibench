@@ -1,0 +1,1260 @@
+{
+  "run_dir": "runs/droid-0.153.0-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 56811,
+    "body_chars": 56709,
+    "body_tokens": 12985,
+    "text_fields": {
+      "count": 7,
+      "chars": 15481,
+      "tokens": 3215,
+      "by_category": {
+        "system_prompt": {
+          "count": 4,
+          "chars": 14005,
+          "tokens": 2875
+        },
+        "environment_context": {
+          "count": 2,
+          "chars": 1474,
+          "tokens": 339
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "by_source": {
+        "developer_instructions": {
+          "count": 2,
+          "chars": 2531,
+          "tokens": 532
+        },
+        "injected_user_context": {
+          "count": 2,
+          "chars": 1474,
+          "tokens": 339
+        },
+        "skills_instructions": {
+          "count": 1,
+          "chars": 6035,
+          "tokens": 1232
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        },
+        "main_instructions": {
+          "count": 1,
+          "chars": 5439,
+          "tokens": 1111
+        }
+      },
+      "fields": [
+        {
+          "path": "input.0.content.0.text",
+          "role": "user",
+          "category": "system_prompt",
+          "source": "developer_instructions",
+          "chars": 2155,
+          "tokens": 452,
+          "preview": "<system-reminder>\nThe tools listed below are available in this environment, but their schemas may be omitted from the cu"
+        },
+        {
+          "path": "input.0.content.1.text",
+          "role": "user",
+          "category": "environment_context",
+          "source": "injected_user_context",
+          "chars": 225,
+          "tokens": 50,
+          "preview": "<system-reminder>IMPORTANT - Current date for web search relevance:\n- Today's date is 2026-06-20. Use this date when Web"
+        },
+        {
+          "path": "input.0.content.2.text",
+          "role": "user",
+          "category": "system_prompt",
+          "source": "skills_instructions",
+          "chars": 6035,
+          "tokens": 1232,
+          "preview": "<system-reminder>\nAvailable skills for the Skill tool are listed below. The Skill tool definition relies on this system"
+        },
+        {
+          "path": "input.0.content.3.text",
+          "role": "user",
+          "category": "environment_context",
+          "source": "injected_user_context",
+          "chars": 1249,
+          "tokens": 289,
+          "preview": "<system-reminder>\n\nUser system info (linux 6.6.87.2-microsoft-standard-WSL2)\nShell: bash inside WSL2 — real Linux on a W"
+        },
+        {
+          "path": "input.0.content.4.text",
+          "role": "user",
+          "category": "system_prompt",
+          "source": "developer_instructions",
+          "chars": 376,
+          "tokens": 80,
+          "preview": "<system-reminder>IMPORTANT: TodoWrite was not called yet. You must call it for any non-trivial task requested by the use"
+        },
+        {
+          "path": "input.1.content.0.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        },
+        {
+          "path": "instructions",
+          "role": "",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 5439,
+          "tokens": 1111,
+          "preview": "You are Droid, an AI software engineering agent built by Factory.\n\nYou are running in non-interactive Exec Mode where yo"
+        }
+      ]
+    },
+    "skills": {
+      "count": 20,
+      "tokens": 1232,
+      "definition_tokens": 1070,
+      "instruction_field_count": 1,
+      "instruction_fields": [
+        {
+          "path": "input.0.content.2.text",
+          "role": "user",
+          "chars": 6035,
+          "tokens": 1232,
+          "preview": "<system-reminder>\nAvailable skills for the Skill tool are listed below. The Skill tool definition relies on this system"
+        }
+      ],
+      "items": [
+        {
+          "skill_index": 1,
+          "name": "agent-browser",
+          "description": "Automates browsers and Electron desktop apps (VS Code, Slack, Discord, Figma, Notion, Spotify, etc.) for testing, form filling, screenshots, and data extraction. Use when the user needs to navigate, interact with, test, or extract data from any website or Electron desktop app.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 292,
+          "tokens": 64,
+          "preview": "agent-browser: Automates browsers and Electron desktop apps (VS Code, Slack, Discord, Figma, Notion, Spotify, etc.) for"
+        },
+        {
+          "skill_index": 2,
+          "name": "tuistory",
+          "description": "Automates terminal user interface (TUI) testing. Use when you need to launch, interact with, test, or debug terminal applications, capture TUI snapshots, or automate terminal inputs.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 192,
+          "tokens": 41,
+          "preview": "tuistory: Automates terminal user interface (TUI) testing. Use when you need to launch, interact with, test, or debug te"
+        },
+        {
+          "skill_index": 3,
+          "name": "figma-mcp-helper",
+          "description": "Promote and assist with Figma MCP integration. ACTIVATE when the user shares a Figma URL (figma.com), mentions Figma designs or components, shares PNG images that may originate from Figma, or when Figma MCP tools are already connected and being used. Handles installation encouragement, conversational promotion, and push-back-to-Figma flows.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 360,
+          "tokens": 75,
+          "preview": "figma-mcp-helper: Promote and assist with Figma MCP integration. ACTIVATE when the user shares a Figma URL (figma.com),"
+        },
+        {
+          "skill_index": 4,
+          "name": "install-code-review",
+          "description": "Install and configure Factory Droid for automated code review on GitHub or GitLab. Supports single-repo setup or org/group-wide rollout across hundreds of repos. Use when a user wants to set up Droid review on their repositories.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 250,
+          "tokens": 49,
+          "preview": "install-code-review: Install and configure Factory Droid for automated code review on GitHub or GitLab. Supports single-"
+        },
+        {
+          "skill_index": 5,
+          "name": "install-triage",
+          "description": "Scaffold a scheduled Slack triage automation, generalized to any company. Sets up a Python tool layer (run_triage.py) plus a HEARTBEAT.md agent loop that scans configured Slack channels for actionable messages, dedupes against a ticketing system (Linear or Jira), files tickets, and posts a run summary. Use when the user wants to stand up an automated triage bot.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 380,
+          "tokens": 83,
+          "preview": "install-triage: Scaffold a scheduled Slack triage automation, generalized to any company. Sets up a Python tool layer (r"
+        },
+        {
+          "skill_index": 6,
+          "name": "review",
+          "description": "Review code changes and identify high-confidence, actionable bugs. Use when the user wants to: - Review a pull request or branch diff - Find bugs, security issues, or correctness problems in code changes - Get a structured summary of review findings",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 257,
+          "tokens": 49,
+          "preview": "review: Review code changes and identify high-confidence, actionable bugs. Use when the user wants to: - Review a pull r"
+        },
+        {
+          "skill_index": 7,
+          "name": "simplify",
+          "description": "Review changed code for reuse, quality, and efficiency, then fix any issues found.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 92,
+          "tokens": 20,
+          "preview": "simplify: Review changed code for reuse, quality, and efficiency, then fix any issues found."
+        },
+        {
+          "skill_index": 8,
+          "name": "session-navigation",
+          "description": "Navigate, search, and manage Droid sessions. Use when the user wants to: - List recent sessions - Search session history for specific topics or patterns - Resume a previous session - Get details about what was accomplished in a session - Find sessions by project, date, or content",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 300,
+          "tokens": 57,
+          "preview": "session-navigation: Navigate, search, and manage Droid sessions. Use when the user wants to: - List recent sessions - Se"
+        },
+        {
+          "skill_index": 9,
+          "name": "pdf-document",
+          "description": "Produce polished PDF documents (reports, invoices, resumes, letters, flyers, certificates, any \"export to PDF\" deliverable). Use whenever the user asks for a PDF or a printable document.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 200,
+          "tokens": 42,
+          "preview": "pdf-document: Produce polished PDF documents (reports, invoices, resumes, letters, flyers, certificates, any \"export to"
+        },
+        {
+          "skill_index": 10,
+          "name": "powerpoint",
+          "description": "Produce polished PowerPoint presentations (decks, slide shows, pitch decks, any \"export to PowerPoint\" deliverable). Use whenever the user asks for a PowerPoint, a slide deck, or a presentation.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 206,
+          "tokens": 46,
+          "preview": "powerpoint: Produce polished PowerPoint presentations (decks, slide shows, pitch decks, any \"export to PowerPoint\" deliv"
+        },
+        {
+          "skill_index": 11,
+          "name": "excel",
+          "description": "Produce polished Excel spreadsheets (reports, budgets, data exports, any \"export to Excel\" deliverable). Use whenever the user asks for an Excel file, a spreadsheet, or an .xlsx deliverable.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 197,
+          "tokens": 43,
+          "preview": "excel: Produce polished Excel spreadsheets (reports, budgets, data exports, any \"export to Excel\" deliverable). Use when"
+        },
+        {
+          "skill_index": 12,
+          "name": "word-document",
+          "description": "Produce polished Word documents (reports, letters, proposals, printable docs, any .docx deliverable). Use whenever the user asks for a Word document or a .docx file.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 180,
+          "tokens": 40,
+          "preview": "word-document: Produce polished Word documents (reports, letters, proposals, printable docs, any .docx deliverable). Use"
+        },
+        {
+          "skill_index": 13,
+          "name": "install-qa",
+          "description": "Set up automated QA testing for this project. Performs deep codebase analysis, asks targeted questions, and generates a modular QA skill with sub-skills per app, a GitHub Actions workflow, and a report template. This is a complex, multi-phase process -- quality assurance is foundational and we take the time to get it right.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 337,
+          "tokens": 70,
+          "preview": "install-qa: Set up automated QA testing for this project. Performs deep codebase analysis, asks targeted questions, and"
+        },
+        {
+          "skill_index": 14,
+          "name": "security-review",
+          "description": "Security-focused code review using STRIDE, OWASP Top 10, OWASP LLM Top 10, and supply chain analysis. Use when: - Reviewing a PR for security vulnerabilities - Performing a security audit of code changes - Identifying injection, auth, data exposure, and other security issues - Running a full-project security audit reviewing every source file",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 360,
+          "tokens": 73,
+          "preview": "security-review: Security-focused code review using STRIDE, OWASP Top 10, OWASP LLM Top 10, and supply chain analysis. U"
+        },
+        {
+          "skill_index": 15,
+          "name": "deep-security-review",
+          "description": "Correctness-first, depth-first security audit of a single repository. Invoked by /security-review when the user opts into \"thorough\" mode. Uses a heterogeneous multi-model jury (latest Opus + latest GPT + latest Gemini). A mandatory 3-pass floor (line-anchor verification, vendor prior-art, deep prior-art) runs against every Pass 0 lieutenant-seeded candidate; a conditional escalation tier (dataflow + reachability, exploit construction, adversarial red-team disprove) fires on per-finding triggers. Produces FINDINGS.md, JUDGE.md, STATUS.md, severity-sorted master list, and optional PoC + evidence artifacts for that repo. Never uploads or submits anything; all outputs local.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 702,
+          "tokens": 149,
+          "preview": "deep-security-review: Correctness-first, depth-first security audit of a single repository. Invoked by /security-review"
+        },
+        {
+          "skill_index": 16,
+          "name": "wiki",
+          "description": "Generate comprehensive codebase documentation for a repository. Uploads the wiki to view in the Factory app.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 114,
+          "tokens": 22,
+          "preview": "wiki: Generate comprehensive codebase documentation for a repository. Uploads the wiki to view in the Factory app."
+        },
+        {
+          "skill_index": 17,
+          "name": "wiki-video-gen",
+          "description": "Generate Factory-branded HyperFrames video overviews for repository wikis. Use when wiki generation reaches Phase 3.6, or when the user asks for a narrated repository overview video.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 198,
+          "tokens": 41,
+          "preview": "wiki-video-gen: Generate Factory-branded HyperFrames video overviews for repository wikis. Use when wiki generation reac"
+        },
+        {
+          "skill_index": 18,
+          "name": "install-wiki",
+          "description": "Install a CI action that automatically refreshes the Factory Wiki on each push to the default branch. Use when the user wants to set up automated wiki generation, install wiki CI, or configure wiki refresh.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 220,
+          "tokens": 44,
+          "preview": "install-wiki: Install a CI action that automatically refreshes the Factory Wiki on each push to the default branch. Use"
+        },
+        {
+          "skill_index": 19,
+          "name": "browse-wiki",
+          "description": "Search and read wiki documentation for a repository",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 64,
+          "tokens": 12,
+          "preview": "browse-wiki: Search and read wiki documentation for a repository"
+        },
+        {
+          "skill_index": 20,
+          "name": "incident",
+          "description": "RCA runbook for alerts. Given an alert link (or prompted to provide one), identifies the alert type, verifies tooling/auth, and walks through root cause analysis using deep research. Persists learnings to incident-guidelines for future reuse.",
+          "file": "",
+          "source_path": "input.0.content.2.text",
+          "chars": 252,
+          "tokens": 50,
+          "preview": "incident: RCA runbook for alerts. Given an alert link (or prompted to provide one), identifies the alert type, verifies"
+        }
+      ]
+    },
+    "tools": {
+      "count": 10,
+      "names": [
+        "Execute",
+        "FetchUrl",
+        "Glob",
+        "Grep",
+        "LS",
+        "Read",
+        "Skill",
+        "TodoWrite",
+        "ToolSearch",
+        "WebSearch"
+      ],
+      "tokens": 9484,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "Read",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1351,
+          "tokens": 309,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "LS",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 834,
+          "tokens": 176,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "Execute",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 16390,
+          "tokens": 3870,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "Grep",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 3305,
+          "tokens": 738,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "Glob",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1949,
+          "tokens": 435,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "WebSearch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 2515,
+          "tokens": 542,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "TodoWrite",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 9510,
+          "tokens": 2248,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "FetchUrl",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 3124,
+          "tokens": 847,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "ToolSearch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 779,
+          "tokens": 172,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 10,
+          "array_index": 9,
+          "path": "tools.9",
+          "name": "Skill",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 720,
+          "tokens": 147,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 2,
+      "paths": [
+        "input.0.content.0.text",
+        "input.0.content.2.text"
+      ],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 2,
+      "mention_tokens": 1684,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "mcp_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "input.0.content.0.text",
+          "chars": 2155,
+          "tokens": 452,
+          "preview": "<system-reminder>\nThe tools listed below are available in this environment, but their schemas may be omitted from the cu"
+        },
+        {
+          "marker_index": 2,
+          "name": "mcp_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "input.0.content.2.text",
+          "chars": 6035,
+          "tokens": 1232,
+          "preview": "<system-reminder>\nAvailable skills for the Skill tool are listed below. The Skill tool definition relies on this system"
+        }
+      ]
+    },
+    "subagents": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "model": "gpt-5",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 56811,
+      "body_chars": 56709,
+      "body_tokens": 12985,
+      "text_fields": {
+        "count": 7,
+        "chars": 15481,
+        "tokens": 3215,
+        "by_category": {
+          "system_prompt": {
+            "count": 4,
+            "chars": 14005,
+            "tokens": 2875
+          },
+          "environment_context": {
+            "count": 2,
+            "chars": 1474,
+            "tokens": 339
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "by_source": {
+          "developer_instructions": {
+            "count": 2,
+            "chars": 2531,
+            "tokens": 532
+          },
+          "injected_user_context": {
+            "count": 2,
+            "chars": 1474,
+            "tokens": 339
+          },
+          "skills_instructions": {
+            "count": 1,
+            "chars": 6035,
+            "tokens": 1232
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          },
+          "main_instructions": {
+            "count": 1,
+            "chars": 5439,
+            "tokens": 1111
+          }
+        },
+        "fields": [
+          {
+            "path": "input.0.content.0.text",
+            "role": "user",
+            "category": "system_prompt",
+            "source": "developer_instructions",
+            "chars": 2155,
+            "tokens": 452,
+            "preview": "<system-reminder>\nThe tools listed below are available in this environment, but their schemas may be omitted from the cu"
+          },
+          {
+            "path": "input.0.content.1.text",
+            "role": "user",
+            "category": "environment_context",
+            "source": "injected_user_context",
+            "chars": 225,
+            "tokens": 50,
+            "preview": "<system-reminder>IMPORTANT - Current date for web search relevance:\n- Today's date is 2026-06-20. Use this date when Web"
+          },
+          {
+            "path": "input.0.content.2.text",
+            "role": "user",
+            "category": "system_prompt",
+            "source": "skills_instructions",
+            "chars": 6035,
+            "tokens": 1232,
+            "preview": "<system-reminder>\nAvailable skills for the Skill tool are listed below. The Skill tool definition relies on this system"
+          },
+          {
+            "path": "input.0.content.3.text",
+            "role": "user",
+            "category": "environment_context",
+            "source": "injected_user_context",
+            "chars": 1249,
+            "tokens": 289,
+            "preview": "<system-reminder>\n\nUser system info (linux 6.6.87.2-microsoft-standard-WSL2)\nShell: bash inside WSL2 — real Linux on a W"
+          },
+          {
+            "path": "input.0.content.4.text",
+            "role": "user",
+            "category": "system_prompt",
+            "source": "developer_instructions",
+            "chars": 376,
+            "tokens": 80,
+            "preview": "<system-reminder>IMPORTANT: TodoWrite was not called yet. You must call it for any non-trivial task requested by the use"
+          },
+          {
+            "path": "input.1.content.0.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          },
+          {
+            "path": "instructions",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 5439,
+            "tokens": 1111,
+            "preview": "You are Droid, an AI software engineering agent built by Factory.\n\nYou are running in non-interactive Exec Mode where yo"
+          }
+        ]
+      },
+      "skills": {
+        "count": 20,
+        "tokens": 1232,
+        "definition_tokens": 1070,
+        "instruction_field_count": 1,
+        "instruction_fields": [
+          {
+            "path": "input.0.content.2.text",
+            "role": "user",
+            "chars": 6035,
+            "tokens": 1232,
+            "preview": "<system-reminder>\nAvailable skills for the Skill tool are listed below. The Skill tool definition relies on this system"
+          }
+        ],
+        "items": [
+          {
+            "skill_index": 1,
+            "name": "agent-browser",
+            "description": "Automates browsers and Electron desktop apps (VS Code, Slack, Discord, Figma, Notion, Spotify, etc.) for testing, form filling, screenshots, and data extraction. Use when the user needs to navigate, interact with, test, or extract data from any website or Electron desktop app.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 292,
+            "tokens": 64,
+            "preview": "agent-browser: Automates browsers and Electron desktop apps (VS Code, Slack, Discord, Figma, Notion, Spotify, etc.) for"
+          },
+          {
+            "skill_index": 2,
+            "name": "tuistory",
+            "description": "Automates terminal user interface (TUI) testing. Use when you need to launch, interact with, test, or debug terminal applications, capture TUI snapshots, or automate terminal inputs.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 192,
+            "tokens": 41,
+            "preview": "tuistory: Automates terminal user interface (TUI) testing. Use when you need to launch, interact with, test, or debug te"
+          },
+          {
+            "skill_index": 3,
+            "name": "figma-mcp-helper",
+            "description": "Promote and assist with Figma MCP integration. ACTIVATE when the user shares a Figma URL (figma.com), mentions Figma designs or components, shares PNG images that may originate from Figma, or when Figma MCP tools are already connected and being used. Handles installation encouragement, conversational promotion, and push-back-to-Figma flows.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 360,
+            "tokens": 75,
+            "preview": "figma-mcp-helper: Promote and assist with Figma MCP integration. ACTIVATE when the user shares a Figma URL (figma.com),"
+          },
+          {
+            "skill_index": 4,
+            "name": "install-code-review",
+            "description": "Install and configure Factory Droid for automated code review on GitHub or GitLab. Supports single-repo setup or org/group-wide rollout across hundreds of repos. Use when a user wants to set up Droid review on their repositories.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 250,
+            "tokens": 49,
+            "preview": "install-code-review: Install and configure Factory Droid for automated code review on GitHub or GitLab. Supports single-"
+          },
+          {
+            "skill_index": 5,
+            "name": "install-triage",
+            "description": "Scaffold a scheduled Slack triage automation, generalized to any company. Sets up a Python tool layer (run_triage.py) plus a HEARTBEAT.md agent loop that scans configured Slack channels for actionable messages, dedupes against a ticketing system (Linear or Jira), files tickets, and posts a run summary. Use when the user wants to stand up an automated triage bot.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 380,
+            "tokens": 83,
+            "preview": "install-triage: Scaffold a scheduled Slack triage automation, generalized to any company. Sets up a Python tool layer (r"
+          },
+          {
+            "skill_index": 6,
+            "name": "review",
+            "description": "Review code changes and identify high-confidence, actionable bugs. Use when the user wants to: - Review a pull request or branch diff - Find bugs, security issues, or correctness problems in code changes - Get a structured summary of review findings",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 257,
+            "tokens": 49,
+            "preview": "review: Review code changes and identify high-confidence, actionable bugs. Use when the user wants to: - Review a pull r"
+          },
+          {
+            "skill_index": 7,
+            "name": "simplify",
+            "description": "Review changed code for reuse, quality, and efficiency, then fix any issues found.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 92,
+            "tokens": 20,
+            "preview": "simplify: Review changed code for reuse, quality, and efficiency, then fix any issues found."
+          },
+          {
+            "skill_index": 8,
+            "name": "session-navigation",
+            "description": "Navigate, search, and manage Droid sessions. Use when the user wants to: - List recent sessions - Search session history for specific topics or patterns - Resume a previous session - Get details about what was accomplished in a session - Find sessions by project, date, or content",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 300,
+            "tokens": 57,
+            "preview": "session-navigation: Navigate, search, and manage Droid sessions. Use when the user wants to: - List recent sessions - Se"
+          },
+          {
+            "skill_index": 9,
+            "name": "pdf-document",
+            "description": "Produce polished PDF documents (reports, invoices, resumes, letters, flyers, certificates, any \"export to PDF\" deliverable). Use whenever the user asks for a PDF or a printable document.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 200,
+            "tokens": 42,
+            "preview": "pdf-document: Produce polished PDF documents (reports, invoices, resumes, letters, flyers, certificates, any \"export to"
+          },
+          {
+            "skill_index": 10,
+            "name": "powerpoint",
+            "description": "Produce polished PowerPoint presentations (decks, slide shows, pitch decks, any \"export to PowerPoint\" deliverable). Use whenever the user asks for a PowerPoint, a slide deck, or a presentation.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 206,
+            "tokens": 46,
+            "preview": "powerpoint: Produce polished PowerPoint presentations (decks, slide shows, pitch decks, any \"export to PowerPoint\" deliv"
+          },
+          {
+            "skill_index": 11,
+            "name": "excel",
+            "description": "Produce polished Excel spreadsheets (reports, budgets, data exports, any \"export to Excel\" deliverable). Use whenever the user asks for an Excel file, a spreadsheet, or an .xlsx deliverable.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 197,
+            "tokens": 43,
+            "preview": "excel: Produce polished Excel spreadsheets (reports, budgets, data exports, any \"export to Excel\" deliverable). Use when"
+          },
+          {
+            "skill_index": 12,
+            "name": "word-document",
+            "description": "Produce polished Word documents (reports, letters, proposals, printable docs, any .docx deliverable). Use whenever the user asks for a Word document or a .docx file.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 180,
+            "tokens": 40,
+            "preview": "word-document: Produce polished Word documents (reports, letters, proposals, printable docs, any .docx deliverable). Use"
+          },
+          {
+            "skill_index": 13,
+            "name": "install-qa",
+            "description": "Set up automated QA testing for this project. Performs deep codebase analysis, asks targeted questions, and generates a modular QA skill with sub-skills per app, a GitHub Actions workflow, and a report template. This is a complex, multi-phase process -- quality assurance is foundational and we take the time to get it right.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 337,
+            "tokens": 70,
+            "preview": "install-qa: Set up automated QA testing for this project. Performs deep codebase analysis, asks targeted questions, and"
+          },
+          {
+            "skill_index": 14,
+            "name": "security-review",
+            "description": "Security-focused code review using STRIDE, OWASP Top 10, OWASP LLM Top 10, and supply chain analysis. Use when: - Reviewing a PR for security vulnerabilities - Performing a security audit of code changes - Identifying injection, auth, data exposure, and other security issues - Running a full-project security audit reviewing every source file",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 360,
+            "tokens": 73,
+            "preview": "security-review: Security-focused code review using STRIDE, OWASP Top 10, OWASP LLM Top 10, and supply chain analysis. U"
+          },
+          {
+            "skill_index": 15,
+            "name": "deep-security-review",
+            "description": "Correctness-first, depth-first security audit of a single repository. Invoked by /security-review when the user opts into \"thorough\" mode. Uses a heterogeneous multi-model jury (latest Opus + latest GPT + latest Gemini). A mandatory 3-pass floor (line-anchor verification, vendor prior-art, deep prior-art) runs against every Pass 0 lieutenant-seeded candidate; a conditional escalation tier (dataflow + reachability, exploit construction, adversarial red-team disprove) fires on per-finding triggers. Produces FINDINGS.md, JUDGE.md, STATUS.md, severity-sorted master list, and optional PoC + evidence artifacts for that repo. Never uploads or submits anything; all outputs local.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 702,
+            "tokens": 149,
+            "preview": "deep-security-review: Correctness-first, depth-first security audit of a single repository. Invoked by /security-review"
+          },
+          {
+            "skill_index": 16,
+            "name": "wiki",
+            "description": "Generate comprehensive codebase documentation for a repository. Uploads the wiki to view in the Factory app.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 114,
+            "tokens": 22,
+            "preview": "wiki: Generate comprehensive codebase documentation for a repository. Uploads the wiki to view in the Factory app."
+          },
+          {
+            "skill_index": 17,
+            "name": "wiki-video-gen",
+            "description": "Generate Factory-branded HyperFrames video overviews for repository wikis. Use when wiki generation reaches Phase 3.6, or when the user asks for a narrated repository overview video.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 198,
+            "tokens": 41,
+            "preview": "wiki-video-gen: Generate Factory-branded HyperFrames video overviews for repository wikis. Use when wiki generation reac"
+          },
+          {
+            "skill_index": 18,
+            "name": "install-wiki",
+            "description": "Install a CI action that automatically refreshes the Factory Wiki on each push to the default branch. Use when the user wants to set up automated wiki generation, install wiki CI, or configure wiki refresh.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 220,
+            "tokens": 44,
+            "preview": "install-wiki: Install a CI action that automatically refreshes the Factory Wiki on each push to the default branch. Use"
+          },
+          {
+            "skill_index": 19,
+            "name": "browse-wiki",
+            "description": "Search and read wiki documentation for a repository",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 64,
+            "tokens": 12,
+            "preview": "browse-wiki: Search and read wiki documentation for a repository"
+          },
+          {
+            "skill_index": 20,
+            "name": "incident",
+            "description": "RCA runbook for alerts. Given an alert link (or prompted to provide one), identifies the alert type, verifies tooling/auth, and walks through root cause analysis using deep research. Persists learnings to incident-guidelines for future reuse.",
+            "file": "",
+            "source_path": "input.0.content.2.text",
+            "chars": 252,
+            "tokens": 50,
+            "preview": "incident: RCA runbook for alerts. Given an alert link (or prompted to provide one), identifies the alert type, verifies"
+          }
+        ]
+      },
+      "tools": {
+        "count": 10,
+        "names": [
+          "Execute",
+          "FetchUrl",
+          "Glob",
+          "Grep",
+          "LS",
+          "Read",
+          "Skill",
+          "TodoWrite",
+          "ToolSearch",
+          "WebSearch"
+        ],
+        "tokens": 9484,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "Read",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1351,
+            "tokens": 309,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "LS",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 834,
+            "tokens": 176,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "Execute",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 16390,
+            "tokens": 3870,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "Grep",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 3305,
+            "tokens": 738,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "Glob",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1949,
+            "tokens": 435,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "WebSearch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 2515,
+            "tokens": 542,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "TodoWrite",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 9510,
+            "tokens": 2248,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "FetchUrl",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 3124,
+            "tokens": 847,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "ToolSearch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 779,
+            "tokens": 172,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "Skill",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 720,
+            "tokens": 147,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 2,
+        "paths": [
+          "input.0.content.0.text",
+          "input.0.content.2.text"
+        ],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 2,
+        "mention_tokens": 1684,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "mcp_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "input.0.content.0.text",
+            "chars": 2155,
+            "tokens": 452,
+            "preview": "<system-reminder>\nThe tools listed below are available in this environment, but their schemas may be omitted from the cu"
+          },
+          {
+            "marker_index": 2,
+            "name": "mcp_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "input.0.content.2.text",
+            "chars": 6035,
+            "tokens": 1232,
+            "preview": "<system-reminder>\nAvailable skills for the Skill tool are listed below. The Skill tool definition relies on this system"
+          }
+        ]
+      },
+      "subagents": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 56811,
+    "body_tokens": 12985,
+    "skill_count": 20,
+    "tool_count": 10,
+    "mcp_marker_count": 2,
+    "mcp_mention_count": 2,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0
+  },
+  "post_totals": {
+    "body_bytes": 56811,
+    "body_tokens": 12985,
+    "skill_count": 20,
+    "tool_count": 10,
+    "mcp_marker_count": 2,
+    "mcp_mention_count": 2,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "droid-0.153.0-hi",
+    "agent_id": "droid",
+    "agent_version": "0.153.0",
+    "run_dir": "runs/droid-0.153.0-hi",
+    "agent_name": "Droid",
+    "agent_image": "hibench/droid:0.153.0",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-20T23:11:48Z",
+    "ended_at": "2026-06-20T23:11:54Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "anthropic_tokenizer_model": "claude-opus-4-8",
+    "anthropic_total_body_tokens": 21029,
+    "total_body_tokens": 12985,
+    "body_tokens": 12985,
+    "body_bytes": 56811,
+    "body_chars": 56709,
+    "text_field_count": 7,
+    "text_tokens": 3215,
+    "system_prompt_tokens": 2875,
+    "environment_context_tokens": 339,
+    "user_prompt_tokens": 1,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 1111,
+    "developer_instructions_tokens": 1764,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 1232,
+    "injected_user_context_tokens": 339,
+    "instruction_tokens": 3214,
+    "default_context_tokens": 12698,
+    "skills_count": 20,
+    "skills_tokens": 1232,
+    "skill_definition_tokens": 1070,
+    "tool_count": 10,
+    "tool_definition_tokens": 9484,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 2,
+    "mcp_mention_count": 2,
+    "mcp_mention_tokens": 1684,
+    "subagent_count": 0,
+    "subagent_tokens": 0,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0,
+    "subagent_mention_tokens": 0
+  }
+}

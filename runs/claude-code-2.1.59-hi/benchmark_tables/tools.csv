@@ -1,0 +1,12 @@
+schema_version,run_id,agent_id,agent_version,request_index,tool_index,tool_name,tool_type,path,definition_chars,definition_tokens,is_mcp_related,is_subagent_related,keys
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,1,TaskOutput,,tools.0,938,211,False,False,description|input_schema|name
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,2,ExitPlanMode,,tools.1,2538,543,False,False,description|input_schema|name
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,3,NotebookEdit,,tools.2,1509,337,False,False,description|input_schema|name
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,4,WebFetch,,tools.3,1602,365,True,False,description|input_schema|name
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,5,TodoWrite,,tools.4,10432,2246,False,False,description|input_schema|name
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,6,WebSearch,,tools.5,1870,413,False,False,description|input_schema|name
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,7,TaskStop,,tools.6,537,123,False,False,description|input_schema|name
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,8,AskUserQuestion,,tools.7,4196,894,False,False,description|input_schema|name
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,9,Skill,,tools.8,1677,398,False,False,description|input_schema|name
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,10,EnterPlanMode,,tools.9,4322,956,False,False,description|input_schema|name
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,11,EnterWorktree,,tools.10,1581,376,False,False,description|input_schema|name

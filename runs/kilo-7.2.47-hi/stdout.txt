@@ -1,0 +1,6 @@
+[23:45:38.855] INFO (#284): bootstrapping {
+  directory: "/workspace",
+}
+{"type":"step_start","timestamp":1781480739359,"sessionID":"ses_137792f12ffeR0C8979DqBNbq5","part":{"id":"prt_ec886d21b001irQe40h5xmBJca","messageID":"msg_ec886d1b2001tiXwKnirVkBilO","sessionID":"ses_137792f12ffeR0C8979DqBNbq5","type":"step-start"}}
+{"type":"text","timestamp":1781480739364,"sessionID":"ses_137792f12ffeR0C8979DqBNbq5","part":{"id":"prt_ec886d21d0015Xp84vVmVneHVp","messageID":"msg_ec886d1b2001tiXwKnirVkBilO","sessionID":"ses_137792f12ffeR0C8979DqBNbq5","type":"text","text":"HiBench capture complete.","time":{"start":1781480739357,"end":1781480739359}}}
+{"type":"step_finish","timestamp":1781480739391,"sessionID":"ses_137792f12ffeR0C8979DqBNbq5","part":{"id":"prt_ec886d223001gVO6rH5POgk3Iy","reason":"stop","messageID":"msg_ec886d1b2001tiXwKnirVkBilO","sessionID":"ses_137792f12ffeR0C8979DqBNbq5","type":"step-finish","tokens":{"input":0,"output":0,"reasoning":0,"cache":{"write":0,"read":0}},"cost":0}}

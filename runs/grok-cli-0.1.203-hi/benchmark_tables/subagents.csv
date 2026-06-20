@@ -1,0 +1,13 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,grok-cli-0.1.203-hi,grok-cli,0.1.203,1,1,subagent_1,text_mention,False,tools.5.function.description,380,84,"Terminate a running background task or subagent.
+
+Usage notes:
+- Use the task_id from a command run with is_background=t"
+hibench.benchmark.v1,grok-cli-0.1.203-hi,grok-cli,0.1.203,1,2,subagent_2,text_mention,False,tools.8.function.description,419,95,"Get output and status from a background task or subagent.
+
+Usage notes:
+- Use the task_id from a command run with is_bac"
+hibench.benchmark.v1,grok-cli-0.1.203-hi,grok-cli,0.1.203,1,3,subagent_3,text_mention,False,tools.9.function.description,394,87,"Wait for multiple background tasks or subagents to complete.
+
+Usage notes:
+- task_ids: list of task IDs to wait for (fro"

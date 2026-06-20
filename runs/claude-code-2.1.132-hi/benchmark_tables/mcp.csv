@@ -1,0 +1,6 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,claude-code-2.1.132-hi,claude-code,2.1.132,1,1,mcp_1,text_mention,False,messages.0.content.0.text,2611,611,"<system-reminder>
+The following skills are available for use with the Skill tool:
+
+- update-config: Use this skill to co"
+hibench.benchmark.v1,claude-code-2.1.132-hi,claude-code,2.1.132,1,2,mcp_2,text_mention,False,tools.20.description,1479,327,"IMPORTANT: WebFetch WILL FAIL for authenticated or private URLs. Before using this tool, check if the URL points to an a"

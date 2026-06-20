@@ -1,0 +1,4 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,codex-0.124.0-hi,codex,0.124.0,1,1,mcp_1,text_mention,False,input.0.content.1.text,4489,992,"<skills_instructions>
+## Skills
+A skill is a set of local instructions to follow that is stored in a `SKILL.md` file. Be"

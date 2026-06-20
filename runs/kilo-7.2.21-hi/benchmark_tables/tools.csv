@@ -1,0 +1,13 @@
+schema_version,run_id,agent_id,agent_version,request_index,tool_index,tool_name,tool_type,path,definition_chars,definition_tokens,is_mcp_related,is_subagent_related,keys
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,1,bash,function,tools.0,10676,2432,False,False,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,2,read,function,tools.1,1683,394,False,False,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,3,glob,function,tools.2,1171,250,False,False,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,4,grep,function,tools.3,1244,291,False,False,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,5,write,function,tools.4,1055,229,False,False,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,6,task,function,tools.5,5364,1194,False,True,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,7,webfetch,function,tools.6,1331,301,False,False,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,8,todowrite,function,tools.7,9696,2078,False,False,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,9,skill,function,tools.8,2397,493,True,False,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,10,apply_patch,function,tools.9,1460,365,False,False,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,11,suggest,function,tools.10,3139,669,False,False,function|type
+hibench.benchmark.v1,kilo-7.2.21-hi,kilo,7.2.21,1,12,kilo_local_recall,function,tools.11,1793,381,False,False,function|type

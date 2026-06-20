@@ -1,0 +1,396 @@
+{
+  "run_dir": "runs/codex-0.30.0-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 28757,
+    "body_chars": 28595,
+    "body_tokens": 6409,
+    "text_fields": {
+      "count": 3,
+      "chars": 26897,
+      "tokens": 5738,
+      "by_category": {
+        "system_prompt": {
+          "count": 1,
+          "chars": 26675,
+          "tokens": 5682
+        },
+        "environment_context": {
+          "count": 1,
+          "chars": 220,
+          "tokens": 55
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 26675,
+          "tokens": 5682
+        },
+        "injected_user_context": {
+          "count": 1,
+          "chars": 220,
+          "tokens": 55
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "fields": [
+        {
+          "path": "instructions",
+          "role": "",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 26675,
+          "tokens": 5682,
+          "preview": "You are a coding agent running in the Codex CLI, a terminal-based coding assistant. Codex CLI is an open source project "
+        },
+        {
+          "path": "input.0.content.0.text",
+          "role": "user",
+          "category": "environment_context",
+          "source": "injected_user_context",
+          "chars": 220,
+          "tokens": 55,
+          "preview": "<environment_context>\n  <cwd>/workspace</cwd>\n  <approval_policy>never</approval_policy>\n  <sandbox_mode>read-only</sand"
+        },
+        {
+          "path": "input.1.content.0.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        }
+      ]
+    },
+    "skills": {
+      "count": 0,
+      "tokens": 0,
+      "definition_tokens": 0,
+      "instruction_field_count": 0,
+      "instruction_fields": [],
+      "items": []
+    },
+    "tools": {
+      "count": 2,
+      "names": [
+        "shell",
+        "view_image"
+      ],
+      "tokens": 170,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "shell",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 482,
+          "tokens": 101,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "view_image",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 330,
+          "tokens": 69,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    },
+    "subagents": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "model": "gpt-5",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 28757,
+      "body_chars": 28595,
+      "body_tokens": 6409,
+      "text_fields": {
+        "count": 3,
+        "chars": 26897,
+        "tokens": 5738,
+        "by_category": {
+          "system_prompt": {
+            "count": 1,
+            "chars": 26675,
+            "tokens": 5682
+          },
+          "environment_context": {
+            "count": 1,
+            "chars": 220,
+            "tokens": 55
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 26675,
+            "tokens": 5682
+          },
+          "injected_user_context": {
+            "count": 1,
+            "chars": 220,
+            "tokens": 55
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "fields": [
+          {
+            "path": "instructions",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 26675,
+            "tokens": 5682,
+            "preview": "You are a coding agent running in the Codex CLI, a terminal-based coding assistant. Codex CLI is an open source project "
+          },
+          {
+            "path": "input.0.content.0.text",
+            "role": "user",
+            "category": "environment_context",
+            "source": "injected_user_context",
+            "chars": 220,
+            "tokens": 55,
+            "preview": "<environment_context>\n  <cwd>/workspace</cwd>\n  <approval_policy>never</approval_policy>\n  <sandbox_mode>read-only</sand"
+          },
+          {
+            "path": "input.1.content.0.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          }
+        ]
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 2,
+        "names": [
+          "shell",
+          "view_image"
+        ],
+        "tokens": 170,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "shell",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 482,
+            "tokens": 101,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "view_image",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 330,
+            "tokens": 69,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 28757,
+    "body_tokens": 6409,
+    "skill_count": 0,
+    "tool_count": 2,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0
+  },
+  "post_totals": {
+    "body_bytes": 28757,
+    "body_tokens": 6409,
+    "skill_count": 0,
+    "tool_count": 2,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "codex-0.30.0-hi",
+    "agent_id": "codex",
+    "agent_version": "0.30.0",
+    "run_dir": "runs/codex-0.30.0-hi",
+    "agent_name": "OpenAI Codex CLI",
+    "agent_image": "hibench/codex:0.30.0",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-13T13:05:52Z",
+    "ended_at": "2026-06-13T13:05:52Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 6409,
+    "body_tokens": 6409,
+    "body_bytes": 28757,
+    "body_chars": 28595,
+    "text_field_count": 3,
+    "text_tokens": 5738,
+    "system_prompt_tokens": 5682,
+    "environment_context_tokens": 55,
+    "user_prompt_tokens": 1,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 5682,
+    "developer_instructions_tokens": 0,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 55,
+    "instruction_tokens": 5737,
+    "default_context_tokens": 5907,
+    "skills_count": 0,
+    "skills_tokens": 0,
+    "skill_definition_tokens": 0,
+    "tool_count": 2,
+    "tool_definition_tokens": 170,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "mcp_mention_tokens": 0,
+    "subagent_count": 0,
+    "subagent_tokens": 0,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0,
+    "subagent_mention_tokens": 0
+  }
+}

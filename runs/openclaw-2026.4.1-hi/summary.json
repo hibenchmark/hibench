@@ -1,0 +1,1472 @@
+{
+  "run_dir": "runs/openclaw-2026.4.1-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 57503,
+    "body_chars": 57365,
+    "body_tokens": 13643,
+    "text_fields": {
+      "count": 2,
+      "chars": 26619,
+      "tokens": 6163,
+      "by_category": {
+        "system_prompt": {
+          "count": 1,
+          "chars": 26617,
+          "tokens": 6162
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 26617,
+          "tokens": 6162
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "fields": [
+        {
+          "path": "input.0.content",
+          "role": "system",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 26617,
+          "tokens": 6162,
+          "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nTool availability (filtered by policy):\nTool names are "
+        },
+        {
+          "path": "input.1.content.0.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        }
+      ]
+    },
+    "skills": {
+      "count": 6,
+      "tokens": 760,
+      "definition_tokens": 744,
+      "instruction_field_count": 1,
+      "instruction_fields": [
+        {
+          "path": "input.0.content",
+          "role": "system",
+          "chars": 3213,
+          "tokens": 760,
+          "preview": "<available_skills>\n  <skill>\n    <name>clawflow</name>\n    <description>Use when work should span one or more detached t"
+        }
+      ],
+      "items": [
+        {
+          "skill_index": 1,
+          "name": "clawflow",
+          "description": "Use when work should span one or more detached tasks but still behave like one job with a single owner context. ClawFlow is the runtime substrate under authoring layers like Lobster, acpx, or plain code. Keep conditional logic in the caller; use ClawFlow for flow identity, waiting, outputs, and user-facing emergence.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/clawflow/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 492,
+          "tokens": 117,
+          "preview": "<skill>\n    <name>clawflow</name>\n    <description>Use when work should span one or more detached tasks but still behave"
+        },
+        {
+          "skill_index": 2,
+          "name": "clawflow-inbox-triage",
+          "description": "Example ClawFlow authoring pattern for inbox triage. Use when messages need different treatment based on intent, with some routes notifying immediately, some waiting on outside answers, and others rolling into a later summary.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/clawflow-inbox-triage/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 426,
+          "tokens": 101,
+          "preview": "<skill>\n    <name>clawflow-inbox-triage</name>\n    <description>Example ClawFlow authoring pattern for inbox triage. Use"
+        },
+        {
+          "skill_index": 3,
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 499,
+          "tokens": 115,
+          "preview": "<skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenC"
+        },
+        {
+          "skill_index": 4,
+          "name": "node-connect",
+          "description": "Diagnose OpenClaw node connection and pairing failures for Android, iOS, and macOS companion apps. Use when QR/setup code/manual connect fails, local Wi-Fi works but VPS/tailnet does not, or errors mention pairing required, unauthorized, bootstrap token invalid or expired, gateway.bind, gateway.remote.url, Tailscale, or plugins.entries.device-pair.config.publicUrl.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/node-connect/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 549,
+          "tokens": 125,
+          "preview": "<skill>\n    <name>node-connect</name>\n    <description>Diagnose OpenClaw node connection and pairing failures for Androi"
+        },
+        {
+          "skill_index": 5,
+          "name": "skill-creator",
+          "description": "Create, edit, improve, or audit AgentSkills. Use when creating a new skill from scratch or when asked to improve, review, audit, tidy up, or clean up an existing skill or SKILL.md file. Also use when editing or restructuring a skill directory (moving files to references/ or scripts/, removing stale content, validating against the AgentSkills spec). Triggers on phrases like &quot;create a skill&quot;, &quot;author a skill&quot;, &quot;tidy up a skill&quot;, &quot;improve this skill&quot;, &quot;review the skill&quot;, &quot;clean up the skill&quot;, &quot;audit the skill&quot;.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 767,
+          "tokens": 188,
+          "preview": "<skill>\n    <name>skill-creator</name>\n    <description>Create, edit, improve, or audit AgentSkills. Use when creating a"
+        },
+        {
+          "skill_index": 6,
+          "name": "weather",
+          "description": "Get current weather and forecasts via wttr.in or Open-Meteo. Use when: user asks about weather, temperature, or forecasts for any location. NOT for: historical weather data, severe weather alerts, or detailed meteorological analysis. No API key needed.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/weather/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 424,
+          "tokens": 98,
+          "preview": "<skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts via wttr.in or Open-Meteo. Use when:"
+        }
+      ]
+    },
+    "tools": {
+      "count": 24,
+      "names": [
+        "agents_list",
+        "browser",
+        "canvas",
+        "cron",
+        "edit",
+        "exec",
+        "gateway",
+        "memory_get",
+        "memory_search",
+        "message",
+        "nodes",
+        "process",
+        "read",
+        "session_status",
+        "sessions_history",
+        "sessions_list",
+        "sessions_send",
+        "sessions_spawn",
+        "sessions_yield",
+        "subagents",
+        "tts",
+        "web_fetch",
+        "web_search",
+        "write"
+      ],
+      "tokens": 7131,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "read",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 951,
+          "tokens": 222,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "edit",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1508,
+          "tokens": 319,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "write",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 704,
+          "tokens": 156,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "exec",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1358,
+          "tokens": 308,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "process",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1128,
+          "tokens": 260,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "canvas",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 848,
+          "tokens": 223,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "nodes",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1787,
+          "tokens": 429,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "cron",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 4551,
+          "tokens": 1156,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "message",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 5692,
+          "tokens": 1351,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 10,
+          "array_index": 9,
+          "path": "tools.9",
+          "name": "tts",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 453,
+          "tokens": 94,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 11,
+          "array_index": 10,
+          "path": "tools.10",
+          "name": "gateway",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1043,
+          "tokens": 232,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 12,
+          "array_index": 11,
+          "path": "tools.11",
+          "name": "agents_list",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 239,
+          "tokens": 58,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 13,
+          "array_index": 12,
+          "path": "tools.12",
+          "name": "sessions_list",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 354,
+          "tokens": 84,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 14,
+          "array_index": 13,
+          "path": "tools.13",
+          "name": "sessions_history",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 288,
+          "tokens": 65,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 15,
+          "array_index": 14,
+          "path": "tools.14",
+          "name": "sessions_send",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 446,
+          "tokens": 109,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 16,
+          "array_index": 15,
+          "path": "tools.15",
+          "name": "sessions_yield",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 246,
+          "tokens": 52,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 17,
+          "array_index": 16,
+          "path": "tools.16",
+          "name": "sessions_spawn",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1474,
+          "tokens": 360,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 18,
+          "array_index": 17,
+          "path": "tools.17",
+          "name": "subagents",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 380,
+          "tokens": 91,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 19,
+          "array_index": 18,
+          "path": "tools.18",
+          "name": "session_status",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 439,
+          "tokens": 92,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 20,
+          "array_index": 19,
+          "path": "tools.19",
+          "name": "web_search",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 624,
+          "tokens": 145,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 21,
+          "array_index": 20,
+          "path": "tools.20",
+          "name": "web_fetch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 587,
+          "tokens": 128,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 22,
+          "array_index": 21,
+          "path": "tools.21",
+          "name": "browser",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 3955,
+          "tokens": 999,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 23,
+          "array_index": 22,
+          "path": "tools.22",
+          "name": "memory_search",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 561,
+          "tokens": 116,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 24,
+          "array_index": 23,
+          "path": "tools.23",
+          "name": "memory_get",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 364,
+          "tokens": 82,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    },
+    "subagents": {
+      "marker_count": 8,
+      "paths": [
+        "input.0.content",
+        "tools.11.description",
+        "tools.15.description",
+        "tools.16.description",
+        "tools.16.parameters.properties.runtime.enum.0",
+        "tools.17",
+        "tools.17.description",
+        "tools.17.name"
+      ],
+      "count": 1,
+      "tokens": 91,
+      "mention_count": 5,
+      "mention_tokens": 6254,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "subagent_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "input.0.content",
+          "chars": 26617,
+          "tokens": 6162,
+          "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nTool availability (filtered by policy):\nTool names are "
+        },
+        {
+          "marker_index": 2,
+          "name": "subagent_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.11.description",
+          "chars": 118,
+          "tokens": 29,
+          "preview": "List OpenClaw agent ids you can target with `sessions_spawn` when `runtime=\"subagent\"` (based on subagent allowlists)."
+        },
+        {
+          "marker_index": 3,
+          "name": "subagent_3",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.15.description",
+          "chars": 97,
+          "tokens": 19,
+          "preview": "End your current turn. Use after spawning subagents to receive their results as the next message."
+        },
+        {
+          "marker_index": 4,
+          "name": "subagent_4",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.16.description",
+          "chars": 198,
+          "tokens": 42,
+          "preview": "Spawn an isolated session (runtime=\"subagent\" or runtime=\"acp\"). mode=\"run\" is one-shot and mode=\"session\" is persistent"
+        },
+        {
+          "marker_index": 5,
+          "name": "subagent_5",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.16.parameters.properties.runtime.enum.0",
+          "chars": 8,
+          "tokens": 2,
+          "preview": "subagent"
+        },
+        {
+          "marker_index": 6,
+          "name": "subagents",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.17",
+          "chars": 380,
+          "tokens": 91,
+          "preview": "{\"description\":\"List, kill, or steer spawned sub-agents for this requester session. Use this for sub-agent orchestration"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "model": "gpt-5",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 57503,
+      "body_chars": 57365,
+      "body_tokens": 13643,
+      "text_fields": {
+        "count": 2,
+        "chars": 26619,
+        "tokens": 6163,
+        "by_category": {
+          "system_prompt": {
+            "count": 1,
+            "chars": 26617,
+            "tokens": 6162
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 26617,
+            "tokens": 6162
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "fields": [
+          {
+            "path": "input.0.content",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 26617,
+            "tokens": 6162,
+            "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nTool availability (filtered by policy):\nTool names are "
+          },
+          {
+            "path": "input.1.content.0.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          }
+        ]
+      },
+      "skills": {
+        "count": 6,
+        "tokens": 760,
+        "definition_tokens": 744,
+        "instruction_field_count": 1,
+        "instruction_fields": [
+          {
+            "path": "input.0.content",
+            "role": "system",
+            "chars": 3213,
+            "tokens": 760,
+            "preview": "<available_skills>\n  <skill>\n    <name>clawflow</name>\n    <description>Use when work should span one or more detached t"
+          }
+        ],
+        "items": [
+          {
+            "skill_index": 1,
+            "name": "clawflow",
+            "description": "Use when work should span one or more detached tasks but still behave like one job with a single owner context. ClawFlow is the runtime substrate under authoring layers like Lobster, acpx, or plain code. Keep conditional logic in the caller; use ClawFlow for flow identity, waiting, outputs, and user-facing emergence.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/clawflow/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 492,
+            "tokens": 117,
+            "preview": "<skill>\n    <name>clawflow</name>\n    <description>Use when work should span one or more detached tasks but still behave"
+          },
+          {
+            "skill_index": 2,
+            "name": "clawflow-inbox-triage",
+            "description": "Example ClawFlow authoring pattern for inbox triage. Use when messages need different treatment based on intent, with some routes notifying immediately, some waiting on outside answers, and others rolling into a later summary.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/clawflow-inbox-triage/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 426,
+            "tokens": 101,
+            "preview": "<skill>\n    <name>clawflow-inbox-triage</name>\n    <description>Example ClawFlow authoring pattern for inbox triage. Use"
+          },
+          {
+            "skill_index": 3,
+            "name": "healthcheck",
+            "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/healthcheck/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 499,
+            "tokens": 115,
+            "preview": "<skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenC"
+          },
+          {
+            "skill_index": 4,
+            "name": "node-connect",
+            "description": "Diagnose OpenClaw node connection and pairing failures for Android, iOS, and macOS companion apps. Use when QR/setup code/manual connect fails, local Wi-Fi works but VPS/tailnet does not, or errors mention pairing required, unauthorized, bootstrap token invalid or expired, gateway.bind, gateway.remote.url, Tailscale, or plugins.entries.device-pair.config.publicUrl.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/node-connect/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 549,
+            "tokens": 125,
+            "preview": "<skill>\n    <name>node-connect</name>\n    <description>Diagnose OpenClaw node connection and pairing failures for Androi"
+          },
+          {
+            "skill_index": 5,
+            "name": "skill-creator",
+            "description": "Create, edit, improve, or audit AgentSkills. Use when creating a new skill from scratch or when asked to improve, review, audit, tidy up, or clean up an existing skill or SKILL.md file. Also use when editing or restructuring a skill directory (moving files to references/ or scripts/, removing stale content, validating against the AgentSkills spec). Triggers on phrases like &quot;create a skill&quot;, &quot;author a skill&quot;, &quot;tidy up a skill&quot;, &quot;improve this skill&quot;, &quot;review the skill&quot;, &quot;clean up the skill&quot;, &quot;audit the skill&quot;.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/skill-creator/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 767,
+            "tokens": 188,
+            "preview": "<skill>\n    <name>skill-creator</name>\n    <description>Create, edit, improve, or audit AgentSkills. Use when creating a"
+          },
+          {
+            "skill_index": 6,
+            "name": "weather",
+            "description": "Get current weather and forecasts via wttr.in or Open-Meteo. Use when: user asks about weather, temperature, or forecasts for any location. NOT for: historical weather data, severe weather alerts, or detailed meteorological analysis. No API key needed.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/weather/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 424,
+            "tokens": 98,
+            "preview": "<skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts via wttr.in or Open-Meteo. Use when:"
+          }
+        ]
+      },
+      "tools": {
+        "count": 24,
+        "names": [
+          "agents_list",
+          "browser",
+          "canvas",
+          "cron",
+          "edit",
+          "exec",
+          "gateway",
+          "memory_get",
+          "memory_search",
+          "message",
+          "nodes",
+          "process",
+          "read",
+          "session_status",
+          "sessions_history",
+          "sessions_list",
+          "sessions_send",
+          "sessions_spawn",
+          "sessions_yield",
+          "subagents",
+          "tts",
+          "web_fetch",
+          "web_search",
+          "write"
+        ],
+        "tokens": 7131,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "read",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 951,
+            "tokens": 222,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "edit",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1508,
+            "tokens": 319,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 704,
+            "tokens": 156,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "exec",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1358,
+            "tokens": 308,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "process",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1128,
+            "tokens": 260,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "canvas",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 848,
+            "tokens": 223,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "nodes",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1787,
+            "tokens": 429,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "cron",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 4551,
+            "tokens": 1156,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "message",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 5692,
+            "tokens": 1351,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "tts",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 453,
+            "tokens": 94,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 11,
+            "array_index": 10,
+            "path": "tools.10",
+            "name": "gateway",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1043,
+            "tokens": 232,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 12,
+            "array_index": 11,
+            "path": "tools.11",
+            "name": "agents_list",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 239,
+            "tokens": 58,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 13,
+            "array_index": 12,
+            "path": "tools.12",
+            "name": "sessions_list",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 354,
+            "tokens": 84,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 14,
+            "array_index": 13,
+            "path": "tools.13",
+            "name": "sessions_history",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 288,
+            "tokens": 65,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 15,
+            "array_index": 14,
+            "path": "tools.14",
+            "name": "sessions_send",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 446,
+            "tokens": 109,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 16,
+            "array_index": 15,
+            "path": "tools.15",
+            "name": "sessions_yield",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 246,
+            "tokens": 52,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 17,
+            "array_index": 16,
+            "path": "tools.16",
+            "name": "sessions_spawn",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1474,
+            "tokens": 360,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 18,
+            "array_index": 17,
+            "path": "tools.17",
+            "name": "subagents",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 380,
+            "tokens": 91,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 19,
+            "array_index": 18,
+            "path": "tools.18",
+            "name": "session_status",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 439,
+            "tokens": 92,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 20,
+            "array_index": 19,
+            "path": "tools.19",
+            "name": "web_search",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 624,
+            "tokens": 145,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 21,
+            "array_index": 20,
+            "path": "tools.20",
+            "name": "web_fetch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 587,
+            "tokens": 128,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 22,
+            "array_index": 21,
+            "path": "tools.21",
+            "name": "browser",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 3955,
+            "tokens": 999,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 23,
+            "array_index": 22,
+            "path": "tools.22",
+            "name": "memory_search",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 561,
+            "tokens": 116,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 24,
+            "array_index": 23,
+            "path": "tools.23",
+            "name": "memory_get",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 364,
+            "tokens": 82,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 8,
+        "paths": [
+          "input.0.content",
+          "tools.11.description",
+          "tools.15.description",
+          "tools.16.description",
+          "tools.16.parameters.properties.runtime.enum.0",
+          "tools.17",
+          "tools.17.description",
+          "tools.17.name"
+        ],
+        "count": 1,
+        "tokens": 91,
+        "mention_count": 5,
+        "mention_tokens": 6254,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "input.0.content",
+            "chars": 26617,
+            "tokens": 6162,
+            "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nTool availability (filtered by policy):\nTool names are "
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.11.description",
+            "chars": 118,
+            "tokens": 29,
+            "preview": "List OpenClaw agent ids you can target with `sessions_spawn` when `runtime=\"subagent\"` (based on subagent allowlists)."
+          },
+          {
+            "marker_index": 3,
+            "name": "subagent_3",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.15.description",
+            "chars": 97,
+            "tokens": 19,
+            "preview": "End your current turn. Use after spawning subagents to receive their results as the next message."
+          },
+          {
+            "marker_index": 4,
+            "name": "subagent_4",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.16.description",
+            "chars": 198,
+            "tokens": 42,
+            "preview": "Spawn an isolated session (runtime=\"subagent\" or runtime=\"acp\"). mode=\"run\" is one-shot and mode=\"session\" is persistent"
+          },
+          {
+            "marker_index": 5,
+            "name": "subagent_5",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.16.parameters.properties.runtime.enum.0",
+            "chars": 8,
+            "tokens": 2,
+            "preview": "subagent"
+          },
+          {
+            "marker_index": 6,
+            "name": "subagents",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.17",
+            "chars": 380,
+            "tokens": 91,
+            "preview": "{\"description\":\"List, kill, or steer spawned sub-agents for this requester session. Use this for sub-agent orchestration"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 57503,
+    "body_tokens": 13643,
+    "skill_count": 6,
+    "tool_count": 24,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 8,
+    "subagent_mention_count": 5
+  },
+  "post_totals": {
+    "body_bytes": 57503,
+    "body_tokens": 13643,
+    "skill_count": 6,
+    "tool_count": 24,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 8,
+    "subagent_mention_count": 5
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "openclaw-2026.4.1-hi",
+    "agent_id": "openclaw",
+    "agent_version": "2026.4.1",
+    "run_dir": "runs/openclaw-2026.4.1-hi",
+    "agent_name": "OpenClaw",
+    "agent_image": "hibench/openclaw:2026.4.1",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-14T13:24:41Z",
+    "ended_at": "2026-06-14T13:24:50Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 13643,
+    "body_tokens": 13643,
+    "body_bytes": 57503,
+    "body_chars": 57365,
+    "text_field_count": 2,
+    "text_tokens": 6163,
+    "system_prompt_tokens": 6162,
+    "environment_context_tokens": 0,
+    "user_prompt_tokens": 1,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 6162,
+    "developer_instructions_tokens": 0,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 0,
+    "instruction_tokens": 6162,
+    "default_context_tokens": 13293,
+    "skills_count": 6,
+    "skills_tokens": 760,
+    "skill_definition_tokens": 744,
+    "tool_count": 24,
+    "tool_definition_tokens": 7131,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "mcp_mention_tokens": 0,
+    "subagent_count": 1,
+    "subagent_tokens": 91,
+    "subagent_marker_count": 8,
+    "subagent_mention_count": 5,
+    "subagent_mention_tokens": 6254
+  }
+}

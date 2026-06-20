@@ -1,0 +1,19 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,openclaw-2026.4.23-hi,openclaw,2026.4.23,1,1,healthcheck,/root/.bun/install/global/node_modules/openclaw/skills/healthcheck/SKILL.md,input.0.content,288,73,"Audit and harden hosts running OpenClaw for SSH, firewall, updates, exposure, cron checks, and risk posture.","<skill>
+    <name>healthcheck</name>
+    <description>Audit and harden hosts running OpenClaw for SSH, firewall, updates"
+hibench.benchmark.v1,openclaw-2026.4.23-hi,openclaw,2026.4.23,1,2,node-connect,/root/.bun/install/global/node_modules/openclaw/skills/node-connect/SKILL.md,input.0.content,289,75,"Diagnose OpenClaw Android, iOS, or macOS node pairing, QR/setup code, route, auth, and connection failures.","<skill>
+    <name>node-connect</name>
+    <description>Diagnose OpenClaw Android, iOS, or macOS node pairing, QR/setup c"
+hibench.benchmark.v1,openclaw-2026.4.23-hi,openclaw,2026.4.23,1,3,skill-creator,/root/.bun/install/global/node_modules/openclaw/skills/skill-creator/SKILL.md,input.0.content,274,71,"Create, edit, improve, tidy, review, audit, or restructure AgentSkills and SKILL.md files.","<skill>
+    <name>skill-creator</name>
+    <description>Create, edit, improve, tidy, review, audit, or restructure Agent"
+hibench.benchmark.v1,openclaw-2026.4.23-hi,openclaw,2026.4.23,1,4,taskflow,/root/.bun/install/global/node_modules/openclaw/skills/taskflow/SKILL.md,input.0.content,289,70,"Coordinate multi-step detached tasks as one durable TaskFlow job with owner context, state, waits, and child tasks.","<skill>
+    <name>taskflow</name>
+    <description>Coordinate multi-step detached tasks as one durable TaskFlow job with"
+hibench.benchmark.v1,openclaw-2026.4.23-hi,openclaw,2026.4.23,1,5,taskflow-inbox-triage,/root/.bun/install/global/node_modules/openclaw/skills/taskflow-inbox-triage/SKILL.md,input.0.content,299,77,"Example TaskFlow pattern for inbox triage, intent routing, waiting on replies, and later summaries.","<skill>
+    <name>taskflow-inbox-triage</name>
+    <description>Example TaskFlow pattern for inbox triage, intent routin"
+hibench.benchmark.v1,openclaw-2026.4.23-hi,openclaw,2026.4.23,1,6,weather,/root/.bun/install/global/node_modules/openclaw/skills/weather/SKILL.md,input.0.content,259,61,"Get current weather, rain, temperature, and forecasts for locations or travel planning.","<skill>
+    <name>weather</name>
+    <description>Get current weather, rain, temperature, and forecasts for locations or"

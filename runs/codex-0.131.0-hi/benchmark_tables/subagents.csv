@@ -1,0 +1,5 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,codex-0.131.0-hi,codex,0.131.0,1,1,subagent_1,text_mention,False,tools.6.description,6405,1278,"
+        
+        Available model overrides (optional; inherited parent model is preferred):
+- GPT-5.5 (`gpt-5.5`): Fron"

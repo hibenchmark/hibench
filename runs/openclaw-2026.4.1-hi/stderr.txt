@@ -1,0 +1,51 @@
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js
+[plugins] amazon-bedrock failed to load from /root/.bun/install/global/node_modules/openclaw/dist/extensions/amazon-bedrock/index.js: Error: Cannot find module '@aws-sdk/client-bedrock'
+Require stack:
+- /root/.bun/install/global/node_modules/openclaw/dist/discovery-n62XH2sJ.js

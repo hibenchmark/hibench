@@ -1,0 +1,4 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,kilo-7.2.10-hi,kilo,7.2.10,1,1,kilo-config,file:///workspace/builtin,messages.0.content,491,114,"Guide for configuring Kilo CLI and locating config, command, agent, and skill paths (global, project, legacy), plus MCP servers, permissions, instructions, plugins, providers, kilo.json fields, and TUI settings (themes, appearance, keybinds, ctrl+p commands). Use when the user asks about configuring Kilo, where it loads things from, or how to change settings.","<skill>
+    <name>kilo-config</name>
+    <description>Guide for configuring Kilo CLI and locating config, command, agent"

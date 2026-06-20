@@ -1,0 +1,10 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,grok-cli-0.2.33-hi,grok-cli,0.2.33,2,1,mcp_1,text_mention,False,messages.0.content,12549,2523,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
+hibench.benchmark.v1,grok-cli-0.2.33-hi,grok-cli,0.2.33,2,2,mcp_2,text_mention,False,messages.2.content,3262,793,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.33-hi,grok-cli,0.2.33,2,3,mcp_3,text_mention,False,tools.14.function.description,128,25,"Search for MCP tools by keyword and retrieve their input schemas.
+
+If status is ""partial"", some servers may still be con"
+hibench.benchmark.v1,grok-cli-0.2.33-hi,grok-cli,0.2.33,2,4,mcp_4,text_mention,False,tools.15.function.description,313,69,Call an MCP integration tool. You MUST call `search_tool` first to retrieve the tool’s input schema before calling this

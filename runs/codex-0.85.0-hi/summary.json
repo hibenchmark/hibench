@@ -1,0 +1,724 @@
+{
+  "run_dir": "runs/codex-0.85.0-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "model": "gpt-5.2-codex",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5.2-codex",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 17006,
+    "body_chars": 16980,
+    "body_tokens": 3802,
+    "text_fields": {
+      "count": 5,
+      "chars": 11384,
+      "tokens": 2466,
+      "by_category": {
+        "system_prompt": {
+          "count": 2,
+          "chars": 8499,
+          "tokens": 1808
+        },
+        "user_prompt": {
+          "count": 2,
+          "chars": 2795,
+          "tokens": 634
+        },
+        "environment_context": {
+          "count": 1,
+          "chars": 90,
+          "tokens": 24
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 7563,
+          "tokens": 1624
+        },
+        "permissions_instructions": {
+          "count": 1,
+          "chars": 936,
+          "tokens": 184
+        },
+        "user_prompt": {
+          "count": 2,
+          "chars": 2795,
+          "tokens": 634
+        },
+        "injected_user_context": {
+          "count": 1,
+          "chars": 90,
+          "tokens": 24
+        }
+      },
+      "fields": [
+        {
+          "path": "instructions",
+          "role": "",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 7563,
+          "tokens": 1624,
+          "preview": "You are Codex, based on GPT-5. You are running as a coding agent in the Codex CLI on a user's computer.\n\n## General\n\n- W"
+        },
+        {
+          "path": "input.0.content.0.text",
+          "role": "developer",
+          "category": "system_prompt",
+          "source": "permissions_instructions",
+          "chars": 936,
+          "tokens": 184,
+          "preview": "<permissions instructions>Filesystem sandboxing defines which files can be read or written. `sandbox_mode` is `read-only"
+        },
+        {
+          "path": "input.1.content.0.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2793,
+          "tokens": 633,
+          "preview": "# AGENTS.md instructions for /workspace\n\n<INSTRUCTIONS>\n## Skills\nA skill is a set of local instructions to follow that "
+        },
+        {
+          "path": "input.2.content.0.text",
+          "role": "user",
+          "category": "environment_context",
+          "source": "injected_user_context",
+          "chars": 90,
+          "tokens": 24,
+          "preview": "<environment_context>\n  <cwd>/workspace</cwd>\n  <shell>bash</shell>\n</environment_context>"
+        },
+        {
+          "path": "input.3.content.0.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        }
+      ]
+    },
+    "skills": {
+      "count": 0,
+      "tokens": 0,
+      "definition_tokens": 0,
+      "instruction_field_count": 0,
+      "instruction_fields": [],
+      "items": []
+    },
+    "tools": {
+      "count": 7,
+      "names": [
+        "apply_patch",
+        "list_mcp_resource_templates",
+        "list_mcp_resources",
+        "read_mcp_resource",
+        "shell_command",
+        "update_plan",
+        "view_image"
+      ],
+      "tokens": 1076,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "shell_command",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1098,
+          "tokens": 226,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "list_mcp_resources",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 646,
+          "tokens": 121,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "list_mcp_resource_templates",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 734,
+          "tokens": 132,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "read_mcp_resource",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 526,
+          "tokens": 114,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "update_plan",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 624,
+          "tokens": 143,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "apply_patch",
+          "type": "custom",
+          "keys": [
+            "description",
+            "format",
+            "name",
+            "type"
+          ],
+          "chars": 838,
+          "tokens": 251,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "view_image",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 417,
+          "tokens": 89,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 15,
+      "paths": [
+        "tools.1",
+        "tools.1.description",
+        "tools.1.name",
+        "tools.1.parameters.properties.cursor.description",
+        "tools.1.parameters.properties.server.description",
+        "tools.2",
+        "tools.2.description",
+        "tools.2.name",
+        "tools.2.parameters.properties.cursor.description",
+        "tools.2.parameters.properties.server.description",
+        "tools.3",
+        "tools.3.description",
+        "tools.3.name",
+        "tools.3.parameters.properties.server.description",
+        "tools.3.parameters.properties.uri.description"
+      ],
+      "count": 3,
+      "tokens": 367,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "list_mcp_resources",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.1",
+          "chars": 646,
+          "tokens": 121,
+          "preview": "{\"description\":\"Lists resources provided by MCP servers. Resources allow servers to share data that provides context to "
+        },
+        {
+          "marker_index": 2,
+          "name": "list_mcp_resource_templates",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.2",
+          "chars": 734,
+          "tokens": 132,
+          "preview": "{\"description\":\"Lists resource templates provided by MCP servers. Parameterized resource templates allow servers to shar"
+        },
+        {
+          "marker_index": 3,
+          "name": "read_mcp_resource",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.3",
+          "chars": 526,
+          "tokens": 114,
+          "preview": "{\"description\":\"Read a specific resource from an MCP server given the server name and resource URI.\",\"name\":\"read_mcp_re"
+        }
+      ]
+    },
+    "subagents": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "model": "gpt-5.2-codex",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5.2-codex",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 17006,
+      "body_chars": 16980,
+      "body_tokens": 3802,
+      "text_fields": {
+        "count": 5,
+        "chars": 11384,
+        "tokens": 2466,
+        "by_category": {
+          "system_prompt": {
+            "count": 2,
+            "chars": 8499,
+            "tokens": 1808
+          },
+          "user_prompt": {
+            "count": 2,
+            "chars": 2795,
+            "tokens": 634
+          },
+          "environment_context": {
+            "count": 1,
+            "chars": 90,
+            "tokens": 24
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 7563,
+            "tokens": 1624
+          },
+          "permissions_instructions": {
+            "count": 1,
+            "chars": 936,
+            "tokens": 184
+          },
+          "user_prompt": {
+            "count": 2,
+            "chars": 2795,
+            "tokens": 634
+          },
+          "injected_user_context": {
+            "count": 1,
+            "chars": 90,
+            "tokens": 24
+          }
+        },
+        "fields": [
+          {
+            "path": "instructions",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 7563,
+            "tokens": 1624,
+            "preview": "You are Codex, based on GPT-5. You are running as a coding agent in the Codex CLI on a user's computer.\n\n## General\n\n- W"
+          },
+          {
+            "path": "input.0.content.0.text",
+            "role": "developer",
+            "category": "system_prompt",
+            "source": "permissions_instructions",
+            "chars": 936,
+            "tokens": 184,
+            "preview": "<permissions instructions>Filesystem sandboxing defines which files can be read or written. `sandbox_mode` is `read-only"
+          },
+          {
+            "path": "input.1.content.0.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2793,
+            "tokens": 633,
+            "preview": "# AGENTS.md instructions for /workspace\n\n<INSTRUCTIONS>\n## Skills\nA skill is a set of local instructions to follow that "
+          },
+          {
+            "path": "input.2.content.0.text",
+            "role": "user",
+            "category": "environment_context",
+            "source": "injected_user_context",
+            "chars": 90,
+            "tokens": 24,
+            "preview": "<environment_context>\n  <cwd>/workspace</cwd>\n  <shell>bash</shell>\n</environment_context>"
+          },
+          {
+            "path": "input.3.content.0.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          }
+        ]
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 7,
+        "names": [
+          "apply_patch",
+          "list_mcp_resource_templates",
+          "list_mcp_resources",
+          "read_mcp_resource",
+          "shell_command",
+          "update_plan",
+          "view_image"
+        ],
+        "tokens": 1076,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "shell_command",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1098,
+            "tokens": 226,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "list_mcp_resources",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 646,
+            "tokens": 121,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "list_mcp_resource_templates",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 734,
+            "tokens": 132,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "read_mcp_resource",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 526,
+            "tokens": 114,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "update_plan",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 624,
+            "tokens": 143,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "apply_patch",
+            "type": "custom",
+            "keys": [
+              "description",
+              "format",
+              "name",
+              "type"
+            ],
+            "chars": 838,
+            "tokens": 251,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "view_image",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 417,
+            "tokens": 89,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 15,
+        "paths": [
+          "tools.1",
+          "tools.1.description",
+          "tools.1.name",
+          "tools.1.parameters.properties.cursor.description",
+          "tools.1.parameters.properties.server.description",
+          "tools.2",
+          "tools.2.description",
+          "tools.2.name",
+          "tools.2.parameters.properties.cursor.description",
+          "tools.2.parameters.properties.server.description",
+          "tools.3",
+          "tools.3.description",
+          "tools.3.name",
+          "tools.3.parameters.properties.server.description",
+          "tools.3.parameters.properties.uri.description"
+        ],
+        "count": 3,
+        "tokens": 367,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "list_mcp_resources",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.1",
+            "chars": 646,
+            "tokens": 121,
+            "preview": "{\"description\":\"Lists resources provided by MCP servers. Resources allow servers to share data that provides context to "
+          },
+          {
+            "marker_index": 2,
+            "name": "list_mcp_resource_templates",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.2",
+            "chars": 734,
+            "tokens": 132,
+            "preview": "{\"description\":\"Lists resource templates provided by MCP servers. Parameterized resource templates allow servers to shar"
+          },
+          {
+            "marker_index": 3,
+            "name": "read_mcp_resource",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.3",
+            "chars": 526,
+            "tokens": 114,
+            "preview": "{\"description\":\"Read a specific resource from an MCP server given the server name and resource URI.\",\"name\":\"read_mcp_re"
+          }
+        ]
+      },
+      "subagents": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 17006,
+    "body_tokens": 3802,
+    "skill_count": 0,
+    "tool_count": 7,
+    "mcp_marker_count": 15,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0
+  },
+  "post_totals": {
+    "body_bytes": 17006,
+    "body_tokens": 3802,
+    "skill_count": 0,
+    "tool_count": 7,
+    "mcp_marker_count": 15,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "codex-0.85.0-hi",
+    "agent_id": "codex",
+    "agent_version": "0.85.0",
+    "run_dir": "runs/codex-0.85.0-hi",
+    "agent_name": "OpenAI Codex CLI",
+    "agent_image": "hibench/codex:0.85.0",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-13T13:52:38Z",
+    "ended_at": "2026-06-13T13:52:39Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/responses",
+    "model": "gpt-5.2-codex",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 3802,
+    "body_tokens": 3802,
+    "body_bytes": 17006,
+    "body_chars": 16980,
+    "text_field_count": 5,
+    "text_tokens": 2466,
+    "system_prompt_tokens": 1808,
+    "environment_context_tokens": 24,
+    "user_prompt_tokens": 634,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 1624,
+    "developer_instructions_tokens": 184,
+    "permissions_instructions_tokens": 184,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 24,
+    "instruction_tokens": 1832,
+    "default_context_tokens": 2908,
+    "skills_count": 0,
+    "skills_tokens": 0,
+    "skill_definition_tokens": 0,
+    "tool_count": 7,
+    "tool_definition_tokens": 1076,
+    "mcp_count": 3,
+    "mcp_tokens": 367,
+    "mcp_marker_count": 15,
+    "mcp_mention_count": 0,
+    "mcp_mention_tokens": 0,
+    "subagent_count": 0,
+    "subagent_tokens": 0,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0,
+    "subagent_mention_tokens": 0
+  }
+}

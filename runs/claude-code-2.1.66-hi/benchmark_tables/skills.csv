@@ -1,0 +1,2 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,claude-code-2.1.66-hi,claude-code,2.1.66,1,1,simplify,,messages.0.content.0.text,94,20,"Review changed code for reuse, quality, and efficiency, then fix any issues found.","- simplify: Review changed code for reuse, quality, and efficiency, then fix any issues found."

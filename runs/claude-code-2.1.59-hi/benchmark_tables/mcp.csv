@@ -1,0 +1,5 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,1,mcp_1,text_mention,False,tools.3.description,1217,273,"
+- Fetches content from a specified URL and processes it using an AI model
+- Takes a URL and a prompt as input
+- Fetches"

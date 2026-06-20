@@ -1,0 +1,10 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,openclaw-2026.2.1-hi,openclaw,2026.2.1,1,1,bluebubbles,/root/.bun/install/global/node_modules/openclaw/skills/bluebubbles/SKILL.md,input.0.content,303,76,"Build or update the BlueBubbles external channel plugin for OpenClaw (extension package, REST send/probe, webhook inbound).","<skill>
+    <name>bluebubbles</name>
+    <description>Build or update the BlueBubbles external channel plugin for OpenCl"
+hibench.benchmark.v1,openclaw-2026.2.1-hi,openclaw,2026.2.1,1,2,skill-creator,/root/.bun/install/global/node_modules/openclaw/skills/skill-creator/SKILL.md,input.0.content,304,73,"Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.","<skill>
+    <name>skill-creator</name>
+    <description>Create or update AgentSkills. Use when designing, structuring, o"
+hibench.benchmark.v1,openclaw-2026.2.1-hi,openclaw,2026.2.1,1,3,weather,/root/.bun/install/global/node_modules/openclaw/skills/weather/SKILL.md,input.0.content,228,56,Get current weather and forecasts (no API key required).,"<skill>
+    <name>weather</name>
+    <description>Get current weather and forecasts (no API key required).</description>"

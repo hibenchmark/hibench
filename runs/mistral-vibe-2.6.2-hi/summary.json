@@ -1,0 +1,664 @@
+{
+  "run_dir": "runs/mistral-vibe-2.6.2-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 28217,
+    "body_chars": 28104,
+    "body_tokens": 7053,
+    "text_fields": {
+      "count": 2,
+      "chars": 22054,
+      "tokens": 5227,
+      "by_category": {
+        "system_prompt": {
+          "count": 1,
+          "chars": 22052,
+          "tokens": 5226
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 22052,
+          "tokens": 5226
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "fields": [
+        {
+          "path": "messages.0.content",
+          "role": "system",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 22052,
+          "tokens": 5226,
+          "preview": "You are Mistral Vibe, a CLI coding agent built by Mistral AI. You interact with a local codebase through tools.\nCRITICAL"
+        },
+        {
+          "path": "messages.1.content",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        }
+      ]
+    },
+    "skills": {
+      "count": 0,
+      "tokens": 0,
+      "definition_tokens": 0,
+      "instruction_field_count": 0,
+      "instruction_fields": [],
+      "items": []
+    },
+    "tools": {
+      "count": 9,
+      "names": [
+        "bash",
+        "grep",
+        "read_file",
+        "search_replace",
+        "skill",
+        "task",
+        "todo",
+        "web_fetch",
+        "write_file"
+      ],
+      "tokens": 1031,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "write_file",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 391,
+          "tokens": 88,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "read_file",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 502,
+          "tokens": 116,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "task",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 525,
+          "tokens": 111,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "web_fetch",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 384,
+          "tokens": 90,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "search_replace",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 396,
+          "tokens": 87,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "bash",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 336,
+          "tokens": 74,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "grep",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 604,
+          "tokens": 136,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "skill",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 605,
+          "tokens": 114,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "todo",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 847,
+          "tokens": 215,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    },
+    "subagents": {
+      "marker_count": 5,
+      "paths": [
+        "messages.0.content",
+        "messages.0.content.subagent.0",
+        "tools.2.function.description",
+        "tools.2.function.parameters.properties.agent.description",
+        "tools.2.function.parameters.properties.task.description"
+      ],
+      "count": 1,
+      "tokens": 14,
+      "mention_count": 3,
+      "mention_tokens": 59,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "explore",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "messages.0.content.subagent.0",
+          "chars": 58,
+          "tokens": 14,
+          "preview": "- **explore**: Read-only subagent for codebase exploration"
+        },
+        {
+          "marker_index": 2,
+          "name": "subagent_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.2.function.description",
+          "chars": 202,
+          "tokens": 37,
+          "preview": "Delegate a task to a subagent for independent execution. Useful for exploration, research, or parallel work that doesn't"
+        },
+        {
+          "marker_index": 3,
+          "name": "subagent_3",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.2.function.parameters.properties.task.description",
+          "chars": 36,
+          "tokens": 8,
+          "preview": "The task to delegate to the subagent"
+        },
+        {
+          "marker_index": 4,
+          "name": "subagent_4",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.2.function.parameters.properties.agent.description",
+          "chars": 53,
+          "tokens": 14,
+          "preview": "Name of the agent profile to use (must be a subagent)"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "model": "gpt-5",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 28217,
+      "body_chars": 28104,
+      "body_tokens": 7053,
+      "text_fields": {
+        "count": 2,
+        "chars": 22054,
+        "tokens": 5227,
+        "by_category": {
+          "system_prompt": {
+            "count": 1,
+            "chars": 22052,
+            "tokens": 5226
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 22052,
+            "tokens": 5226
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "fields": [
+          {
+            "path": "messages.0.content",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 22052,
+            "tokens": 5226,
+            "preview": "You are Mistral Vibe, a CLI coding agent built by Mistral AI. You interact with a local codebase through tools.\nCRITICAL"
+          },
+          {
+            "path": "messages.1.content",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          }
+        ]
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 9,
+        "names": [
+          "bash",
+          "grep",
+          "read_file",
+          "search_replace",
+          "skill",
+          "task",
+          "todo",
+          "web_fetch",
+          "write_file"
+        ],
+        "tokens": 1031,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "write_file",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 391,
+            "tokens": 88,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "read_file",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 502,
+            "tokens": 116,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "task",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 525,
+            "tokens": 111,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "web_fetch",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 384,
+            "tokens": 90,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "search_replace",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 396,
+            "tokens": 87,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "bash",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 336,
+            "tokens": 74,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "grep",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 604,
+            "tokens": 136,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "skill",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 605,
+            "tokens": 114,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "todo",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 847,
+            "tokens": 215,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 5,
+        "paths": [
+          "messages.0.content",
+          "messages.0.content.subagent.0",
+          "tools.2.function.description",
+          "tools.2.function.parameters.properties.agent.description",
+          "tools.2.function.parameters.properties.task.description"
+        ],
+        "count": 1,
+        "tokens": 14,
+        "mention_count": 3,
+        "mention_tokens": 59,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "explore",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "messages.0.content.subagent.0",
+            "chars": 58,
+            "tokens": 14,
+            "preview": "- **explore**: Read-only subagent for codebase exploration"
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.2.function.description",
+            "chars": 202,
+            "tokens": 37,
+            "preview": "Delegate a task to a subagent for independent execution. Useful for exploration, research, or parallel work that doesn't"
+          },
+          {
+            "marker_index": 3,
+            "name": "subagent_3",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.2.function.parameters.properties.task.description",
+            "chars": 36,
+            "tokens": 8,
+            "preview": "The task to delegate to the subagent"
+          },
+          {
+            "marker_index": 4,
+            "name": "subagent_4",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.2.function.parameters.properties.agent.description",
+            "chars": 53,
+            "tokens": 14,
+            "preview": "Name of the agent profile to use (must be a subagent)"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 28217,
+    "body_tokens": 7053,
+    "skill_count": 0,
+    "tool_count": 9,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 5,
+    "subagent_mention_count": 3
+  },
+  "post_totals": {
+    "body_bytes": 28217,
+    "body_tokens": 7053,
+    "skill_count": 0,
+    "tool_count": 9,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 5,
+    "subagent_mention_count": 3
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "mistral-vibe-2.6.2-hi",
+    "agent_id": "mistral-vibe",
+    "agent_version": "2.6.2",
+    "run_dir": "runs/mistral-vibe-2.6.2-hi",
+    "agent_name": "Mistral Vibe",
+    "agent_image": "hibench/mistral-vibe:2.6.2",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-18T20:00:54Z",
+    "ended_at": "2026-06-18T20:00:57Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/chat/completions",
+    "model": "gpt-5",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 7053,
+    "body_tokens": 7053,
+    "body_bytes": 28217,
+    "body_chars": 28104,
+    "text_field_count": 2,
+    "text_tokens": 5227,
+    "system_prompt_tokens": 5226,
+    "environment_context_tokens": 0,
+    "user_prompt_tokens": 1,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 5226,
+    "developer_instructions_tokens": 0,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 0,
+    "instruction_tokens": 5226,
+    "default_context_tokens": 6257,
+    "skills_count": 0,
+    "skills_tokens": 0,
+    "skill_definition_tokens": 0,
+    "tool_count": 9,
+    "tool_definition_tokens": 1031,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "mcp_mention_tokens": 0,
+    "subagent_count": 1,
+    "subagent_tokens": 14,
+    "subagent_marker_count": 5,
+    "subagent_mention_count": 3,
+    "subagent_mention_tokens": 59
+  }
+}

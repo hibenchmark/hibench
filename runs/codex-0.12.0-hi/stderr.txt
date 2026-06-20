@@ -1,0 +1,1 @@
+2026-06-13T13:04:46.071669Z ERROR codex_exec: Error receiving event: InternalAgentDied

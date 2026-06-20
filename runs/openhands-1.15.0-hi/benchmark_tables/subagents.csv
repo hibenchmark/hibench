@@ -1,0 +1,8 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,openhands-1.15.0-hi,openhands,1.15.0,1,1,subagent_1,text_mention,False,instructions,36676,8147,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"
+hibench.benchmark.v1,openhands-1.15.0-hi,openhands,1.15.0,1,2,subagent_2,text_mention,False,tools.3.description,1072,218,"Launch a subagent to handle complex, multi-step tasks autonomously.
+
+Subagents are autonomous agents that work independe"

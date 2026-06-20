@@ -1,0 +1,3 @@
+/usr/local/lib/python3.12/site-packages/openhands/sdk/llm/auth/openai.py:24: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, jwt

@@ -1,0 +1,5 @@
+schema_version,run_id,agent_id,agent_version,request_index,text_index,category,source,role,path,chars,tokens,preview
+hibench.benchmark.v1,openclaw-2026.5.22-hi,openclaw,2026.5.22,1,1,system_prompt,main_instructions,system,input.0.content,24778,5644,"You are a personal assistant running inside OpenClaw.
+## Tooling
+Available tools are policy-filtered. Names are case-sen"
+hibench.benchmark.v1,openclaw-2026.5.22-hi,openclaw,2026.5.22,1,2,user_prompt,user_prompt,user,input.1.content.0.text,2,1,Hi

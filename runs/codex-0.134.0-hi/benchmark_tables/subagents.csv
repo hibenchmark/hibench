@@ -1,0 +1,6 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,codex-0.134.0-hi,codex,0.134.0,1,1,subagent_1,text_mention,False,tools.9.description,475,102,"# Tool discovery
+
+Searches over deferred tool metadata with BM25 and exposes matching tools for the next model call.
+
+Yo"

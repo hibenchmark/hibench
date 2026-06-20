@@ -1,0 +1,1582 @@
+{
+  "run_dir": "runs/openhands-1.15.0-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 57301,
+    "body_chars": 57278,
+    "body_tokens": 12868,
+    "text_fields": {
+      "count": 2,
+      "chars": 36678,
+      "tokens": 8148,
+      "by_category": {
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        },
+        "system_prompt": {
+          "count": 1,
+          "chars": 36676,
+          "tokens": 8147
+        }
+      },
+      "by_source": {
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        },
+        "main_instructions": {
+          "count": 1,
+          "chars": 36676,
+          "tokens": 8147
+        }
+      },
+      "fields": [
+        {
+          "path": "input.0.content.0.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        },
+        {
+          "path": "instructions",
+          "role": "",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 36676,
+          "tokens": 8147,
+          "preview": "You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.\n\n<ROLE>\n* Your primary"
+        }
+      ]
+    },
+    "skills": {
+      "count": 49,
+      "tokens": 4865,
+      "definition_tokens": 4806,
+      "instruction_field_count": 1,
+      "instruction_fields": [
+        {
+          "path": "instructions",
+          "role": "",
+          "chars": 21270,
+          "tokens": 4865,
+          "preview": "<available_skills>\n  <skill>\n    <name>slack-standup-digest</name>\n    <description>Create an automation that generates"
+        }
+      ],
+      "items": [
+        {
+          "skill_index": 1,
+          "name": "slack-standup-digest",
+          "description": "Create an automation that generates an async standup digest from Slack. Searches selected channels for messages since the previous workday, groups updates by project, highlights blockers and decisions, and posts a summary to a target channel.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/slack-standup-digest/SKILL.md",
+          "source_path": "instructions",
+          "chars": 451,
+          "tokens": 102,
+          "preview": "<skill>\n    <name>slack-standup-digest</name>\n    <description>Create an automation that generates an async standup dige"
+        },
+        {
+          "skill_index": 2,
+          "name": "theme-factory",
+          "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/theme-factory/SKILL.md",
+          "source_path": "instructions",
+          "chars": 457,
+          "tokens": 110,
+          "preview": "<skill>\n    <name>theme-factory</name>\n    <description>Toolkit for styling artifacts with a theme. These artifacts can"
+        },
+        {
+          "skill_index": 3,
+          "name": "incident-retrospective",
+          "description": "Create an automation that drafts incident retrospectives. Gathers incident-channel messages from Slack, collects linked tickets and follow-ups from Linear, and publishes a retrospective draft to Notion with a timeline, impact summary, root-cause hypotheses, and action items.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/incident-retrospective/SKILL.md",
+          "source_path": "instructions",
+          "chars": 488,
+          "tokens": 104,
+          "preview": "<skill>\n    <name>incident-retrospective</name>\n    <description>Create an automation that drafts incident retrospective"
+        },
+        {
+          "skill_index": 4,
+          "name": "flarglebargle",
+          "description": "A test skill that responds to the magic word \"flarglebargle\" with a compliment. Use for testing skill activation and trigger functionality.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/flarglebargle/SKILL.md",
+          "source_path": "instructions",
+          "chars": 334,
+          "tokens": 84,
+          "preview": "<skill>\n    <name>flarglebargle</name>\n    <description>A test skill that responds to the magic word \"flarglebargle\" wit"
+        },
+        {
+          "skill_index": 5,
+          "name": "iterate",
+          "description": "Iterate on a GitHub pull request — drive it through CI, code review, and QA until it is merge-ready. Poll verification layers with `gh` CLI, diagnose and fix CI failures, address review feedback, retry flaky checks, push fixes, and repeat. The agent is the orchestration loop.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/iterate/SKILL.md",
+          "source_path": "instructions",
+          "chars": 459,
+          "tokens": 111,
+          "preview": "<skill>\n    <name>iterate</name>\n    <description>Iterate on a GitHub pull request — drive it through CI, code review, a"
+        },
+        {
+          "skill_index": 6,
+          "name": "openhands-api",
+          "description": "Reference skill for the OpenHands Cloud REST API (V1), including how to start additional cloud conversations for fresh-context or delegated work. Use when you need to automate common OpenHands Cloud actions; don't use for general sandbox/dev tasks unrelated to the OpenHands API.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-api/SKILL.md",
+          "source_path": "instructions",
+          "chars": 474,
+          "tokens": 106,
+          "preview": "<skill>\n    <name>openhands-api</name>\n    <description>Reference skill for the OpenHands Cloud REST API (V1), including"
+        },
+        {
+          "skill_index": 7,
+          "name": "discord",
+          "description": "Build and automate Discord integrations (bots, webhooks, slash commands, and REST API workflows). Use when the user mentions Discord, a Discord server/guild, channels, webhooks, bot tokens, slash commands/application commands, discord.js, or discord.py.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/discord/SKILL.md",
+          "source_path": "instructions",
+          "chars": 436,
+          "tokens": 101,
+          "preview": "<skill>\n    <name>discord</name>\n    <description>Build and automate Discord integrations (bots, webhooks, slash command"
+        },
+        {
+          "skill_index": 8,
+          "name": "datadog",
+          "description": "Query and analyze Datadog logs, metrics, APM traces, and monitors using the Datadog API. Use when debugging production issues, monitoring application performance, or investigating alerts.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/datadog/SKILL.md",
+          "source_path": "instructions",
+          "chars": 370,
+          "tokens": 89,
+          "preview": "<skill>\n    <name>datadog</name>\n    <description>Query and analyze Datadog logs, metrics, APM traces, and monitors usin"
+        },
+        {
+          "skill_index": 9,
+          "name": "agent-memory",
+          "description": "Persist and retrieve repository-specific knowledge using AGENTS.md files. Use when you want to save important information about a codebase (build commands, code style, workflows) for future sessions.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-memory/SKILL.md",
+          "source_path": "instructions",
+          "chars": 392,
+          "tokens": 88,
+          "preview": "<skill>\n    <name>agent-memory</name>\n    <description>Persist and retrieve repository-specific knowledge using AGENTS.m"
+        },
+        {
+          "skill_index": 10,
+          "name": "code-review",
+          "description": "Rigorous code review focusing on data structures, simplicity, security, pragmatism, and risk/safety evaluation. Provides brutally honest, actionable feedback on pull requests or merge requests, including a risk assessment for every review. Use when reviewing code changes.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/code-review/SKILL.md",
+          "source_path": "instructions",
+          "chars": 463,
+          "tokens": 100,
+          "preview": "<skill>\n    <name>code-review</name>\n    <description>Rigorous code review focusing on data structures, simplicity, secu"
+        },
+        {
+          "skill_index": 11,
+          "name": "qa-changes",
+          "description": "This skill should be used when the user asks to \"QA a pull request\", \"test PR changes\", \"verify a PR works\", \"functionally test changes\", or when an automated workflow triggers QA validation of code changes. Provides a structured methodology for setting up the environment, exercising changed behavior, and reporting results.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/qa-changes/SKILL.md",
+          "source_path": "instructions",
+          "chars": 514,
+          "tokens": 115,
+          "preview": "<skill>\n    <name>qa-changes</name>\n    <description>This skill should be used when the user asks to \"QA a pull request\""
+        },
+        {
+          "skill_index": 12,
+          "name": "frontend-design",
+          "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/frontend-design/SKILL.md",
+          "source_path": "instructions",
+          "chars": 598,
+          "tokens": 123,
+          "preview": "<skill>\n    <name>frontend-design</name>\n    <description>Create distinctive, production-grade frontend interfaces with"
+        },
+        {
+          "skill_index": 13,
+          "name": "github-repo-monitor",
+          "description": "This skill should be used when the user asks to \"monitor a GitHub repository\", \"watch GitHub for issues or PRs\", \"respond to @OpenHands mentions on GitHub\", \"set up an OpenHands GitHub integration\", \"trigger OpenHands from a GitHub comment\", or \"poll a GitHub repo for a trigger phrase\". Guides the user through creating a cron automation that polls a single repository and starts an OpenHands conversation whenever a configurable trigger phrase is detected in an issue or PR comment.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-repo-monitor/SKILL.md",
+          "source_path": "instructions",
+          "chars": 691,
+          "tokens": 156,
+          "preview": "<skill>\n    <name>github-repo-monitor</name>\n    <description>This skill should be used when the user asks to \"monitor a"
+        },
+        {
+          "skill_index": 14,
+          "name": "gitlab",
+          "description": "Interact with GitLab repositories, merge requests, and APIs using the GITLAB_TOKEN environment variable. Use when working with code hosted on GitLab or managing GitLab resources.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/gitlab/SKILL.md",
+          "source_path": "instructions",
+          "chars": 359,
+          "tokens": 85,
+          "preview": "<skill>\n    <name>gitlab</name>\n    <description>Interact with GitLab repositories, merge requests, and APIs using the G"
+        },
+        {
+          "skill_index": 15,
+          "name": "skill-creator",
+          "description": "This skill should be used when the user wants to \"create a skill\", \"write a new skill\", \"improve skill description\", \"organize skill content\", or needs guidance on skill structure, progressive disclosure, or skill development best practices.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/skill-creator/SKILL.md",
+          "source_path": "instructions",
+          "chars": 436,
+          "tokens": 101,
+          "preview": "<skill>\n    <name>skill-creator</name>\n    <description>This skill should be used when the user wants to \"create a skill"
+        },
+        {
+          "skill_index": 16,
+          "name": "research-brief",
+          "description": "Create an automation that writes a recurring research brief. Uses Tavily MCP for web research and Notion MCP to publish the final brief with executive summary, implications, and source citations.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/research-brief/SKILL.md",
+          "source_path": "instructions",
+          "chars": 392,
+          "tokens": 88,
+          "preview": "<skill>\n    <name>research-brief</name>\n    <description>Create an automation that writes a recurring research brief. Us"
+        },
+        {
+          "skill_index": 17,
+          "name": "security",
+          "description": "Security best practices for secure coding, authentication, authorization, and data protection. Use when developing features that handle sensitive data, user authentication, or require security review.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/security/SKILL.md",
+          "source_path": "instructions",
+          "chars": 385,
+          "tokens": 80,
+          "preview": "<skill>\n    <name>security</name>\n    <description>Security best practices for secure coding, authentication, authorizat"
+        },
+        {
+          "skill_index": 18,
+          "name": "deno",
+          "description": "If the project uses deno, use this skill. Use this skill to initialize and work with Deno projects, add/remove dependencies (JSR and npm), run tasks and scripts with appropriate permissions, and use built-in tooling (fmt/lint/test).",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/deno/SKILL.md",
+          "source_path": "instructions",
+          "chars": 409,
+          "tokens": 101,
+          "preview": "<skill>\n    <name>deno</name>\n    <description>If the project uses deno, use this skill. Use this skill to initialize an"
+        },
+        {
+          "skill_index": 19,
+          "name": "evidence-based-citations",
+          "description": "Back factual claims and field values with official, verifiable sources. Use when the user asks to fill fields, answer questions, or make claims that must be supported by an exact quote and an official link.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/evidence-based-citations/SKILL.md",
+          "source_path": "instructions",
+          "chars": 423,
+          "tokens": 97,
+          "preview": "<skill>\n    <name>evidence-based-citations</name>\n    <description>Back factual claims and field values with official, v"
+        },
+        {
+          "skill_index": 20,
+          "name": "linear",
+          "description": "Interact with Linear project management - query issues, update status, create tickets, and manage workflows using the Linear GraphQL API. Use when working with Linear tickets, sprints, or project tracking.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/linear/SKILL.md",
+          "source_path": "instructions",
+          "chars": 386,
+          "tokens": 88,
+          "preview": "<skill>\n    <name>linear</name>\n    <description>Interact with Linear project management - query issues, update status,"
+        },
+        {
+          "skill_index": 21,
+          "name": "add-skill",
+          "description": "Add an external skill from a GitHub repository to the current workspace. Use when users want to import, install, or add a skill from a GitHub URL (e.g., `/add-skill https://github.com/OpenHands/extensions/tree/main/skills/codereview` or \"add the codereview skill from https://github.com/OpenHands/extensions/\"). Handles fetching the skill files and placing them in .agents/skills/.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/add-skill/SKILL.md",
+          "source_path": "instructions",
+          "chars": 568,
+          "tokens": 140,
+          "preview": "<skill>\n    <name>add-skill</name>\n    <description>Add an external skill from a GitHub repository to the current worksp"
+        },
+        {
+          "skill_index": 22,
+          "name": "uv",
+          "description": "If the project uses uv, use this skill. Use this skill to create/manage Python projects and environments with `uv`, add/remove dependencies, sync a project from `uv.lock`, and run commands in the project environment.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/uv/SKILL.md",
+          "source_path": "instructions",
+          "chars": 389,
+          "tokens": 92,
+          "preview": "<skill>\n    <name>uv</name>\n    <description>If the project uses uv, use this skill. Use this skill to create/manage Pyt"
+        },
+        {
+          "skill_index": 23,
+          "name": "agent-sdk-builder",
+          "description": "Guided workflow for building custom AI agents using the OpenHands Software Agent SDK. Use when you want to create a new agent through an interactive interview process that gathers requirements and generates implementation plans.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-sdk-builder/SKILL.md",
+          "source_path": "instructions",
+          "chars": 431,
+          "tokens": 91,
+          "preview": "<skill>\n    <name>agent-sdk-builder</name>\n    <description>Guided workflow for building custom AI agents using the Open"
+        },
+        {
+          "skill_index": 24,
+          "name": "slack-channel-monitor",
+          "description": "This skill should be used when the user asks to \"monitor a Slack channel\", \"watch Slack for messages\", \"create a Slack bot that responds to mentions\", \"set up an OpenHands Slack integration\", \"trigger OpenHands from Slack\", \"respond to @openhands in Slack\", or \"poll Slack channels for a trigger phrase\". Guides the user through creating a cron automation that watches up to 10 Slack channels and starts an OpenHands conversation whenever a configurable trigger phrase is detected.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/slack-channel-monitor/SKILL.md",
+          "source_path": "instructions",
+          "chars": 692,
+          "tokens": 150,
+          "preview": "<skill>\n    <name>slack-channel-monitor</name>\n    <description>This skill should be used when the user asks to \"monitor"
+        },
+        {
+          "skill_index": 25,
+          "name": "bitbucket",
+          "description": "Interact with Bitbucket repositories and pull requests using the BITBUCKET_TOKEN environment variable. Use when working with code hosted on Bitbucket or managing Bitbucket resources via API.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/bitbucket/SKILL.md",
+          "source_path": "instructions",
+          "chars": 377,
+          "tokens": 85,
+          "preview": "<skill>\n    <name>bitbucket</name>\n    <description>Interact with Bitbucket repositories and pull requests using the BIT"
+        },
+        {
+          "skill_index": 26,
+          "name": "swift-linux",
+          "description": "Install and configure Swift programming language on Debian Linux for server-side development. Use when building Swift applications on Linux or setting up a Swift development environment.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/swift-linux/SKILL.md",
+          "source_path": "instructions",
+          "chars": 377,
+          "tokens": 80,
+          "preview": "<skill>\n    <name>swift-linux</name>\n    <description>Install and configure Swift programming language on Debian Linux f"
+        },
+        {
+          "skill_index": 27,
+          "name": "code-simplifier",
+          "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Analyzes recently modified code across three dimensions - code reuse, code quality, and efficiency - and provides actionable improvement suggestions. This skill should be used when the user asks to \"simplify code\", \"refine code\", \"clean up code\", \"improve code quality\", or requests a simplification review of recent changes.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/code-simplifier/SKILL.md",
+          "source_path": "instructions",
+          "chars": 634,
+          "tokens": 139,
+          "preview": "<skill>\n    <name>code-simplifier</name>\n    <description>Simplifies and refines code for clarity, consistency, and main"
+        },
+        {
+          "skill_index": 28,
+          "name": "openhands-automation",
+          "description": "This skill should be used when the user asks to \"create an automation\", \"schedule a task\", \"set up a cron job\", \"webhook integration\", \"event-triggered automation\", or mentions automations, scheduled tasks, cron scheduling, or webhook events in OpenHands Cloud.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-automation/SKILL.md",
+          "source_path": "instructions",
+          "chars": 470,
+          "tokens": 111,
+          "preview": "<skill>\n    <name>openhands-automation</name>\n    <description>This skill should be used when the user asks to \"create a"
+        },
+        {
+          "skill_index": 29,
+          "name": "agent-creator",
+          "description": "Create file-based sub-agents as Markdown files following the OpenHands SDK format. Guides the user through a structured interview to collect requirements, then generates a ready-to-deploy agent file. Use this skill when the user wants to create, design, or build a new sub-agent, even if they don't use the /agent-creator command.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-creator/SKILL.md",
+          "source_path": "instructions",
+          "chars": 525,
+          "tokens": 120,
+          "preview": "<skill>\n    <name>agent-creator</name>\n    <description>Create file-based sub-agents as Markdown files following the Ope"
+        },
+        {
+          "skill_index": 30,
+          "name": "pdflatex",
+          "description": "Install and use pdflatex to compile LaTeX documents into PDFs on Linux. Use when generating academic papers, research publications, or any documents written in LaTeX.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/pdflatex/SKILL.md",
+          "source_path": "instructions",
+          "chars": 351,
+          "tokens": 88,
+          "preview": "<skill>\n    <name>pdflatex</name>\n    <description>Install and use pdflatex to compile LaTeX documents into PDFs on Linu"
+        },
+        {
+          "skill_index": 31,
+          "name": "ssh",
+          "description": "Establish and manage SSH connections to remote machines, including key generation, configuration, and file transfers. Use when connecting to remote servers, executing remote commands, or transferring files via SCP.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/ssh/SKILL.md",
+          "source_path": "instructions",
+          "chars": 389,
+          "tokens": 86,
+          "preview": "<skill>\n    <name>ssh</name>\n    <description>Establish and manage SSH connections to remote machines, including key gen"
+        },
+        {
+          "skill_index": 32,
+          "name": "prd",
+          "description": "Generate a Product Requirements Document (PRD) for a new feature. Use when planning a feature, starting a new project, or when asked to create a PRD.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/prd/SKILL.md",
+          "source_path": "instructions",
+          "chars": 324,
+          "tokens": 83,
+          "preview": "<skill>\n    <name>prd</name>\n    <description>Generate a Product Requirements Document (PRD) for a new feature. Use when"
+        },
+        {
+          "skill_index": 33,
+          "name": "spark-version-upgrade",
+          "description": "Upgrade Apache Spark applications between major versions (2.x→3.x, 3.x→4.x). Covers build files, deprecated APIs, configuration changes, SQL/DataFrame updates, and test validation.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/spark-version-upgrade/SKILL.md",
+          "source_path": "instructions",
+          "chars": 391,
+          "tokens": 95,
+          "preview": "<skill>\n    <name>spark-version-upgrade</name>\n    <description>Upgrade Apache Spark applications between major versions"
+        },
+        {
+          "skill_index": 34,
+          "name": "vercel",
+          "description": "Deploy and manage applications on Vercel, including preview deployments and deployment protection. Use when working with Vercel-hosted projects or configuring Vercel deployments.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/vercel/SKILL.md",
+          "source_path": "instructions",
+          "chars": 359,
+          "tokens": 83,
+          "preview": "<skill>\n    <name>vercel</name>\n    <description>Deploy and manage applications on Vercel, including preview deployments"
+        },
+        {
+          "skill_index": 35,
+          "name": "release-notes",
+          "description": "Generate formatted changelogs from git history since the last release tag. Use when preparing release notes that categorize changes into breaking changes, features, fixes, and other sections.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/release-notes/SKILL.md",
+          "source_path": "instructions",
+          "chars": 386,
+          "tokens": 87,
+          "preview": "<skill>\n    <name>release-notes</name>\n    <description>Generate formatted changelogs from git history since the last re"
+        },
+        {
+          "skill_index": 36,
+          "name": "github-pr-review",
+          "description": "Post PR review comments using the GitHub API with inline comments, suggestions, and priority labels.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-pr-review/SKILL.md",
+          "source_path": "instructions",
+          "chars": 301,
+          "tokens": 71,
+          "preview": "<skill>\n    <name>github-pr-review</name>\n    <description>Post PR review comments using the GitHub API with inline comm"
+        },
+        {
+          "skill_index": 37,
+          "name": "openhands-sdk",
+          "description": "Reference skill for the OpenHands Software Agent SDK - the Python framework for building AI agents that write software. Use when you need to build agents with the SDK, create custom tools, configure LLMs, manage conversations, delegate to sub-agents, or deploy agents locally or remotely.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-sdk/SKILL.md",
+          "source_path": "instructions",
+          "chars": 483,
+          "tokens": 110,
+          "preview": "<skill>\n    <name>openhands-sdk</name>\n    <description>Reference skill for the OpenHands Software Agent SDK - the Pytho"
+        },
+        {
+          "skill_index": 38,
+          "name": "azure-devops",
+          "description": "Interact with Azure DevOps repositories, pull requests, and APIs using the AZURE_DEVOPS_TOKEN environment variable. Use when working with code hosted on Azure DevOps or managing Azure DevOps resources.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/azure-devops/SKILL.md",
+          "source_path": "instructions",
+          "chars": 394,
+          "tokens": 92,
+          "preview": "<skill>\n    <name>azure-devops</name>\n    <description>Interact with Azure DevOps repositories, pull requests, and APIs"
+        },
+        {
+          "skill_index": 39,
+          "name": "npm",
+          "description": "Handle npm package installation in non-interactive environments by piping confirmations. Use when installing Node.js packages that require user confirmation prompts.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/npm/SKILL.md",
+          "source_path": "instructions",
+          "chars": 340,
+          "tokens": 73,
+          "preview": "<skill>\n    <name>npm</name>\n    <description>Handle npm package installation in non-interactive environments by piping"
+        },
+        {
+          "skill_index": 40,
+          "name": "docker",
+          "description": "Run Docker commands within a container environment, including starting the Docker daemon and managing containers. Use when building, running, or managing Docker containers and images.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/docker/SKILL.md",
+          "source_path": "instructions",
+          "chars": 364,
+          "tokens": 78,
+          "preview": "<skill>\n    <name>docker</name>\n    <description>Run Docker commands within a container environment, including starting"
+        },
+        {
+          "skill_index": 41,
+          "name": "jupyter",
+          "description": "Read, modify, execute, and convert Jupyter notebooks programmatically. Use when working with .ipynb files for data science workflows, including editing cells, clearing outputs, or converting to other formats.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/jupyter/SKILL.md",
+          "source_path": "instructions",
+          "chars": 391,
+          "tokens": 91,
+          "preview": "<skill>\n    <name>jupyter</name>\n    <description>Read, modify, execute, and convert Jupyter notebooks programmatically."
+        },
+        {
+          "skill_index": 42,
+          "name": "learn-from-code-review",
+          "description": "Distill code review feedback from GitHub PRs into reusable skills and guidelines. This skill should be used when users ask to \"learn from code reviews\", \"distill PR feedback\", \"improve coding standards\", \"extract learnings from reviews\", or want to generate skills/guidelines from historical review comments.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/learn-from-code-review/SKILL.md",
+          "source_path": "instructions",
+          "chars": 521,
+          "tokens": 118,
+          "preview": "<skill>\n    <name>learn-from-code-review</name>\n    <description>Distill code review feedback from GitHub PRs into reusa"
+        },
+        {
+          "skill_index": 43,
+          "name": "linear-triage",
+          "description": "Create an automation that triages new Linear issues. Inspects the issue title, description, team, customer, priority, and recent related issues via Linear MCP. Suggests labels, priority, likely owner, duplicates, and posts a clarifying comment.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/linear-triage/SKILL.md",
+          "source_path": "instructions",
+          "chars": 439,
+          "tokens": 104,
+          "preview": "<skill>\n    <name>linear-triage</name>\n    <description>Create an automation that triages new Linear issues. Inspects th"
+        },
+        {
+          "skill_index": 44,
+          "name": "github",
+          "description": "Interact with GitHub repositories, pull requests, issues, and workflows using the GITHUB_TOKEN environment variable and GitHub CLI. Use when working with code hosted on GitHub or managing GitHub resources.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/github/SKILL.md",
+          "source_path": "instructions",
+          "chars": 386,
+          "tokens": 88,
+          "preview": "<skill>\n    <name>github</name>\n    <description>Interact with GitHub repositories, pull requests, issues, and workflows"
+        },
+        {
+          "skill_index": 45,
+          "name": "notion",
+          "description": "Create, search, and update Notion pages/databases using the Notion API. Use for documenting work, generating runbooks, and automating knowledge base updates.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/notion/SKILL.md",
+          "source_path": "instructions",
+          "chars": 338,
+          "tokens": 82,
+          "preview": "<skill>\n    <name>notion</name>\n    <description>Create, search, and update Notion pages/databases using the Notion API."
+        },
+        {
+          "skill_index": 46,
+          "name": "github-actions",
+          "description": "Create, debug, and test GitHub Actions workflows and custom actions. Use when building CI/CD pipelines, automating workflows, or troubleshooting GitHub Actions.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-actions/SKILL.md",
+          "source_path": "instructions",
+          "chars": 357,
+          "tokens": 80,
+          "preview": "<skill>\n    <name>github-actions</name>\n    <description>Create, debug, and test GitHub Actions workflows and custom act"
+        },
+        {
+          "skill_index": 47,
+          "name": "kubernetes",
+          "description": "Set up and manage local Kubernetes clusters using KIND (Kubernetes IN Docker). Use when testing Kubernetes applications locally or developing cloud-native workloads.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/kubernetes/SKILL.md",
+          "source_path": "instructions",
+          "chars": 354,
+          "tokens": 77,
+          "preview": "<skill>\n    <name>kubernetes</name>\n    <description>Set up and manage local Kubernetes clusters using KIND (Kubernetes"
+        },
+        {
+          "skill_index": 48,
+          "name": "add-javadoc",
+          "description": "Add comprehensive JavaDoc documentation to Java classes and methods. Use when documenting Java code, adding API documentation, or improving code documentation.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/add-javadoc/SKILL.md",
+          "source_path": "instructions",
+          "chars": 350,
+          "tokens": 77,
+          "preview": "<skill>\n    <name>add-javadoc</name>\n    <description>Add comprehensive JavaDoc documentation to Java classes and method"
+        },
+        {
+          "skill_index": 49,
+          "name": "github-pr-reviewer",
+          "description": "Create an automation that reviews GitHub pull requests when a configurable trigger label is applied. Polls GitHub deterministically, starts one OpenHands review conversation per label event, inspects full repository and PR context, and posts the final review comment back to GitHub.",
+          "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-pr-reviewer/SKILL.md",
+          "source_path": "instructions",
+          "chars": 487,
+          "tokens": 106,
+          "preview": "<skill>\n    <name>github-pr-reviewer</name>\n    <description>Create an automation that reviews GitHub pull requests when"
+        }
+      ]
+    },
+    "tools": {
+      "count": 6,
+      "names": [
+        "file_editor",
+        "finish",
+        "task",
+        "task_tracker",
+        "terminal",
+        "think"
+      ],
+      "tokens": 4227,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "terminal",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 4606,
+          "tokens": 1018,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "file_editor",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 4233,
+          "tokens": 972,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "task_tracker",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 6553,
+          "tokens": 1332,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "task",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 2067,
+          "tokens": 447,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "finish",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 891,
+          "tokens": 180,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "think",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1370,
+          "tokens": 278,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 1,
+      "paths": [
+        "instructions"
+      ],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 1,
+      "mention_tokens": 8147,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "mcp_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "instructions",
+          "chars": 36676,
+          "tokens": 8147,
+          "preview": "You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.\n\n<ROLE>\n* Your primary"
+        }
+      ]
+    },
+    "subagents": {
+      "marker_count": 2,
+      "paths": [
+        "instructions",
+        "tools.3.description"
+      ],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 2,
+      "mention_tokens": 8365,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "subagent_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "instructions",
+          "chars": 36676,
+          "tokens": 8147,
+          "preview": "You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.\n\n<ROLE>\n* Your primary"
+        },
+        {
+          "marker_index": 2,
+          "name": "subagent_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.3.description",
+          "chars": 1072,
+          "tokens": 218,
+          "preview": "Launch a subagent to handle complex, multi-step tasks autonomously.\n\nSubagents are autonomous agents that work independe"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "model": "gpt-5",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 57301,
+      "body_chars": 57278,
+      "body_tokens": 12868,
+      "text_fields": {
+        "count": 2,
+        "chars": 36678,
+        "tokens": 8148,
+        "by_category": {
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          },
+          "system_prompt": {
+            "count": 1,
+            "chars": 36676,
+            "tokens": 8147
+          }
+        },
+        "by_source": {
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          },
+          "main_instructions": {
+            "count": 1,
+            "chars": 36676,
+            "tokens": 8147
+          }
+        },
+        "fields": [
+          {
+            "path": "input.0.content.0.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          },
+          {
+            "path": "instructions",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 36676,
+            "tokens": 8147,
+            "preview": "You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.\n\n<ROLE>\n* Your primary"
+          }
+        ]
+      },
+      "skills": {
+        "count": 49,
+        "tokens": 4865,
+        "definition_tokens": 4806,
+        "instruction_field_count": 1,
+        "instruction_fields": [
+          {
+            "path": "instructions",
+            "role": "",
+            "chars": 21270,
+            "tokens": 4865,
+            "preview": "<available_skills>\n  <skill>\n    <name>slack-standup-digest</name>\n    <description>Create an automation that generates"
+          }
+        ],
+        "items": [
+          {
+            "skill_index": 1,
+            "name": "slack-standup-digest",
+            "description": "Create an automation that generates an async standup digest from Slack. Searches selected channels for messages since the previous workday, groups updates by project, highlights blockers and decisions, and posts a summary to a target channel.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/slack-standup-digest/SKILL.md",
+            "source_path": "instructions",
+            "chars": 451,
+            "tokens": 102,
+            "preview": "<skill>\n    <name>slack-standup-digest</name>\n    <description>Create an automation that generates an async standup dige"
+          },
+          {
+            "skill_index": 2,
+            "name": "theme-factory",
+            "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/theme-factory/SKILL.md",
+            "source_path": "instructions",
+            "chars": 457,
+            "tokens": 110,
+            "preview": "<skill>\n    <name>theme-factory</name>\n    <description>Toolkit for styling artifacts with a theme. These artifacts can"
+          },
+          {
+            "skill_index": 3,
+            "name": "incident-retrospective",
+            "description": "Create an automation that drafts incident retrospectives. Gathers incident-channel messages from Slack, collects linked tickets and follow-ups from Linear, and publishes a retrospective draft to Notion with a timeline, impact summary, root-cause hypotheses, and action items.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/incident-retrospective/SKILL.md",
+            "source_path": "instructions",
+            "chars": 488,
+            "tokens": 104,
+            "preview": "<skill>\n    <name>incident-retrospective</name>\n    <description>Create an automation that drafts incident retrospective"
+          },
+          {
+            "skill_index": 4,
+            "name": "flarglebargle",
+            "description": "A test skill that responds to the magic word \"flarglebargle\" with a compliment. Use for testing skill activation and trigger functionality.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/flarglebargle/SKILL.md",
+            "source_path": "instructions",
+            "chars": 334,
+            "tokens": 84,
+            "preview": "<skill>\n    <name>flarglebargle</name>\n    <description>A test skill that responds to the magic word \"flarglebargle\" wit"
+          },
+          {
+            "skill_index": 5,
+            "name": "iterate",
+            "description": "Iterate on a GitHub pull request — drive it through CI, code review, and QA until it is merge-ready. Poll verification layers with `gh` CLI, diagnose and fix CI failures, address review feedback, retry flaky checks, push fixes, and repeat. The agent is the orchestration loop.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/iterate/SKILL.md",
+            "source_path": "instructions",
+            "chars": 459,
+            "tokens": 111,
+            "preview": "<skill>\n    <name>iterate</name>\n    <description>Iterate on a GitHub pull request — drive it through CI, code review, a"
+          },
+          {
+            "skill_index": 6,
+            "name": "openhands-api",
+            "description": "Reference skill for the OpenHands Cloud REST API (V1), including how to start additional cloud conversations for fresh-context or delegated work. Use when you need to automate common OpenHands Cloud actions; don't use for general sandbox/dev tasks unrelated to the OpenHands API.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-api/SKILL.md",
+            "source_path": "instructions",
+            "chars": 474,
+            "tokens": 106,
+            "preview": "<skill>\n    <name>openhands-api</name>\n    <description>Reference skill for the OpenHands Cloud REST API (V1), including"
+          },
+          {
+            "skill_index": 7,
+            "name": "discord",
+            "description": "Build and automate Discord integrations (bots, webhooks, slash commands, and REST API workflows). Use when the user mentions Discord, a Discord server/guild, channels, webhooks, bot tokens, slash commands/application commands, discord.js, or discord.py.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/discord/SKILL.md",
+            "source_path": "instructions",
+            "chars": 436,
+            "tokens": 101,
+            "preview": "<skill>\n    <name>discord</name>\n    <description>Build and automate Discord integrations (bots, webhooks, slash command"
+          },
+          {
+            "skill_index": 8,
+            "name": "datadog",
+            "description": "Query and analyze Datadog logs, metrics, APM traces, and monitors using the Datadog API. Use when debugging production issues, monitoring application performance, or investigating alerts.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/datadog/SKILL.md",
+            "source_path": "instructions",
+            "chars": 370,
+            "tokens": 89,
+            "preview": "<skill>\n    <name>datadog</name>\n    <description>Query and analyze Datadog logs, metrics, APM traces, and monitors usin"
+          },
+          {
+            "skill_index": 9,
+            "name": "agent-memory",
+            "description": "Persist and retrieve repository-specific knowledge using AGENTS.md files. Use when you want to save important information about a codebase (build commands, code style, workflows) for future sessions.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-memory/SKILL.md",
+            "source_path": "instructions",
+            "chars": 392,
+            "tokens": 88,
+            "preview": "<skill>\n    <name>agent-memory</name>\n    <description>Persist and retrieve repository-specific knowledge using AGENTS.m"
+          },
+          {
+            "skill_index": 10,
+            "name": "code-review",
+            "description": "Rigorous code review focusing on data structures, simplicity, security, pragmatism, and risk/safety evaluation. Provides brutally honest, actionable feedback on pull requests or merge requests, including a risk assessment for every review. Use when reviewing code changes.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/code-review/SKILL.md",
+            "source_path": "instructions",
+            "chars": 463,
+            "tokens": 100,
+            "preview": "<skill>\n    <name>code-review</name>\n    <description>Rigorous code review focusing on data structures, simplicity, secu"
+          },
+          {
+            "skill_index": 11,
+            "name": "qa-changes",
+            "description": "This skill should be used when the user asks to \"QA a pull request\", \"test PR changes\", \"verify a PR works\", \"functionally test changes\", or when an automated workflow triggers QA validation of code changes. Provides a structured methodology for setting up the environment, exercising changed behavior, and reporting results.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/qa-changes/SKILL.md",
+            "source_path": "instructions",
+            "chars": 514,
+            "tokens": 115,
+            "preview": "<skill>\n    <name>qa-changes</name>\n    <description>This skill should be used when the user asks to \"QA a pull request\""
+          },
+          {
+            "skill_index": 12,
+            "name": "frontend-design",
+            "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/frontend-design/SKILL.md",
+            "source_path": "instructions",
+            "chars": 598,
+            "tokens": 123,
+            "preview": "<skill>\n    <name>frontend-design</name>\n    <description>Create distinctive, production-grade frontend interfaces with"
+          },
+          {
+            "skill_index": 13,
+            "name": "github-repo-monitor",
+            "description": "This skill should be used when the user asks to \"monitor a GitHub repository\", \"watch GitHub for issues or PRs\", \"respond to @OpenHands mentions on GitHub\", \"set up an OpenHands GitHub integration\", \"trigger OpenHands from a GitHub comment\", or \"poll a GitHub repo for a trigger phrase\". Guides the user through creating a cron automation that polls a single repository and starts an OpenHands conversation whenever a configurable trigger phrase is detected in an issue or PR comment.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-repo-monitor/SKILL.md",
+            "source_path": "instructions",
+            "chars": 691,
+            "tokens": 156,
+            "preview": "<skill>\n    <name>github-repo-monitor</name>\n    <description>This skill should be used when the user asks to \"monitor a"
+          },
+          {
+            "skill_index": 14,
+            "name": "gitlab",
+            "description": "Interact with GitLab repositories, merge requests, and APIs using the GITLAB_TOKEN environment variable. Use when working with code hosted on GitLab or managing GitLab resources.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/gitlab/SKILL.md",
+            "source_path": "instructions",
+            "chars": 359,
+            "tokens": 85,
+            "preview": "<skill>\n    <name>gitlab</name>\n    <description>Interact with GitLab repositories, merge requests, and APIs using the G"
+          },
+          {
+            "skill_index": 15,
+            "name": "skill-creator",
+            "description": "This skill should be used when the user wants to \"create a skill\", \"write a new skill\", \"improve skill description\", \"organize skill content\", or needs guidance on skill structure, progressive disclosure, or skill development best practices.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/skill-creator/SKILL.md",
+            "source_path": "instructions",
+            "chars": 436,
+            "tokens": 101,
+            "preview": "<skill>\n    <name>skill-creator</name>\n    <description>This skill should be used when the user wants to \"create a skill"
+          },
+          {
+            "skill_index": 16,
+            "name": "research-brief",
+            "description": "Create an automation that writes a recurring research brief. Uses Tavily MCP for web research and Notion MCP to publish the final brief with executive summary, implications, and source citations.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/research-brief/SKILL.md",
+            "source_path": "instructions",
+            "chars": 392,
+            "tokens": 88,
+            "preview": "<skill>\n    <name>research-brief</name>\n    <description>Create an automation that writes a recurring research brief. Us"
+          },
+          {
+            "skill_index": 17,
+            "name": "security",
+            "description": "Security best practices for secure coding, authentication, authorization, and data protection. Use when developing features that handle sensitive data, user authentication, or require security review.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/security/SKILL.md",
+            "source_path": "instructions",
+            "chars": 385,
+            "tokens": 80,
+            "preview": "<skill>\n    <name>security</name>\n    <description>Security best practices for secure coding, authentication, authorizat"
+          },
+          {
+            "skill_index": 18,
+            "name": "deno",
+            "description": "If the project uses deno, use this skill. Use this skill to initialize and work with Deno projects, add/remove dependencies (JSR and npm), run tasks and scripts with appropriate permissions, and use built-in tooling (fmt/lint/test).",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/deno/SKILL.md",
+            "source_path": "instructions",
+            "chars": 409,
+            "tokens": 101,
+            "preview": "<skill>\n    <name>deno</name>\n    <description>If the project uses deno, use this skill. Use this skill to initialize an"
+          },
+          {
+            "skill_index": 19,
+            "name": "evidence-based-citations",
+            "description": "Back factual claims and field values with official, verifiable sources. Use when the user asks to fill fields, answer questions, or make claims that must be supported by an exact quote and an official link.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/evidence-based-citations/SKILL.md",
+            "source_path": "instructions",
+            "chars": 423,
+            "tokens": 97,
+            "preview": "<skill>\n    <name>evidence-based-citations</name>\n    <description>Back factual claims and field values with official, v"
+          },
+          {
+            "skill_index": 20,
+            "name": "linear",
+            "description": "Interact with Linear project management - query issues, update status, create tickets, and manage workflows using the Linear GraphQL API. Use when working with Linear tickets, sprints, or project tracking.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/linear/SKILL.md",
+            "source_path": "instructions",
+            "chars": 386,
+            "tokens": 88,
+            "preview": "<skill>\n    <name>linear</name>\n    <description>Interact with Linear project management - query issues, update status,"
+          },
+          {
+            "skill_index": 21,
+            "name": "add-skill",
+            "description": "Add an external skill from a GitHub repository to the current workspace. Use when users want to import, install, or add a skill from a GitHub URL (e.g., `/add-skill https://github.com/OpenHands/extensions/tree/main/skills/codereview` or \"add the codereview skill from https://github.com/OpenHands/extensions/\"). Handles fetching the skill files and placing them in .agents/skills/.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/add-skill/SKILL.md",
+            "source_path": "instructions",
+            "chars": 568,
+            "tokens": 140,
+            "preview": "<skill>\n    <name>add-skill</name>\n    <description>Add an external skill from a GitHub repository to the current worksp"
+          },
+          {
+            "skill_index": 22,
+            "name": "uv",
+            "description": "If the project uses uv, use this skill. Use this skill to create/manage Python projects and environments with `uv`, add/remove dependencies, sync a project from `uv.lock`, and run commands in the project environment.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/uv/SKILL.md",
+            "source_path": "instructions",
+            "chars": 389,
+            "tokens": 92,
+            "preview": "<skill>\n    <name>uv</name>\n    <description>If the project uses uv, use this skill. Use this skill to create/manage Pyt"
+          },
+          {
+            "skill_index": 23,
+            "name": "agent-sdk-builder",
+            "description": "Guided workflow for building custom AI agents using the OpenHands Software Agent SDK. Use when you want to create a new agent through an interactive interview process that gathers requirements and generates implementation plans.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-sdk-builder/SKILL.md",
+            "source_path": "instructions",
+            "chars": 431,
+            "tokens": 91,
+            "preview": "<skill>\n    <name>agent-sdk-builder</name>\n    <description>Guided workflow for building custom AI agents using the Open"
+          },
+          {
+            "skill_index": 24,
+            "name": "slack-channel-monitor",
+            "description": "This skill should be used when the user asks to \"monitor a Slack channel\", \"watch Slack for messages\", \"create a Slack bot that responds to mentions\", \"set up an OpenHands Slack integration\", \"trigger OpenHands from Slack\", \"respond to @openhands in Slack\", or \"poll Slack channels for a trigger phrase\". Guides the user through creating a cron automation that watches up to 10 Slack channels and starts an OpenHands conversation whenever a configurable trigger phrase is detected.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/slack-channel-monitor/SKILL.md",
+            "source_path": "instructions",
+            "chars": 692,
+            "tokens": 150,
+            "preview": "<skill>\n    <name>slack-channel-monitor</name>\n    <description>This skill should be used when the user asks to \"monitor"
+          },
+          {
+            "skill_index": 25,
+            "name": "bitbucket",
+            "description": "Interact with Bitbucket repositories and pull requests using the BITBUCKET_TOKEN environment variable. Use when working with code hosted on Bitbucket or managing Bitbucket resources via API.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/bitbucket/SKILL.md",
+            "source_path": "instructions",
+            "chars": 377,
+            "tokens": 85,
+            "preview": "<skill>\n    <name>bitbucket</name>\n    <description>Interact with Bitbucket repositories and pull requests using the BIT"
+          },
+          {
+            "skill_index": 26,
+            "name": "swift-linux",
+            "description": "Install and configure Swift programming language on Debian Linux for server-side development. Use when building Swift applications on Linux or setting up a Swift development environment.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/swift-linux/SKILL.md",
+            "source_path": "instructions",
+            "chars": 377,
+            "tokens": 80,
+            "preview": "<skill>\n    <name>swift-linux</name>\n    <description>Install and configure Swift programming language on Debian Linux f"
+          },
+          {
+            "skill_index": 27,
+            "name": "code-simplifier",
+            "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Analyzes recently modified code across three dimensions - code reuse, code quality, and efficiency - and provides actionable improvement suggestions. This skill should be used when the user asks to \"simplify code\", \"refine code\", \"clean up code\", \"improve code quality\", or requests a simplification review of recent changes.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/code-simplifier/SKILL.md",
+            "source_path": "instructions",
+            "chars": 634,
+            "tokens": 139,
+            "preview": "<skill>\n    <name>code-simplifier</name>\n    <description>Simplifies and refines code for clarity, consistency, and main"
+          },
+          {
+            "skill_index": 28,
+            "name": "openhands-automation",
+            "description": "This skill should be used when the user asks to \"create an automation\", \"schedule a task\", \"set up a cron job\", \"webhook integration\", \"event-triggered automation\", or mentions automations, scheduled tasks, cron scheduling, or webhook events in OpenHands Cloud.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-automation/SKILL.md",
+            "source_path": "instructions",
+            "chars": 470,
+            "tokens": 111,
+            "preview": "<skill>\n    <name>openhands-automation</name>\n    <description>This skill should be used when the user asks to \"create a"
+          },
+          {
+            "skill_index": 29,
+            "name": "agent-creator",
+            "description": "Create file-based sub-agents as Markdown files following the OpenHands SDK format. Guides the user through a structured interview to collect requirements, then generates a ready-to-deploy agent file. Use this skill when the user wants to create, design, or build a new sub-agent, even if they don't use the /agent-creator command.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/agent-creator/SKILL.md",
+            "source_path": "instructions",
+            "chars": 525,
+            "tokens": 120,
+            "preview": "<skill>\n    <name>agent-creator</name>\n    <description>Create file-based sub-agents as Markdown files following the Ope"
+          },
+          {
+            "skill_index": 30,
+            "name": "pdflatex",
+            "description": "Install and use pdflatex to compile LaTeX documents into PDFs on Linux. Use when generating academic papers, research publications, or any documents written in LaTeX.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/pdflatex/SKILL.md",
+            "source_path": "instructions",
+            "chars": 351,
+            "tokens": 88,
+            "preview": "<skill>\n    <name>pdflatex</name>\n    <description>Install and use pdflatex to compile LaTeX documents into PDFs on Linu"
+          },
+          {
+            "skill_index": 31,
+            "name": "ssh",
+            "description": "Establish and manage SSH connections to remote machines, including key generation, configuration, and file transfers. Use when connecting to remote servers, executing remote commands, or transferring files via SCP.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/ssh/SKILL.md",
+            "source_path": "instructions",
+            "chars": 389,
+            "tokens": 86,
+            "preview": "<skill>\n    <name>ssh</name>\n    <description>Establish and manage SSH connections to remote machines, including key gen"
+          },
+          {
+            "skill_index": 32,
+            "name": "prd",
+            "description": "Generate a Product Requirements Document (PRD) for a new feature. Use when planning a feature, starting a new project, or when asked to create a PRD.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/prd/SKILL.md",
+            "source_path": "instructions",
+            "chars": 324,
+            "tokens": 83,
+            "preview": "<skill>\n    <name>prd</name>\n    <description>Generate a Product Requirements Document (PRD) for a new feature. Use when"
+          },
+          {
+            "skill_index": 33,
+            "name": "spark-version-upgrade",
+            "description": "Upgrade Apache Spark applications between major versions (2.x→3.x, 3.x→4.x). Covers build files, deprecated APIs, configuration changes, SQL/DataFrame updates, and test validation.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/spark-version-upgrade/SKILL.md",
+            "source_path": "instructions",
+            "chars": 391,
+            "tokens": 95,
+            "preview": "<skill>\n    <name>spark-version-upgrade</name>\n    <description>Upgrade Apache Spark applications between major versions"
+          },
+          {
+            "skill_index": 34,
+            "name": "vercel",
+            "description": "Deploy and manage applications on Vercel, including preview deployments and deployment protection. Use when working with Vercel-hosted projects or configuring Vercel deployments.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/vercel/SKILL.md",
+            "source_path": "instructions",
+            "chars": 359,
+            "tokens": 83,
+            "preview": "<skill>\n    <name>vercel</name>\n    <description>Deploy and manage applications on Vercel, including preview deployments"
+          },
+          {
+            "skill_index": 35,
+            "name": "release-notes",
+            "description": "Generate formatted changelogs from git history since the last release tag. Use when preparing release notes that categorize changes into breaking changes, features, fixes, and other sections.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/release-notes/SKILL.md",
+            "source_path": "instructions",
+            "chars": 386,
+            "tokens": 87,
+            "preview": "<skill>\n    <name>release-notes</name>\n    <description>Generate formatted changelogs from git history since the last re"
+          },
+          {
+            "skill_index": 36,
+            "name": "github-pr-review",
+            "description": "Post PR review comments using the GitHub API with inline comments, suggestions, and priority labels.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-pr-review/SKILL.md",
+            "source_path": "instructions",
+            "chars": 301,
+            "tokens": 71,
+            "preview": "<skill>\n    <name>github-pr-review</name>\n    <description>Post PR review comments using the GitHub API with inline comm"
+          },
+          {
+            "skill_index": 37,
+            "name": "openhands-sdk",
+            "description": "Reference skill for the OpenHands Software Agent SDK - the Python framework for building AI agents that write software. Use when you need to build agents with the SDK, create custom tools, configure LLMs, manage conversations, delegate to sub-agents, or deploy agents locally or remotely.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/openhands-sdk/SKILL.md",
+            "source_path": "instructions",
+            "chars": 483,
+            "tokens": 110,
+            "preview": "<skill>\n    <name>openhands-sdk</name>\n    <description>Reference skill for the OpenHands Software Agent SDK - the Pytho"
+          },
+          {
+            "skill_index": 38,
+            "name": "azure-devops",
+            "description": "Interact with Azure DevOps repositories, pull requests, and APIs using the AZURE_DEVOPS_TOKEN environment variable. Use when working with code hosted on Azure DevOps or managing Azure DevOps resources.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/azure-devops/SKILL.md",
+            "source_path": "instructions",
+            "chars": 394,
+            "tokens": 92,
+            "preview": "<skill>\n    <name>azure-devops</name>\n    <description>Interact with Azure DevOps repositories, pull requests, and APIs"
+          },
+          {
+            "skill_index": 39,
+            "name": "npm",
+            "description": "Handle npm package installation in non-interactive environments by piping confirmations. Use when installing Node.js packages that require user confirmation prompts.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/npm/SKILL.md",
+            "source_path": "instructions",
+            "chars": 340,
+            "tokens": 73,
+            "preview": "<skill>\n    <name>npm</name>\n    <description>Handle npm package installation in non-interactive environments by piping"
+          },
+          {
+            "skill_index": 40,
+            "name": "docker",
+            "description": "Run Docker commands within a container environment, including starting the Docker daemon and managing containers. Use when building, running, or managing Docker containers and images.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/docker/SKILL.md",
+            "source_path": "instructions",
+            "chars": 364,
+            "tokens": 78,
+            "preview": "<skill>\n    <name>docker</name>\n    <description>Run Docker commands within a container environment, including starting"
+          },
+          {
+            "skill_index": 41,
+            "name": "jupyter",
+            "description": "Read, modify, execute, and convert Jupyter notebooks programmatically. Use when working with .ipynb files for data science workflows, including editing cells, clearing outputs, or converting to other formats.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/jupyter/SKILL.md",
+            "source_path": "instructions",
+            "chars": 391,
+            "tokens": 91,
+            "preview": "<skill>\n    <name>jupyter</name>\n    <description>Read, modify, execute, and convert Jupyter notebooks programmatically."
+          },
+          {
+            "skill_index": 42,
+            "name": "learn-from-code-review",
+            "description": "Distill code review feedback from GitHub PRs into reusable skills and guidelines. This skill should be used when users ask to \"learn from code reviews\", \"distill PR feedback\", \"improve coding standards\", \"extract learnings from reviews\", or want to generate skills/guidelines from historical review comments.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/learn-from-code-review/SKILL.md",
+            "source_path": "instructions",
+            "chars": 521,
+            "tokens": 118,
+            "preview": "<skill>\n    <name>learn-from-code-review</name>\n    <description>Distill code review feedback from GitHub PRs into reusa"
+          },
+          {
+            "skill_index": 43,
+            "name": "linear-triage",
+            "description": "Create an automation that triages new Linear issues. Inspects the issue title, description, team, customer, priority, and recent related issues via Linear MCP. Suggests labels, priority, likely owner, duplicates, and posts a clarifying comment.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/linear-triage/SKILL.md",
+            "source_path": "instructions",
+            "chars": 439,
+            "tokens": 104,
+            "preview": "<skill>\n    <name>linear-triage</name>\n    <description>Create an automation that triages new Linear issues. Inspects th"
+          },
+          {
+            "skill_index": 44,
+            "name": "github",
+            "description": "Interact with GitHub repositories, pull requests, issues, and workflows using the GITHUB_TOKEN environment variable and GitHub CLI. Use when working with code hosted on GitHub or managing GitHub resources.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/github/SKILL.md",
+            "source_path": "instructions",
+            "chars": 386,
+            "tokens": 88,
+            "preview": "<skill>\n    <name>github</name>\n    <description>Interact with GitHub repositories, pull requests, issues, and workflows"
+          },
+          {
+            "skill_index": 45,
+            "name": "notion",
+            "description": "Create, search, and update Notion pages/databases using the Notion API. Use for documenting work, generating runbooks, and automating knowledge base updates.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/notion/SKILL.md",
+            "source_path": "instructions",
+            "chars": 338,
+            "tokens": 82,
+            "preview": "<skill>\n    <name>notion</name>\n    <description>Create, search, and update Notion pages/databases using the Notion API."
+          },
+          {
+            "skill_index": 46,
+            "name": "github-actions",
+            "description": "Create, debug, and test GitHub Actions workflows and custom actions. Use when building CI/CD pipelines, automating workflows, or troubleshooting GitHub Actions.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-actions/SKILL.md",
+            "source_path": "instructions",
+            "chars": 357,
+            "tokens": 80,
+            "preview": "<skill>\n    <name>github-actions</name>\n    <description>Create, debug, and test GitHub Actions workflows and custom act"
+          },
+          {
+            "skill_index": 47,
+            "name": "kubernetes",
+            "description": "Set up and manage local Kubernetes clusters using KIND (Kubernetes IN Docker). Use when testing Kubernetes applications locally or developing cloud-native workloads.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/kubernetes/SKILL.md",
+            "source_path": "instructions",
+            "chars": 354,
+            "tokens": 77,
+            "preview": "<skill>\n    <name>kubernetes</name>\n    <description>Set up and manage local Kubernetes clusters using KIND (Kubernetes"
+          },
+          {
+            "skill_index": 48,
+            "name": "add-javadoc",
+            "description": "Add comprehensive JavaDoc documentation to Java classes and methods. Use when documenting Java code, adding API documentation, or improving code documentation.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/add-javadoc/SKILL.md",
+            "source_path": "instructions",
+            "chars": 350,
+            "tokens": 77,
+            "preview": "<skill>\n    <name>add-javadoc</name>\n    <description>Add comprehensive JavaDoc documentation to Java classes and method"
+          },
+          {
+            "skill_index": 49,
+            "name": "github-pr-reviewer",
+            "description": "Create an automation that reviews GitHub pull requests when a configurable trigger label is applied. Polls GitHub deterministically, starts one OpenHands review conversation per label event, inspects full repository and PR context, and posts the final review comment back to GitHub.",
+            "file": "/openhands-home/home/.openhands/cache/skills/public-skills/skills/github-pr-reviewer/SKILL.md",
+            "source_path": "instructions",
+            "chars": 487,
+            "tokens": 106,
+            "preview": "<skill>\n    <name>github-pr-reviewer</name>\n    <description>Create an automation that reviews GitHub pull requests when"
+          }
+        ]
+      },
+      "tools": {
+        "count": 6,
+        "names": [
+          "file_editor",
+          "finish",
+          "task",
+          "task_tracker",
+          "terminal",
+          "think"
+        ],
+        "tokens": 4227,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "terminal",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 4606,
+            "tokens": 1018,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "file_editor",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 4233,
+            "tokens": 972,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "task_tracker",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 6553,
+            "tokens": 1332,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "task",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 2067,
+            "tokens": 447,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "finish",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 891,
+            "tokens": 180,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "think",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1370,
+            "tokens": 278,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 1,
+        "paths": [
+          "instructions"
+        ],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 1,
+        "mention_tokens": 8147,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "mcp_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "instructions",
+            "chars": 36676,
+            "tokens": 8147,
+            "preview": "You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.\n\n<ROLE>\n* Your primary"
+          }
+        ]
+      },
+      "subagents": {
+        "marker_count": 2,
+        "paths": [
+          "instructions",
+          "tools.3.description"
+        ],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 2,
+        "mention_tokens": 8365,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "instructions",
+            "chars": 36676,
+            "tokens": 8147,
+            "preview": "You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.\n\n<ROLE>\n* Your primary"
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.3.description",
+            "chars": 1072,
+            "tokens": 218,
+            "preview": "Launch a subagent to handle complex, multi-step tasks autonomously.\n\nSubagents are autonomous agents that work independe"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 57301,
+    "body_tokens": 12868,
+    "skill_count": 49,
+    "tool_count": 6,
+    "mcp_marker_count": 1,
+    "mcp_mention_count": 1,
+    "subagent_marker_count": 2,
+    "subagent_mention_count": 2
+  },
+  "post_totals": {
+    "body_bytes": 57301,
+    "body_tokens": 12868,
+    "skill_count": 49,
+    "tool_count": 6,
+    "mcp_marker_count": 1,
+    "mcp_mention_count": 1,
+    "subagent_marker_count": 2,
+    "subagent_mention_count": 2
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "openhands-1.15.0-hi",
+    "agent_id": "openhands",
+    "agent_version": "1.15.0",
+    "run_dir": "runs/openhands-1.15.0-hi",
+    "agent_name": "OpenHands",
+    "agent_image": "hibench/openhands:1.15.0",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-19T13:45:21Z",
+    "ended_at": "2026-06-19T13:45:34Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 12868,
+    "body_tokens": 12868,
+    "body_bytes": 57301,
+    "body_chars": 57278,
+    "text_field_count": 2,
+    "text_tokens": 8148,
+    "system_prompt_tokens": 8147,
+    "environment_context_tokens": 0,
+    "user_prompt_tokens": 1,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 8147,
+    "developer_instructions_tokens": 0,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 0,
+    "instruction_tokens": 8147,
+    "default_context_tokens": 12374,
+    "skills_count": 49,
+    "skills_tokens": 4865,
+    "skill_definition_tokens": 4806,
+    "tool_count": 6,
+    "tool_definition_tokens": 4227,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 1,
+    "mcp_mention_count": 1,
+    "mcp_mention_tokens": 8147,
+    "subagent_count": 0,
+    "subagent_tokens": 0,
+    "subagent_marker_count": 2,
+    "subagent_mention_count": 2,
+    "subagent_mention_tokens": 8365
+  }
+}

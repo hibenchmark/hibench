@@ -1,0 +1,9 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,claude-code-2.1.121-hi,claude-code,2.1.121,2,1,subagent_1,text_mention,False,system.2.text,25949,5362,"
+You are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools"
+hibench.benchmark.v1,claude-code-2.1.121-hi,claude-code,2.1.121,2,2,Explore,declaration,True,tools.0.description.subagent.0,689,147,"- Explore: Fast read-only search agent for locating code. Use it to find files by pattern (eg. ""src/components/**/*.tsx"""
+hibench.benchmark.v1,claude-code-2.1.121-hi,claude-code,2.1.121,2,3,general-purpose,declaration,True,tools.0.description.subagent.1,309,61,"- general-purpose: General-purpose agent for researching complex questions, searching for code, and executing multi-step"
+hibench.benchmark.v1,claude-code-2.1.121-hi,claude-code,2.1.121,2,4,Plan,declaration,True,tools.0.description.subagent.2,307,60,- Plan: Software architect agent for designing implementation plans. Use this when you need to plan the implementation s
+hibench.benchmark.v1,claude-code-2.1.121-hi,claude-code,2.1.121,2,5,statusline-setup,declaration,True,tools.0.description.subagent.3,111,26,"- statusline-setup: Use this agent to configure the user's Claude Code status line setting. (Tools: Read, Edit)"
+hibench.benchmark.v1,claude-code-2.1.121-hi,claude-code,2.1.121,2,6,Lookups,declaration,True,tools.0.description.subagent.4,143,29,- Lookups: hand over the exact command. Investigations: hand over the question — prescribed steps become dead weight whe
+hibench.benchmark.v1,claude-code-2.1.121-hi,claude-code,2.1.121,2,7,subagent_7,text_mention,False,tools.17.description,1050,221,"DEPRECATED: Background tasks return their output file path in the tool result, and you receive a <task-notification> wit"

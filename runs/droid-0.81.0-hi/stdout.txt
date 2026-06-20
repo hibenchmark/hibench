@@ -1,0 +1,1 @@
+{"type":"result","subtype":"success","is_error":false,"duration_ms":587,"num_turns":1,"result":"HiBench capture complete.","session_id":"c7d61e77-9afc-449f-a071-69f7a7795f7c","usage":{"input_tokens":0,"output_tokens":1,"cache_read_input_tokens":0,"cache_creation_input_tokens":0}}

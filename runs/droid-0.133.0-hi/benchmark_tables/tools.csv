@@ -1,0 +1,10 @@
+schema_version,run_id,agent_id,agent_version,request_index,tool_index,tool_name,tool_type,path,definition_chars,definition_tokens,is_mcp_related,is_subagent_related,keys
+hibench.benchmark.v1,droid-0.133.0-hi,droid,0.133.0,1,1,Read,function,tools.0,1351,309,False,False,description|name|parameters|strict|type
+hibench.benchmark.v1,droid-0.133.0-hi,droid,0.133.0,1,2,LS,function,tools.1,834,176,False,False,description|name|parameters|strict|type
+hibench.benchmark.v1,droid-0.133.0-hi,droid,0.133.0,1,3,Execute,function,tools.2,15200,3608,False,False,description|name|parameters|strict|type
+hibench.benchmark.v1,droid-0.133.0-hi,droid,0.133.0,1,4,Grep,function,tools.3,3305,738,False,False,description|name|parameters|strict|type
+hibench.benchmark.v1,droid-0.133.0-hi,droid,0.133.0,1,5,Glob,function,tools.4,1949,435,False,False,description|name|parameters|strict|type
+hibench.benchmark.v1,droid-0.133.0-hi,droid,0.133.0,1,6,WebSearch,function,tools.5,2501,545,False,False,description|name|parameters|strict|type
+hibench.benchmark.v1,droid-0.133.0-hi,droid,0.133.0,1,7,TodoWrite,function,tools.6,9510,2248,False,False,description|name|parameters|strict|type
+hibench.benchmark.v1,droid-0.133.0-hi,droid,0.133.0,1,8,FetchUrl,function,tools.7,3124,847,False,False,description|name|parameters|strict|type
+hibench.benchmark.v1,droid-0.133.0-hi,droid,0.133.0,1,9,Skill,function,tools.8,720,147,False,False,description|name|parameters|strict|type

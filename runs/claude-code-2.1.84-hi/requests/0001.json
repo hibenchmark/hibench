@@ -1,0 +1,17 @@
+{
+  "index": 1,
+  "captured_at": "2026-06-13T16:26:26Z",
+  "method": "HEAD",
+  "path": "/",
+  "headers": {
+    "accept": "*/*",
+    "accept-encoding": "gzip, deflate",
+    "accept-language": "*",
+    "connection": "close",
+    "host": "host.docker.internal:37897",
+    "sec-fetch-mode": "cors",
+    "user-agent": "node"
+  },
+  "body_text": "",
+  "json": null
+}

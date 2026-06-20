@@ -1,0 +1,4 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,github-cli-1.0.60-hi,github-cli,1.0.60,1,1,customize-cloud-agent,builtin,tools.10.description,443,98,"Skill for customizing the Copilot cloud agent (formerly known as Copilot coding agent) environment, including copilot-setup-steps.yml configuration, preinstalling tools and dependencies, runners, and settings. Use when the user mentions copilot-setup-steps, copilot setup steps, or wants to configure the cloud agent environment.","<skill>
+  <name>customize-cloud-agent</name>
+  <description>Skill for customizing the Copilot cloud agent (formerly know"

@@ -1,0 +1,4 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,opencode-1.17.7-hi,opencode,1.17.7,1,1,customize-opencode,file:///workspace/%3Cbuilt-in%3E,messages.0.content,530,126,"Use ONLY when the user is editing or creating opencode's own configuration: opencode.json, opencode.jsonc, files under .opencode/, or files under ~/.config/opencode/. Also use when creating or fixing opencode agents, subagents, skills, plugins, MCP servers, or permission rules. Do not use for the user's own application code, or for any project that is not configuring opencode itself.","<skill>
+    <name>customize-opencode</name>
+    <description>Use ONLY when the user is editing or creating opencode's ow"

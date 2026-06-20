@@ -1,0 +1,15 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,grok-cli-0.1.213-hi,grok-cli,0.1.213,1,1,subagent_1,text_mention,False,messages.0.content,12549,2523,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
+hibench.benchmark.v1,grok-cli-0.1.213-hi,grok-cli,0.1.213,1,2,subagent_2,text_mention,False,messages.2.content,2783,679,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.1.213-hi,grok-cli,0.1.213,1,3,subagent_3,text_mention,False,tools.0.function.description,3760,840,"Run a bash command and return its output.
+IMPORTANT: This tool is for terminal operations like git, npm, docker, etc. DO"
+hibench.benchmark.v1,grok-cli-0.1.213-hi,grok-cli,0.1.213,1,4,kill_command_or_subagent,tool_declaration,True,tools.5,703,164,"{""function"":{""description"":""Terminate a running background task or subagent.\n\nUsage notes:\n- Use the task_id from a c"
+hibench.benchmark.v1,grok-cli-0.1.213-hi,grok-cli,0.1.213,1,5,get_command_or_subagent_output,tool_declaration,True,tools.7,938,222,"{""function"":{""description"":""Get output and status from a background task or subagent.\n\nUsage notes:\n- Use the task_id"
+hibench.benchmark.v1,grok-cli-0.1.213-hi,grok-cli,0.1.213,1,6,wait_commands_or_subagents,tool_declaration,True,tools.8,989,243,"{""function"":{""description"":""Wait for multiple background tasks or subagents to complete.\n\nUsage notes:\n- task_ids: li"
+hibench.benchmark.v1,grok-cli-0.1.213-hi,grok-cli,0.1.213,1,7,spawn_subagent,tool_declaration,True,tools.9,10214,2160,"{""function"":{""description"":""Launch a new agent to handle complex, multi-step tasks autonomously.\n\nThe spawn_subagent t"
+hibench.benchmark.v1,grok-cli-0.1.213-hi,grok-cli,0.1.213,1,8,subagent_8,text_mention,False,tools.13.function.description,1876,475,Start a background monitor that streams events from a long-running script. Each stdout line is an event - you can keep w
+hibench.benchmark.v1,grok-cli-0.1.213-hi,grok-cli,0.1.213,1,9,subagent_9,text_mention,False,tools.13.function.parameters.properties.persistent.description,85,19,Run for the lifetime of the session (no timeout). Stop with kill_command_or_subagent.
+hibench.benchmark.v1,grok-cli-0.1.213-hi,grok-cli,0.1.213,1,10,subagent_10,text_mention,False,tools.21.function.description,3031,648,Use this tool when a task has genuine ambiguity about the right approach and getting user input before coding would prev

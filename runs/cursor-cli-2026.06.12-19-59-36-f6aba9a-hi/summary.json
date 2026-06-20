@@ -1,0 +1,1106 @@
+{
+  "run_dir": "runs/cursor-cli-2026.06.12-19-59-36-f6aba9a-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 70584,
+    "body_chars": 70560,
+    "body_tokens": 16161,
+    "text_fields": {
+      "count": 3,
+      "chars": 22042,
+      "tokens": 4891,
+      "by_category": {
+        "system_prompt": {
+          "count": 1,
+          "chars": 21385,
+          "tokens": 4726
+        },
+        "environment_context": {
+          "count": 1,
+          "chars": 628,
+          "tokens": 155
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 29,
+          "tokens": 10
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 21385,
+          "tokens": 4726
+        },
+        "injected_user_context": {
+          "count": 1,
+          "chars": 628,
+          "tokens": 155
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 29,
+          "tokens": 10
+        }
+      },
+      "fields": [
+        {
+          "path": "messages.0.content",
+          "role": "system",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 21385,
+          "tokens": 4726,
+          "preview": "You are an AI coding assistant, powered by gpt-5.\n\nYou are an interactive CLI tool that helps users with software engine"
+        },
+        {
+          "path": "messages.1.content",
+          "role": "user",
+          "category": "environment_context",
+          "source": "injected_user_context",
+          "chars": 628,
+          "tokens": 155,
+          "preview": "<user_info>\nOS Version: linux 6.6.87.2-microsoft-standard-WSL2\n\nShell: bash\n\nWorkspace Path: /workspace\nIf editing a git"
+        },
+        {
+          "path": "messages.2.content",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 29,
+          "tokens": 10,
+          "preview": "<user_query>\nHi\n</user_query>"
+        }
+      ]
+    },
+    "skills": {
+      "count": 0,
+      "tokens": 0,
+      "definition_tokens": 0,
+      "instruction_field_count": 0,
+      "instruction_fields": [],
+      "items": []
+    },
+    "tools": {
+      "count": 15,
+      "names": [
+        "ApplyPatch",
+        "AskQuestion",
+        "AwaitShell",
+        "Delete",
+        "EditNotebook",
+        "FetchMcpResource",
+        "Glob",
+        "Grep",
+        "ListMcpResources",
+        "Read",
+        "Shell",
+        "SwitchMode",
+        "Task",
+        "TodoWrite",
+        "WriteShellStdin"
+      ],
+      "tokens": 10839,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "Shell",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 11094,
+          "tokens": 2534,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "Glob",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1095,
+          "tokens": 249,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "Grep",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 3368,
+          "tokens": 780,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "AwaitShell",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 2639,
+          "tokens": 610,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "Read",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1654,
+          "tokens": 367,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "Delete",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 406,
+          "tokens": 86,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "ApplyPatch",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 3172,
+          "tokens": 800,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "EditNotebook",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 3153,
+          "tokens": 741,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "TodoWrite",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 4996,
+          "tokens": 1170,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 10,
+          "array_index": 9,
+          "path": "tools.9",
+          "name": "WriteShellStdin",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1237,
+          "tokens": 306,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 11,
+          "array_index": 10,
+          "path": "tools.10",
+          "name": "AskQuestion",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1815,
+          "tokens": 384,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 12,
+          "array_index": 11,
+          "path": "tools.11",
+          "name": "Task",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 8453,
+          "tokens": 1809,
+          "is_mcp_related": true,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 13,
+          "array_index": 12,
+          "path": "tools.12",
+          "name": "ListMcpResources",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 578,
+          "tokens": 110,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 14,
+          "array_index": 13,
+          "path": "tools.13",
+          "name": "FetchMcpResource",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 722,
+          "tokens": 151,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 15,
+          "array_index": 14,
+          "path": "tools.14",
+          "name": "SwitchMode",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 3480,
+          "tokens": 742,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 9,
+      "paths": [
+        "tools.11.function.description",
+        "tools.11.function.parameters.properties.readonly.description",
+        "tools.12",
+        "tools.12.function.description",
+        "tools.12.function.name",
+        "tools.13",
+        "tools.13.function.description",
+        "tools.13.function.name",
+        "tools.13.function.parameters.properties.server.description"
+      ],
+      "count": 2,
+      "tokens": 261,
+      "mention_count": 2,
+      "mention_tokens": 1327,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "mcp_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.11.function.description",
+          "chars": 6233,
+          "tokens": 1301,
+          "preview": "Launch a new agent to handle complex, multi-step tasks autonomously.\n\nThe Task tool launches specialized subagents (subp"
+        },
+        {
+          "marker_index": 2,
+          "name": "mcp_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.11.function.parameters.properties.readonly.description",
+          "chars": 124,
+          "tokens": 26,
+          "preview": "If true, the subagent will run in readonly mode (\"Ask mode\") with restricted write operations and no MCP or internet acc"
+        },
+        {
+          "marker_index": 3,
+          "name": "ListMcpResources",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.12",
+          "chars": 578,
+          "tokens": 110,
+          "preview": "{\"function\":{\"description\":\"List available resources from configured MCP servers. Each returned resource will include al"
+        },
+        {
+          "marker_index": 4,
+          "name": "FetchMcpResource",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.13",
+          "chars": 722,
+          "tokens": 151,
+          "preview": "{\"function\":{\"description\":\"Reads a specific resource from an MCP server, identified by server name and resource URI. Op"
+        }
+      ]
+    },
+    "subagents": {
+      "marker_count": 10,
+      "paths": [
+        "tools.11.function.description",
+        "tools.11.function.parameters.properties.description.description",
+        "tools.11.function.parameters.properties.file_attachments.description",
+        "tools.11.function.parameters.properties.model.description",
+        "tools.11.function.parameters.properties.readonly.description",
+        "tools.11.function.parameters.properties.subagent_type.description",
+        "tools.11.function.parameters.properties.subagent_type.description.subagent.0",
+        "tools.11.function.parameters.properties.subagent_type.description.subagent.1",
+        "tools.11.function.parameters.properties.subagent_type.description.subagent.2",
+        "tools.11.function.parameters.properties.subagent_type.description.subagent.3"
+      ],
+      "count": 4,
+      "tokens": 11,
+      "mention_count": 5,
+      "mention_tokens": 1522,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "subagent_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.11.function.description",
+          "chars": 6233,
+          "tokens": 1301,
+          "preview": "Launch a new agent to handle complex, multi-step tasks autonomously.\n\nThe Task tool launches specialized subagents (subp"
+        },
+        {
+          "marker_index": 2,
+          "name": "subagent_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.11.function.parameters.properties.description.description",
+          "chars": 398,
+          "tokens": 84,
+          "preview": "A short, user-friendly title for the subagent. This appears in the UI as the subagent's name. Make it concrete and disti"
+        },
+        {
+          "marker_index": 3,
+          "name": "subagent_3",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.11.function.parameters.properties.model.description",
+          "chars": 296,
+          "tokens": 64,
+          "preview": "Optional model slug for this agent. If provided, it must resolve to one of the available model slugs. If omitted, the su"
+        },
+        {
+          "marker_index": 4,
+          "name": "subagent_4",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.11.function.parameters.properties.readonly.description",
+          "chars": 124,
+          "tokens": 26,
+          "preview": "If true, the subagent will run in readonly mode (\"Ask mode\") with restricted write operations and no MCP or internet acc"
+        },
+        {
+          "marker_index": 5,
+          "name": "generalPurpose",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.11.function.parameters.properties.subagent_type.description.subagent.0",
+          "chars": 14,
+          "tokens": 2,
+          "preview": "generalPurpose"
+        },
+        {
+          "marker_index": 6,
+          "name": "explore",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.11.function.parameters.properties.subagent_type.description.subagent.1",
+          "chars": 7,
+          "tokens": 2,
+          "preview": "explore"
+        },
+        {
+          "marker_index": 7,
+          "name": "cursor-guide",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.11.function.parameters.properties.subagent_type.description.subagent.2",
+          "chars": 12,
+          "tokens": 2,
+          "preview": "cursor-guide"
+        },
+        {
+          "marker_index": 8,
+          "name": "best-of-n-runner",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.11.function.parameters.properties.subagent_type.description.subagent.3",
+          "chars": 16,
+          "tokens": 5,
+          "preview": "best-of-n-runner"
+        },
+        {
+          "marker_index": 9,
+          "name": "subagent_9",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.11.function.parameters.properties.file_attachments.description",
+          "chars": 209,
+          "tokens": 47,
+          "preview": "Optional array of file paths to images or videos to pass to video-review subagents. Files are read and attached to the s"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "model": "gpt-5",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 70584,
+      "body_chars": 70560,
+      "body_tokens": 16161,
+      "text_fields": {
+        "count": 3,
+        "chars": 22042,
+        "tokens": 4891,
+        "by_category": {
+          "system_prompt": {
+            "count": 1,
+            "chars": 21385,
+            "tokens": 4726
+          },
+          "environment_context": {
+            "count": 1,
+            "chars": 628,
+            "tokens": 155
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 29,
+            "tokens": 10
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 21385,
+            "tokens": 4726
+          },
+          "injected_user_context": {
+            "count": 1,
+            "chars": 628,
+            "tokens": 155
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 29,
+            "tokens": 10
+          }
+        },
+        "fields": [
+          {
+            "path": "messages.0.content",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 21385,
+            "tokens": 4726,
+            "preview": "You are an AI coding assistant, powered by gpt-5.\n\nYou are an interactive CLI tool that helps users with software engine"
+          },
+          {
+            "path": "messages.1.content",
+            "role": "user",
+            "category": "environment_context",
+            "source": "injected_user_context",
+            "chars": 628,
+            "tokens": 155,
+            "preview": "<user_info>\nOS Version: linux 6.6.87.2-microsoft-standard-WSL2\n\nShell: bash\n\nWorkspace Path: /workspace\nIf editing a git"
+          },
+          {
+            "path": "messages.2.content",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 29,
+            "tokens": 10,
+            "preview": "<user_query>\nHi\n</user_query>"
+          }
+        ]
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 15,
+        "names": [
+          "ApplyPatch",
+          "AskQuestion",
+          "AwaitShell",
+          "Delete",
+          "EditNotebook",
+          "FetchMcpResource",
+          "Glob",
+          "Grep",
+          "ListMcpResources",
+          "Read",
+          "Shell",
+          "SwitchMode",
+          "Task",
+          "TodoWrite",
+          "WriteShellStdin"
+        ],
+        "tokens": 10839,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "Shell",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 11094,
+            "tokens": 2534,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "Glob",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1095,
+            "tokens": 249,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "Grep",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 3368,
+            "tokens": 780,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "AwaitShell",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 2639,
+            "tokens": 610,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "Read",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1654,
+            "tokens": 367,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "Delete",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 406,
+            "tokens": 86,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "ApplyPatch",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 3172,
+            "tokens": 800,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "EditNotebook",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 3153,
+            "tokens": 741,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "TodoWrite",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 4996,
+            "tokens": 1170,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "WriteShellStdin",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1237,
+            "tokens": 306,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 11,
+            "array_index": 10,
+            "path": "tools.10",
+            "name": "AskQuestion",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1815,
+            "tokens": 384,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 12,
+            "array_index": 11,
+            "path": "tools.11",
+            "name": "Task",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 8453,
+            "tokens": 1809,
+            "is_mcp_related": true,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 13,
+            "array_index": 12,
+            "path": "tools.12",
+            "name": "ListMcpResources",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 578,
+            "tokens": 110,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 14,
+            "array_index": 13,
+            "path": "tools.13",
+            "name": "FetchMcpResource",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 722,
+            "tokens": 151,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 15,
+            "array_index": 14,
+            "path": "tools.14",
+            "name": "SwitchMode",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 3480,
+            "tokens": 742,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 9,
+        "paths": [
+          "tools.11.function.description",
+          "tools.11.function.parameters.properties.readonly.description",
+          "tools.12",
+          "tools.12.function.description",
+          "tools.12.function.name",
+          "tools.13",
+          "tools.13.function.description",
+          "tools.13.function.name",
+          "tools.13.function.parameters.properties.server.description"
+        ],
+        "count": 2,
+        "tokens": 261,
+        "mention_count": 2,
+        "mention_tokens": 1327,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "mcp_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.11.function.description",
+            "chars": 6233,
+            "tokens": 1301,
+            "preview": "Launch a new agent to handle complex, multi-step tasks autonomously.\n\nThe Task tool launches specialized subagents (subp"
+          },
+          {
+            "marker_index": 2,
+            "name": "mcp_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.11.function.parameters.properties.readonly.description",
+            "chars": 124,
+            "tokens": 26,
+            "preview": "If true, the subagent will run in readonly mode (\"Ask mode\") with restricted write operations and no MCP or internet acc"
+          },
+          {
+            "marker_index": 3,
+            "name": "ListMcpResources",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.12",
+            "chars": 578,
+            "tokens": 110,
+            "preview": "{\"function\":{\"description\":\"List available resources from configured MCP servers. Each returned resource will include al"
+          },
+          {
+            "marker_index": 4,
+            "name": "FetchMcpResource",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.13",
+            "chars": 722,
+            "tokens": 151,
+            "preview": "{\"function\":{\"description\":\"Reads a specific resource from an MCP server, identified by server name and resource URI. Op"
+          }
+        ]
+      },
+      "subagents": {
+        "marker_count": 10,
+        "paths": [
+          "tools.11.function.description",
+          "tools.11.function.parameters.properties.description.description",
+          "tools.11.function.parameters.properties.file_attachments.description",
+          "tools.11.function.parameters.properties.model.description",
+          "tools.11.function.parameters.properties.readonly.description",
+          "tools.11.function.parameters.properties.subagent_type.description",
+          "tools.11.function.parameters.properties.subagent_type.description.subagent.0",
+          "tools.11.function.parameters.properties.subagent_type.description.subagent.1",
+          "tools.11.function.parameters.properties.subagent_type.description.subagent.2",
+          "tools.11.function.parameters.properties.subagent_type.description.subagent.3"
+        ],
+        "count": 4,
+        "tokens": 11,
+        "mention_count": 5,
+        "mention_tokens": 1522,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.11.function.description",
+            "chars": 6233,
+            "tokens": 1301,
+            "preview": "Launch a new agent to handle complex, multi-step tasks autonomously.\n\nThe Task tool launches specialized subagents (subp"
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.11.function.parameters.properties.description.description",
+            "chars": 398,
+            "tokens": 84,
+            "preview": "A short, user-friendly title for the subagent. This appears in the UI as the subagent's name. Make it concrete and disti"
+          },
+          {
+            "marker_index": 3,
+            "name": "subagent_3",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.11.function.parameters.properties.model.description",
+            "chars": 296,
+            "tokens": 64,
+            "preview": "Optional model slug for this agent. If provided, it must resolve to one of the available model slugs. If omitted, the su"
+          },
+          {
+            "marker_index": 4,
+            "name": "subagent_4",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.11.function.parameters.properties.readonly.description",
+            "chars": 124,
+            "tokens": 26,
+            "preview": "If true, the subagent will run in readonly mode (\"Ask mode\") with restricted write operations and no MCP or internet acc"
+          },
+          {
+            "marker_index": 5,
+            "name": "generalPurpose",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.11.function.parameters.properties.subagent_type.description.subagent.0",
+            "chars": 14,
+            "tokens": 2,
+            "preview": "generalPurpose"
+          },
+          {
+            "marker_index": 6,
+            "name": "explore",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.11.function.parameters.properties.subagent_type.description.subagent.1",
+            "chars": 7,
+            "tokens": 2,
+            "preview": "explore"
+          },
+          {
+            "marker_index": 7,
+            "name": "cursor-guide",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.11.function.parameters.properties.subagent_type.description.subagent.2",
+            "chars": 12,
+            "tokens": 2,
+            "preview": "cursor-guide"
+          },
+          {
+            "marker_index": 8,
+            "name": "best-of-n-runner",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.11.function.parameters.properties.subagent_type.description.subagent.3",
+            "chars": 16,
+            "tokens": 5,
+            "preview": "best-of-n-runner"
+          },
+          {
+            "marker_index": 9,
+            "name": "subagent_9",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.11.function.parameters.properties.file_attachments.description",
+            "chars": 209,
+            "tokens": 47,
+            "preview": "Optional array of file paths to images or videos to pass to video-review subagents. Files are read and attached to the s"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 70584,
+    "body_tokens": 16161,
+    "skill_count": 0,
+    "tool_count": 15,
+    "mcp_marker_count": 9,
+    "mcp_mention_count": 2,
+    "subagent_marker_count": 10,
+    "subagent_mention_count": 5
+  },
+  "post_totals": {
+    "body_bytes": 70584,
+    "body_tokens": 16161,
+    "skill_count": 0,
+    "tool_count": 15,
+    "mcp_marker_count": 9,
+    "mcp_mention_count": 2,
+    "subagent_marker_count": 10,
+    "subagent_mention_count": 5
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "cursor-cli-2026.06.12-19-59-36-f6aba9a-hi",
+    "agent_id": "cursor-cli",
+    "agent_version": "2026.06.12-19-59-36-f6aba9a",
+    "run_dir": "runs/cursor-cli-2026.06.12-19-59-36-f6aba9a-hi",
+    "agent_name": "Cursor CLI",
+    "agent_image": "hibench/cursor-cli:2026.06.12-19-59-36-f6aba9a",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-14T21:47:47Z",
+    "ended_at": "2026-06-14T21:47:52Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/chat/completions",
+    "model": "gpt-5",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 16161,
+    "body_tokens": 16161,
+    "body_bytes": 70584,
+    "body_chars": 70560,
+    "text_field_count": 3,
+    "text_tokens": 4891,
+    "system_prompt_tokens": 4726,
+    "environment_context_tokens": 155,
+    "user_prompt_tokens": 10,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 4726,
+    "developer_instructions_tokens": 0,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 155,
+    "instruction_tokens": 4881,
+    "default_context_tokens": 15720,
+    "skills_count": 0,
+    "skills_tokens": 0,
+    "skill_definition_tokens": 0,
+    "tool_count": 15,
+    "tool_definition_tokens": 10839,
+    "mcp_count": 2,
+    "mcp_tokens": 261,
+    "mcp_marker_count": 9,
+    "mcp_mention_count": 2,
+    "mcp_mention_tokens": 1327,
+    "subagent_count": 4,
+    "subagent_tokens": 11,
+    "subagent_marker_count": 10,
+    "subagent_mention_count": 5,
+    "subagent_mention_tokens": 1522
+  }
+}

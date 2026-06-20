@@ -1,0 +1,10 @@
+{"ts":"2026-06-15T05:37:27.730Z","type":"hook_event","hookEventName":"agent_start","agentId":"agent_1781501847717_0s9r27","taskId":"conv_1781501847725_ue7wc1b","parentAgentId":null}
+{"ts":"2026-06-15T05:37:27.732Z","type":"agent_event","event":{"type":"iteration_start","iteration":1}}
+{"ts":"2026-06-15T05:37:27.783Z","type":"agent_event","event":{"type":"content_start","contentType":"text","text":"HiBench capture complete.","accumulated":"HiBench capture complete."}}
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{"ts":"2026-06-15T05:37:27.790Z","type":"agent_event","event":{"type":"usage","inputTokens":0,"outputTokens":0,"totalInputTokens":0,"totalOutputTokens":0,"totalCost":0}}
+{"ts":"2026-06-15T05:37:27.791Z","type":"agent_event","event":{"type":"content_end","contentType":"text","text":"HiBench capture complete."}}
+{"ts":"2026-06-15T05:37:27.793Z","type":"agent_event","event":{"type":"iteration_end","iteration":1,"hadToolCalls":false,"toolCallCount":0}}
+{"ts":"2026-06-15T05:37:27.795Z","type":"hook_event","hookEventName":"agent_end","agentId":"agent_1781501847717_0s9r27","taskId":"conv_1781501847725_ue7wc1b","parentAgentId":null}
+{"ts":"2026-06-15T05:37:27.795Z","type":"agent_event","event":{"type":"done","reason":"completed","text":"HiBench capture complete.","iterations":1,"usage":{"inputTokens":0,"outputTokens":0,"totalCost":0}}}
+{"ts":"2026-06-15T05:37:27.805Z","type":"run_result","finishReason":"completed","iterations":1,"usage":{"inputTokens":0,"outputTokens":0,"cacheReadTokens":0,"cacheWriteTokens":0,"totalCost":0},"aggregateUsage":{"inputTokens":0,"outputTokens":0,"cacheReadTokens":0,"cacheWriteTokens":0,"totalCost":0},"durationMs":69,"text":"HiBench capture complete.","model":{"id":"gpt-5","provider":"openai-compatible"}}

@@ -1,0 +1,18 @@
+[plugins] acpx installed bundled runtime deps: acpx@0.5.3
+[plugins] amazon-bedrock installed bundled runtime deps: @aws-sdk/client-bedrock-runtime@3.1033.0, @aws-sdk/client-bedrock@3.1033.0, @aws-sdk/credential-provider-node@3.972.33
+[plugins] amazon-bedrock-mantle installed bundled runtime deps: @anthropic-ai/sdk@0.90.0, @aws/bedrock-token-generator@^1.1.0, @mariozechner/pi-ai@0.70.0
+[plugins] anthropic installed bundled runtime deps: @mariozechner/pi-ai@0.70.0
+[plugins] browser installed bundled runtime deps: @modelcontextprotocol/sdk@1.29.0, commander@^14.0.3, express@^5.2.1, playwright-core@1.59.1, typebox@1.1.28, undici@8.1.0, ws@^8.20.0
+[plugins] deepgram installed bundled runtime deps: ws@^8.20.0
+[plugins] elevenlabs installed bundled runtime deps: ws@^8.20.0
+[plugins] fireworks installed bundled runtime deps: @mariozechner/pi-ai@0.70.0
+[plugins] github-copilot installed bundled runtime deps: @clack/prompts@^1.2.0, @mariozechner/pi-ai@0.70.0
+[plugins] google installed bundled runtime deps: @google/genai@^1.50.1, @mariozechner/pi-ai@0.70.0
+[plugins] kimi installed bundled runtime deps: @mariozechner/pi-ai@0.70.0
+[plugins] lmstudio installed bundled runtime deps: @mariozechner/pi-ai@0.70.0
+[plugins] microsoft installed bundled runtime deps: node-edge-tts@^1.2.10
+[plugins] mistral installed bundled runtime deps: ws@^8.20.0
+[plugins] ollama installed bundled runtime deps: @mariozechner/pi-ai@0.70.0, typebox@1.1.28
+[plugins] openai installed bundled runtime deps: @mariozechner/pi-ai@0.70.0, ws@^8.20.0
+[plugins] xai installed bundled runtime deps: @mariozechner/pi-ai@0.70.0, typebox@1.1.28, ws@^8.20.0
+HiBench capture complete.

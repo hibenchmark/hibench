@@ -1,0 +1,74 @@
+OpenHands CLI terminal UI may not work correctly in this environment: Rich detected a non-interactive or unsupported terminal; interactive UI may not render correctly
+To override Rich's detection, you can set TTY_INTERACTIVE=1 (and optionally TTY_COMPATIBLE=1).
+Initializing agent...
+✓ Agent initialized with model: openai/gpt-[1m5[0m
+--JSON Event--
+{
+  "activated_skills": [],
+  "critic_result": null,
+  "extended_content": [],
+  "id": "5ca09c4b-e183-46bc-a883-a27993320719",
+  "kind": "MessageEvent",
+  "llm_message": {
+    "content": [
+      {
+        "cache_prompt": false,
+        "text": "Hi",
+        "type": "text"
+      }
+    ],
+    "name": null,
+    "reasoning_content": null,
+    "responses_reasoning_item": null,
+    "role": "user",
+    "thinking_blocks": [],
+    "tool_call_id": null,
+    "tool_calls": null
+  },
+  "llm_response_id": null,
+  "sender": null,
+  "source": "user",
+  "timestamp": "2026-06-19T13:44:35.886417"
+}
+Agent is working
+--JSON Event--
+{
+  "activated_skills": [],
+  "critic_result": null,
+  "extended_content": [],
+  "id": "7d91babf-fd7c-4496-aa5b-2d1a6d44dd0c",
+  "kind": "MessageEvent",
+  "llm_message": {
+    "content": [
+      {
+        "cache_prompt": false,
+        "text": "HiBench capture complete.",
+        "type": "text"
+      }
+    ],
+    "name": null,
+    "reasoning_content": null,
+    "responses_reasoning_item": null,
+    "role": "assistant",
+    "thinking_blocks": [],
+    "tool_call_id": null,
+    "tool_calls": null
+  },
+  "llm_response_id": "resp_bGl0ZWxsbTpjdXN0b21fbGxtX3Byb3ZpZGVyOm9wZW5haTttb2RlbF9pZDpOb25lO3Jlc3BvbnNlX2lkOnJlc3BfaGliZW5jaF9jYXB0dXJl",
+  "sender": null,
+  "source": "agent",
+  "timestamp": "2026-06-19T13:44:36.225498"
+}
+Agent finished
+
+───────────────────────────── CONVERSATION SUMMARY ─────────────────────────────
+[1mNumber of agent messages:[0m [1m2[0m
+[1mLast message sent by the agent:[0m
+╭─ Agent ───────────────────╮
+│ HiBench capture complete. │
+╰───────────────────────────╯
+────────────────────────────────────────────────────────────────────────────────
+Goodbye! 👋
+Conversation ID: 18c339c1b81d4e98a4db7ea0319d7679
+Hint: run openhands --resume 18c339c1-b81d-4e98-a4db-7ea0319d7679 to resume this
+conversation.

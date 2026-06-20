@@ -1,0 +1,2 @@
+[2m2026-06-14T20:32:00.445452Z[0m [31mERROR[0m  [3mname[0m[2m=[0m"BatchSpanProcessor.ExportError" [3merror[0m[2m=[0m"Operation failed: reqwest::Error { kind: Status(401, None), url: \"https://cli-chat-proxy.grok.com/v1/traces\" }"
+[otel] Failed to shutdown tracer provider: Operation failed: Shutdown errors: [InternalFailure("Operation failed: reqwest::Error { kind: Status(401, None), url: \"https://cli-chat-proxy.grok.com/v1/traces\" }")]

@@ -1,0 +1,5 @@
+{"reasoning effort":"medium","reasoning summaries":"auto","workdir":"/workspace","provider":"hibench","sandbox":"read-only","approval":"never","model":"gpt-5"}
+{"prompt":"Hi"}
+{"id":"0","msg":{"type":"task_started"}}
+{"id":"0","msg":{"type":"agent_message","message":"HiBench capture complete."}}
+{"id":"0","msg":{"type":"token_count","input_tokens":0,"cached_input_tokens":0,"output_tokens":1,"reasoning_output_tokens":0,"total_tokens":1}}

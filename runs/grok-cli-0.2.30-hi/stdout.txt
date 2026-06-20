@@ -1,0 +1,6 @@
+{
+  "text": "HiBench capture complete.",
+  "stopReason": "EndTurn",
+  "sessionId": "019ec7e6-6518-7d83-b2e6-64e654279bb5",
+  "requestId": "12914ba7-b5ab-451a-9cc8-1dad39956500"
+}

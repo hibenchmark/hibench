@@ -1,0 +1,23 @@
+{
+  "run_id": "codex-0.54.0-hi",
+  "agent": {
+    "id": "codex",
+    "display_name": "OpenAI Codex CLI",
+    "version": "0.54.0",
+    "image": "hibench/codex:0.54.0",
+    "parser_id": "codex"
+  },
+  "prompt_file": "prompts/hi.txt",
+  "started_at": "2026-06-13T15:00:50Z",
+  "ended_at": "2026-06-13T15:00:50Z",
+  "subject_workspace": "generated empty Git repository",
+  "real_api_call": false,
+  "benchmark_status": "excluded",
+  "exclude_reason": "Excluded: @openai/codex@0.54.0 is deprecated for bad MUSL binaries on Linux; Docker build installs it, but codex --version fails with missing vendor/x86_64-unknown-linux-musl/codex/codex (ENOENT).",
+  "process": {
+    "exit_code": 1,
+    "timed_out": false,
+    "timeout_seconds": 0,
+    "error": "Excluded: @openai/codex@0.54.0 is deprecated for bad MUSL binaries on Linux; Docker build installs it, but codex --version fails with missing vendor/x86_64-unknown-linux-musl/codex/codex (ENOENT)."
+  }
+}

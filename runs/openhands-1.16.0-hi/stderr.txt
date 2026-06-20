@@ -1,0 +1,4 @@
+/usr/local/lib/python3.12/site-packages/openhands/sdk/llm/auth/openai.py:25: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, jwt
+{"asctime": "2026-06-19 13:46:54,514", "levelname": "ERROR", "name": "openhands.sdk.llm.utils.retry_mixin", "filename": "retry_mixin.py", "lineno": 124, "message": "litellm.InternalServerError: InternalServerError: OpenAIException - Server disconnected without sending a response.. Attempt #1 | You can customize retry values in the configuration."}

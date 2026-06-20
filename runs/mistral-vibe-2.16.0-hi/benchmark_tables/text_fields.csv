@@ -1,0 +1,4 @@
+schema_version,run_id,agent_id,agent_version,request_index,text_index,category,source,role,path,chars,tokens,preview
+hibench.benchmark.v1,mistral-vibe-2.16.0-hi,mistral-vibe,2.16.0,1,1,system_prompt,main_instructions,system,messages.0.content,26318,6230,"You are Mistral Vibe, a CLI coding agent built by Mistral AI. You work on a local codebase using tools.
+Today's date is"
+hibench.benchmark.v1,mistral-vibe-2.16.0-hi,mistral-vibe,2.16.0,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi

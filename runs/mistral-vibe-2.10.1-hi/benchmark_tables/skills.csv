@@ -1,0 +1,4 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,mistral-vibe-2.10.1-hi,mistral-vibe,2.10.1,1,1,vibe,,messages.0.content,386,89,"Understand the Vibe CLI application internals: configuration, VIBE_HOME structure, available parameters, agents, skills, tools, and how to inspect or update the user's setup. Use this skill when the user asks about how Vibe works, wants to configure it, or when you need to understand the runtime environment.","<skill>
+    <name>vibe</name>
+    <description>Understand the Vibe CLI application internals: configuration, VIBE_HOME s"

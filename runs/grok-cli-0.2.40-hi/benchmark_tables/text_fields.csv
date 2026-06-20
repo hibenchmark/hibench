@@ -1,0 +1,14 @@
+schema_version,run_id,agent_id,agent_version,request_index,text_index,category,source,role,path,chars,tokens,preview
+hibench.benchmark.v1,grok-cli-0.2.40-hi,grok-cli,0.2.40,2,1,system_prompt,main_instructions,system,messages.0.content,12549,2523,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
+hibench.benchmark.v1,grok-cli-0.2.40-hi,grok-cli,0.2.40,2,2,environment_context,injected_user_context,user,messages.1.content,171,41,"<user_info>
+OS Version: linux
+Shell: /bin/sh
+Workspace Path: /workspace
+Note: Prefer using relative paths over absolute"
+hibench.benchmark.v1,grok-cli-0.2.40-hi,grok-cli,0.2.40,2,3,system_prompt,skills_instructions,user,messages.2.content,3262,793,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.40-hi,grok-cli,0.2.40,2,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
+Hi
+</user_query>"

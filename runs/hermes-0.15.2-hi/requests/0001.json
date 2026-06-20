@@ -1,0 +1,16 @@
+{
+  "index": 1,
+  "captured_at": "2026-06-14T11:27:49Z",
+  "method": "GET",
+  "path": "/api/v1/models",
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate",
+    "Authorization": "<redacted>",
+    "Connection": "keep-alive",
+    "Host": "host.docker.internal:32985",
+    "User-Agent": "python-httpx/0.28.1"
+  },
+  "body_text": "",
+  "json": null
+}

@@ -1,0 +1,6 @@
+{"sandbox":"read-only","reasoning effort":"none","reasoning summaries":"auto","model":"gpt-5-codex","provider":"hibench","workdir":"/workspace","approval":"never"}
+{"prompt":"Hi"}
+{"id":"0","msg":{"type":"task_started","model_context_window":272000}}
+{"id":"0","msg":{"type":"token_count","info":null,"rate_limits":{"primary":null,"secondary":null}}}
+{"id":"0","msg":{"type":"agent_message","message":"HiBench capture complete."}}
+{"id":"0","msg":{"type":"token_count","info":{"total_token_usage":{"input_tokens":0,"cached_input_tokens":0,"output_tokens":1,"reasoning_output_tokens":0,"total_tokens":1},"last_token_usage":{"input_tokens":0,"cached_input_tokens":0,"output_tokens":1,"reasoning_output_tokens":0,"total_tokens":1},"model_context_window":272000},"rate_limits":{"primary":null,"secondary":null}}}

@@ -1,0 +1,3 @@
+[agents/model-providers] [xai-auth] bootstrap config fallback: no config-backed key found
+[agents/model-providers] [xai-auth] bootstrap config fallback: no config-backed key found
+HiBench capture complete.

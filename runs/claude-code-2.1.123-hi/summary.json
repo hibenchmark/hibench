@@ -1,0 +1,1626 @@
+{
+  "run_dir": "runs/claude-code-2.1.123-hi",
+  "request_count": 2,
+  "post_request_count": 1,
+  "primary_request_index": 2,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/messages?beta=true",
+    "model": "claude-sonnet-4-6",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "claude-sonnet-4-6",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 102991,
+    "body_chars": 102799,
+    "body_tokens": 22959,
+    "text_fields": {
+      "count": 6,
+      "chars": 29015,
+      "tokens": 6093,
+      "by_category": {
+        "system_prompt": {
+          "count": 4,
+          "chars": 28707,
+          "tokens": 6022
+        },
+        "environment_context": {
+          "count": 1,
+          "chars": 306,
+          "tokens": 70
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "by_source": {
+        "skills_instructions": {
+          "count": 1,
+          "chars": 2611,
+          "tokens": 611
+        },
+        "injected_user_context": {
+          "count": 1,
+          "chars": 306,
+          "tokens": 70
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        },
+        "main_instructions": {
+          "count": 3,
+          "chars": 26096,
+          "tokens": 5411
+        }
+      },
+      "fields": [
+        {
+          "path": "messages.0.content.0.text",
+          "role": "user",
+          "category": "system_prompt",
+          "source": "skills_instructions",
+          "chars": 2611,
+          "tokens": 611,
+          "preview": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to co"
+        },
+        {
+          "path": "messages.0.content.1.text",
+          "role": "user",
+          "category": "environment_context",
+          "source": "injected_user_context",
+          "chars": 306,
+          "tokens": 70,
+          "preview": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n# currentDate\nToday's date is 2"
+        },
+        {
+          "path": "messages.0.content.2.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        },
+        {
+          "path": "system.0.text",
+          "role": "",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 85,
+          "tokens": 34,
+          "preview": "x-anthropic-billing-header: cc_version=2.1.123.5d3; cc_entrypoint=sdk-cli; cch=bc079;"
+        },
+        {
+          "path": "system.1.text",
+          "role": "",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 62,
+          "tokens": 15,
+          "preview": "You are a Claude agent, built on Anthropic's Claude Agent SDK."
+        },
+        {
+          "path": "system.2.text",
+          "role": "",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 25949,
+          "tokens": 5362,
+          "preview": "\nYou are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools"
+        }
+      ]
+    },
+    "skills": {
+      "count": 9,
+      "tokens": 611,
+      "definition_tokens": 456,
+      "instruction_field_count": 1,
+      "instruction_fields": [
+        {
+          "path": "messages.0.content.0.text",
+          "role": "user",
+          "chars": 2611,
+          "tokens": 611,
+          "preview": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to co"
+        }
+      ],
+      "items": [
+        {
+          "skill_index": 1,
+          "name": "update-config",
+          "description": "Use this skill to configure the Claude Code harness via settings.json. Automated behaviors (\"from now on when X\", \"each time X\", \"whenever X\", \"before/after X\") require hooks configured in settings.json - the harness executes these, not Claude, so memory/preferences cannot fulfill them. Also use for: permissions (\"allow X\", \"add permission\", \"move permission to\"), env vars (\"set X=Y\"), hook troubleshooting, or any changes to settings.json/settings.local.json files. Examples: \"allow npm commands\", \"add bq permission to global settings\", \"move permission to user settings\", \"set DEBUG=true\", \"when claude stops show X\". For simple settings like theme/model, suggest the /config command.",
+          "file": "",
+          "source_path": "messages.0.content.0.text",
+          "chars": 707,
+          "tokens": 153,
+          "preview": "- update-config: Use this skill to configure the Claude Code harness via settings.json. Automated behaviors (\"from now o"
+        },
+        {
+          "skill_index": 2,
+          "name": "keybindings-help",
+          "description": "Use when the user wants to customize keyboard shortcuts, rebind keys, add chord bindings, or modify ~/.claude/keybindings.json. Examples: \"rebind ctrl+s\", \"add a chord shortcut\", \"change the submit key\", \"customize keybindings\".",
+          "file": "",
+          "source_path": "messages.0.content.0.text",
+          "chars": 248,
+          "tokens": 58,
+          "preview": "- keybindings-help: Use when the user wants to customize keyboard shortcuts, rebind keys, add chord bindings, or modify "
+        },
+        {
+          "skill_index": 3,
+          "name": "simplify",
+          "description": "Review changed code for reuse, quality, and efficiency, then fix any issues found.",
+          "file": "",
+          "source_path": "messages.0.content.0.text",
+          "chars": 94,
+          "tokens": 20,
+          "preview": "- simplify: Review changed code for reuse, quality, and efficiency, then fix any issues found."
+        },
+        {
+          "skill_index": 4,
+          "name": "fewer-permission-prompts",
+          "description": "Scan your transcripts for common read-only Bash and MCP tool calls, then add a prioritized allowlist to project .claude/settings.json to reduce permission prompts.",
+          "file": "",
+          "source_path": "messages.0.content.0.text",
+          "chars": 191,
+          "tokens": 38,
+          "preview": "- fewer-permission-prompts: Scan your transcripts for common read-only Bash and MCP tool calls, then add a prioritized a"
+        },
+        {
+          "skill_index": 5,
+          "name": "loop",
+          "description": "Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m) - When the user wants to set up a recurring task, poll for status, or run something repeatedly on an interval (e.g. \"check the deploy every 5 minutes\", \"keep running /babysit-prs\"). Do NOT invoke for one-off tasks.",
+          "file": "",
+          "source_path": "messages.0.content.0.text",
+          "chars": 314,
+          "tokens": 85,
+          "preview": "- loop: Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m) - When the user want"
+        },
+        {
+          "skill_index": 6,
+          "name": "claude-api",
+          "description": "Build, debug, and optimize Claude API / Anthropic SDK apps. Apps built with this skill should include prompt caching. Also handles migrating existing Claude API code between Claude model versions (4.5 → 4.6, 4.6 → 4.7, retired-model replacements).",
+          "file": "",
+          "source_path": "messages.0.content.0.text",
+          "chars": 261,
+          "tokens": 64,
+          "preview": "- claude-api: Build, debug, and optimize Claude API / Anthropic SDK apps. Apps built with this skill should include prom"
+        },
+        {
+          "skill_index": 7,
+          "name": "init",
+          "description": "Initialize a new CLAUDE.md file with codebase documentation",
+          "file": "",
+          "source_path": "messages.0.content.0.text",
+          "chars": 67,
+          "tokens": 15,
+          "preview": "- init: Initialize a new CLAUDE.md file with codebase documentation"
+        },
+        {
+          "skill_index": 8,
+          "name": "review",
+          "description": "Review a pull request",
+          "file": "",
+          "source_path": "messages.0.content.0.text",
+          "chars": 31,
+          "tokens": 7,
+          "preview": "- review: Review a pull request"
+        },
+        {
+          "skill_index": 9,
+          "name": "security-review",
+          "description": "Complete a security review of the pending changes on the current branch",
+          "file": "",
+          "source_path": "messages.0.content.0.text",
+          "chars": 90,
+          "tokens": 16,
+          "preview": "- security-review: Complete a security review of the pending changes on the current branch"
+        }
+      ]
+    },
+    "tools": {
+      "count": 23,
+      "names": [
+        "Agent",
+        "AskUserQuestion",
+        "Bash",
+        "CronCreate",
+        "CronDelete",
+        "CronList",
+        "Edit",
+        "EnterPlanMode",
+        "EnterWorktree",
+        "ExitPlanMode",
+        "ExitWorktree",
+        "Glob",
+        "Grep",
+        "NotebookEdit",
+        "Read",
+        "ScheduleWakeup",
+        "Skill",
+        "TaskOutput",
+        "TaskStop",
+        "TodoWrite",
+        "WebFetch",
+        "WebSearch",
+        "Write"
+      ],
+      "tokens": 16446,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "Agent",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 8114,
+          "tokens": 1763,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "AskUserQuestion",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 4182,
+          "tokens": 889,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "Bash",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 11791,
+          "tokens": 2710,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "CronCreate",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 4029,
+          "tokens": 1064,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "CronDelete",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 427,
+          "tokens": 98,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "CronList",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 277,
+          "tokens": 65,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "Edit",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 1702,
+          "tokens": 368,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "EnterPlanMode",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 4323,
+          "tokens": 956,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "EnterWorktree",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 2900,
+          "tokens": 685,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 10,
+          "array_index": 9,
+          "path": "tools.9",
+          "name": "ExitPlanMode",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 2538,
+          "tokens": 543,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 11,
+          "array_index": 10,
+          "path": "tools.10",
+          "name": "ExitWorktree",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 2505,
+          "tokens": 587,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 12,
+          "array_index": 11,
+          "path": "tools.11",
+          "name": "Glob",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 966,
+          "tokens": 210,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 13,
+          "array_index": 12,
+          "path": "tools.12",
+          "name": "Grep",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 3393,
+          "tokens": 815,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 14,
+          "array_index": 13,
+          "path": "tools.13",
+          "name": "NotebookEdit",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 1509,
+          "tokens": 337,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 15,
+          "array_index": 14,
+          "path": "tools.14",
+          "name": "Read",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 2486,
+          "tokens": 577,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 16,
+          "array_index": 15,
+          "path": "tools.15",
+          "name": "ScheduleWakeup",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 3168,
+          "tokens": 750,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 17,
+          "array_index": 16,
+          "path": "tools.16",
+          "name": "Skill",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 1713,
+          "tokens": 378,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 18,
+          "array_index": 17,
+          "path": "tools.17",
+          "name": "TaskOutput",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 1547,
+          "tokens": 344,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 19,
+          "array_index": 18,
+          "path": "tools.18",
+          "name": "TaskStop",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 537,
+          "tokens": 123,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 20,
+          "array_index": 19,
+          "path": "tools.19",
+          "name": "TodoWrite",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 9841,
+          "tokens": 2124,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 21,
+          "array_index": 20,
+          "path": "tools.20",
+          "name": "WebFetch",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 1865,
+          "tokens": 420,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 22,
+          "array_index": 21,
+          "path": "tools.21",
+          "name": "WebSearch",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 1870,
+          "tokens": 413,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 23,
+          "array_index": 22,
+          "path": "tools.22",
+          "name": "Write",
+          "type": "",
+          "keys": [
+            "description",
+            "input_schema",
+            "name"
+          ],
+          "chars": 1022,
+          "tokens": 227,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 2,
+      "paths": [
+        "messages.0.content.0.text",
+        "tools.20.description"
+      ],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 2,
+      "mention_tokens": 938,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "mcp_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "messages.0.content.0.text",
+          "chars": 2611,
+          "tokens": 611,
+          "preview": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to co"
+        },
+        {
+          "marker_index": 2,
+          "name": "mcp_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.20.description",
+          "chars": 1479,
+          "tokens": 327,
+          "preview": "IMPORTANT: WebFetch WILL FAIL for authenticated or private URLs. Before using this tool, check if the URL points to an a"
+        }
+      ]
+    },
+    "subagents": {
+      "marker_count": 8,
+      "paths": [
+        "system.2.text",
+        "tools.0.description",
+        "tools.0.description.subagent.0",
+        "tools.0.description.subagent.1",
+        "tools.0.description.subagent.2",
+        "tools.0.description.subagent.3",
+        "tools.0.description.subagent.4",
+        "tools.17.description"
+      ],
+      "count": 5,
+      "tokens": 323,
+      "mention_count": 2,
+      "mention_tokens": 5583,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "subagent_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "system.2.text",
+          "chars": 25949,
+          "tokens": 5362,
+          "preview": "\nYou are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools"
+        },
+        {
+          "marker_index": 2,
+          "name": "Explore",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.0.description.subagent.0",
+          "chars": 689,
+          "tokens": 147,
+          "preview": "- Explore: Fast read-only search agent for locating code. Use it to find files by pattern (eg. \"src/components/**/*.tsx\""
+        },
+        {
+          "marker_index": 3,
+          "name": "general-purpose",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.0.description.subagent.1",
+          "chars": 309,
+          "tokens": 61,
+          "preview": "- general-purpose: General-purpose agent for researching complex questions, searching for code, and executing multi-step"
+        },
+        {
+          "marker_index": 4,
+          "name": "Plan",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.0.description.subagent.2",
+          "chars": 307,
+          "tokens": 60,
+          "preview": "- Plan: Software architect agent for designing implementation plans. Use this when you need to plan the implementation s"
+        },
+        {
+          "marker_index": 5,
+          "name": "statusline-setup",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.0.description.subagent.3",
+          "chars": 111,
+          "tokens": 26,
+          "preview": "- statusline-setup: Use this agent to configure the user's Claude Code status line setting. (Tools: Read, Edit)"
+        },
+        {
+          "marker_index": 6,
+          "name": "Lookups",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.0.description.subagent.4",
+          "chars": 143,
+          "tokens": 29,
+          "preview": "- Lookups: hand over the exact command. Investigations: hand over the question — prescribed steps become dead weight whe"
+        },
+        {
+          "marker_index": 7,
+          "name": "subagent_7",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.17.description",
+          "chars": 1050,
+          "tokens": 221,
+          "preview": "DEPRECATED: Background tasks return their output file path in the tool result, and you receive a <task-notification> wit"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "HEAD",
+      "path": "/",
+      "model": null,
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": null,
+        "source": "benchmark_default"
+      },
+      "body_bytes": 0,
+      "body_chars": 0,
+      "body_tokens": 0,
+      "text_fields": {
+        "count": 0,
+        "chars": 0,
+        "tokens": 0,
+        "by_category": {},
+        "by_source": {},
+        "fields": []
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 0,
+        "names": [],
+        "tokens": 0,
+        "items": []
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "claude-sonnet-4-6",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 102991,
+      "body_chars": 102799,
+      "body_tokens": 22959,
+      "text_fields": {
+        "count": 6,
+        "chars": 29015,
+        "tokens": 6093,
+        "by_category": {
+          "system_prompt": {
+            "count": 4,
+            "chars": 28707,
+            "tokens": 6022
+          },
+          "environment_context": {
+            "count": 1,
+            "chars": 306,
+            "tokens": 70
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "by_source": {
+          "skills_instructions": {
+            "count": 1,
+            "chars": 2611,
+            "tokens": 611
+          },
+          "injected_user_context": {
+            "count": 1,
+            "chars": 306,
+            "tokens": 70
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          },
+          "main_instructions": {
+            "count": 3,
+            "chars": 26096,
+            "tokens": 5411
+          }
+        },
+        "fields": [
+          {
+            "path": "messages.0.content.0.text",
+            "role": "user",
+            "category": "system_prompt",
+            "source": "skills_instructions",
+            "chars": 2611,
+            "tokens": 611,
+            "preview": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to co"
+          },
+          {
+            "path": "messages.0.content.1.text",
+            "role": "user",
+            "category": "environment_context",
+            "source": "injected_user_context",
+            "chars": 306,
+            "tokens": 70,
+            "preview": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n# currentDate\nToday's date is 2"
+          },
+          {
+            "path": "messages.0.content.2.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          },
+          {
+            "path": "system.0.text",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 85,
+            "tokens": 34,
+            "preview": "x-anthropic-billing-header: cc_version=2.1.123.5d3; cc_entrypoint=sdk-cli; cch=bc079;"
+          },
+          {
+            "path": "system.1.text",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 62,
+            "tokens": 15,
+            "preview": "You are a Claude agent, built on Anthropic's Claude Agent SDK."
+          },
+          {
+            "path": "system.2.text",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 25949,
+            "tokens": 5362,
+            "preview": "\nYou are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools"
+          }
+        ]
+      },
+      "skills": {
+        "count": 9,
+        "tokens": 611,
+        "definition_tokens": 456,
+        "instruction_field_count": 1,
+        "instruction_fields": [
+          {
+            "path": "messages.0.content.0.text",
+            "role": "user",
+            "chars": 2611,
+            "tokens": 611,
+            "preview": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to co"
+          }
+        ],
+        "items": [
+          {
+            "skill_index": 1,
+            "name": "update-config",
+            "description": "Use this skill to configure the Claude Code harness via settings.json. Automated behaviors (\"from now on when X\", \"each time X\", \"whenever X\", \"before/after X\") require hooks configured in settings.json - the harness executes these, not Claude, so memory/preferences cannot fulfill them. Also use for: permissions (\"allow X\", \"add permission\", \"move permission to\"), env vars (\"set X=Y\"), hook troubleshooting, or any changes to settings.json/settings.local.json files. Examples: \"allow npm commands\", \"add bq permission to global settings\", \"move permission to user settings\", \"set DEBUG=true\", \"when claude stops show X\". For simple settings like theme/model, suggest the /config command.",
+            "file": "",
+            "source_path": "messages.0.content.0.text",
+            "chars": 707,
+            "tokens": 153,
+            "preview": "- update-config: Use this skill to configure the Claude Code harness via settings.json. Automated behaviors (\"from now o"
+          },
+          {
+            "skill_index": 2,
+            "name": "keybindings-help",
+            "description": "Use when the user wants to customize keyboard shortcuts, rebind keys, add chord bindings, or modify ~/.claude/keybindings.json. Examples: \"rebind ctrl+s\", \"add a chord shortcut\", \"change the submit key\", \"customize keybindings\".",
+            "file": "",
+            "source_path": "messages.0.content.0.text",
+            "chars": 248,
+            "tokens": 58,
+            "preview": "- keybindings-help: Use when the user wants to customize keyboard shortcuts, rebind keys, add chord bindings, or modify "
+          },
+          {
+            "skill_index": 3,
+            "name": "simplify",
+            "description": "Review changed code for reuse, quality, and efficiency, then fix any issues found.",
+            "file": "",
+            "source_path": "messages.0.content.0.text",
+            "chars": 94,
+            "tokens": 20,
+            "preview": "- simplify: Review changed code for reuse, quality, and efficiency, then fix any issues found."
+          },
+          {
+            "skill_index": 4,
+            "name": "fewer-permission-prompts",
+            "description": "Scan your transcripts for common read-only Bash and MCP tool calls, then add a prioritized allowlist to project .claude/settings.json to reduce permission prompts.",
+            "file": "",
+            "source_path": "messages.0.content.0.text",
+            "chars": 191,
+            "tokens": 38,
+            "preview": "- fewer-permission-prompts: Scan your transcripts for common read-only Bash and MCP tool calls, then add a prioritized a"
+          },
+          {
+            "skill_index": 5,
+            "name": "loop",
+            "description": "Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m) - When the user wants to set up a recurring task, poll for status, or run something repeatedly on an interval (e.g. \"check the deploy every 5 minutes\", \"keep running /babysit-prs\"). Do NOT invoke for one-off tasks.",
+            "file": "",
+            "source_path": "messages.0.content.0.text",
+            "chars": 314,
+            "tokens": 85,
+            "preview": "- loop: Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m) - When the user want"
+          },
+          {
+            "skill_index": 6,
+            "name": "claude-api",
+            "description": "Build, debug, and optimize Claude API / Anthropic SDK apps. Apps built with this skill should include prompt caching. Also handles migrating existing Claude API code between Claude model versions (4.5 → 4.6, 4.6 → 4.7, retired-model replacements).",
+            "file": "",
+            "source_path": "messages.0.content.0.text",
+            "chars": 261,
+            "tokens": 64,
+            "preview": "- claude-api: Build, debug, and optimize Claude API / Anthropic SDK apps. Apps built with this skill should include prom"
+          },
+          {
+            "skill_index": 7,
+            "name": "init",
+            "description": "Initialize a new CLAUDE.md file with codebase documentation",
+            "file": "",
+            "source_path": "messages.0.content.0.text",
+            "chars": 67,
+            "tokens": 15,
+            "preview": "- init: Initialize a new CLAUDE.md file with codebase documentation"
+          },
+          {
+            "skill_index": 8,
+            "name": "review",
+            "description": "Review a pull request",
+            "file": "",
+            "source_path": "messages.0.content.0.text",
+            "chars": 31,
+            "tokens": 7,
+            "preview": "- review: Review a pull request"
+          },
+          {
+            "skill_index": 9,
+            "name": "security-review",
+            "description": "Complete a security review of the pending changes on the current branch",
+            "file": "",
+            "source_path": "messages.0.content.0.text",
+            "chars": 90,
+            "tokens": 16,
+            "preview": "- security-review: Complete a security review of the pending changes on the current branch"
+          }
+        ]
+      },
+      "tools": {
+        "count": 23,
+        "names": [
+          "Agent",
+          "AskUserQuestion",
+          "Bash",
+          "CronCreate",
+          "CronDelete",
+          "CronList",
+          "Edit",
+          "EnterPlanMode",
+          "EnterWorktree",
+          "ExitPlanMode",
+          "ExitWorktree",
+          "Glob",
+          "Grep",
+          "NotebookEdit",
+          "Read",
+          "ScheduleWakeup",
+          "Skill",
+          "TaskOutput",
+          "TaskStop",
+          "TodoWrite",
+          "WebFetch",
+          "WebSearch",
+          "Write"
+        ],
+        "tokens": 16446,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "Agent",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 8114,
+            "tokens": 1763,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "AskUserQuestion",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 4182,
+            "tokens": 889,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "Bash",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 11791,
+            "tokens": 2710,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "CronCreate",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 4029,
+            "tokens": 1064,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "CronDelete",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 427,
+            "tokens": 98,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "CronList",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 277,
+            "tokens": 65,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "Edit",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 1702,
+            "tokens": 368,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "EnterPlanMode",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 4323,
+            "tokens": 956,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "EnterWorktree",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 2900,
+            "tokens": 685,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "ExitPlanMode",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 2538,
+            "tokens": 543,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 11,
+            "array_index": 10,
+            "path": "tools.10",
+            "name": "ExitWorktree",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 2505,
+            "tokens": 587,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 12,
+            "array_index": 11,
+            "path": "tools.11",
+            "name": "Glob",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 966,
+            "tokens": 210,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 13,
+            "array_index": 12,
+            "path": "tools.12",
+            "name": "Grep",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 3393,
+            "tokens": 815,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 14,
+            "array_index": 13,
+            "path": "tools.13",
+            "name": "NotebookEdit",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 1509,
+            "tokens": 337,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 15,
+            "array_index": 14,
+            "path": "tools.14",
+            "name": "Read",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 2486,
+            "tokens": 577,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 16,
+            "array_index": 15,
+            "path": "tools.15",
+            "name": "ScheduleWakeup",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 3168,
+            "tokens": 750,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 17,
+            "array_index": 16,
+            "path": "tools.16",
+            "name": "Skill",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 1713,
+            "tokens": 378,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 18,
+            "array_index": 17,
+            "path": "tools.17",
+            "name": "TaskOutput",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 1547,
+            "tokens": 344,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 19,
+            "array_index": 18,
+            "path": "tools.18",
+            "name": "TaskStop",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 537,
+            "tokens": 123,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 20,
+            "array_index": 19,
+            "path": "tools.19",
+            "name": "TodoWrite",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 9841,
+            "tokens": 2124,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 21,
+            "array_index": 20,
+            "path": "tools.20",
+            "name": "WebFetch",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 1865,
+            "tokens": 420,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 22,
+            "array_index": 21,
+            "path": "tools.21",
+            "name": "WebSearch",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 1870,
+            "tokens": 413,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 23,
+            "array_index": 22,
+            "path": "tools.22",
+            "name": "Write",
+            "type": "",
+            "keys": [
+              "description",
+              "input_schema",
+              "name"
+            ],
+            "chars": 1022,
+            "tokens": 227,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 2,
+        "paths": [
+          "messages.0.content.0.text",
+          "tools.20.description"
+        ],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 2,
+        "mention_tokens": 938,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "mcp_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "messages.0.content.0.text",
+            "chars": 2611,
+            "tokens": 611,
+            "preview": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to co"
+          },
+          {
+            "marker_index": 2,
+            "name": "mcp_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.20.description",
+            "chars": 1479,
+            "tokens": 327,
+            "preview": "IMPORTANT: WebFetch WILL FAIL for authenticated or private URLs. Before using this tool, check if the URL points to an a"
+          }
+        ]
+      },
+      "subagents": {
+        "marker_count": 8,
+        "paths": [
+          "system.2.text",
+          "tools.0.description",
+          "tools.0.description.subagent.0",
+          "tools.0.description.subagent.1",
+          "tools.0.description.subagent.2",
+          "tools.0.description.subagent.3",
+          "tools.0.description.subagent.4",
+          "tools.17.description"
+        ],
+        "count": 5,
+        "tokens": 323,
+        "mention_count": 2,
+        "mention_tokens": 5583,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "system.2.text",
+            "chars": 25949,
+            "tokens": 5362,
+            "preview": "\nYou are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools"
+          },
+          {
+            "marker_index": 2,
+            "name": "Explore",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.0.description.subagent.0",
+            "chars": 689,
+            "tokens": 147,
+            "preview": "- Explore: Fast read-only search agent for locating code. Use it to find files by pattern (eg. \"src/components/**/*.tsx\""
+          },
+          {
+            "marker_index": 3,
+            "name": "general-purpose",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.0.description.subagent.1",
+            "chars": 309,
+            "tokens": 61,
+            "preview": "- general-purpose: General-purpose agent for researching complex questions, searching for code, and executing multi-step"
+          },
+          {
+            "marker_index": 4,
+            "name": "Plan",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.0.description.subagent.2",
+            "chars": 307,
+            "tokens": 60,
+            "preview": "- Plan: Software architect agent for designing implementation plans. Use this when you need to plan the implementation s"
+          },
+          {
+            "marker_index": 5,
+            "name": "statusline-setup",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.0.description.subagent.3",
+            "chars": 111,
+            "tokens": 26,
+            "preview": "- statusline-setup: Use this agent to configure the user's Claude Code status line setting. (Tools: Read, Edit)"
+          },
+          {
+            "marker_index": 6,
+            "name": "Lookups",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.0.description.subagent.4",
+            "chars": 143,
+            "tokens": 29,
+            "preview": "- Lookups: hand over the exact command. Investigations: hand over the question — prescribed steps become dead weight whe"
+          },
+          {
+            "marker_index": 7,
+            "name": "subagent_7",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.17.description",
+            "chars": 1050,
+            "tokens": 221,
+            "preview": "DEPRECATED: Background tasks return their output file path in the tool result, and you receive a <task-notification> wit"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 102991,
+    "body_tokens": 22959,
+    "skill_count": 9,
+    "tool_count": 23,
+    "mcp_marker_count": 2,
+    "mcp_mention_count": 2,
+    "subagent_marker_count": 8,
+    "subagent_mention_count": 2
+  },
+  "post_totals": {
+    "body_bytes": 102991,
+    "body_tokens": 22959,
+    "skill_count": 9,
+    "tool_count": 23,
+    "mcp_marker_count": 2,
+    "mcp_mention_count": 2,
+    "subagent_marker_count": 8,
+    "subagent_mention_count": 2
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "claude-code-2.1.123-hi",
+    "agent_id": "claude-code",
+    "agent_version": "2.1.123",
+    "run_dir": "runs/claude-code-2.1.123-hi",
+    "agent_name": "Anthropic Claude Code",
+    "agent_image": "hibench/claude-code:2.1.123",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-13T16:38:54Z",
+    "ended_at": "2026-06-13T16:38:56Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 2,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 2,
+    "request_method": "POST",
+    "request_path": "/v1/messages?beta=true",
+    "model": "claude-sonnet-4-6",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 22959,
+    "body_tokens": 22959,
+    "body_bytes": 102991,
+    "body_chars": 102799,
+    "text_field_count": 6,
+    "text_tokens": 6093,
+    "system_prompt_tokens": 6022,
+    "environment_context_tokens": 70,
+    "user_prompt_tokens": 1,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 5411,
+    "developer_instructions_tokens": 611,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 611,
+    "injected_user_context_tokens": 70,
+    "instruction_tokens": 6092,
+    "default_context_tokens": 22538,
+    "skills_count": 9,
+    "skills_tokens": 611,
+    "skill_definition_tokens": 456,
+    "tool_count": 23,
+    "tool_definition_tokens": 16446,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 2,
+    "mcp_mention_count": 2,
+    "mcp_mention_tokens": 938,
+    "subagent_count": 5,
+    "subagent_tokens": 323,
+    "subagent_marker_count": 8,
+    "subagent_mention_count": 2,
+    "subagent_mention_tokens": 5583
+  }
+}

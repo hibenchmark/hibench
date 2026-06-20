@@ -1,0 +1,32 @@
+{
+  "schema_version": "hibench.benchmark_batch.v1",
+  "agent_id": "claude-code",
+  "catalog_path": "agent_versions/claude-code.json",
+  "version_count": 438,
+  "benchmark_version_policy_id": "stable_semver",
+  "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
+  "benchmark_min_version": null,
+  "benchmark_version_count": 435,
+  "benchmark_exclusion_count": 3,
+  "excluded_benchmark_versions": [
+    "2.1.69",
+    "2.1.105",
+    "2.1.107"
+  ],
+  "selected_version_count": 0,
+  "requested_versions": [],
+  "existing_agent_benchmark_version_count": 100,
+  "skipped_existing_version_count": 100,
+  "candidate_version_count": 0,
+  "initial_version_limit": 100,
+  "initial_version_limit_applied": true,
+  "prompt_file": "prompts/hi.txt",
+  "out_dir": "runs",
+  "results_out": "results",
+  "dry_run": false,
+  "build": true,
+  "skip_existing": false,
+  "rerun_existing": false,
+  "export_results": true,
+  "results": []
+}

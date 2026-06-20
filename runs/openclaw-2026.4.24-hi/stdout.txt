@@ -1,0 +1,19 @@
+[plugins] acpx staging bundled runtime deps (1 missing, 1 install specs): acpx@0.5.3
+[plugins] acpx installed bundled runtime deps in 2348ms: acpx@0.5.3
+[plugins] amazon-bedrock staging bundled runtime deps (3 missing, 7 install specs): @aws-sdk/client-bedrock-runtime@3.1034.0, @aws-sdk/client-bedrock@3.1034.0, @aws-sdk/credential-provider-node@3.972.34
+[plugins] amazon-bedrock installed bundled runtime deps in 3246ms: @aws-sdk/client-bedrock-runtime@3.1034.0, @aws-sdk/client-bedrock@3.1034.0, @aws-sdk/credential-provider-node@3.972.34
+[plugins] amazon-bedrock-mantle staging bundled runtime deps (3 missing, 10 install specs): @anthropic-ai/sdk@0.90.0, @aws/bedrock-token-generator@^1.1.0, @mariozechner/pi-ai@0.70.2
+[plugins] amazon-bedrock-mantle installed bundled runtime deps in 6527ms: @anthropic-ai/sdk@0.90.0, @aws/bedrock-token-generator@^1.1.0, @mariozechner/pi-ai@0.70.2
+[plugins] anthropic-vertex staging bundled runtime deps (2 missing, 14 install specs): @anthropic-ai/vertex-sdk@^0.16.0, @mariozechner/pi-agent-core@0.70.2
+[plugins] anthropic-vertex installed bundled runtime deps in 1625ms: @anthropic-ai/vertex-sdk@^0.16.0, @mariozechner/pi-agent-core@0.70.2
+[plugins] bonjour staging bundled runtime deps (1 missing, 15 install specs): @homebridge/ciao@^1.3.6
+[plugins] bonjour installed bundled runtime deps in 1339ms: @homebridge/ciao@^1.3.6
+[plugins] browser staging bundled runtime deps (5 missing, 20 install specs): @modelcontextprotocol/sdk@1.29.0, express@^5.2.1, playwright-core@1.59.1, typebox@1.1.31, undici@8.1.0
+[plugins] browser installed bundled runtime deps in 3640ms: @modelcontextprotocol/sdk@1.29.0, express@^5.2.1, playwright-core@1.59.1, typebox@1.1.31, undici@8.1.0
+[plugins] document-extract staging bundled runtime deps (1 missing, 22 install specs): pdfjs-dist@^5.6.205
+[plugins] document-extract installed bundled runtime deps in 2649ms: pdfjs-dist@^5.6.205
+[plugins] microsoft staging bundled runtime deps (1 missing, 23 install specs): node-edge-tts@^1.2.10
+[plugins] microsoft installed bundled runtime deps in 1551ms: node-edge-tts@^1.2.10
+[plugins] web-readability staging bundled runtime deps (2 missing, 28 install specs): @mozilla/readability@^0.6.0, linkedom@^0.18.12
+[plugins] web-readability installed bundled runtime deps in 2183ms: @mozilla/readability@^0.6.0, linkedom@^0.18.12
+HiBench capture complete.

@@ -1,0 +1,6 @@
+[23:46:12.754] INFO (#284): bootstrapping {
+  directory: "/workspace",
+}
+{"type":"step_start","timestamp":1781480773279,"sessionID":"ses_13778aaa2ffe1w6ejASpIqZnmA","part":{"id":"prt_ec887569b0016ywgggrq0yltWN","messageID":"msg_ec887562f0010lGabrnVF70lXs","sessionID":"ses_13778aaa2ffe1w6ejASpIqZnmA","type":"step-start"}}
+{"type":"text","timestamp":1781480773284,"sessionID":"ses_13778aaa2ffe1w6ejASpIqZnmA","part":{"id":"prt_ec887569d001ewF7kTSqsHqBnk","messageID":"msg_ec887562f0010lGabrnVF70lXs","sessionID":"ses_13778aaa2ffe1w6ejASpIqZnmA","type":"text","text":"HiBench capture complete.","time":{"start":1781480773277,"end":1781480773279}}}
+{"type":"step_finish","timestamp":1781480773304,"sessionID":"ses_13778aaa2ffe1w6ejASpIqZnmA","part":{"id":"prt_ec88756a30010ydjUVeoj1KGUl","reason":"stop","messageID":"msg_ec887562f0010lGabrnVF70lXs","sessionID":"ses_13778aaa2ffe1w6ejASpIqZnmA","type":"step-finish","tokens":{"input":0,"output":0,"reasoning":0,"cache":{"write":0,"read":0}},"cost":0}}

@@ -1,0 +1,5 @@
+{"approval":"never","model":"gpt-5","reasoning summaries":"auto","reasoning effort":"none","workdir":"/workspace","sandbox":"read-only","provider":"hibench"}
+{"prompt":"Hi"}
+{"id":"0","msg":{"type":"task_started","model_context_window":272000}}
+{"id":"0","msg":{"type":"agent_message","message":"HiBench capture complete."}}
+{"id":"0","msg":{"type":"token_count","info":{"total_token_usage":{"input_tokens":0,"cached_input_tokens":0,"output_tokens":1,"reasoning_output_tokens":0,"total_tokens":1},"last_token_usage":{"input_tokens":0,"cached_input_tokens":0,"output_tokens":1,"reasoning_output_tokens":0,"total_tokens":1},"model_context_window":272000}}}

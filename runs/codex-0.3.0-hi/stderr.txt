@@ -1,0 +1,7 @@
+error: unexpected argument '--json' found
+
+  tip: to pass '--json' as a value, use '-- --json'
+
+Usage: codex-x86_64-unknown-linux-musl exec [OPTIONS] [PROMPT]
+
+For more information, try '--help'.

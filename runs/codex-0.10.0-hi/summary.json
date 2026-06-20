@@ -1,0 +1,312 @@
+{
+  "run_dir": "runs/codex-0.10.0-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "model": "codex-mini-latest",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "codex-mini-latest",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 6217,
+    "body_chars": 6206,
+    "body_tokens": 1551,
+    "text_fields": {
+      "count": 2,
+      "chars": 5700,
+      "tokens": 1350,
+      "by_category": {
+        "system_prompt": {
+          "count": 1,
+          "chars": 5698,
+          "tokens": 1349
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 5698,
+          "tokens": 1349
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "fields": [
+        {
+          "path": "instructions",
+          "role": "",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 5698,
+          "tokens": 1349,
+          "preview": "Please resolve the user's task by editing and testing the code files in your current code execution session.\nYou are a d"
+        },
+        {
+          "path": "input.0.content.0.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        }
+      ]
+    },
+    "skills": {
+      "count": 0,
+      "tokens": 0,
+      "definition_tokens": 0,
+      "instruction_field_count": 0,
+      "instruction_fields": [],
+      "items": []
+    },
+    "tools": {
+      "count": 1,
+      "names": [
+        "local_shell"
+      ],
+      "tokens": 6,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "local_shell",
+          "type": "local_shell",
+          "keys": [
+            "type"
+          ],
+          "chars": 22,
+          "tokens": 6,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    },
+    "subagents": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "model": "codex-mini-latest",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "codex-mini-latest",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 6217,
+      "body_chars": 6206,
+      "body_tokens": 1551,
+      "text_fields": {
+        "count": 2,
+        "chars": 5700,
+        "tokens": 1350,
+        "by_category": {
+          "system_prompt": {
+            "count": 1,
+            "chars": 5698,
+            "tokens": 1349
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 5698,
+            "tokens": 1349
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "fields": [
+          {
+            "path": "instructions",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 5698,
+            "tokens": 1349,
+            "preview": "Please resolve the user's task by editing and testing the code files in your current code execution session.\nYou are a d"
+          },
+          {
+            "path": "input.0.content.0.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          }
+        ]
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 1,
+        "names": [
+          "local_shell"
+        ],
+        "tokens": 6,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "local_shell",
+            "type": "local_shell",
+            "keys": [
+              "type"
+            ],
+            "chars": 22,
+            "tokens": 6,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 6217,
+    "body_tokens": 1551,
+    "skill_count": 0,
+    "tool_count": 1,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0
+  },
+  "post_totals": {
+    "body_bytes": 6217,
+    "body_tokens": 1551,
+    "skill_count": 0,
+    "tool_count": 1,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "codex-0.10.0-hi",
+    "agent_id": "codex",
+    "agent_version": "0.10.0",
+    "run_dir": "runs/codex-0.10.0-hi",
+    "agent_name": "OpenAI Codex CLI",
+    "agent_image": "hibench/codex:0.10.0",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-13T13:00:46Z",
+    "ended_at": "2026-06-13T13:00:47Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/responses",
+    "model": "codex-mini-latest",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 1551,
+    "body_tokens": 1551,
+    "body_bytes": 6217,
+    "body_chars": 6206,
+    "text_field_count": 2,
+    "text_tokens": 1350,
+    "system_prompt_tokens": 1349,
+    "environment_context_tokens": 0,
+    "user_prompt_tokens": 1,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 1349,
+    "developer_instructions_tokens": 0,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 0,
+    "instruction_tokens": 1349,
+    "default_context_tokens": 1355,
+    "skills_count": 0,
+    "skills_tokens": 0,
+    "skill_definition_tokens": 0,
+    "tool_count": 1,
+    "tool_definition_tokens": 6,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "mcp_mention_tokens": 0,
+    "subagent_count": 0,
+    "subagent_tokens": 0,
+    "subagent_marker_count": 0,
+    "subagent_mention_count": 0,
+    "subagent_mention_tokens": 0
+  }
+}

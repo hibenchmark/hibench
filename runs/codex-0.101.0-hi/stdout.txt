@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ec180-50dd-7e51-beb0-9c08f26c5d74"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"HiBench capture complete."}}
+{"type":"turn.completed","usage":{"input_tokens":0,"cached_input_tokens":0,"output_tokens":1}}

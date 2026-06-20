@@ -1,0 +1,9 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,codex-0.140.0-hi,codex,0.140.0,1,1,subagent_1,text_mention,False,input.0.content.1.text,6028,1283,"<skills_instructions>
+## Skills
+A skill is a set of instructions provided through a `SKILL.md` source. Below is the list"
+hibench.benchmark.v1,codex-0.140.0-hi,codex,0.140.0,1,2,subagent_2,text_mention,False,tools.9.description,475,102,"# Tool discovery
+
+Searches over deferred tool metadata with BM25 and exposes matching tools for the next model call.
+
+Yo"

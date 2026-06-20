@@ -1,0 +1,794 @@
+{
+  "run_dir": "runs/opencode-1.15.0-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 45477,
+    "body_chars": 45459,
+    "body_tokens": 10041,
+    "text_fields": {
+      "count": 2,
+      "chars": 10307,
+      "tokens": 2097,
+      "by_category": {
+        "system_prompt": {
+          "count": 1,
+          "chars": 10305,
+          "tokens": 2096
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 10305,
+          "tokens": 2096
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "fields": [
+        {
+          "path": "messages.0.content",
+          "role": "system",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 10305,
+          "tokens": 2096,
+          "preview": "You are OpenCode, You and the user share the same workspace and collaborate to achieve the user's goals.\n\nYou are a deep"
+        },
+        {
+          "path": "messages.1.content",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        }
+      ]
+    },
+    "skills": {
+      "count": 1,
+      "tokens": 137,
+      "definition_tokens": 126,
+      "instruction_field_count": 1,
+      "instruction_fields": [
+        {
+          "path": "messages.0.content",
+          "role": "system",
+          "chars": 571,
+          "tokens": 137,
+          "preview": "<available_skills>\n  <skill>\n    <name>customize-opencode</name>\n    <description>Use ONLY when the user is editing or c"
+        }
+      ],
+      "items": [
+        {
+          "skill_index": 1,
+          "name": "customize-opencode",
+          "description": "Use ONLY when the user is editing or creating opencode's own configuration: opencode.json, opencode.jsonc, files under .opencode/, or files under ~/.config/opencode/. Also use when creating or fixing opencode agents, subagents, skills, plugins, MCP servers, or permission rules. Do not use for the user's own application code, or for any project that is not configuring opencode itself.",
+          "file": "file:///workspace/%3Cbuilt-in%3E",
+          "source_path": "messages.0.content",
+          "chars": 530,
+          "tokens": 126,
+          "preview": "<skill>\n    <name>customize-opencode</name>\n    <description>Use ONLY when the user is editing or creating opencode's ow"
+        }
+      ]
+    },
+    "tools": {
+      "count": 9,
+      "names": [
+        "apply_patch",
+        "bash",
+        "glob",
+        "grep",
+        "read",
+        "skill",
+        "task",
+        "todowrite",
+        "webfetch"
+      ],
+      "tokens": 7776,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "apply_patch",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1431,
+          "tokens": 360,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "bash",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 10976,
+          "tokens": 2501,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "glob",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1142,
+          "tokens": 245,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "grep",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1215,
+          "tokens": 286,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "read",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1734,
+          "tokens": 415,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "skill",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1757,
+          "tokens": 362,
+          "is_mcp_related": true,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "task",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 5535,
+          "tokens": 1236,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "todowrite",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 9638,
+          "tokens": 2068,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "webfetch",
+          "type": "function",
+          "keys": [
+            "function",
+            "type"
+          ],
+          "chars": 1321,
+          "tokens": 303,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 2,
+      "paths": [
+        "messages.0.content",
+        "tools.5.function.description"
+      ],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 2,
+      "mention_tokens": 2379,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "mcp_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "messages.0.content",
+          "chars": 10305,
+          "tokens": 2096,
+          "preview": "You are OpenCode, You and the user share the same workspace and collaborate to achieve the user's goals.\n\nYou are a deep"
+        },
+        {
+          "marker_index": 2,
+          "name": "mcp_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.5.function.description",
+          "chars": 1465,
+          "tokens": 283,
+          "preview": "Load a specialized skill when the task at hand matches one of the skills listed in the system prompt.\n\nUse this tool to "
+        }
+      ]
+    },
+    "subagents": {
+      "marker_count": 7,
+      "paths": [
+        "messages.0.content",
+        "tools.5.function.description",
+        "tools.6.function.description",
+        "tools.6.function.description.subagent.0",
+        "tools.6.function.description.subagent.1",
+        "tools.6.function.parameters.properties.task_id.description",
+        "tools.6.function.parameters.required.2"
+      ],
+      "count": 2,
+      "tokens": 129,
+      "mention_count": 4,
+      "mention_tokens": 2422,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "subagent_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "messages.0.content",
+          "chars": 10305,
+          "tokens": 2096,
+          "preview": "You are OpenCode, You and the user share the same workspace and collaborate to achieve the user's goals.\n\nYou are a deep"
+        },
+        {
+          "marker_index": 2,
+          "name": "subagent_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.5.function.description",
+          "chars": 1465,
+          "tokens": 283,
+          "preview": "Load a specialized skill when the task at hand matches one of the skills listed in the system prompt.\n\nUse this tool to "
+        },
+        {
+          "marker_index": 3,
+          "name": "explore",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.6.function.description.subagent.0",
+          "chars": 495,
+          "tokens": 101,
+          "preview": "- explore: Fast agent specialized for exploring codebases. Use this when you need to quickly find files by patterns (eg."
+        },
+        {
+          "marker_index": 4,
+          "name": "general",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "tools.6.function.description.subagent.1",
+          "chars": 160,
+          "tokens": 28,
+          "preview": "- general: General-purpose agent for researching complex questions and executing multi-step tasks. Use this agent to exe"
+        },
+        {
+          "marker_index": 5,
+          "name": "subagent_5",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.6.function.parameters.properties.task_id.description",
+          "chars": 187,
+          "tokens": 40,
+          "preview": "This should only be set if you mean to resume a previous task (you can pass a prior task_id and the task will continue t"
+        },
+        {
+          "marker_index": 6,
+          "name": "subagent_6",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.6.function.parameters.required.2",
+          "chars": 13,
+          "tokens": 3,
+          "preview": "subagent_type"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "model": "gpt-5",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 45477,
+      "body_chars": 45459,
+      "body_tokens": 10041,
+      "text_fields": {
+        "count": 2,
+        "chars": 10307,
+        "tokens": 2097,
+        "by_category": {
+          "system_prompt": {
+            "count": 1,
+            "chars": 10305,
+            "tokens": 2096
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 10305,
+            "tokens": 2096
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "fields": [
+          {
+            "path": "messages.0.content",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 10305,
+            "tokens": 2096,
+            "preview": "You are OpenCode, You and the user share the same workspace and collaborate to achieve the user's goals.\n\nYou are a deep"
+          },
+          {
+            "path": "messages.1.content",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          }
+        ]
+      },
+      "skills": {
+        "count": 1,
+        "tokens": 137,
+        "definition_tokens": 126,
+        "instruction_field_count": 1,
+        "instruction_fields": [
+          {
+            "path": "messages.0.content",
+            "role": "system",
+            "chars": 571,
+            "tokens": 137,
+            "preview": "<available_skills>\n  <skill>\n    <name>customize-opencode</name>\n    <description>Use ONLY when the user is editing or c"
+          }
+        ],
+        "items": [
+          {
+            "skill_index": 1,
+            "name": "customize-opencode",
+            "description": "Use ONLY when the user is editing or creating opencode's own configuration: opencode.json, opencode.jsonc, files under .opencode/, or files under ~/.config/opencode/. Also use when creating or fixing opencode agents, subagents, skills, plugins, MCP servers, or permission rules. Do not use for the user's own application code, or for any project that is not configuring opencode itself.",
+            "file": "file:///workspace/%3Cbuilt-in%3E",
+            "source_path": "messages.0.content",
+            "chars": 530,
+            "tokens": 126,
+            "preview": "<skill>\n    <name>customize-opencode</name>\n    <description>Use ONLY when the user is editing or creating opencode's ow"
+          }
+        ]
+      },
+      "tools": {
+        "count": 9,
+        "names": [
+          "apply_patch",
+          "bash",
+          "glob",
+          "grep",
+          "read",
+          "skill",
+          "task",
+          "todowrite",
+          "webfetch"
+        ],
+        "tokens": 7776,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "apply_patch",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1431,
+            "tokens": 360,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "bash",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 10976,
+            "tokens": 2501,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "glob",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1142,
+            "tokens": 245,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "grep",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1215,
+            "tokens": 286,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "read",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1734,
+            "tokens": 415,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "skill",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1757,
+            "tokens": 362,
+            "is_mcp_related": true,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "task",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 5535,
+            "tokens": 1236,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "todowrite",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 9638,
+            "tokens": 2068,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "webfetch",
+            "type": "function",
+            "keys": [
+              "function",
+              "type"
+            ],
+            "chars": 1321,
+            "tokens": 303,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 2,
+        "paths": [
+          "messages.0.content",
+          "tools.5.function.description"
+        ],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 2,
+        "mention_tokens": 2379,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "mcp_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "messages.0.content",
+            "chars": 10305,
+            "tokens": 2096,
+            "preview": "You are OpenCode, You and the user share the same workspace and collaborate to achieve the user's goals.\n\nYou are a deep"
+          },
+          {
+            "marker_index": 2,
+            "name": "mcp_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.5.function.description",
+            "chars": 1465,
+            "tokens": 283,
+            "preview": "Load a specialized skill when the task at hand matches one of the skills listed in the system prompt.\n\nUse this tool to "
+          }
+        ]
+      },
+      "subagents": {
+        "marker_count": 7,
+        "paths": [
+          "messages.0.content",
+          "tools.5.function.description",
+          "tools.6.function.description",
+          "tools.6.function.description.subagent.0",
+          "tools.6.function.description.subagent.1",
+          "tools.6.function.parameters.properties.task_id.description",
+          "tools.6.function.parameters.required.2"
+        ],
+        "count": 2,
+        "tokens": 129,
+        "mention_count": 4,
+        "mention_tokens": 2422,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "messages.0.content",
+            "chars": 10305,
+            "tokens": 2096,
+            "preview": "You are OpenCode, You and the user share the same workspace and collaborate to achieve the user's goals.\n\nYou are a deep"
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.5.function.description",
+            "chars": 1465,
+            "tokens": 283,
+            "preview": "Load a specialized skill when the task at hand matches one of the skills listed in the system prompt.\n\nUse this tool to "
+          },
+          {
+            "marker_index": 3,
+            "name": "explore",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.6.function.description.subagent.0",
+            "chars": 495,
+            "tokens": 101,
+            "preview": "- explore: Fast agent specialized for exploring codebases. Use this when you need to quickly find files by patterns (eg."
+          },
+          {
+            "marker_index": 4,
+            "name": "general",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "tools.6.function.description.subagent.1",
+            "chars": 160,
+            "tokens": 28,
+            "preview": "- general: General-purpose agent for researching complex questions and executing multi-step tasks. Use this agent to exe"
+          },
+          {
+            "marker_index": 5,
+            "name": "subagent_5",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.6.function.parameters.properties.task_id.description",
+            "chars": 187,
+            "tokens": 40,
+            "preview": "This should only be set if you mean to resume a previous task (you can pass a prior task_id and the task will continue t"
+          },
+          {
+            "marker_index": 6,
+            "name": "subagent_6",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.6.function.parameters.required.2",
+            "chars": 13,
+            "tokens": 3,
+            "preview": "subagent_type"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 45477,
+    "body_tokens": 10041,
+    "skill_count": 1,
+    "tool_count": 9,
+    "mcp_marker_count": 2,
+    "mcp_mention_count": 2,
+    "subagent_marker_count": 7,
+    "subagent_mention_count": 4
+  },
+  "post_totals": {
+    "body_bytes": 45477,
+    "body_tokens": 10041,
+    "skill_count": 1,
+    "tool_count": 9,
+    "mcp_marker_count": 2,
+    "mcp_mention_count": 2,
+    "subagent_marker_count": 7,
+    "subagent_mention_count": 4
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "opencode-1.15.0-hi",
+    "agent_id": "opencode",
+    "agent_version": "1.15.0",
+    "run_dir": "runs/opencode-1.15.0-hi",
+    "agent_name": "OpenCode",
+    "agent_image": "hibench/opencode:1.15.0",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-13T23:21:53Z",
+    "ended_at": "2026-06-13T23:21:55Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/chat/completions",
+    "model": "gpt-5",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 10041,
+    "body_tokens": 10041,
+    "body_bytes": 45477,
+    "body_chars": 45459,
+    "text_field_count": 2,
+    "text_tokens": 2097,
+    "system_prompt_tokens": 2096,
+    "environment_context_tokens": 0,
+    "user_prompt_tokens": 1,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 2096,
+    "developer_instructions_tokens": 0,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 0,
+    "instruction_tokens": 2096,
+    "default_context_tokens": 9872,
+    "skills_count": 1,
+    "skills_tokens": 137,
+    "skill_definition_tokens": 126,
+    "tool_count": 9,
+    "tool_definition_tokens": 7776,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 2,
+    "mcp_mention_count": 2,
+    "mcp_mention_tokens": 2379,
+    "subagent_count": 2,
+    "subagent_tokens": 129,
+    "subagent_marker_count": 7,
+    "subagent_mention_count": 4,
+    "subagent_mention_tokens": 2422
+  }
+}

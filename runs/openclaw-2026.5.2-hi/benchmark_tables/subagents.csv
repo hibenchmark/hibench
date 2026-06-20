@@ -1,0 +1,12 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,openclaw-2026.5.2-hi,openclaw,2026.5.2,1,1,subagent_1,text_mention,False,input.0.content,32693,7303,"You are a personal assistant running inside OpenClaw.
+## Tooling
+Tool availability (filtered by policy):
+Tool names are "
+hibench.benchmark.v1,openclaw-2026.5.2-hi,openclaw,2026.5.2,1,2,subagent_2,text_mention,False,tools.0.description,118,29,"List OpenClaw agent ids you can target with `sessions_spawn` when `runtime=""subagent""` (based on subagent allowlists)."
+hibench.benchmark.v1,openclaw-2026.5.2-hi,openclaw,2026.5.2,1,3,subagent_3,text_mention,False,tools.14.description,419,85,"Spawn a clean isolated session by default with the native subagent runtime. `mode=""run""` is one-shot background work. Su"
+hibench.benchmark.v1,openclaw-2026.5.2-hi,openclaw,2026.5.2,1,4,subagent_4,text_mention,False,tools.14.parameters.properties.runtime.enum.0,8,2,subagent
+hibench.benchmark.v1,openclaw-2026.5.2-hi,openclaw,2026.5.2,1,5,subagent_5,text_mention,False,tools.14.parameters.properties.context.description,150,34,"Native subagent context mode. Omit or use ""isolated"" for a clean child session; use ""fork"" only when the child needs the"
+hibench.benchmark.v1,openclaw-2026.5.2-hi,openclaw,2026.5.2,1,6,subagent_6,text_mention,False,tools.14.parameters.properties.lightContext.description,103,20,"When true, spawned subagent runs use lightweight bootstrap context. Only applies to runtime='subagent'."
+hibench.benchmark.v1,openclaw-2026.5.2-hi,openclaw,2026.5.2,1,7,subagent_7,text_mention,False,tools.15.description,97,19,End your current turn. Use after spawning subagents to receive their results as the next message.
+hibench.benchmark.v1,openclaw-2026.5.2-hi,openclaw,2026.5.2,1,8,subagents,tool_declaration,True,tools.16,380,91,"{""description"":""List, kill, or steer spawned sub-agents for this requester session. Use this for sub-agent orchestration"

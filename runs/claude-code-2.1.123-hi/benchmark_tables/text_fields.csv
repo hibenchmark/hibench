@@ -1,0 +1,14 @@
+schema_version,run_id,agent_id,agent_version,request_index,text_index,category,source,role,path,chars,tokens,preview
+hibench.benchmark.v1,claude-code-2.1.123-hi,claude-code,2.1.123,2,1,system_prompt,skills_instructions,user,messages.0.content.0.text,2611,611,"<system-reminder>
+The following skills are available for use with the Skill tool:
+
+- update-config: Use this skill to co"
+hibench.benchmark.v1,claude-code-2.1.123-hi,claude-code,2.1.123,2,2,environment_context,injected_user_context,user,messages.0.content.1.text,306,70,"<system-reminder>
+As you answer the user's questions, you can use the following context:
+# currentDate
+Today's date is 2"
+hibench.benchmark.v1,claude-code-2.1.123-hi,claude-code,2.1.123,2,3,user_prompt,user_prompt,user,messages.0.content.2.text,2,1,Hi
+hibench.benchmark.v1,claude-code-2.1.123-hi,claude-code,2.1.123,2,4,system_prompt,main_instructions,,system.0.text,85,34,x-anthropic-billing-header: cc_version=2.1.123.5d3; cc_entrypoint=sdk-cli; cch=bc079;
+hibench.benchmark.v1,claude-code-2.1.123-hi,claude-code,2.1.123,2,5,system_prompt,main_instructions,,system.1.text,62,15,"You are a Claude agent, built on Anthropic's Claude Agent SDK."
+hibench.benchmark.v1,claude-code-2.1.123-hi,claude-code,2.1.123,2,6,system_prompt,main_instructions,,system.2.text,25949,5362,"
+You are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools"

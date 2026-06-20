@@ -1,0 +1,1688 @@
+{
+  "run_dir": "runs/openclaw-2026.5.7-hi",
+  "request_count": 1,
+  "post_request_count": 1,
+  "primary_request_index": 1,
+  "primary_request": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "gpt-5",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 79183,
+    "body_chars": 79052,
+    "body_tokens": 18339,
+    "text_fields": {
+      "count": 2,
+      "chars": 30680,
+      "tokens": 6936,
+      "by_category": {
+        "system_prompt": {
+          "count": 1,
+          "chars": 30678,
+          "tokens": 6935
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 30678,
+          "tokens": 6935
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        }
+      },
+      "fields": [
+        {
+          "path": "input.0.content",
+          "role": "system",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 30678,
+          "tokens": 6935,
+          "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nTool availability (filtered by policy):\nTool names are "
+        },
+        {
+          "path": "input.1.content.0.text",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        }
+      ]
+    },
+    "skills": {
+      "count": 7,
+      "tokens": 521,
+      "definition_tokens": 504,
+      "instruction_field_count": 1,
+      "instruction_fields": [
+        {
+          "path": "input.0.content",
+          "role": "system",
+          "chars": 2090,
+          "tokens": 521,
+          "preview": "<available_skills>\n  <skill>\n    <name>browser-automation</name>\n    <description>Use when controlling web pages with th"
+        }
+      ],
+      "items": [
+        {
+          "skill_index": 1,
+          "name": "browser-automation",
+          "description": "Use when controlling web pages with the OpenClaw browser tool, especially multi-step flows, login checks, tab management, or recovery from stale refs/timeouts.",
+          "file": "/openclaw-home/state/plugin-skills/browser-automation/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 333,
+          "tokens": 77,
+          "preview": "<skill>\n    <name>browser-automation</name>\n    <description>Use when controlling web pages with the OpenClaw browser to"
+        },
+        {
+          "skill_index": 2,
+          "name": "healthcheck",
+          "description": "Audit and harden hosts running OpenClaw for SSH, firewall, updates, exposure, cron checks, and risk posture.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 288,
+          "tokens": 73,
+          "preview": "<skill>\n    <name>healthcheck</name>\n    <description>Audit and harden hosts running OpenClaw for SSH, firewall, updates"
+        },
+        {
+          "skill_index": 3,
+          "name": "node-connect",
+          "description": "Diagnose OpenClaw Android, iOS, or macOS node pairing, QR/setup code, route, auth, and connection failures.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/node-connect/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 289,
+          "tokens": 75,
+          "preview": "<skill>\n    <name>node-connect</name>\n    <description>Diagnose OpenClaw Android, iOS, or macOS node pairing, QR/setup c"
+        },
+        {
+          "skill_index": 4,
+          "name": "skill-creator",
+          "description": "Create, edit, improve, tidy, review, audit, or restructure AgentSkills and SKILL.md files.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 274,
+          "tokens": 71,
+          "preview": "<skill>\n    <name>skill-creator</name>\n    <description>Create, edit, improve, tidy, review, audit, or restructure Agent"
+        },
+        {
+          "skill_index": 5,
+          "name": "taskflow",
+          "description": "Coordinate multi-step detached tasks as one durable TaskFlow job with owner context, state, waits, and child tasks.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/taskflow/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 289,
+          "tokens": 70,
+          "preview": "<skill>\n    <name>taskflow</name>\n    <description>Coordinate multi-step detached tasks as one durable TaskFlow job with"
+        },
+        {
+          "skill_index": 6,
+          "name": "taskflow-inbox-triage",
+          "description": "Example TaskFlow pattern for inbox triage, intent routing, waiting on replies, and later summaries.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/taskflow-inbox-triage/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 299,
+          "tokens": 77,
+          "preview": "<skill>\n    <name>taskflow-inbox-triage</name>\n    <description>Example TaskFlow pattern for inbox triage, intent routin"
+        },
+        {
+          "skill_index": 7,
+          "name": "weather",
+          "description": "Get current weather, rain, temperature, and forecasts for locations or travel planning.",
+          "file": "/root/.bun/install/global/node_modules/openclaw/skills/weather/SKILL.md",
+          "source_path": "input.0.content",
+          "chars": 259,
+          "tokens": 61,
+          "preview": "<skill>\n    <name>weather</name>\n    <description>Get current weather, rain, temperature, and forecasts for locations or"
+        }
+      ]
+    },
+    "tools": {
+      "count": 28,
+      "names": [
+        "agents_list",
+        "browser",
+        "canvas",
+        "cron",
+        "dir_fetch",
+        "dir_list",
+        "edit",
+        "exec",
+        "file_fetch",
+        "file_write",
+        "gateway",
+        "memory_get",
+        "memory_search",
+        "message",
+        "nodes",
+        "process",
+        "read",
+        "session_status",
+        "sessions_history",
+        "sessions_list",
+        "sessions_send",
+        "sessions_spawn",
+        "sessions_yield",
+        "subagents",
+        "tts",
+        "web_fetch",
+        "web_search",
+        "write"
+      ],
+      "tokens": 10985,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "agents_list",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 239,
+          "tokens": 58,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "browser",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 4605,
+          "tokens": 1150,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "canvas",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 848,
+          "tokens": 223,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "cron",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 12461,
+          "tokens": 2957,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "dir_fetch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1323,
+          "tokens": 300,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "dir_list",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1233,
+          "tokens": 267,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "edit",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1239,
+          "tokens": 256,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "exec",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1757,
+          "tokens": 388,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "file_fetch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1207,
+          "tokens": 272,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 10,
+          "array_index": 9,
+          "path": "tools.9",
+          "name": "file_write",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1493,
+          "tokens": 309,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 11,
+          "array_index": 10,
+          "path": "tools.10",
+          "name": "gateway",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1316,
+          "tokens": 289,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 12,
+          "array_index": 11,
+          "path": "tools.11",
+          "name": "memory_get",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 539,
+          "tokens": 122,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 13,
+          "array_index": 12,
+          "path": "tools.12",
+          "name": "memory_search",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 930,
+          "tokens": 198,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 14,
+          "array_index": 13,
+          "path": "tools.13",
+          "name": "message",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 6337,
+          "tokens": 1496,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 15,
+          "array_index": 14,
+          "path": "tools.14",
+          "name": "nodes",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1842,
+          "tokens": 439,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 16,
+          "array_index": 15,
+          "path": "tools.15",
+          "name": "process",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1509,
+          "tokens": 338,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 17,
+          "array_index": 16,
+          "path": "tools.16",
+          "name": "read",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 681,
+          "tokens": 159,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 18,
+          "array_index": 17,
+          "path": "tools.17",
+          "name": "session_status",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 636,
+          "tokens": 139,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 19,
+          "array_index": 18,
+          "path": "tools.18",
+          "name": "sessions_history",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 432,
+          "tokens": 90,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 20,
+          "array_index": 19,
+          "path": "tools.19",
+          "name": "sessions_list",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 745,
+          "tokens": 177,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 21,
+          "array_index": 20,
+          "path": "tools.20",
+          "name": "sessions_send",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 676,
+          "tokens": 149,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 22,
+          "array_index": 21,
+          "path": "tools.21",
+          "name": "sessions_spawn",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1725,
+          "tokens": 404,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 23,
+          "array_index": 22,
+          "path": "tools.22",
+          "name": "sessions_yield",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 246,
+          "tokens": 52,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 24,
+          "array_index": 23,
+          "path": "tools.23",
+          "name": "subagents",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 380,
+          "tokens": 91,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 25,
+          "array_index": 24,
+          "path": "tools.24",
+          "name": "tts",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 699,
+          "tokens": 141,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 26,
+          "array_index": 25,
+          "path": "tools.25",
+          "name": "web_fetch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 587,
+          "tokens": 128,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 27,
+          "array_index": 26,
+          "path": "tools.26",
+          "name": "web_search",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 1377,
+          "tokens": 300,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 28,
+          "array_index": 27,
+          "path": "tools.27",
+          "name": "write",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "strict",
+            "type"
+          ],
+          "chars": 432,
+          "tokens": 93,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 0,
+      "paths": [],
+      "count": 0,
+      "tokens": 0,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": []
+    },
+    "subagents": {
+      "marker_count": 10,
+      "paths": [
+        "input.0.content",
+        "tools.0.description",
+        "tools.21.description",
+        "tools.21.parameters.properties.context.description",
+        "tools.21.parameters.properties.lightContext.description",
+        "tools.21.parameters.properties.runtime.enum.0",
+        "tools.22.description",
+        "tools.23",
+        "tools.23.description",
+        "tools.23.name"
+      ],
+      "count": 1,
+      "tokens": 91,
+      "mention_count": 7,
+      "mention_tokens": 7124,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "subagent_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "input.0.content",
+          "chars": 30678,
+          "tokens": 6935,
+          "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nTool availability (filtered by policy):\nTool names are "
+        },
+        {
+          "marker_index": 2,
+          "name": "subagent_2",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.0.description",
+          "chars": 118,
+          "tokens": 29,
+          "preview": "List OpenClaw agent ids you can target with `sessions_spawn` when `runtime=\"subagent\"` (based on subagent allowlists)."
+        },
+        {
+          "marker_index": 3,
+          "name": "subagent_3",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.21.description",
+          "chars": 419,
+          "tokens": 85,
+          "preview": "Spawn a clean isolated session by default with the native subagent runtime. `mode=\"run\"` is one-shot background work. Su"
+        },
+        {
+          "marker_index": 4,
+          "name": "subagent_4",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.21.parameters.properties.runtime.enum.0",
+          "chars": 8,
+          "tokens": 2,
+          "preview": "subagent"
+        },
+        {
+          "marker_index": 5,
+          "name": "subagent_5",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.21.parameters.properties.context.description",
+          "chars": 150,
+          "tokens": 34,
+          "preview": "Native subagent context mode. Omit or use \"isolated\" for a clean child session; use \"fork\" only when the child needs the"
+        },
+        {
+          "marker_index": 6,
+          "name": "subagent_6",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.21.parameters.properties.lightContext.description",
+          "chars": 103,
+          "tokens": 20,
+          "preview": "When true, spawned subagent runs use lightweight bootstrap context. Only applies to runtime='subagent'."
+        },
+        {
+          "marker_index": 7,
+          "name": "subagent_7",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "tools.22.description",
+          "chars": 97,
+          "tokens": 19,
+          "preview": "End your current turn. Use after spawning subagents to receive their results as the next message."
+        },
+        {
+          "marker_index": 8,
+          "name": "subagents",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.23",
+          "chars": 380,
+          "tokens": 91,
+          "preview": "{\"description\":\"List, kill, or steer spawned sub-agents for this requester session. Use this for sub-agent orchestration"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "model": "gpt-5",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "gpt-5",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 79183,
+      "body_chars": 79052,
+      "body_tokens": 18339,
+      "text_fields": {
+        "count": 2,
+        "chars": 30680,
+        "tokens": 6936,
+        "by_category": {
+          "system_prompt": {
+            "count": 1,
+            "chars": 30678,
+            "tokens": 6935
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 30678,
+            "tokens": 6935
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          }
+        },
+        "fields": [
+          {
+            "path": "input.0.content",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 30678,
+            "tokens": 6935,
+            "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nTool availability (filtered by policy):\nTool names are "
+          },
+          {
+            "path": "input.1.content.0.text",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          }
+        ]
+      },
+      "skills": {
+        "count": 7,
+        "tokens": 521,
+        "definition_tokens": 504,
+        "instruction_field_count": 1,
+        "instruction_fields": [
+          {
+            "path": "input.0.content",
+            "role": "system",
+            "chars": 2090,
+            "tokens": 521,
+            "preview": "<available_skills>\n  <skill>\n    <name>browser-automation</name>\n    <description>Use when controlling web pages with th"
+          }
+        ],
+        "items": [
+          {
+            "skill_index": 1,
+            "name": "browser-automation",
+            "description": "Use when controlling web pages with the OpenClaw browser tool, especially multi-step flows, login checks, tab management, or recovery from stale refs/timeouts.",
+            "file": "/openclaw-home/state/plugin-skills/browser-automation/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 333,
+            "tokens": 77,
+            "preview": "<skill>\n    <name>browser-automation</name>\n    <description>Use when controlling web pages with the OpenClaw browser to"
+          },
+          {
+            "skill_index": 2,
+            "name": "healthcheck",
+            "description": "Audit and harden hosts running OpenClaw for SSH, firewall, updates, exposure, cron checks, and risk posture.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/healthcheck/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 288,
+            "tokens": 73,
+            "preview": "<skill>\n    <name>healthcheck</name>\n    <description>Audit and harden hosts running OpenClaw for SSH, firewall, updates"
+          },
+          {
+            "skill_index": 3,
+            "name": "node-connect",
+            "description": "Diagnose OpenClaw Android, iOS, or macOS node pairing, QR/setup code, route, auth, and connection failures.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/node-connect/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 289,
+            "tokens": 75,
+            "preview": "<skill>\n    <name>node-connect</name>\n    <description>Diagnose OpenClaw Android, iOS, or macOS node pairing, QR/setup c"
+          },
+          {
+            "skill_index": 4,
+            "name": "skill-creator",
+            "description": "Create, edit, improve, tidy, review, audit, or restructure AgentSkills and SKILL.md files.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/skill-creator/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 274,
+            "tokens": 71,
+            "preview": "<skill>\n    <name>skill-creator</name>\n    <description>Create, edit, improve, tidy, review, audit, or restructure Agent"
+          },
+          {
+            "skill_index": 5,
+            "name": "taskflow",
+            "description": "Coordinate multi-step detached tasks as one durable TaskFlow job with owner context, state, waits, and child tasks.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/taskflow/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 289,
+            "tokens": 70,
+            "preview": "<skill>\n    <name>taskflow</name>\n    <description>Coordinate multi-step detached tasks as one durable TaskFlow job with"
+          },
+          {
+            "skill_index": 6,
+            "name": "taskflow-inbox-triage",
+            "description": "Example TaskFlow pattern for inbox triage, intent routing, waiting on replies, and later summaries.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/taskflow-inbox-triage/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 299,
+            "tokens": 77,
+            "preview": "<skill>\n    <name>taskflow-inbox-triage</name>\n    <description>Example TaskFlow pattern for inbox triage, intent routin"
+          },
+          {
+            "skill_index": 7,
+            "name": "weather",
+            "description": "Get current weather, rain, temperature, and forecasts for locations or travel planning.",
+            "file": "/root/.bun/install/global/node_modules/openclaw/skills/weather/SKILL.md",
+            "source_path": "input.0.content",
+            "chars": 259,
+            "tokens": 61,
+            "preview": "<skill>\n    <name>weather</name>\n    <description>Get current weather, rain, temperature, and forecasts for locations or"
+          }
+        ]
+      },
+      "tools": {
+        "count": 28,
+        "names": [
+          "agents_list",
+          "browser",
+          "canvas",
+          "cron",
+          "dir_fetch",
+          "dir_list",
+          "edit",
+          "exec",
+          "file_fetch",
+          "file_write",
+          "gateway",
+          "memory_get",
+          "memory_search",
+          "message",
+          "nodes",
+          "process",
+          "read",
+          "session_status",
+          "sessions_history",
+          "sessions_list",
+          "sessions_send",
+          "sessions_spawn",
+          "sessions_yield",
+          "subagents",
+          "tts",
+          "web_fetch",
+          "web_search",
+          "write"
+        ],
+        "tokens": 10985,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "agents_list",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 239,
+            "tokens": 58,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "browser",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 4605,
+            "tokens": 1150,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "canvas",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 848,
+            "tokens": 223,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "cron",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 12461,
+            "tokens": 2957,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "dir_fetch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1323,
+            "tokens": 300,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "dir_list",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1233,
+            "tokens": 267,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "edit",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1239,
+            "tokens": 256,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "exec",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1757,
+            "tokens": 388,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "file_fetch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1207,
+            "tokens": 272,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "file_write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1493,
+            "tokens": 309,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 11,
+            "array_index": 10,
+            "path": "tools.10",
+            "name": "gateway",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1316,
+            "tokens": 289,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 12,
+            "array_index": 11,
+            "path": "tools.11",
+            "name": "memory_get",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 539,
+            "tokens": 122,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 13,
+            "array_index": 12,
+            "path": "tools.12",
+            "name": "memory_search",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 930,
+            "tokens": 198,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 14,
+            "array_index": 13,
+            "path": "tools.13",
+            "name": "message",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 6337,
+            "tokens": 1496,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 15,
+            "array_index": 14,
+            "path": "tools.14",
+            "name": "nodes",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1842,
+            "tokens": 439,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 16,
+            "array_index": 15,
+            "path": "tools.15",
+            "name": "process",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1509,
+            "tokens": 338,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 17,
+            "array_index": 16,
+            "path": "tools.16",
+            "name": "read",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 681,
+            "tokens": 159,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 18,
+            "array_index": 17,
+            "path": "tools.17",
+            "name": "session_status",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 636,
+            "tokens": 139,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 19,
+            "array_index": 18,
+            "path": "tools.18",
+            "name": "sessions_history",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 432,
+            "tokens": 90,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 20,
+            "array_index": 19,
+            "path": "tools.19",
+            "name": "sessions_list",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 745,
+            "tokens": 177,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 21,
+            "array_index": 20,
+            "path": "tools.20",
+            "name": "sessions_send",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 676,
+            "tokens": 149,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 22,
+            "array_index": 21,
+            "path": "tools.21",
+            "name": "sessions_spawn",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1725,
+            "tokens": 404,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 23,
+            "array_index": 22,
+            "path": "tools.22",
+            "name": "sessions_yield",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 246,
+            "tokens": 52,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 24,
+            "array_index": 23,
+            "path": "tools.23",
+            "name": "subagents",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 380,
+            "tokens": 91,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 25,
+            "array_index": 24,
+            "path": "tools.24",
+            "name": "tts",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 699,
+            "tokens": 141,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 26,
+            "array_index": 25,
+            "path": "tools.25",
+            "name": "web_fetch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 587,
+            "tokens": 128,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 27,
+            "array_index": 26,
+            "path": "tools.26",
+            "name": "web_search",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 1377,
+            "tokens": 300,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 28,
+            "array_index": 27,
+            "path": "tools.27",
+            "name": "write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "strict",
+              "type"
+            ],
+            "chars": 432,
+            "tokens": 93,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 10,
+        "paths": [
+          "input.0.content",
+          "tools.0.description",
+          "tools.21.description",
+          "tools.21.parameters.properties.context.description",
+          "tools.21.parameters.properties.lightContext.description",
+          "tools.21.parameters.properties.runtime.enum.0",
+          "tools.22.description",
+          "tools.23",
+          "tools.23.description",
+          "tools.23.name"
+        ],
+        "count": 1,
+        "tokens": 91,
+        "mention_count": 7,
+        "mention_tokens": 7124,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "input.0.content",
+            "chars": 30678,
+            "tokens": 6935,
+            "preview": "You are a personal assistant running inside OpenClaw.\n## Tooling\nTool availability (filtered by policy):\nTool names are "
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_2",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.0.description",
+            "chars": 118,
+            "tokens": 29,
+            "preview": "List OpenClaw agent ids you can target with `sessions_spawn` when `runtime=\"subagent\"` (based on subagent allowlists)."
+          },
+          {
+            "marker_index": 3,
+            "name": "subagent_3",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.21.description",
+            "chars": 419,
+            "tokens": 85,
+            "preview": "Spawn a clean isolated session by default with the native subagent runtime. `mode=\"run\"` is one-shot background work. Su"
+          },
+          {
+            "marker_index": 4,
+            "name": "subagent_4",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.21.parameters.properties.runtime.enum.0",
+            "chars": 8,
+            "tokens": 2,
+            "preview": "subagent"
+          },
+          {
+            "marker_index": 5,
+            "name": "subagent_5",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.21.parameters.properties.context.description",
+            "chars": 150,
+            "tokens": 34,
+            "preview": "Native subagent context mode. Omit or use \"isolated\" for a clean child session; use \"fork\" only when the child needs the"
+          },
+          {
+            "marker_index": 6,
+            "name": "subagent_6",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.21.parameters.properties.lightContext.description",
+            "chars": 103,
+            "tokens": 20,
+            "preview": "When true, spawned subagent runs use lightweight bootstrap context. Only applies to runtime='subagent'."
+          },
+          {
+            "marker_index": 7,
+            "name": "subagent_7",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "tools.22.description",
+            "chars": 97,
+            "tokens": 19,
+            "preview": "End your current turn. Use after spawning subagents to receive their results as the next message."
+          },
+          {
+            "marker_index": 8,
+            "name": "subagents",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.23",
+            "chars": 380,
+            "tokens": 91,
+            "preview": "{\"description\":\"List, kill, or steer spawned sub-agents for this requester session. Use this for sub-agent orchestration"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 79183,
+    "body_tokens": 18339,
+    "skill_count": 7,
+    "tool_count": 28,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 10,
+    "subagent_mention_count": 7
+  },
+  "post_totals": {
+    "body_bytes": 79183,
+    "body_tokens": 18339,
+    "skill_count": 7,
+    "tool_count": 28,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "subagent_marker_count": 10,
+    "subagent_mention_count": 7
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "openclaw-2026.5.7-hi",
+    "agent_id": "openclaw",
+    "agent_version": "2026.5.7",
+    "run_dir": "runs/openclaw-2026.5.7-hi",
+    "agent_name": "OpenClaw",
+    "agent_image": "hibench/openclaw:2026.5.7",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-14T13:57:19Z",
+    "ended_at": "2026-06-14T13:57:27Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 0,
+    "process_timed_out": false,
+    "request_count": 1,
+    "post_request_count": 1,
+    "has_primary_request": true,
+    "primary_request_index": 1,
+    "request_method": "POST",
+    "request_path": "/v1/responses",
+    "model": "gpt-5",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "total_body_tokens": 18339,
+    "body_tokens": 18339,
+    "body_bytes": 79183,
+    "body_chars": 79052,
+    "text_field_count": 2,
+    "text_tokens": 6936,
+    "system_prompt_tokens": 6935,
+    "environment_context_tokens": 0,
+    "user_prompt_tokens": 1,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 6935,
+    "developer_instructions_tokens": 0,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 0,
+    "injected_user_context_tokens": 0,
+    "instruction_tokens": 6935,
+    "default_context_tokens": 17920,
+    "skills_count": 7,
+    "skills_tokens": 521,
+    "skill_definition_tokens": 504,
+    "tool_count": 28,
+    "tool_definition_tokens": 10985,
+    "mcp_count": 0,
+    "mcp_tokens": 0,
+    "mcp_marker_count": 0,
+    "mcp_mention_count": 0,
+    "mcp_mention_tokens": 0,
+    "subagent_count": 1,
+    "subagent_tokens": 91,
+    "subagent_marker_count": 10,
+    "subagent_mention_count": 7,
+    "subagent_mention_tokens": 7124
+  }
+}

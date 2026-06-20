@@ -1,0 +1,8 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,claude-code-2.1.168-hi,claude-code,2.1.168,2,1,mcp_1,text_mention,False,messages.1.content,4464,1037,"The following skills are available for use with the Skill tool:
+
+- deep-research: Deep research harness — fan-out web se"
+hibench.benchmark.v1,claude-code-2.1.168-hi,claude-code,2.1.168,2,2,mcp_2,text_mention,False,tools.21.description,374,81,"Fetches a URL, converts the page to markdown, and answers `prompt` against it using a small fast model.
+
+- Fails on auth"
+hibench.benchmark.v1,claude-code-2.1.168-hi,claude-code,2.1.168,2,3,mcp_3,text_mention,False,tools.23.description,18519,4243,Execute a workflow script that orchestrates multiple subagents deterministically. Workflows run in the background — this

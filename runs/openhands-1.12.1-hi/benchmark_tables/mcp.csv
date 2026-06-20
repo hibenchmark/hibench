@@ -1,0 +1,5 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,openhands-1.12.1-hi,openhands,1.12.1,1,1,mcp_1,text_mention,False,instructions,35603,7956,"You are OpenHands agent, a helpful AI assistant that can interact with a computer to solve tasks.
+
+<ROLE>
+* Your primary"

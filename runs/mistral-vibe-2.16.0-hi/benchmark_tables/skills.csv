@@ -1,0 +1,14 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,mistral-vibe-2.16.0-hi,mistral-vibe,2.16.0,1,1,vibe,,messages.0.content,935,245,"Authoritative reference for Mistral Vibe — the CLI agent you (the model) are running inside.
+
+LOAD when the user:
+- asks anything about Vibe itself, even by indirect name (""this CLI"", ""this tool"", ""you"");
+- wants to change, inspect, or reset their setup;
+- asks why the agent did or did not act;
+- asks how to make the CLI do X, where X lives, or what a flag/command/setting does;
+- asks any meta question about your own behavior;
+- is unsure whether a command, flag, env var, or file is in scope — this skill is the source of truth.
+
+SCOPE: config under `~/.vibe/` and project-local `.vibe/`; `VIBE_*` and `LOG_*` env vars; models and providers; agents and subagents; skills; tools and their permission model; every slash command and CLI flag; hooks; MCP servers; connectors; trusted folders; `@`-file mentions; logs; themes; voice.","<skill>
+    <name>vibe</name>
+    <description>Authoritative reference for Mistral Vibe — the CLI agent you (the model)"
