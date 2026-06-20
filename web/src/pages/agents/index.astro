@@ -49,7 +49,7 @@ const agents = getAgents();
             </div>
           </div>
 
-          <div class="mt-6 grid min-w-0 grid-cols-3 gap-3 sm:gap-4">
+          <div class="mt-6 grid min-w-0 grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
             <div>
               <p class="text-2xl font-semibold tabular-nums ui-title">{formatNumber(a.latest.totalTokens)}</p>
               <p class="text-xs ui-subtle">total tokens</p>
@@ -61,6 +61,10 @@ const agents = getAgents();
             <div>
               <p class="text-2xl font-semibold tabular-nums ui-title">{a.latest.skillCount}</p>
               <p class="text-xs ui-subtle">skills</p>
+            </div>
+            <div>
+              <p class="text-2xl font-semibold tabular-nums ui-title">{a.latest.subagentCount}</p>
+              <p class="text-xs ui-subtle">sub-agents</p>
             </div>
           </div>
 

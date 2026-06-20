@@ -165,9 +165,9 @@ const versionPanels = versions.map((version, index) => ({
                   </p>
                 </div>
                 <div class="ui-card rounded-xl p-4">
-                  <p class="text-xs font-medium ui-muted">Body size</p>
+                  <p class="text-xs font-medium ui-muted">Sub-agents</p>
                   <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
-                    {(version.bodyBytes / 1024).toFixed(0)} KB
+                    {version.subagentCount}
                   </p>
                 </div>
               </div>

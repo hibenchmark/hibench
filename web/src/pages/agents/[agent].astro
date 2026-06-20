@@ -96,7 +96,7 @@ const versionData = versions.map((run) => ({
   </header>
 
   <!-- Latest snapshot -->
-  <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+  <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
     <StatCard
       label="Default tokens"
       value={formatNumber(latest.totalTokens)}
@@ -104,6 +104,7 @@ const versionData = versions.map((run) => ({
     />
     <StatCard label="Tools" value={String(latest.toolCount)} hint="tool definitions" />
     <StatCard label="Skills" value={String(latest.skillCount)} hint="skill entries" />
+    <StatCard label="Sub-agents" value={String(latest.subagentCount)} hint="sub-agent declarations" />
     <StatCard label="Tool tokens" value={formatNumber(latest.toolTokens)} hint="of the latest request" />
     <StatCard
       label={`Since v${previous.version}`}
