@@ -4,8 +4,6 @@ import { formatNumber } from '../lib/format';
 export interface RankRow {
   agentId: string;
   agentName: string;
-  version: string;
-  model: string;
   totalTokens: number;
   anthropicTotalTokens: number;
   toolCount: number;
@@ -18,7 +16,7 @@ export interface RankRow {
   href: string;
 }
 
-type SortKey = 'totalTokens' | 'toolCount' | 'skillCount' | 'agentName' | 'model' | 'version';
+type SortKey = 'totalTokens' | 'toolCount' | 'skillCount' | 'subagentCount' | 'agentName';
 
 const { rows } = Astro.props as { rows: RankRow[] };
 
@@ -27,9 +25,15 @@ const columns: { key: SortKey; label: string; numeric: boolean; defaultDir: 'asc
   { key: 'totalTokens', label: 'Token', numeric: true, defaultDir: 'desc' },
   { key: 'toolCount', label: 'Tools', numeric: true, defaultDir: 'desc' },
   { key: 'skillCount', label: 'Skills', numeric: true, defaultDir: 'desc' },
-  { key: 'model', label: 'Model', numeric: false, defaultDir: 'asc' },
-  { key: 'version', label: 'Version', numeric: false, defaultDir: 'asc' },
+  { key: 'subagentCount', label: 'Sub-agents', numeric: true, defaultDir: 'desc' },
 ];
+const compactLabels: Record<SortKey, string> = {
+  agentName: 'Agent',
+  totalTokens: 'Tok',
+  toolCount: 'Tools',
+  skillCount: 'Skills',
+  subagentCount: 'Sub',
+};
 
 const sortedRows = [...rows].sort((a, b) => b.totalTokens - a.totalTokens);
 const maxO200k = Math.max(...sortedRows.map((r) => r.totalTokens), 1);
@@ -44,8 +48,7 @@ const dataSortAttrs = (row: RankRow) => ({
   'data-anthropic-total-tokens': String(row.anthropicTotalTokens),
   'data-sort-tool-count': String(row.toolCount),
   'data-sort-skill-count': String(row.skillCount),
-  'data-sort-model': row.model.toLowerCase(),
-  'data-sort-version': row.version.toLowerCase(),
+  'data-sort-subagent-count': String(row.subagentCount),
 });
 ---
 
@@ -61,33 +64,42 @@ const dataSortAttrs = (row: RankRow) => ({
     aria-label="Default footprint ranking table"
     tabindex="0"
   >
-    <table class="w-full text-sm">
+    <table class="w-full table-fixed text-xs sm:min-w-[44rem] sm:text-sm">
+      <colgroup>
+        <col class="w-[4%] sm:w-[7%]" />
+        <col class="w-[28%] sm:w-[34%]" />
+        <col class="w-[22%] sm:w-[25%]" />
+        <col class="w-[16%] sm:w-[11%]" />
+        <col class="w-[15%] sm:w-[11%]" />
+        <col class="w-[15%] sm:w-[12%]" />
+      </colgroup>
       <thead class="ui-table-head text-left">
         <tr>
-          <th class="px-2 py-3 font-medium sm:px-4">#</th>
+          <th class="px-1 py-3 font-medium sm:px-4">#</th>
           {columns.map((column) => {
-            const hide = column.key === 'model' || column.key === 'version'
-              ? ' hidden lg:table-cell'
-              : '';
             const active = column.key === initialSortKey;
             const icon = active ? '▼' : '↕';
             const ariaSort = active ? 'descending' : 'none';
+            const compactLabel = compactLabels[column.key];
 
             return (
               <th
-                class={`px-2 py-3 font-medium sm:px-4 ${column.numeric ? 'text-right' : ''}${hide}`}
+                class={`px-1 py-3 font-medium sm:px-4 ${column.numeric ? 'text-right' : ''}`}
                 aria-sort={ariaSort}
                 data-sort-heading={column.key}
               >
                 <button
                   type="button"
-                  class="inline-flex items-center gap-1 hover:text-[var(--color-primary)]"
+                  class={`inline-flex items-center gap-0.5 hover:text-[var(--color-primary)] sm:gap-1 ${
+                    column.numeric ? 'justify-end' : ''
+                  }`}
                   data-sort-key={column.key}
                   data-sort-numeric={String(column.numeric)}
                   data-sort-default-dir={column.defaultDir}
                   aria-pressed={active ? 'true' : 'false'}
                 >
-                  {column.label}
+                  <span class="sm:hidden">{compactLabel}</span>
+                  <span class="hidden sm:inline">{column.label}</span>
                   <span class="text-xs" aria-hidden="true" data-sort-icon={column.key}>{icon}</span>
                 </button>
               </th>
@@ -102,13 +114,13 @@ const dataSortAttrs = (row: RankRow) => ({
             data-rank-row
             {...dataSortAttrs(row)}
           >
-            <td class="px-2 py-3 tabular-nums ui-subtle sm:px-4" data-rank-cell>{index + 1}</td>
-            <td class="max-w-[7rem] px-2 py-3 sm:max-w-none sm:px-4">
-              <div class="flex items-center gap-2 sm:gap-3">
+            <td class="px-1 py-3 tabular-nums ui-subtle sm:px-4" data-rank-cell>{index + 1}</td>
+            <td class="px-1 py-3 sm:px-4">
+              <div class="flex items-center gap-1.5 sm:gap-3">
                 <span
                   class={`agent-logo ${
                     row.logoSource === 'official' ? 'agent-logo-official' : 'agent-logo-generic'
-                  } grid h-6 w-6 shrink-0 place-items-center overflow-hidden rounded-md p-1 sm:h-8 sm:w-8 sm:rounded-lg sm:p-1.5`}
+                  } grid h-5 w-5 shrink-0 place-items-center overflow-hidden rounded-md p-0.5 sm:h-8 sm:w-8 sm:rounded-lg sm:p-1.5`}
                   title={row.logoAlt}
                 >
                   <img
@@ -120,14 +132,14 @@ const dataSortAttrs = (row: RankRow) => ({
                   />
                 </span>
                 <div class="min-w-0">
-                  <a href={row.href} class="block truncate font-medium ui-link">
+                  <a href={row.href} class="block truncate font-medium leading-tight ui-link">
                     {row.agentName}
                   </a>
                 </div>
               </div>
             </td>
-            <td class="px-2 py-3 text-right sm:px-4">
-              <div class="flex items-center justify-end gap-3">
+            <td class="px-1 py-3 text-right sm:px-4">
+              <div class="flex items-center justify-end gap-1 sm:gap-3">
                 <div class="ui-track hidden h-2 w-28 overflow-hidden rounded-full sm:block">
                   <div
                     class="h-full rounded-full"
@@ -147,14 +159,9 @@ const dataSortAttrs = (row: RankRow) => ({
                 </span>
               </div>
             </td>
-            <td class="px-2 py-3 text-right tabular-nums sm:px-4">{row.toolCount}</td>
-            <td class="px-2 py-3 text-right tabular-nums sm:px-4">{row.skillCount}</td>
-            <td class="hidden px-2 py-3 ui-muted sm:px-4 lg:table-cell">{row.model}</td>
-            <td class="hidden px-2 py-3 whitespace-nowrap sm:px-4 lg:table-cell">
-              <span class="ui-badge rounded px-1.5 py-0.5 text-xs">
-                v{row.version}
-              </span>
-            </td>
+            <td class="px-1 py-3 text-right tabular-nums sm:px-4">{row.toolCount}</td>
+            <td class="px-1 py-3 text-right tabular-nums sm:px-4">{row.skillCount}</td>
+            <td class="px-1 py-3 text-right tabular-nums sm:px-4">{row.subagentCount}</td>
           </tr>
         ))}
       </tbody>

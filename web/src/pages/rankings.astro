@@ -13,8 +13,6 @@ const anthropicModel = agents.find((a) => a.latest.anthropicTokenizerModel)?.lat
 type RankRow = {
   agentId: string;
   agentName: string;
-  version: string;
-  model: string;
   totalTokens: number;
   anthropicTotalTokens: number;
   toolCount: number;
@@ -29,8 +27,6 @@ type RankRow = {
 const rows: RankRow[] = agents.map((a) => ({
   agentId: a.agentId,
   agentName: a.agentDisplayName,
-  version: a.latest.version,
-  model: a.latest.model,
   totalTokens: a.latest.totalTokens,
   anthropicTotalTokens: a.latest.anthropicTotalTokens || a.latest.totalTokens,
   toolCount: a.latest.toolCount,
