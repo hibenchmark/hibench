@@ -1,5 +1,5 @@
 ---
-import { formatNumber } from '../lib/format';
+import { formatNumber, pct } from '../lib/format';
 
 interface VersionPart {
   label: string;
@@ -73,8 +73,6 @@ const selected = versions[selectedIndex];
 const hasAnthropicData = versions.length > 0 && versions.every((v) => v.anthropicTotalTokens > 0);
 const initialTokenValue = (version: VersionDatum) =>
   hasAnthropicData ? version.anthropicTotalTokens : version.totalTokens;
-const percent = (tokens: number, max: number) => (max > 0 ? (tokens / max) * 100 : 0);
-
 function buildCards(v: VersionDatum): TokenListCard[] {
   const cards = [
     {
@@ -200,12 +198,17 @@ const versionPanels = versions.map((version, index) => ({
                             <span class="h-2.5 w-2.5 rounded-sm" style={`background: ${part.color};`}></span>
                             {part.label}
                           </span>
-                          <span class="tabular-nums font-medium">{formatNumber(part.tokens)}</span>
+                          <span class="tabular-nums font-medium ui-title">
+                            {formatNumber(part.tokens)}
+                            <span class="ml-1 text-xs font-normal ui-subtle">
+                              {pct(part.tokens, version.totalTokens).toFixed(0)}%
+                            </span>
+                          </span>
                         </div>
                         <div class="ui-track h-2 w-full overflow-hidden rounded-full">
                           <div
                             class="h-full rounded-full"
-                            style={`width: ${percent(part.tokens, maxPart)}%; background: ${part.color};`}
+                            style={`width: ${pct(part.tokens, maxPart)}%; background: ${part.color};`}
                           >
                           </div>
                         </div>
@@ -231,7 +234,7 @@ const versionPanels = versions.map((version, index) => ({
                           <div class="ui-track h-2 min-w-0 flex-1 overflow-hidden rounded-full">
                             <div
                               class="h-full rounded-full"
-                              style={`width: ${percent(item.tokens, card.maxTokens)}%; background: ${card.accent};`}
+                              style={`width: ${pct(item.tokens, card.maxTokens)}%; background: ${card.accent};`}
                             >
                             </div>
                           </div>
