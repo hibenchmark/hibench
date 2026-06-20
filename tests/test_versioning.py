@@ -614,6 +614,109 @@ class VersioningTests(unittest.TestCase):
             self.assertEqual(export.call_count, 2)
             self.assertTrue((runs_dir / "benchmark_batch.json").exists())
 
+    def test_benchmark_batch_counts_anthropic_tokens_before_each_export(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            runs_dir = Path(tmp) / "runs"
+            results_dir = Path(tmp) / "results"
+            catalog = VersionCatalog(
+                agent_id="codex",
+                source={"type": "npm", "package": "@openai/codex"},
+                fetched_at="2026-06-13T00:00:00Z",
+                versions=["0.1.0", "0.2.0"],
+                dist_tags={"latest": "0.2.0"},
+            )
+            run_results = [
+                VersionBenchmarkResult(
+                    agent_id="codex",
+                    version="0.1.0",
+                    status="created",
+                    run_id="codex-0.1.0-hi",
+                    run_dir=str(runs_dir / "codex-0.1.0-hi"),
+                    replaced_run_dirs=[],
+                    has_primary_request=True,
+                ),
+                VersionBenchmarkResult(
+                    agent_id="codex",
+                    version="0.2.0",
+                    status="created",
+                    run_id="codex-0.2.0-hi",
+                    run_dir=str(runs_dir / "codex-0.2.0-hi"),
+                    replaced_run_dirs=[],
+                    has_primary_request=True,
+                ),
+            ]
+            events: list[tuple[str, str]] = []
+
+            class FakeCounter:
+                def count_run(self, run_dir):
+                    events.append(("count", Path(run_dir).name))
+                    return SimpleNamespace(updated=True)
+
+            def fake_run_version_benchmarks(**kwargs):
+                after_each = kwargs["after_each"]
+                self.assertIsNotNone(after_each)
+                for result in run_results:
+                    after_each(result)
+                return run_results
+
+            def fake_export(*_args, **_kwargs):
+                events.append(("export", ""))
+                return {"run_count": 2, "deduplicated_run_count": 0}
+
+            settings = {
+                "enabled": True,
+                "api_key_env": "ANTHROPIC_API_KEY",
+                "api_key_present": True,
+                "base_url": "https://api.anthropic.com",
+                "model": "claude-test",
+                "rpm": 90.0,
+                "disabled_reason": "",
+            }
+
+            with patch("hibench.automation.ensure_docker_available", return_value=True):
+                with patch(
+                    "hibench.automation.load_or_fetch_version_catalog",
+                    return_value=(catalog, Path("agent_versions/codex.json")),
+                ):
+                    with patch(
+                        "hibench.automation.run_version_benchmarks",
+                        side_effect=fake_run_version_benchmarks,
+                    ):
+                        with patch(
+                            "hibench.automation.anthropic_tokenizer_settings_from_env",
+                            return_value=settings,
+                        ):
+                            with patch(
+                                "hibench.automation.anthropic_token_counter_from_env",
+                                return_value=FakeCounter(),
+                            ):
+                                with patch(
+                                    "hibench.automation.export_benchmark_results",
+                                    side_effect=fake_export,
+                                ):
+                                    batch = run_benchmark_batch(
+                                        agent_id="codex",
+                                        prompt_path="prompts/hi.txt",
+                                        out_dir=runs_dir,
+                                        max_versions=2,
+                                        build=False,
+                                        results_out=results_dir,
+                                    )
+
+            self.assertEqual(
+                events,
+                [
+                    ("count", "codex-0.1.0-hi"),
+                    ("export", ""),
+                    ("count", "codex-0.2.0-hi"),
+                    ("export", ""),
+                ],
+            )
+            self.assertEqual(
+                batch.manifest["anthropic_tokenizer"]["counted_run_count"], 2
+            )
+            self.assertEqual(batch.manifest["anthropic_tokenizer"]["error_count"], 0)
+
     def test_all_benchmark_batches_write_structured_manifests(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             runs_dir = Path(tmp) / "runs"

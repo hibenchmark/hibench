@@ -10,6 +10,10 @@ import tempfile
 from typing import Any
 
 from .agents import list_agent_ids, load_agent
+from .anthropic_tokens import (
+    anthropic_token_counter_from_env,
+    anthropic_tokenizer_settings_from_env,
+)
 from .benchmark_artifacts import write_run_artifacts
 from .benchmark_export import export_benchmark_results
 from .benchmark_runs import (
@@ -457,6 +461,7 @@ def build_benchmark_batch_manifest(
     skip_existing: bool,
     rerun_existing: bool,
     export_results: bool,
+    anthropic_tokenizer: dict[str, Any],
     results: list[VersionBenchmarkResult],
 ) -> dict[str, Any]:
     return {
@@ -485,6 +490,7 @@ def build_benchmark_batch_manifest(
         "skip_existing": skip_existing,
         "rerun_existing": rerun_existing,
         "export_results": export_results,
+        "anthropic_tokenizer": anthropic_tokenizer,
         "results": [result.to_dict() for result in results],
     }
 
@@ -536,15 +542,38 @@ def run_benchmark_batch(
     )
     selected_versions = selection.versions
     should_export = export_results and not dry_run
+    anthropic_settings = anthropic_tokenizer_settings_from_env()
+    anthropic_counter = (
+        anthropic_token_counter_from_env()
+        if not dry_run and anthropic_settings["enabled"]
+        else None
+    )
+    anthropic_counted_run_count = 0
+    anthropic_errors: list[dict[str, str]] = []
     export_manifest = None
     completed_run_export_count = 0
 
-    def export_after_completed_run(result: VersionBenchmarkResult) -> None:
-        nonlocal completed_run_export_count, export_manifest
+    def after_completed_run(result: VersionBenchmarkResult) -> None:
+        nonlocal anthropic_counted_run_count, completed_run_export_count, export_manifest
         if result.status not in {"created", "replaced"}:
             return
-        export_manifest = export_benchmark_results(out_dir, results_out)
-        completed_run_export_count += 1
+        if anthropic_counter is not None:
+            try:
+                counted = anthropic_counter.count_run(result.run_dir)
+                if counted.updated:
+                    anthropic_counted_run_count += 1
+            except Exception as exc:
+                anthropic_errors.append(
+                    {
+                        "agent_id": result.agent_id,
+                        "version": result.version,
+                        "run_dir": result.run_dir,
+                        "error": str(exc),
+                    }
+                )
+        if should_export:
+            export_manifest = export_benchmark_results(out_dir, results_out)
+            completed_run_export_count += 1
 
     results = run_version_benchmarks(
         agent_id=agent_id,
@@ -556,8 +585,24 @@ def run_benchmark_batch(
         dry_run=dry_run,
         skip_existing=skip_existing,
         stop_on_error=stop_on_error,
-        after_each=export_after_completed_run if should_export else None,
+        after_each=(
+            after_completed_run if should_export or anthropic_counter is not None else None
+        ),
     )
+    anthropic_tokenizer = {
+        "enabled": bool(anthropic_counter),
+        "api_key_env": anthropic_settings["api_key_env"],
+        "model": anthropic_settings["model"],
+        "base_url": anthropic_settings["base_url"],
+        "rpm": anthropic_settings["rpm"],
+        "dotenv_path": anthropic_settings.get("dotenv_path", ""),
+        "disabled_reason": (
+            "dry run" if dry_run else anthropic_settings["disabled_reason"]
+        ),
+        "counted_run_count": anthropic_counted_run_count,
+        "error_count": len(anthropic_errors),
+        "errors": anthropic_errors,
+    }
 
     manifest = build_benchmark_batch_manifest(
         agent_id=agent_id,
@@ -574,6 +619,7 @@ def run_benchmark_batch(
         skip_existing=skip_existing,
         rerun_existing=rerun_existing,
         export_results=should_export,
+        anthropic_tokenizer=anthropic_tokenizer,
         results=results,
     )
     out_path = Path(out_dir)
@@ -802,6 +848,23 @@ def format_benchmark_batch_report(batch: BenchmarkBatchResult) -> str:
             "",
         ]
     )
+    anthropic_tokenizer = batch.manifest.get("anthropic_tokenizer") or {}
+    if anthropic_tokenizer:
+        status = "enabled" if anthropic_tokenizer.get("enabled") else "disabled"
+        reason = anthropic_tokenizer.get("disabled_reason") or ""
+        suffix = f" ({reason})" if reason and status == "disabled" else ""
+        lines.extend(
+            [
+                (
+                    "anthropic_tokenizer: "
+                    f"{status}{suffix} "
+                    f"model={anthropic_tokenizer.get('model', '')} "
+                    f"counted={anthropic_tokenizer.get('counted_run_count', 0)} "
+                    f"errors={anthropic_tokenizer.get('error_count', 0)}"
+                ),
+                "",
+            ]
+        )
     for result in batch.results:
         suffix = ""
         if result.error:

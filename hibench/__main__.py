@@ -11,6 +11,7 @@ if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from hibench.agents import list_agent_ids, load_agent
+from hibench.anthropic_tokens import anthropic_token_counter_from_env
 from hibench.automation import (
     DEFAULT_INITIAL_AGENT_VERSION_LIMIT,
     DockerUnavailableError,
@@ -66,7 +67,17 @@ def cmd_run(args: argparse.Namespace) -> int:
         run_id=args.run_id,
         replace=args.replace,
     )
-    print(format_benchmark_report(result.run_dir, result.summary))
+    summary = result.summary
+    counter = anthropic_token_counter_from_env()
+    if counter is not None:
+        try:
+            counter.count_run(result.run_dir)
+            summary_path = Path(result.run_dir) / "summary.json"
+            if summary_path.exists():
+                summary = json.loads(summary_path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            print(f"warning: Anthropic token count failed: {exc}", file=sys.stderr)
+    print(format_benchmark_report(result.run_dir, summary))
     return 0
 
 

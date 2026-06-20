@@ -211,6 +211,37 @@ class AnalyzeTests(unittest.TestCase):
             self.assertIn("Diagnostic totals across captured requests/retries", report)
             self.assertIn("benchmark_result_json", report)
 
+            result["run"]["anthropic_tokenizer_model"] = "claude-opus-4-8"
+            result["run"]["anthropic_total_body_tokens"] = 999
+            (run_dir / "benchmark_result.json").write_text(
+                json.dumps(result, indent=2) + "\n", encoding="utf-8"
+            )
+            rebuilt_summary = write_run_artifacts(run_dir)
+            rebuilt_result = json.loads(
+                (run_dir / "benchmark_result.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(
+                rebuilt_summary["benchmark"]["anthropic_tokenizer_model"],
+                "claude-opus-4-8",
+            )
+            self.assertEqual(
+                rebuilt_summary["benchmark"]["anthropic_total_body_tokens"], 999
+            )
+            self.assertEqual(
+                rebuilt_result["run"]["anthropic_tokenizer_model"], "claude-opus-4-8"
+            )
+            self.assertEqual(
+                rebuilt_result["run"]["anthropic_total_body_tokens"], 999
+            )
+            with (run_dir / "benchmark_tables" / "run.csv").open(
+                encoding="utf-8", newline=""
+            ) as handle:
+                rebuilt_run_row = next(csv.DictReader(handle))
+            self.assertEqual(
+                rebuilt_run_row["anthropic_tokenizer_model"], "claude-opus-4-8"
+            )
+            self.assertEqual(rebuilt_run_row["anthropic_total_body_tokens"], "999")
+
             summary_sentinel = '{"sentinel":true}\n'
             (run_dir / "summary.json").write_text(summary_sentinel, encoding="utf-8")
             benchmark_before = (run_dir / "benchmark_result.json").read_text(
