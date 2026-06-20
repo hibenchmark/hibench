@@ -15,7 +15,7 @@ const { hasAnthropicData, anthropicModel = 'claude-opus-4-8', o200kModel = 'gpt-
       type="button"
       class="rounded-full px-3 py-1 text-xs font-semibold transition"
       data-tokenizer-choice="o200k"
-      aria-pressed="true"
+      aria-pressed={hasAnthropicData ? 'false' : 'true'}
     >
       <span class="block leading-tight">o200k_base</span>
       <span class="block text-[0.65rem] font-medium opacity-75">{o200kModel}</span>
@@ -24,7 +24,7 @@ const { hasAnthropicData, anthropicModel = 'claude-opus-4-8', o200kModel = 'gpt-
       type="button"
       class="rounded-full px-3 py-1 text-xs font-semibold transition disabled:cursor-not-allowed disabled:opacity-45"
       data-tokenizer-choice="anthropic"
-      aria-pressed="false"
+      aria-pressed={hasAnthropicData ? 'true' : 'false'}
       disabled={!hasAnthropicData}
       title={hasAnthropicData ? `Anthropic ${anthropicModel}` : 'Run the Anthropic token backfill to enable this metric'}
     >
@@ -88,7 +88,11 @@ const { hasAnthropicData, anthropicModel = 'claude-opus-4-8', o200kModel = 'gpt-
       const anthropicEnabled = Array.from(
         document.querySelectorAll('[data-tokenizer-choice="anthropic"]'),
       ).some((button) => !button.disabled);
-      return requested === 'anthropic' && anthropicEnabled ? 'anthropic' : 'o200k';
+      if (requested === 'o200k') return 'o200k';
+      if (requested === 'anthropic') {
+        return anthropicEnabled ? 'anthropic' : 'o200k';
+      }
+      return anthropicEnabled ? 'anthropic' : 'o200k';
     };
 
     const setActive = (tokenizer) => {

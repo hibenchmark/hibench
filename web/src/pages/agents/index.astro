@@ -8,6 +8,10 @@ import { getAgents } from '../../data/benchmark';
 const agents = getAgents();
 const hasAnthropicData = agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
 const anthropicModel = agents.find((a) => a.latest.anthropicTokenizerModel)?.latest.anthropicTokenizerModel ?? 'claude-opus-4-8';
+const initialAgents = hasAnthropicData
+  ? [...agents].sort((a, b) => b.latest.anthropicTotalTokens - a.latest.anthropicTotalTokens)
+  : agents;
+const o200kRankByAgentId = new Map(agents.map((agent, index) => [agent.agentId, index + 1]));
 const anthropicRankByAgentId = new Map(
   [...agents]
     .sort((a, b) => b.latest.anthropicTotalTokens - a.latest.anthropicTotalTokens)
@@ -28,10 +32,12 @@ const anthropicRankByAgentId = new Map(
   </header>
 
   <div class="grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-2" data-tokenizer-sort-container>
-    {agents.map((a, index) => {
-      const rank = index + 1;
+    {initialAgents.map((a, index) => {
+      const rank = o200kRankByAgentId.get(a.agentId) ?? index + 1;
       const anthropicRank = anthropicRankByAgentId.get(a.agentId) ?? rank;
       const anthropicTokens = a.latest.anthropicTotalTokens || a.latest.totalTokens;
+      const initialRank = hasAnthropicData ? anthropicRank : rank;
+      const initialTokens = hasAnthropicData ? anthropicTokens : a.latest.totalTokens;
       return (
         <a
           href={withBase(`/agents/${a.agentId}`)}
@@ -55,12 +61,12 @@ const anthropicRankByAgentId = new Map(
             <div class="flex shrink-0 flex-col items-end gap-1.5">
               <span
                 class="ui-badge rounded-full px-2.5 py-1 text-xs font-semibold tabular-nums"
-                title={`#${rank} of ${agents.length} agents by default request tokens`}
+                title={`#${initialRank} of ${agents.length} agents by default request tokens`}
                 data-tokenizer-rank
                 data-o200k-rank={String(rank)}
                 data-anthropic-rank={String(anthropicRank)}
               >
-                Rank #{rank}
+                Rank #{initialRank}
               </span>
               <span class="text-[0.68rem] ui-subtle tabular-nums">
                 {a.versionCount} versions
@@ -76,7 +82,7 @@ const anthropicRankByAgentId = new Map(
                 data-o200k-value={String(a.latest.totalTokens)}
                 data-anthropic-value={String(anthropicTokens)}
               >
-                {formatNumber(a.latest.totalTokens)}
+                {formatNumber(initialTokens)}
               </p>
               <p class="text-xs ui-subtle">total tokens</p>
             </div>

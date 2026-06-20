@@ -6,6 +6,8 @@ import { withBase, formatNumber } from "../lib/format";
 import { getAgents } from "../data/benchmark";
 
 const agents = getAgents();
+const homeTokenValue = (agent: (typeof agents)[number]) =>
+  agent.latest.anthropicTotalTokens || agent.latest.totalTokens;
 ---
 
 <Layout>
@@ -186,10 +188,10 @@ const agents = getAgents();
                 <span class="shrink-0 text-xs ui-subtle">v{a.latest.version}</span>
               </div>
               <p class="mt-3 text-3xl font-semibold tabular-nums ui-title">
-                {formatNumber(a.latest.totalTokens)}
+                {formatNumber(homeTokenValue(a))}
               </p>
               <p class="text-xs ui-subtle">
-                default tokens · {a.latest.toolCount} tools · {a.versionCount}{" "}
+                Anthropic total tokens · {a.latest.toolCount} tools · {a.versionCount}{" "}
                 versions
               </p>
             </a>

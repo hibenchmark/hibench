@@ -19,6 +19,7 @@ const agentOutDir = resolve(publicDir, 'og', 'agents');
 
 const WIDTH = 1200;
 const HEIGHT = 630;
+const TOKENIZER_LABEL = 'Anthropic tokenizer · claude-opus-4-8';
 
 const THEMES = {
   'claude-code': {
@@ -128,6 +129,10 @@ function formatDate(isoDate) {
   }).format(new Date(isoDate));
 }
 
+function tokenValue(run) {
+  return run.anthropicTotalTokens || run.totalTokens;
+}
+
 function themeFor(agentId) {
   if (THEMES[agentId]) return THEMES[agentId];
   let hash = 0;
@@ -229,7 +234,7 @@ function buildSvg(agents, runCount, assets) {
   );
 
   const shownAgentCount = ranked.length;
-  const max = Math.max(...ranked.map((agent) => agent.totalTokens), 1);
+  const max = Math.max(...ranked.map((agent) => tokenValue(agent)), 1);
   const latestCapture = agents.reduce(
     (latest, agent) => (agent.startedAt > latest ? agent.startedAt : latest),
     '',
@@ -264,12 +269,13 @@ function buildSvg(agents, runCount, assets) {
       const theme = themeFor(agent.agentId);
       const displayRank = index + 1;
       const x = startX + index * (barWidth + gap);
-      const height = Math.max(12, Math.round((agent.totalTokens / max) * barMaxHeight));
+      const tokens = tokenValue(agent);
+      const height = Math.max(12, Math.round((tokens / max) * barMaxHeight));
       const y = baseline - height;
       const center = x + barWidth / 2;
       const rankX = center;
       const label = truncate(agent.displayName);
-      const value = formatNumber(agent.totalTokens);
+      const value = formatNumber(tokens);
 
       return `
         <g>
@@ -341,14 +347,14 @@ function buildSvg(agents, runCount, assets) {
     <rect x="${cardX}" y="${cardY}" width="1120" height="306" rx="22" fill="rgba(9, 28, 23, 0.78)" stroke="#80d2bc" stroke-opacity="0.24"/>
     <rect x="${cardX}" y="${cardY}" width="1120" height="306" rx="22" fill="url(#top-glow)" opacity="0.4"/>
     <text x="72" y="330" class="eyebrow">Top 5 + bottom 5 current agent releases</text>
-    <text x="72" y="356" class="muted">latest version ranking · total request tokens · ${formatNumber(shownAgentCount)} agents shown</text>
+    <text x="72" y="356" class="muted">latest version ranking · Anthropic total request tokens · ${formatNumber(shownAgentCount)} agents shown</text>
     <text x="1128" y="330" text-anchor="end" class="small">${escapeXml(updatedText)}</text>
     <text x="1128" y="354" text-anchor="end" class="small">${formatNumber(runCount)} version captures</text>
 
     <line x1="72" y1="${baseline + 10}" x2="1128" y2="${baseline + 10}" stroke="#80d2bc" stroke-opacity="0.2"/>
     ${bars}
 
-    <text x="40" y="617" class="small">coding-agent default footprint benchmark · measured with a fixed o200k_base tokenizer</text>
+    <text x="40" y="617" class="small">coding-agent default footprint benchmark · measured with ${TOKENIZER_LABEL}</text>
     <text x="1160" y="617" text-anchor="end" class="small">hibench.dev</text>
   </g>
 </svg>
@@ -387,7 +393,8 @@ function buildAgentSvg(agent, agentCount, assets) {
   const parts = footprintParts(agent);
   const agentLogo = assets.agentLogos.get(agent.agentId);
   const updatedText = agent.startedAt ? `latest data: ${formatDate(agent.startedAt)}` : 'latest data';
-  const totalDelta = agent.totalTokens - agent.minTotal;
+  const tokens = tokenValue(agent);
+  const totalDelta = tokens - agent.minTotal;
   const totalDeltaLabel =
     agent.versionCount > 1 && totalDelta !== 0
       ? `${totalDelta > 0 ? '+' : ''}${formatNumber(totalDelta)} vs min`
@@ -404,6 +411,7 @@ function buildAgentSvg(agent, agentCount, assets) {
     clipId: 'composition-clip',
   });
 
+  const partTotal = parts.reduce((sum, part) => sum + part.tokens, 0) || 1;
   const legendRows = parts
     .slice(0, 6)
     .map((part, index) => {
@@ -415,7 +423,7 @@ function buildAgentSvg(agent, agentCount, assets) {
         <g>
           <circle cx="${x}" cy="${y + 10}" r="6" fill="${part.color}"/>
           <text x="${x + 16}" y="${y + 9}" class="legend-label">${escapeXml(part.label)}</text>
-          <text x="${x + 16}" y="${y + 29}" class="legend-value">${formatNumber(part.tokens)} tokens</text>
+          <text x="${x + 16}" y="${y + 29}" class="legend-value">${Math.round((part.tokens / partTotal) * 100)}% of categorized detail</text>
         </g>
       `;
     })
@@ -482,8 +490,8 @@ function buildAgentSvg(agent, agentCount, assets) {
     <text x="196" y="158" class="title">${name}</text>
     <text x="198" y="204" class="muted">rank #${agent.rank} of ${agentCount} current agent releases</text>
 
-    <text x="56" y="350" class="big-number">${formatNumber(agent.totalTokens)}</text>
-    <text x="64" y="382" class="number-label">total request tokens before the first reply</text>
+    <text x="56" y="350" class="big-number">${formatNumber(tokens)}</text>
+    <text x="64" y="382" class="number-label">Anthropic total request tokens before the first reply</text>
     <text x="64" y="410" class="muted">${escapeXml(totalDeltaLabel)} · first captured ${escapeXml(agent.firstVersion)}</text>
 
     <rect x="720" y="104" width="430" height="262" rx="26" fill="rgba(9, 28, 23, 0.78)" stroke="#80d2bc" stroke-opacity="0.24"/>
@@ -498,10 +506,10 @@ function buildAgentSvg(agent, agentCount, assets) {
     <text x="64" y="466" class="number-label">Request composition</text>
     <rect x="64" y="486" width="626" height="28" rx="14" fill="rgba(128, 210, 188, 0.13)"/>
     ${stackedSegments}
-    <text x="64" y="546" class="muted">stacked from the token detail shown at right</text>
+    <text x="64" y="546" class="muted">stacked from categorized request detail</text>
     ${legendRows}
 
-    <text x="40" y="617" class="small">coding-agent default footprint benchmark · measured with a fixed o200k_base tokenizer</text>
+    <text x="40" y="617" class="small">coding-agent default footprint benchmark · measured with ${TOKENIZER_LABEL}</text>
     <text x="1160" y="617" text-anchor="end" class="small">hibench.dev/agents/${escapeXml(agent.agentId)}</text>
   </g>
 </svg>
@@ -509,18 +517,20 @@ function buildAgentSvg(agent, agentCount, assets) {
 }
 
 function ogAgentsFromSummaries(summaries) {
-  return summaries.map((summary, index) => ({
-    ...summary.latest,
-    agentId: summary.agentId,
-    agentName: summary.agentName,
-    displayName: summary.agentDisplayName,
-    agentLogo: summary.agentLogo,
-    firstVersion: summary.firstVersion,
-    versionCount: summary.versionCount,
-    minTotal: summary.minTotal,
-    maxTotal: summary.maxTotal,
-    rank: index + 1,
-  }));
+  return [...summaries]
+    .sort((a, b) => tokenValue(b.latest) - tokenValue(a.latest))
+    .map((summary, index) => ({
+      ...summary.latest,
+      agentId: summary.agentId,
+      agentName: summary.agentName,
+      displayName: summary.agentDisplayName,
+      agentLogo: summary.agentLogo,
+      firstVersion: summary.firstVersion,
+      versionCount: summary.versionCount,
+      minTotal: summary.minAnthropicTotal || summary.minTotal,
+      maxTotal: summary.maxAnthropicTotal || summary.maxTotal,
+      rank: index + 1,
+    }));
 }
 
 async function main() {

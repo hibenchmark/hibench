@@ -35,9 +35,13 @@ const compactLabels: Record<SortKey, string> = {
   subagentCount: 'Sub',
 };
 
-const sortedRows = [...rows].sort((a, b) => b.totalTokens - a.totalTokens);
+const hasAnthropicData = rows.length > 0 && rows.every((r) => r.anthropicTotalTokens > 0);
+const initialTokenValue = (row: RankRow) =>
+  hasAnthropicData ? row.anthropicTotalTokens : row.totalTokens;
+const sortedRows = [...rows].sort((a, b) => initialTokenValue(b) - initialTokenValue(a));
 const maxO200k = Math.max(...sortedRows.map((r) => r.totalTokens), 1);
 const maxAnthropic = Math.max(...sortedRows.map((r) => r.anthropicTotalTokens), 1);
+const initialMax = hasAnthropicData ? maxAnthropic : maxO200k;
 const initialSortKey: SortKey = 'totalTokens';
 const initialSortDir = 'desc';
 
@@ -146,7 +150,7 @@ const dataSortAttrs = (row: RankRow) => ({
                     data-tokenizer-bar
                     data-o200k-width={String((row.totalTokens / maxO200k) * 100)}
                     data-anthropic-width={String((row.anthropicTotalTokens / maxAnthropic) * 100)}
-                    style={`width: ${(row.totalTokens / maxO200k) * 100}%; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));`}
+                    style={`width: ${(initialTokenValue(row) / initialMax) * 100}%; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));`}
                   />
                 </div>
                 <span
@@ -155,7 +159,7 @@ const dataSortAttrs = (row: RankRow) => ({
                   data-o200k-value={String(row.totalTokens)}
                   data-anthropic-value={String(row.anthropicTotalTokens)}
                 >
-                  {formatNumber(row.totalTokens)}
+                  {formatNumber(initialTokenValue(row))}
                 </span>
               </div>
             </td>

@@ -47,6 +47,10 @@ const latestAnthropicTokens = latest.anthropicTotalTokens || latest.totalTokens;
 const previousAnthropicTokens = previous.anthropicTotalTokens || previous.totalTokens;
 const deltaAnthropic = latestAnthropicTokens - previousAnthropicTokens;
 const deltaAnthropicPct = previousAnthropicTokens ? (deltaAnthropic / previousAnthropicTokens) * 100 : 0;
+const initialRank = hasAnthropicData ? anthropicRank : rank;
+const initialTokens = hasAnthropicData ? latestAnthropicTokens : latest.totalTokens;
+const initialDelta = hasAnthropicData ? deltaAnthropic : delta;
+const initialDeltaPct = hasAnthropicData ? deltaAnthropicPct : deltaPct;
 
 const versionData = versions.map((run) => ({
   version: run.version,
@@ -102,7 +106,7 @@ const versionData = versions.map((run) => ({
             data-o200k-text={`Rank #${rank} of ${allAgents.length}`}
             data-anthropic-text={`Rank #${anthropicRank} of ${allAgents.length}`}
           >
-            Rank #{rank} of {allAgents.length}
+            Rank #{initialRank} of {allAgents.length}
           </span>
           <span class="text-xs ui-subtle">by default footprint</span>
         </div>
@@ -124,7 +128,7 @@ const versionData = versions.map((run) => ({
         data-o200k-value={String(latest.totalTokens)}
         data-anthropic-value={String(latestAnthropicTokens)}
       >
-        {formatNumber(latest.totalTokens)}
+        {formatNumber(initialTokens)}
       </p>
       <p
         class="mt-1 text-xs ui-subtle"
@@ -132,7 +136,7 @@ const versionData = versions.map((run) => ({
         data-o200k-text="o200k_base · latest request"
         data-anthropic-text={`${anthropicModel} · total-only`}
       >
-        o200k_base · latest request
+        {hasAnthropicData ? `${anthropicModel} · total-only` : 'o200k_base · latest request'}
       </p>
     </div>
     <StatCard label="Tools" value={String(latest.toolCount)} hint="tool definitions" />
@@ -148,7 +152,7 @@ const versionData = versions.map((run) => ({
         data-o200k-value={String(delta)}
         data-anthropic-value={String(deltaAnthropic)}
       >
-        {`${delta >= 0 ? '+' : ''}${formatNumber(delta)}`}
+        {`${initialDelta >= 0 ? '+' : ''}${formatNumber(initialDelta)}`}
       </p>
       <p
         class="mt-1 text-xs ui-subtle"
@@ -156,7 +160,7 @@ const versionData = versions.map((run) => ({
         data-o200k-text={`${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(0)}% total tokens`}
         data-anthropic-text={`${deltaAnthropicPct >= 0 ? '+' : ''}${deltaAnthropicPct.toFixed(0)}% total tokens`}
       >
-        {`${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(0)}% total tokens`}
+        {`${initialDeltaPct >= 0 ? '+' : ''}${initialDeltaPct.toFixed(0)}% total tokens`}
       </p>
     </div>
   </section>
@@ -182,10 +186,10 @@ const versionData = versions.map((run) => ({
           </span>
         </div>
       </div>
-      <div data-tokenizer-panel="o200k">
+      <div data-tokenizer-panel="o200k" hidden={hasAnthropicData}>
         <EvolutionChart runs={versions} tokenMetric="o200k" />
       </div>
-      <div data-tokenizer-panel="anthropic" hidden>
+      <div data-tokenizer-panel="anthropic" hidden={!hasAnthropicData}>
         <EvolutionChart runs={versions} tokenMetric="anthropic" />
       </div>
     </div>

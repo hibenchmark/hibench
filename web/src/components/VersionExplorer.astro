@@ -70,6 +70,9 @@ interface Props {
 const { versions } = Astro.props;
 const selectedIndex = Math.max(versions.length - 1, 0);
 const selected = versions[selectedIndex];
+const hasAnthropicData = versions.length > 0 && versions.every((v) => v.anthropicTotalTokens > 0);
+const initialTokenValue = (version: VersionDatum) =>
+  hasAnthropicData ? version.anthropicTotalTokens : version.totalTokens;
 const percent = (tokens: number, max: number) => (max > 0 ? (tokens / max) * 100 : 0);
 
 function buildCards(v: VersionDatum): TokenListCard[] {
@@ -143,7 +146,7 @@ const versionPanels = versions.map((version, index) => ({
                 data-o200k-text={`v${version.version} — ${formatNumber(version.totalTokens)} tokens`}
                 data-anthropic-text={`v${version.version} — ${formatNumber(version.anthropicTotalTokens)} tokens`}
               >
-                v{version.version} — {formatNumber(version.totalTokens)} tokens
+                v{version.version} — {formatNumber(initialTokenValue(version))} tokens
               </option>
             ))}
           </select>
@@ -161,7 +164,7 @@ const versionPanels = versions.map((version, index) => ({
                     data-o200k-value={String(version.totalTokens)}
                     data-anthropic-value={String(version.anthropicTotalTokens)}
                   >
-                    {formatNumber(version.totalTokens)}
+                    {formatNumber(initialTokenValue(version))}
                   </p>
                 </div>
                 <div class="ui-card rounded-xl p-4">

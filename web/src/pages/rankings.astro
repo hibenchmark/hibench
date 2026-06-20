@@ -109,8 +109,8 @@ const buildExtremePanel = (metric: TokenMetric, hidden = false): ExtremePanel | 
 };
 
 const extremePanels = [
-  buildExtremePanel('o200k'),
-  hasAnthropicData ? buildExtremePanel('anthropic', true) : null,
+  buildExtremePanel('o200k', hasAnthropicData),
+  hasAnthropicData ? buildExtremePanel('anthropic', false) : null,
 ].filter(Boolean) as ExtremePanel[];
 ---
 

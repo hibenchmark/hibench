@@ -11,7 +11,9 @@ interface Props {
 }
 
 const { agents, limit, topCount = 5, flopCount = 5 } = Astro.props;
-const sorted = [...agents].sort((a, b) => b.latest.totalTokens - a.latest.totalTokens);
+const tokenValue = (agent: AgentSummary) =>
+  agent.latest.anthropicTotalTokens || agent.latest.totalTokens;
+const sorted = [...agents].sort((a, b) => tokenValue(b) - tokenValue(a));
 const ranked = limit
   ? sorted.slice(0, limit)
   : [
@@ -21,7 +23,7 @@ const ranked = limit
       list.findIndex((candidate) => candidate.agentId === agent.agentId) === index
     ));
 const rankByAgentId = new Map(sorted.map((agent, index) => [agent.agentId, index + 1]));
-const max = Math.max(...ranked.map((a) => a.latest.totalTokens), 1);
+const max = Math.max(...ranked.map((a) => tokenValue(a)), 1);
 
 type AgentTheme = {
   bar: string;
@@ -219,7 +221,7 @@ function themeFor(agentId: string): AgentTheme {
         Top 5 + flop 5 token ranking
       </p>
       <p class="mt-1 text-xs ui-subtle">
-        heaviest and lightest latest versions · total request tokens
+        heaviest and lightest latest versions · Anthropic total request tokens
       </p>
     </div>
     <a
@@ -237,7 +239,8 @@ function themeFor(agentId: string): AgentTheme {
       {
         ranked.map((agent) => {
           const theme = themeFor(agent.agentId);
-          const heightPct = pct(agent.latest.totalTokens, max);
+          const tokens = tokenValue(agent);
+          const heightPct = pct(tokens, max);
           const labelFitsInside = heightPct >= 28;
           const outsideLabelBottom = `calc(${Math.max(heightPct, 7.5)}% + 0.6rem)`;
           const mobileLabelStyle = [
@@ -252,10 +255,10 @@ function themeFor(agentId: string): AgentTheme {
             <a
               href={withBase(`/agents/${agent.agentId}`)}
               class="group flex min-w-0 flex-1 basis-0 flex-col items-center justify-end gap-2"
-              aria-label={`${agent.agentDisplayName}: ${formatNumber(agent.latest.totalTokens)} total request tokens`}
+              aria-label={`${agent.agentDisplayName}: ${formatNumber(tokens)} Anthropic total request tokens`}
             >
               <span class="hidden w-full truncate text-center tabular-nums text-xs font-semibold ui-title sm:block sm:text-sm">
-                {formatNumber(agent.latest.totalTokens)}
+                {formatNumber(tokens)}
               </span>
               <div class="relative flex h-40 w-full max-w-[8rem] items-end justify-center overflow-hidden sm:h-44">
                 {
@@ -265,7 +268,7 @@ function themeFor(agentId: string): AgentTheme {
                       class="absolute left-1/2 z-20 block whitespace-nowrap rounded-full px-1.5 py-0.5 tabular-nums text-[10px] font-bold leading-none tracking-tight sm:hidden"
                       style={`${mobileLabelStyle}; bottom:${outsideLabelBottom}`}
                     >
-                      {formatNumber(agent.latest.totalTokens)}
+                      {formatNumber(tokens)}
                     </span>
                   )
                 }
@@ -297,7 +300,7 @@ function themeFor(agentId: string): AgentTheme {
                         class="absolute left-1/2 top-1/2 z-10 block whitespace-nowrap rounded-full px-1.5 py-0.5 tabular-nums text-[10px] font-bold leading-none tracking-tight sm:hidden"
                         style={mobileLabelStyle}
                       >
-                        {formatNumber(agent.latest.totalTokens)}
+                        {formatNumber(tokens)}
                       </span>
                     )
                   }
