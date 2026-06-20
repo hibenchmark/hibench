@@ -7,6 +7,9 @@ interface Props {
   tokenMetric?: 'o200k' | 'anthropic';
 }
 const { runs, tokenMetric = 'o200k' } = Astro.props;
+const chartId = `evo-${tokenMetric}`;
+const strokeId = `${chartId}-stroke`;
+const fillId = `${chartId}-fill`;
 const tokenValue = (run: RunRow) =>
   tokenMetric === 'anthropic'
     ? run.anthropicTotalTokens || run.totalTokens
@@ -158,11 +161,11 @@ const labelStep = Math.max(1, Math.ceil(n / maxLabels));
       ))
     }
 
-    {areaPath && <path d={areaPath} fill="url(#evoFill)" opacity="0.5" />}
+    {areaPath && <path d={areaPath} fill={`url(#${fillId})`} opacity="0.5" />}
     <path
       d={tokenLinePath}
       fill="none"
-      stroke="url(#evoStroke)"
+      stroke={`url(#${strokeId})`}
       stroke-width="2.5"
       stroke-linejoin="round"
       stroke-linecap="round"></path>
@@ -210,12 +213,12 @@ const labelStep = Math.max(1, Math.ceil(n / maxLabels));
     }
 
     <defs>
-      <linearGradient id="evoStroke" x1="0" y1="0" x2="1" y2="0">
+      <linearGradient id={strokeId} x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stop-color="var(--color-primary)"></stop>
         <stop offset="58%" stop-color="var(--color-blue)"></stop>
         <stop offset="100%" stop-color="var(--color-secondary)"></stop>
       </linearGradient>
-      <linearGradient id="evoFill" x1="0" y1="0" x2="0" y2="1">
+      <linearGradient id={fillId} x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.28"></stop>
         <stop offset="100%" stop-color="var(--color-secondary)" stop-opacity="0"></stop>
       </linearGradient>
