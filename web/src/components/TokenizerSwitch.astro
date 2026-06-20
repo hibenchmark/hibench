@@ -39,6 +39,18 @@ const { hasAnthropicData, anthropicModel = 'claude-opus-4-8', o200kModel = 'gpt-
     color: var(--color-subtle);
   }
 
+  :global([data-tokenizer-choice]:not([aria-pressed='true']):not(:disabled):hover) {
+    background: rgba(154, 255, 234, 0.08);
+    color: #d6fff1;
+    box-shadow: inset 0 0 0 1px rgba(154, 255, 234, 0.18);
+    cursor: pointer;
+  }
+
+  :global([data-tokenizer-choice]:not(:disabled):focus-visible) {
+    outline: none;
+    box-shadow: inset 0 0 0 1px rgba(154, 255, 234, 0.24), 0 0 0 2px rgba(49, 247, 195, 0.28);
+  }
+
   :global([data-tokenizer-choice][aria-pressed='true']) {
     background: rgba(154, 255, 234, 0.14);
     color: #c8fff2;
