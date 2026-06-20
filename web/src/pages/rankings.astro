@@ -9,7 +9,7 @@ import type { AgentSummary } from '../data/benchmark';
 
 const agents = getAgents();
 const hasAnthropicData = agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
-const anthropicModel = agents.find((a) => a.latest.anthropicTokenizerModel)?.latest.anthropicTokenizerModel ?? 'claude-fable-5';
+const anthropicModel = agents.find((a) => a.latest.anthropicTokenizerModel)?.latest.anthropicTokenizerModel ?? 'claude-opus-4-8';
 type RankRow = {
   agentId: string;
   agentName: string;

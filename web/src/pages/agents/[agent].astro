@@ -27,7 +27,7 @@ const first = versions[0];
 const previous = versions[versions.length - 2] ?? first;
 const agentName = summary.agentDisplayName;
 const hasAnthropicData = versions.length > 0 && versions.every((run) => run.anthropicTotalTokens > 0);
-const anthropicModel = latest.anthropicTokenizerModel || 'claude-fable-5';
+const anthropicModel = latest.anthropicTokenizerModel || 'claude-opus-4-8';
 
 // Footprint rank heaviest-first across all agents (getAgents() is already
 // sorted by descending latest totalTokens).

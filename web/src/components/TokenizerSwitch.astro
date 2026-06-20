@@ -2,9 +2,10 @@
 interface Props {
   hasAnthropicData: boolean;
   anthropicModel?: string;
+  o200kModel?: string;
 }
 
-const { hasAnthropicData, anthropicModel = 'claude-fable-5' } = Astro.props;
+const { hasAnthropicData, anthropicModel = 'claude-opus-4-8', o200kModel = 'gpt-5.5' } = Astro.props;
 ---
 
 <div class="flex flex-wrap items-center gap-2 text-sm" data-tokenizer-switch>
@@ -16,7 +17,8 @@ const { hasAnthropicData, anthropicModel = 'claude-fable-5' } = Astro.props;
       data-tokenizer-choice="o200k"
       aria-pressed="true"
     >
-      o200k_base
+      <span class="block leading-tight">o200k_base</span>
+      <span class="block text-[0.65rem] font-medium opacity-75">{o200kModel}</span>
     </button>
     <button
       type="button"
@@ -26,12 +28,10 @@ const { hasAnthropicData, anthropicModel = 'claude-fable-5' } = Astro.props;
       disabled={!hasAnthropicData}
       title={hasAnthropicData ? `Anthropic ${anthropicModel}` : 'Run the Anthropic token backfill to enable this metric'}
     >
-      Anthropic
+      <span class="block leading-tight">Anthropic</span>
+      <span class="block text-[0.65rem] font-medium opacity-75">{anthropicModel}</span>
     </button>
   </div>
-  <span class="text-xs ui-subtle" data-tokenizer-status>
-    {hasAnthropicData ? `total-only · ${anthropicModel}` : 'Anthropic totals not backfilled yet'}
-  </span>
 </div>
 
 <style>
