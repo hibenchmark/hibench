@@ -166,6 +166,8 @@ function toRun(r) {
     startedAt: r.started_at,
     bodyBytes: num(r.body_bytes),
     totalTokens: num(r.total_body_tokens),
+    anthropicTotalTokens: num(r.anthropic_total_body_tokens),
+    anthropicTokenizerModel: r.anthropic_tokenizer_model || '',
     systemPromptTokens: num(r.system_prompt_tokens),
     toolTokens: num(r.tool_definition_tokens),
     skillTokens: num(r.skill_definition_tokens),
@@ -211,6 +213,9 @@ export function getAgents() {
   for (const [agentId, runs] of byAgent) {
     runs.sort((a, b) => compareVersions(a.version, b.version));
     const totals = runs.map((r) => r.totalTokens);
+    const anthropicTotals = runs
+      .map((r) => r.anthropicTotalTokens)
+      .filter((value) => value > 0);
     const agentDisplayName = toAgentDisplayName(agentId, runs[0].agentName);
     summaries.push({
       agentId,
@@ -222,6 +227,8 @@ export function getAgents() {
       versionCount: runs.length,
       minTotal: Math.min(...totals),
       maxTotal: Math.max(...totals),
+      minAnthropicTotal: anthropicTotals.length ? Math.min(...anthropicTotals) : 0,
+      maxAnthropicTotal: anthropicTotals.length ? Math.max(...anthropicTotals) : 0,
     });
   }
   // Default ranking: heaviest footprint first.

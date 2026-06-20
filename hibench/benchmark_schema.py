@@ -32,6 +32,8 @@ RUN_CSV_FIELDS = [
     "model",
     "tokenizer_library",
     "tokenizer_encoding",
+    "anthropic_tokenizer_model",
+    "anthropic_total_body_tokens",
     "total_body_tokens",
     "body_tokens",
     "body_bytes",
@@ -240,6 +242,10 @@ def build_benchmark_result(
         "model": primary.get("model", ""),
         "tokenizer_library": tokenizer.get("library", ""),
         "tokenizer_encoding": tokenizer.get("encoding", ""),
+        "anthropic_tokenizer_model": primary.get("anthropic_tokenizer_model", ""),
+        "anthropic_total_body_tokens": primary.get(
+            "anthropic_total_body_tokens", 0
+        ),
         "total_body_tokens": primary.get("body_tokens", 0),
         "body_tokens": primary.get("body_tokens", 0),
         "body_bytes": primary.get("body_bytes", 0),

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import AgentLogo from '../../components/AgentLogo.astro';
 import StatCard from '../../components/StatCard.astro';
 import EvolutionChart from '../../components/EvolutionChart.astro';
+import TokenizerSwitch from '../../components/TokenizerSwitch.astro';
 import VersionExplorer from '../../components/VersionExplorer.astro';
 import { withBase, formatNumber } from '../../lib/format';
 import {
@@ -25,22 +26,33 @@ const latest = summary.latest;
 const first = versions[0];
 const previous = versions[versions.length - 2] ?? first;
 const agentName = summary.agentDisplayName;
+const hasAnthropicData = versions.length > 0 && versions.every((run) => run.anthropicTotalTokens > 0);
+const anthropicModel = latest.anthropicTokenizerModel || 'claude-fable-5';
 
 // Footprint rank heaviest-first across all agents (getAgents() is already
 // sorted by descending latest totalTokens).
 const allAgents = getAgents();
 const rank = allAgents.findIndex((a) => a.agentId === agent) + 1;
+const allAgentsAnthropic = [...allAgents].sort(
+  (a, b) => b.latest.anthropicTotalTokens - a.latest.anthropicTotalTokens,
+);
+const anthropicRank = allAgentsAnthropic.findIndex((a) => a.agentId === agent) + 1 || rank;
 const description = `${agentName} loads ${formatNumber(latest.totalTokens)} default tokens, ${latest.toolCount} tools, ${latest.skillCount} skills, and ${latest.subagentCount} sub-agents in its latest captured hibench request.`;
 const ogImage = `/og/agents/${summary.agentId}.png`;
 const ogImageAlt = `hibench social preview for ${agentName}, showing latest default footprint metrics.`;
 
 const delta = latest.totalTokens - previous.totalTokens;
 const deltaPct = previous.totalTokens ? (delta / previous.totalTokens) * 100 : 0;
+const latestAnthropicTokens = latest.anthropicTotalTokens || latest.totalTokens;
+const previousAnthropicTokens = previous.anthropicTotalTokens || previous.totalTokens;
+const deltaAnthropic = latestAnthropicTokens - previousAnthropicTokens;
+const deltaAnthropicPct = previousAnthropicTokens ? (deltaAnthropic / previousAnthropicTokens) * 100 : 0;
 
 const versionData = versions.map((run) => ({
   version: run.version,
   model: run.model,
   totalTokens: run.totalTokens,
+  anthropicTotalTokens: run.anthropicTotalTokens || run.totalTokens,
   bodyBytes: run.bodyBytes,
   toolCount: run.toolCount,
   skillCount: run.skillCount,
@@ -86,6 +98,9 @@ const versionData = versions.map((run) => ({
           <span
             class="ui-badge rounded-full px-2.5 py-1 text-xs font-semibold tabular-nums"
             title={`#${rank} of ${allAgents.length} agents by default request tokens`}
+            data-tokenizer-text
+            data-o200k-text={`Rank #${rank} of ${allAgents.length}`}
+            data-anthropic-text={`Rank #${anthropicRank} of ${allAgents.length}`}
           >
             Rank #{rank} of {allAgents.length}
           </span>
@@ -95,22 +110,55 @@ const versionData = versions.map((run) => ({
     </div>
   </header>
 
+  <div class="mb-5">
+    <TokenizerSwitch hasAnthropicData={hasAnthropicData} anthropicModel={anthropicModel} />
+  </div>
+
   <!-- Latest snapshot -->
   <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
-    <StatCard
-      label="Default tokens"
-      value={formatNumber(latest.totalTokens)}
-      hint="latest request"
-    />
+    <div class="ui-card rounded-xl p-5">
+      <p class="text-sm font-medium ui-muted">Default tokens</p>
+      <p
+        class="mt-1 text-3xl font-semibold tracking-tight ui-title tabular-nums"
+        data-tokenizer-value
+        data-o200k-value={String(latest.totalTokens)}
+        data-anthropic-value={String(latestAnthropicTokens)}
+      >
+        {formatNumber(latest.totalTokens)}
+      </p>
+      <p
+        class="mt-1 text-xs ui-subtle"
+        data-tokenizer-text
+        data-o200k-text="o200k_base · latest request"
+        data-anthropic-text={`${anthropicModel} · total-only`}
+      >
+        o200k_base · latest request
+      </p>
+    </div>
     <StatCard label="Tools" value={String(latest.toolCount)} hint="tool definitions" />
     <StatCard label="Skills" value={String(latest.skillCount)} hint="skill entries" />
     <StatCard label="Sub-agents" value={String(latest.subagentCount)} hint="sub-agent declarations" />
     <StatCard label="Tool tokens" value={formatNumber(latest.toolTokens)} hint="of the latest request" />
-    <StatCard
-      label={`Since v${previous.version}`}
-      value={`${delta >= 0 ? '+' : ''}${formatNumber(delta)}`}
-      hint={`${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(0)}% total tokens`}
-    />
+    <div class="ui-card rounded-xl p-5">
+      <p class="text-sm font-medium ui-muted">Since v{previous.version}</p>
+      <p
+        class="mt-1 text-3xl font-semibold tracking-tight ui-title tabular-nums"
+        data-tokenizer-value
+        data-tokenizer-format="signed"
+        data-o200k-value={String(delta)}
+        data-anthropic-value={String(deltaAnthropic)}
+      >
+        {`${delta >= 0 ? '+' : ''}${formatNumber(delta)}`}
+      </p>
+      <p
+        class="mt-1 text-xs ui-subtle"
+        data-tokenizer-text
+        data-o200k-text={`${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(0)}% total tokens`}
+        data-anthropic-text={`${deltaAnthropicPct >= 0 ? '+' : ''}${deltaAnthropicPct.toFixed(0)}% total tokens`}
+      >
+        {`${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(0)}% total tokens`}
+      </p>
+    </div>
   </section>
 
   <!-- Evolution -->
@@ -134,7 +182,12 @@ const versionData = versions.map((run) => ({
           </span>
         </div>
       </div>
-      <EvolutionChart runs={versions} />
+      <div data-tokenizer-panel="o200k">
+        <EvolutionChart runs={versions} tokenMetric="o200k" />
+      </div>
+      <div data-tokenizer-panel="anthropic" hidden>
+        <EvolutionChart runs={versions} tokenMetric="anthropic" />
+      </div>
     </div>
   </section>
 
@@ -144,6 +197,9 @@ const versionData = versions.map((run) => ({
     <p class="mb-6 ui-muted">
       Select any version to inspect its footprint composition and the token cost
       of each tool, skill, and sub-agent declaration.
+      <span data-tokenizer-panel="anthropic" hidden>
+        Anthropic mode updates total request tokens only; breakdowns remain o200k_base.
+      </span>
     </p>
     <VersionExplorer versions={versionData} />
   </section>

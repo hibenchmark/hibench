@@ -31,6 +31,7 @@ interface VersionDatum {
   version: string;
   model: string;
   totalTokens: number;
+  anthropicTotalTokens: number;
   bodyBytes: number;
   toolCount: number;
   skillCount: number;
@@ -135,7 +136,13 @@ const versionPanels = versions.map((version, index) => ({
           </label>
           <select id="version-select" class="ui-input rounded-lg px-3 py-1.5 text-sm" data-version-select>
             {versions.map((version, index) => (
-              <option value={String(index)} selected={index === selectedIndex}>
+              <option
+                value={String(index)}
+                selected={index === selectedIndex}
+                data-tokenizer-text
+                data-o200k-text={`v${version.version} — ${formatNumber(version.totalTokens)} tokens`}
+                data-anthropic-text={`v${version.version} — ${formatNumber(version.anthropicTotalTokens)} tokens`}
+              >
                 v{version.version} — {formatNumber(version.totalTokens)} tokens
               </option>
             ))}
@@ -148,7 +155,12 @@ const versionPanels = versions.map((version, index) => ({
               <div class="grid gap-3 sm:grid-cols-4">
                 <div class="ui-card rounded-xl p-4">
                   <p class="text-xs font-medium ui-muted">Total tokens</p>
-                  <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
+                  <p
+                    class="mt-0.5 text-2xl font-semibold tabular-nums ui-title"
+                    data-tokenizer-value
+                    data-o200k-value={String(version.totalTokens)}
+                    data-anthropic-value={String(version.anthropicTotalTokens)}
+                  >
                     {formatNumber(version.totalTokens)}
                   </p>
                 </div>

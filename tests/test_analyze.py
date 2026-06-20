@@ -73,6 +73,7 @@ class AnalyzeTests(unittest.TestCase):
         )
         self.assertEqual(summary["tokenizer"]["encoding"], "o200k_base")
         self.assertEqual(summary["skills"]["count"], 0)
+        self.assertEqual(summary.get("anthropic_total_body_tokens", 0), 0)
 
     def test_summarize_request_uses_fixed_benchmark_tokenizer(self) -> None:
         record = {
@@ -99,6 +100,9 @@ class AnalyzeTests(unittest.TestCase):
         ]
         self.assertIn("", tokenizer_schema["enum"])
         self.assertIn("o200k_base", tokenizer_schema["enum"])
+        run_properties = schema["properties"]["run"]["properties"]
+        self.assertIn("anthropic_total_body_tokens", run_properties)
+        self.assertIn("anthropic_tokenizer_model", run_properties)
 
     def test_summarize_run_is_pure_analysis(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -179,6 +183,8 @@ class AnalyzeTests(unittest.TestCase):
 
             self.assertEqual(summary["benchmark"]["agent_id"], "codex")
             self.assertEqual(result["run"]["agent_version"], "0.139.0")
+            self.assertEqual(result["run"]["anthropic_tokenizer_model"], "")
+            self.assertEqual(result["run"]["anthropic_total_body_tokens"], 0)
             self.assertEqual(result["run"]["tool_count"], 1)
             self.assertEqual(
                 result["run"]["system_prompt_tokens"], count_tokens("System setup.")

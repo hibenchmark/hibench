@@ -17,6 +17,8 @@
         "model": {"type": "string"},
         "has_primary_request": {"type": "boolean"},
         "tokenizer_encoding": {"enum": ["o200k_base", ""]},
+        "anthropic_tokenizer_model": {"type": "string"},
+        "anthropic_total_body_tokens": {"type": "integer"},
         "total_body_tokens": {"type": "integer"},
         "system_prompt_tokens": {"type": "integer"},
         "environment_context_tokens": {"type": "integer"},

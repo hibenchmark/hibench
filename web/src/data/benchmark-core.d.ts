@@ -8,6 +8,8 @@ export interface RunRow {
   startedAt: string;
   bodyBytes: number;
   totalTokens: number;
+  anthropicTotalTokens: number;
+  anthropicTokenizerModel: string;
   systemPromptTokens: number;
   toolTokens: number;
   skillTokens: number;
@@ -32,6 +34,8 @@ export interface AgentSummary {
   versionCount: number;
   minTotal: number;
   maxTotal: number;
+  minAnthropicTotal: number;
+  maxAnthropicTotal: number;
 }
 
 export interface AgentLogo {

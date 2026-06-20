@@ -223,6 +223,8 @@ def format_benchmark_report(run_dir: str | Path, summary: dict[str, Any]) -> str
         lines,
         [
             ("total_body_tokens", run.get("total_body_tokens")),
+            ("anthropic_total_body_tokens", run.get("anthropic_total_body_tokens")),
+            ("anthropic_tokenizer_model", run.get("anthropic_tokenizer_model")),
             ("body_tokens", run.get("body_tokens")),
             ("body_bytes", run.get("body_bytes")),
             ("body_chars", run.get("body_chars")),

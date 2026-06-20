@@ -2,16 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import AgentLogo from '../components/AgentLogo.astro';
 import RankingsTable from '../components/RankingsTable.astro';
+import TokenizerSwitch from '../components/TokenizerSwitch.astro';
 import { withBase, formatNumber } from '../lib/format';
 import { getAgents } from '../data/benchmark';
+import type { AgentSummary } from '../data/benchmark';
 
 const agents = getAgents();
+const hasAnthropicData = agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
+const anthropicModel = agents.find((a) => a.latest.anthropicTokenizerModel)?.latest.anthropicTokenizerModel ?? 'claude-fable-5';
 type RankRow = {
   agentId: string;
   agentName: string;
   version: string;
   model: string;
   totalTokens: number;
+  anthropicTotalTokens: number;
   toolCount: number;
   skillCount: number;
   mcpCount: number;
@@ -27,6 +32,7 @@ const rows: RankRow[] = agents.map((a) => ({
   version: a.latest.version,
   model: a.latest.model,
   totalTokens: a.latest.totalTokens,
+  anthropicTotalTokens: a.latest.anthropicTotalTokens || a.latest.totalTokens,
   toolCount: a.latest.toolCount,
   skillCount: a.latest.skillCount,
   mcpCount: a.latest.mcpCount,
@@ -37,23 +43,54 @@ const rows: RankRow[] = agents.map((a) => ({
   href: withBase(`/agents/${a.agentId}`),
 }));
 
-const heaviest = agents[0];
-const lightest = agents[agents.length - 1];
-const heaviestTokens = heaviest?.latest.totalTokens ?? 0;
-const lightestTokens = lightest?.latest.totalTokens ?? 0;
-const footprintRatio = heaviestTokens > 0 && lightestTokens > 0
-  ? heaviestTokens / lightestTokens
-  : 0;
-const ratioLabel = footprintRatio >= 10
-  ? footprintRatio.toFixed(1)
-  : footprintRatio.toFixed(2);
-const lightestMeterWidth = heaviestTokens > 0
-  ? Math.max(9, (lightestTokens / heaviestTokens) * 100)
-  : 0;
-const extremes = heaviest && lightest
-  ? [
+type TokenMetric = 'o200k' | 'anthropic';
+type ExtremePanel = {
+  metric: TokenMetric;
+  ratioLabel: string;
+  hidden: boolean;
+  items: {
+    agent: AgentSummary;
+    tokenCount: number;
+    label: string;
+    eyebrow: string;
+    badge: string;
+    tone: 'warm' | 'cool';
+    meterWidth: number;
+    href: string;
+  }[];
+};
+
+const tokenValue = (agent: AgentSummary, metric: TokenMetric) =>
+  metric === 'anthropic'
+    ? agent.latest.anthropicTotalTokens || agent.latest.totalTokens
+    : agent.latest.totalTokens;
+
+const buildExtremePanel = (metric: TokenMetric, hidden = false): ExtremePanel | null => {
+  const sorted = [...agents].sort((a, b) => tokenValue(b, metric) - tokenValue(a, metric));
+  const heaviest = sorted[0];
+  const lightest = sorted[sorted.length - 1];
+  if (!heaviest || !lightest) return null;
+
+  const heaviestTokens = tokenValue(heaviest, metric);
+  const lightestTokens = tokenValue(lightest, metric);
+  const footprintRatio = heaviestTokens > 0 && lightestTokens > 0
+    ? heaviestTokens / lightestTokens
+    : 0;
+  const ratioLabel = footprintRatio >= 10
+    ? footprintRatio.toFixed(1)
+    : footprintRatio.toFixed(2);
+  const lightestMeterWidth = heaviestTokens > 0
+    ? Math.max(9, (lightestTokens / heaviestTokens) * 100)
+    : 0;
+
+  return {
+    metric,
+    ratioLabel,
+    hidden,
+    items: [
       {
         agent: heaviest,
+        tokenCount: heaviestTokens,
         label: 'Heaviest',
         eyebrow: 'Largest load',
         badge: 'MAX',
@@ -63,6 +100,7 @@ const extremes = heaviest && lightest
       },
       {
         agent: lightest,
+        tokenCount: lightestTokens,
         label: 'Lightest',
         eyebrow: 'Leanest load',
         badge: 'MIN',
@@ -70,8 +108,14 @@ const extremes = heaviest && lightest
         meterWidth: lightestMeterWidth,
         href: withBase(`/agents/${lightest.agentId}`),
       },
-    ]
-  : [];
+    ],
+  };
+};
+
+const extremePanels = [
+  buildExtremePanel('o200k'),
+  hasAnthropicData ? buildExtremePanel('anthropic', true) : null,
+].filter(Boolean) as ExtremePanel[];
 ---
 
 <Layout title="Rankings — hibench">
@@ -82,16 +126,24 @@ const extremes = heaviest && lightest
       version &mdash; the baseline a model reads on the first turn. Click a column
       header to re-sort.
     </p>
+    <div class="mt-5">
+      <TokenizerSwitch hasAnthropicData={hasAnthropicData} anthropicModel={anthropicModel} />
+    </div>
   </header>
 
-  {extremes.length === 2 && (
-    <section class="mb-8" aria-label="Default footprint extremes">
+  {extremePanels.map((panel) => (
+    <section
+      class="mb-8"
+      aria-label="Default footprint extremes"
+      data-tokenizer-panel={panel.metric}
+      hidden={panel.hidden}
+    >
       <div class="mb-3 flex items-center justify-between gap-3">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] ui-subtle">
           Footprint extremes
         </p>
         <p class="rounded-full border border-[rgba(128,210,188,0.2)] bg-[rgba(8,17,26,0.62)] px-2.5 py-1 text-[0.68rem] font-medium ui-muted">
-          {ratioLabel}× spread
+          {panel.ratioLabel}× spread
         </p>
       </div>
 
@@ -101,7 +153,7 @@ const extremes = heaviest && lightest
         </div>
 
         <div class="grid grid-cols-2 gap-2 sm:gap-4">
-          {extremes.map((item) => (
+          {panel.items.map((item) => (
             <a
               href={item.href}
               class={`group relative min-w-0 overflow-hidden rounded-2xl border p-3 shadow-[0_20px_60px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-0.5 sm:p-5 ${
@@ -156,7 +208,7 @@ const extremes = heaviest && lightest
 
                 <div>
                   <p class="text-xl font-bold tabular-nums leading-none ui-title sm:text-3xl">
-                    {formatNumber(item.agent.latest.totalTokens)}
+                    {formatNumber(item.tokenCount)}
                   </p>
                   <p class="mt-1 text-[0.68rem] ui-subtle sm:text-xs">total tokens</p>
                   <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-[rgba(128,210,188,0.13)]">
@@ -176,12 +228,17 @@ const extremes = heaviest && lightest
         </div>
       </div>
     </section>
-  )}
+  ))}
 
   <RankingsTable rows={rows} />
 
-  <p class="mt-4 text-xs ui-subtle">
+  <p
+    class="mt-4 text-xs ui-subtle"
+    data-tokenizer-text
+    data-o200k-text="One row per agent, using its newest version with a captured primary request. Token counts use the fixed o200k_base tokenizer."
+    data-anthropic-text={`One row per agent, using its newest version with a captured primary request. Token counts use Anthropic ${anthropicModel} totals only.`}
+  >
     One row per agent, using its newest version with a captured primary request.
-    Token counts use the fixed <code class="ui-code rounded px-1">o200k_base</code> tokenizer.
+    Token counts use the fixed o200k_base tokenizer.
   </p>
 </Layout>

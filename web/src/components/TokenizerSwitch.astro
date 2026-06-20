@@ -1,0 +1,168 @@
+---
+interface Props {
+  hasAnthropicData: boolean;
+  anthropicModel?: string;
+}
+
+const { hasAnthropicData, anthropicModel = 'claude-fable-5' } = Astro.props;
+---
+
+<div class="flex flex-wrap items-center gap-2 text-sm" data-tokenizer-switch>
+  <span class="font-medium ui-muted">Tokenizer</span>
+  <div class="inline-flex rounded-full border border-white/10 bg-white/[0.03] p-1" role="group" aria-label="Token metric">
+    <button
+      type="button"
+      class="rounded-full px-3 py-1 text-xs font-semibold transition"
+      data-tokenizer-choice="o200k"
+      aria-pressed="true"
+    >
+      o200k_base
+    </button>
+    <button
+      type="button"
+      class="rounded-full px-3 py-1 text-xs font-semibold transition disabled:cursor-not-allowed disabled:opacity-45"
+      data-tokenizer-choice="anthropic"
+      aria-pressed="false"
+      disabled={!hasAnthropicData}
+      title={hasAnthropicData ? `Anthropic ${anthropicModel}` : 'Run the Anthropic token backfill to enable this metric'}
+    >
+      Anthropic
+    </button>
+  </div>
+  <span class="text-xs ui-subtle" data-tokenizer-status>
+    {hasAnthropicData ? `total-only · ${anthropicModel}` : 'Anthropic totals not backfilled yet'}
+  </span>
+</div>
+
+<style>
+  :global([data-tokenizer-choice]) {
+    color: var(--color-subtle);
+  }
+
+  :global([data-tokenizer-choice][aria-pressed='true']) {
+    background: rgba(154, 255, 234, 0.14);
+    color: #c8fff2;
+    box-shadow: inset 0 0 0 1px rgba(154, 255, 234, 0.3), 0 8px 22px rgba(36, 214, 188, 0.12);
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    if (window.__hibenchTokenizerSwitch) return;
+    window.__hibenchTokenizerSwitch = true;
+
+    const storageKey = 'hibench.tokenizer';
+    const numberFormat = new Intl.NumberFormat('en-US');
+    const storedTokenizer = () => {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch {
+        return null;
+      }
+    };
+    const storeTokenizer = (tokenizer) => {
+      try {
+        localStorage.setItem(storageKey, tokenizer);
+      } catch {
+        /* ignore storage failures */
+      }
+    };
+
+    const datasetValue = (el, tokenizer, suffix) => {
+      const raw = el.dataset[`${tokenizer}${suffix}`];
+      return raw === undefined || raw === '' ? undefined : raw;
+    };
+
+    const asNumber = (value) => {
+      const n = Number(value);
+      return Number.isFinite(n) ? n : 0;
+    };
+
+    const signedNumber = (value) => {
+      const n = asNumber(value);
+      return `${n >= 0 ? '+' : ''}${numberFormat.format(n)}`;
+    };
+
+    const activeTokenizer = () => {
+      const requested = storedTokenizer();
+      const anthropicEnabled = Array.from(
+        document.querySelectorAll('[data-tokenizer-choice="anthropic"]'),
+      ).some((button) => !button.disabled);
+      return requested === 'anthropic' && anthropicEnabled ? 'anthropic' : 'o200k';
+    };
+
+    const setActive = (tokenizer) => {
+      if (tokenizer === 'anthropic') {
+        storeTokenizer(tokenizer);
+      } else {
+        storeTokenizer('o200k');
+      }
+      updateTokenizerViews();
+    };
+
+    const updateTokenizerViews = () => {
+      const tokenizer = activeTokenizer();
+      document.documentElement.dataset.tokenizer = tokenizer;
+
+      document.querySelectorAll('[data-tokenizer-choice]').forEach((button) => {
+        const pressed = button.dataset.tokenizerChoice === tokenizer;
+        button.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+      });
+
+      document.querySelectorAll('[data-tokenizer-value]').forEach((el) => {
+        const raw = datasetValue(el, tokenizer, 'Value');
+        if (raw === undefined) return;
+        const format = el.dataset.tokenizerFormat || 'number';
+        if (format === 'signed') {
+          el.textContent = signedNumber(raw);
+        } else {
+          el.textContent = numberFormat.format(asNumber(raw));
+        }
+      });
+
+      document.querySelectorAll('[data-tokenizer-text]').forEach((el) => {
+        const text = datasetValue(el, tokenizer, 'Text');
+        if (text !== undefined) el.textContent = text;
+      });
+
+      document.querySelectorAll('[data-tokenizer-rank]').forEach((el) => {
+        const rank = datasetValue(el, tokenizer, 'Rank');
+        if (rank !== undefined) el.textContent = `Rank #${rank}`;
+      });
+
+      document.querySelectorAll('[data-tokenizer-panel]').forEach((el) => {
+        el.hidden = el.dataset.tokenizerPanel !== tokenizer;
+      });
+
+      document.querySelectorAll('[data-tokenizer-sort-container]').forEach((container) => {
+        const items = Array.from(container.querySelectorAll(':scope > [data-tokenizer-sort-item]'));
+        items
+          .sort((a, b) => {
+            const bValue = asNumber(datasetValue(b, tokenizer, 'Sort'));
+            const aValue = asNumber(datasetValue(a, tokenizer, 'Sort'));
+            return bValue - aValue;
+          })
+          .forEach((item, index) => {
+            item.style.order = String(index);
+          });
+      });
+
+      document.dispatchEvent(
+        new CustomEvent('hibench:tokenizer-change', { detail: { tokenizer } }),
+      );
+    };
+
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+      const button = event.target.closest('[data-tokenizer-choice]');
+      if (!button || button.disabled) return;
+      setActive(button.dataset.tokenizerChoice);
+    });
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateTokenizerViews, { once: true });
+    } else {
+      updateTokenizerViews();
+    }
+  })();
+</script>

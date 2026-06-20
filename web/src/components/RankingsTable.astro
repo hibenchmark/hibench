@@ -7,6 +7,7 @@ export interface RankRow {
   version: string;
   model: string;
   totalTokens: number;
+  anthropicTotalTokens: number;
   toolCount: number;
   skillCount: number;
   mcpCount: number;
@@ -31,13 +32,16 @@ const columns: { key: SortKey; label: string; numeric: boolean; defaultDir: 'asc
 ];
 
 const sortedRows = [...rows].sort((a, b) => b.totalTokens - a.totalTokens);
-const max = Math.max(...sortedRows.map((r) => r.totalTokens), 1);
+const maxO200k = Math.max(...sortedRows.map((r) => r.totalTokens), 1);
+const maxAnthropic = Math.max(...sortedRows.map((r) => r.anthropicTotalTokens), 1);
 const initialSortKey: SortKey = 'totalTokens';
 const initialSortDir = 'desc';
 
 const dataSortAttrs = (row: RankRow) => ({
   'data-sort-agent-name': row.agentName.toLowerCase(),
   'data-sort-total-tokens': String(row.totalTokens),
+  'data-o200k-total-tokens': String(row.totalTokens),
+  'data-anthropic-total-tokens': String(row.anthropicTotalTokens),
   'data-sort-tool-count': String(row.toolCount),
   'data-sort-skill-count': String(row.skillCount),
   'data-sort-model': row.model.toLowerCase(),
@@ -127,10 +131,18 @@ const dataSortAttrs = (row: RankRow) => ({
                 <div class="ui-track hidden h-2 w-28 overflow-hidden rounded-full sm:block">
                   <div
                     class="h-full rounded-full"
-                    style={`width: ${(row.totalTokens / max) * 100}%; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));`}
+                    data-tokenizer-bar
+                    data-o200k-width={String((row.totalTokens / maxO200k) * 100)}
+                    data-anthropic-width={String((row.anthropicTotalTokens / maxAnthropic) * 100)}
+                    style={`width: ${(row.totalTokens / maxO200k) * 100}%; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));`}
                   />
                 </div>
-                <span class="tabular-nums font-semibold ui-title">
+                <span
+                  class="tabular-nums font-semibold ui-title"
+                  data-tokenizer-value
+                  data-o200k-value={String(row.totalTokens)}
+                  data-anthropic-value={String(row.anthropicTotalTokens)}
+                >
                   {formatNumber(row.totalTokens)}
                 </span>
               </div>
@@ -162,6 +174,10 @@ const dataSortAttrs = (row: RankRow) => ({
     let sortKey = tableRoot.getAttribute('data-sort-key') || 'totalTokens';
     let sortDir = tableRoot.getAttribute('data-sort-dir') || 'desc';
 
+    const activeTokenizer = () => (
+      document.documentElement.dataset.tokenizer === 'anthropic' ? 'anthropic' : 'o200k'
+    );
+
     const updateState = () => {
       for (const button of buttons) {
         const key = button.getAttribute('data-sort-key') || '';
@@ -175,15 +191,54 @@ const dataSortAttrs = (row: RankRow) => ({
       }
     };
 
-    const compareRows = (a: Element, b: Element, numeric: boolean) => {
+    const updateTokenBars = () => {
+      const tokenizer = activeTokenizer();
+      tableRoot.querySelectorAll('[data-tokenizer-bar]').forEach((bar) => {
+        if (!(bar instanceof HTMLElement)) return;
+        const width = bar.dataset[`${tokenizer}Width`];
+        if (width) bar.style.width = `${width}%`;
+      });
+    };
+
+    const sortValue = (row: Element) => {
+      if (sortKey === 'totalTokens') {
+        const tokenizer = activeTokenizer();
+        return row.getAttribute(`data-${tokenizer}-total-tokens`)
+          || row.getAttribute('data-sort-total-tokens')
+          || '';
+      }
+
       const dataName = toDataName(sortKey);
-      const left = a.getAttribute(`data-sort-${dataName}`) || '';
-      const right = b.getAttribute(`data-sort-${dataName}`) || '';
+      return row.getAttribute(`data-sort-${dataName}`) || '';
+    };
+
+    const compareRows = (a: Element, b: Element, numeric: boolean) => {
+      const left = sortValue(a);
+      const right = sortValue(b);
       const comparison = numeric
         ? Number(left) - Number(right)
         : left.localeCompare(right, undefined, { numeric: true, sensitivity: 'base' });
 
       return sortDir === 'asc' ? comparison : -comparison;
+    };
+
+    const renderRows = (numeric: boolean) => {
+      const rows = Array.from(body.querySelectorAll('[data-rank-row]'));
+      rows.sort((a, b) => compareRows(a, b, numeric));
+
+      rows.forEach((row, index) => {
+        const rankCell = row.querySelector('[data-rank-cell]');
+        if (rankCell) rankCell.textContent = String(index + 1);
+        body.append(row);
+      });
+
+      updateState();
+      updateTokenBars();
+    };
+
+    const renderCurrentSort = () => {
+      const activeButton = buttons.find((button) => button.getAttribute('data-sort-key') === sortKey);
+      renderRows(activeButton?.getAttribute('data-sort-numeric') === 'true');
     };
 
     const sortRows = (nextKey: string, defaultDir: string, numeric: boolean) => {
@@ -197,16 +252,7 @@ const dataSortAttrs = (row: RankRow) => ({
       tableRoot.setAttribute('data-sort-key', sortKey);
       tableRoot.setAttribute('data-sort-dir', sortDir);
 
-      const rows = Array.from(body.querySelectorAll('[data-rank-row]'));
-      rows.sort((a, b) => compareRows(a, b, numeric));
-
-      rows.forEach((row, index) => {
-        const rankCell = row.querySelector('[data-rank-cell]');
-        if (rankCell) rankCell.textContent = String(index + 1);
-        body.append(row);
-      });
-
-      updateState();
+      renderRows(numeric);
     };
 
     for (const button of buttons) {
@@ -222,6 +268,10 @@ const dataSortAttrs = (row: RankRow) => ({
       });
     }
 
-    updateState();
+    document.addEventListener('hibench:tokenizer-change', () => {
+      renderCurrentSort();
+    });
+
+    renderCurrentSort();
   }
 </script>

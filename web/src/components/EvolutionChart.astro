@@ -4,8 +4,15 @@ import type { RunRow } from "../data/benchmark";
 
 interface Props {
   runs: RunRow[];
+  tokenMetric?: 'o200k' | 'anthropic';
 }
-const { runs } = Astro.props;
+const { runs, tokenMetric = 'o200k' } = Astro.props;
+const tokenValue = (run: RunRow) =>
+  tokenMetric === 'anthropic'
+    ? run.anthropicTotalTokens || run.totalTokens
+    : run.totalTokens;
+const tokenLabel =
+  tokenMetric === 'anthropic' ? 'Anthropic total token footprint' : 'Total token footprint';
 
 // Geometry
 const W = 760;
@@ -17,7 +24,7 @@ const padB = 44;
 const innerW = W - padL - padR;
 const innerH = H - padT - padB;
 
-const totals = runs.map((r) => r.totalTokens);
+const totals = runs.map((r) => tokenValue(r));
 const toolCounts = runs.map((r) => r.toolCount);
 const n = runs.length;
 
@@ -75,7 +82,7 @@ const y = (v: number, axis: Axis) =>
 const tokenLinePath = runs
   .map(
     (r, i) =>
-      `${i === 0 ? "M" : "L"}${x(i).toFixed(1)},${y(r.totalTokens, tokenAxis).toFixed(1)}`,
+      `${i === 0 ? "M" : "L"}${x(i).toFixed(1)},${y(tokenValue(r), tokenAxis).toFixed(1)}`,
   )
   .join(" ");
 const toolLinePath = runs
@@ -99,7 +106,7 @@ const labelStep = Math.max(1, Math.ceil(n / maxLabels));
     viewBox={`0 0 ${W} ${H}`}
     class="w-full min-w-[640px]"
     role="img"
-    aria-label="Total token footprint and tool count by version"
+    aria-label={`${tokenLabel} and tool count by version`}
   >
     <!-- gridlines + left token axis labels -->
     {
@@ -173,7 +180,7 @@ const labelStep = Math.max(1, Math.ceil(n / maxLabels));
         <g>
           <circle
             cx={x(i)}
-            cy={y(r.totalTokens, tokenAxis)}
+            cy={y(tokenValue(r), tokenAxis)}
             r="3"
             fill="var(--color-primary)"
           />
@@ -183,7 +190,7 @@ const labelStep = Math.max(1, Math.ceil(n / maxLabels));
             r="3"
             fill="var(--color-secondary)"
           />
-          <title>{`${r.version}: ${formatNumber(r.totalTokens)} tokens, ${formatNumber(r.toolCount)} tools`}</title>
+          <title>{`${r.version}: ${formatNumber(tokenValue(r))} tokens, ${formatNumber(r.toolCount)} tools`}</title>
           {i % labelStep === 0 && (
             <text
               x={x(i)}
