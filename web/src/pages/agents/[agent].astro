@@ -23,6 +23,7 @@ const summary = getAgents().find((a) => a.agentId === agent)!;
 const versions = getAgentVersions(agent!);
 const latest = summary.latest;
 const first = versions[0];
+const previous = versions[versions.length - 2] ?? first;
 const agentName = summary.agentDisplayName;
 
 // Footprint rank heaviest-first across all agents (getAgents() is already
@@ -33,8 +34,8 @@ const description = `${agentName} loads ${formatNumber(latest.totalTokens)} defa
 const ogImage = `/og/agents/${summary.agentId}.png`;
 const ogImageAlt = `hibench social preview for ${agentName}, showing latest default footprint metrics.`;
 
-const delta = latest.totalTokens - first.totalTokens;
-const deltaPct = first.totalTokens ? (delta / first.totalTokens) * 100 : 0;
+const delta = latest.totalTokens - previous.totalTokens;
+const deltaPct = previous.totalTokens ? (delta / previous.totalTokens) * 100 : 0;
 
 const versionData = versions.map((run) => ({
   version: run.version,
@@ -105,7 +106,7 @@ const versionData = versions.map((run) => ({
     <StatCard label="Skills" value={String(latest.skillCount)} hint="skill entries" />
     <StatCard label="Tool tokens" value={formatNumber(latest.toolTokens)} hint="of the latest request" />
     <StatCard
-      label={`Since v${first.version}`}
+      label={`Since v${previous.version}`}
       value={`${delta >= 0 ? '+' : ''}${formatNumber(delta)}`}
       hint={`${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(0)}% total tokens`}
     />
