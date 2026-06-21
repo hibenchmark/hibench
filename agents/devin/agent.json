@@ -1,0 +1,48 @@
+{
+  "id": "devin",
+  "display_name": "Devin",
+  "version": "2026.7.23",
+  "image": "hibench/devin:2026.7.23",
+  "parser_id": "devin",
+  "version_source": {
+    "type": "static-manifest",
+    "url": "https://static.devin.ai/cli/current/manifest.json",
+    "platform": "x86_64-unknown-linux"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "dockerfile": "docker/agents/devin/Dockerfile",
+  "command": [
+    "-p",
+    "{prompt}"
+  ],
+  "env": {
+    "HIBENCH_DEVIN_API_SERVER_URL": "{base_url_root}",
+    "HIBENCH_DEVIN_API_KEY": "hibench-dummy-key",
+    "DEVIN_API_URL": "{base_url_root}",
+    "WINDSURF_API_SERVER_URL": "{base_url_root}",
+    "HOME": "/devin-home/home",
+    "XDG_CACHE_HOME": "/devin-home/cache",
+    "XDG_CONFIG_HOME": "/devin-home/config",
+    "XDG_DATA_HOME": "/devin-home/data",
+    "NO_COLOR": "1",
+    "CI": "1",
+    "TERM": "dumb"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "host_timeout_seconds": 90,
+    "notes": "The runner writes isolated Devin credentials.toml with a dummy key and routes api_server_url/devin_api_url plus related env overrides to the local recorder. The primary model payload is Devin's Connect/protobuf GetChatMessage request; auth/status, telemetry, model-config, and session-title requests are treated as auxiliary. No Cognition-hosted session or upstream model call is required."
+  },
+  "links": {
+    "official_url": "https://devin.ai"
+  },
+  "sources": [
+    "https://docs.devin.ai/cli",
+    "https://docs.devin.ai/essential/commands",
+    "https://docs.devin.ai/essential/config-file",
+    "https://docs.devin.ai/extensibility/subagents",
+    "https://cli.devin.ai/install.sh",
+    "https://static.devin.ai/cli/current/manifest.json"
+  ]
+}

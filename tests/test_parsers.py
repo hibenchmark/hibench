@@ -1137,18 +1137,153 @@ A skill is a set of local instructions.
         self.assertEqual(summary["subagents"]["count"], 0)
         self.assertGreaterEqual(summary["subagents"]["mention_count"], 1)
 
+    def test_summarize_request_parses_devin_connect_payload(self) -> None:
+        system_text = (
+            "You are Devin, an interactive command line agent from Cognition.\n\n"
+            "Available subagent profiles for the `run_subagent` tool:\n"
+            "- `subagent_explore`: Read-only subagent for codebase exploration.\n"
+            "- `subagent_general`: General-purpose subagent with full tool access."
+        )
+        environment_text = (
+            "<system_info>\n"
+            "Current workspace directories:\n"
+            "  /workspace (cwd)\n"
+            "Platform: linux\n"
+            "</system_info>"
+        )
+        skills_text = (
+            "<available_skills>\n"
+            "The following skills can be invoked using the `skill` tool.\n\n"
+            "- **devin-for-terminal**: Look up Devin CLI documentation "
+            "(source: /devin/docs)\n"
+            "- **declarative-repo-setup**: Generate environment.yaml "
+            "(source: builtin:drs)\n"
+            "</available_skills>"
+        )
+        run_subagent_schema = (
+            '{"type":"object","properties":{"profile":{"type":"string",'
+            '"description":"The profile to use (e.g. \\"subagent_explore\\", '
+            '\\"subagent_general\\")."}}}'
+        )
+        body_text = "\x00".join(
+            [
+                "chisel",
+                "2026.7.23",
+                "dummy-key",
+                system_text,
+                "$b95ce9fd-6295-419d-af38-4a39d2e9a5ab",
+                environment_text,
+                "$9c43377d-7dda-47e4-8af4-183c6b21d6f4",
+                "Hi",
+                "$70926316-a443-4ad8-a040-4317fbac5861",
+                skills_text + "8",
+                "ask_user_question",
+                "Present multiple-choice questions to the user.",
+                '{"type":"object","properties":{}}',
+                "mcp_call_tool",
+                "Execute a tool on an MCP server.",
+                '{"type":"object","properties":{}}',
+                "webfetch",
+                "<Fetches a web page and returns its content as readable text.",
+                '{"type":"object","properties":{}}',
+                "run_subagent",
+                "Launch an independent subagent to handle a task autonomously.",
+                run_subagent_schema,
+                "swe-1-6-fast",
+            ]
+        )
+        record = {
+            "method": "POST",
+            "path": "/exa.api_server_pb.ApiServerService/GetChatMessage",
+            "body_text": body_text,
+            "json": None,
+        }
+
+        normalized = get_parser("devin").normalize_body(record, body_text)
+        self.assertEqual(normalized["skills"]["content"], skills_text)
+        self.assertEqual(
+            [
+                item["description"]
+                for item in normalized["tools"]
+                if item["name"] == "webfetch"
+            ],
+            ["Fetches a web page and returns its content as readable text."],
+        )
+
+        summary = summarize_request(record, parser_id="devin")
+
+        self.assertEqual(summary["model"], "swe-1-6-fast")
+        self.assertGreater(summary["body_tokens"], 0)
+        self.assertEqual(
+            summary["text_fields"]["by_source"]["main_instructions"]["tokens"],
+            count_tokens(system_text),
+        )
+        self.assertEqual(
+            summary["text_fields"]["by_source"]["injected_user_context"]["tokens"],
+            count_tokens(environment_text),
+        )
+        self.assertEqual(
+            summary["text_fields"]["by_source"]["skills_instructions"]["tokens"],
+            count_tokens(skills_text),
+        )
+        self.assertEqual(
+            summary["text_fields"]["by_category"]["user_prompt"]["tokens"],
+            count_tokens("Hi"),
+        )
+        self.assertEqual(summary["skills"]["count"], 2)
+        self.assertEqual(
+            [item["name"] for item in summary["skills"]["items"]],
+            ["devin-for-terminal", "declarative-repo-setup"],
+        )
+        self.assertEqual(summary["tools"]["count"], 4)
+        self.assertEqual(
+            [item["name"] for item in summary["tools"]["items"]],
+            ["ask_user_question", "mcp_call_tool", "webfetch", "run_subagent"],
+        )
+        self.assertEqual(summary["mcp"]["count"], 1)
+        self.assertEqual(summary["subagents"]["count"], 3)
+        self.assertEqual(
+            [
+                item["name"]
+                for item in summary["subagents"]["items"]
+                if item["is_counted"]
+            ],
+            ["subagent_explore", "subagent_general", "run_subagent"],
+        )
+
+        title_summary = summarize_request(
+            {
+                "method": "POST",
+                "path": "/exa.api_server_pb.ApiServerService/GetChatMessage",
+                "body_text": "\x00".join(
+                    [
+                        "You are a session title generator.",
+                        "Hi8",
+                        "swe-1-6-fast",
+                    ]
+                ),
+                "json": None,
+            },
+            parser_id="devin",
+        )
+        self.assertTrue(get_parser("devin").is_auxiliary_request(title_summary))
+
     def test_default_parser_is_generic_and_unknown_parser_errors(self) -> None:
         self.assertEqual(DEFAULT_PARSER_ID, "generic")
         self.assertEqual(get_parser().parser_id, "generic")
         self.assertEqual(get_parser("claude-code").parser_id, "claude-code")
         self.assertEqual(get_parser("cline").parser_id, "cline")
         self.assertEqual(get_parser("cursor-cli").parser_id, "cursor-cli")
+        self.assertEqual(get_parser("devin").parser_id, "devin")
+        self.assertEqual(get_parser("droid").parser_id, "droid")
         self.assertEqual(get_parser("github-cli").parser_id, "github-cli")
         self.assertEqual(get_parser("grok-cli").parser_id, "grok-cli")
         self.assertEqual(get_parser("hermes").parser_id, "hermes")
         self.assertEqual(get_parser("kilo").parser_id, "kilo")
+        self.assertEqual(get_parser("mistral-vibe").parser_id, "mistral-vibe")
         self.assertEqual(get_parser("openclaw").parser_id, "openclaw")
         self.assertEqual(get_parser("opencode").parser_id, "opencode")
+        self.assertEqual(get_parser("openhands").parser_id, "openhands")
         self.assertEqual(get_parser("pi").parser_id, "pi")
         with self.assertRaises(ValueError):
             get_parser("unknown-agent")

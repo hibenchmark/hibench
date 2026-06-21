@@ -50,6 +50,13 @@ const THEMES = {
     badgeBg: '#252321',
     badgeStroke: '#d6d3d1',
   },
+  devin: {
+    colors: ['#ecfeff', '#5eead4', '#14b8a6', '#134e4a'],
+    label: '#5eead4',
+    glow: '#5eead4',
+    badgeBg: '#123331',
+    badgeStroke: '#5eead4',
+  },
   'github-cli': {
     colors: ['#dcfce7', '#22c55e', '#2563eb', '#111827'],
     label: '#86efac',

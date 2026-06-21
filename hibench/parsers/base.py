@@ -30,6 +30,8 @@ class MarkerEntry:
 class RequestParser(Protocol):
     parser_id: str
 
+    def normalize_body(self, record: dict[str, Any], body: Any) -> Any: ...
+
     def classify_text(
         self, path: tuple[str, ...], role: str, text: str
     ) -> TextClassification: ...
@@ -49,6 +51,10 @@ class RequestParser(Protocol):
 
 class GenericParser:
     parser_id = "generic"
+
+    def normalize_body(self, record: dict[str, Any], body: Any) -> Any:
+        _ = record
+        return body
 
     def classify_text(
         self, path: tuple[str, ...], role: str, text: str

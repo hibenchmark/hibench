@@ -1,0 +1,2994 @@
+{
+  "run_dir": "runs/devin-2026.7.23-hi",
+  "request_count": 5,
+  "post_request_count": 5,
+  "primary_request_index": 3,
+  "primary_request": {
+    "method": "POST",
+    "path": "/exa.api_server_pb.ApiServerService/GetChatMessage",
+    "model": "swe-1-6-fast",
+    "tokenizer": {
+      "library": "tiktoken",
+      "encoding": "o200k_base",
+      "model": "swe-1-6-fast",
+      "source": "benchmark_default"
+    },
+    "body_bytes": 59464,
+    "body_chars": 60479,
+    "body_tokens": 13106,
+    "text_fields": {
+      "count": 4,
+      "chars": 19135,
+      "tokens": 3964,
+      "by_category": {
+        "system_prompt": {
+          "count": 2,
+          "chars": 18860,
+          "tokens": 3896
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        },
+        "environment_context": {
+          "count": 1,
+          "chars": 273,
+          "tokens": 67
+        }
+      },
+      "by_source": {
+        "main_instructions": {
+          "count": 1,
+          "chars": 18339,
+          "tokens": 3776
+        },
+        "user_prompt": {
+          "count": 1,
+          "chars": 2,
+          "tokens": 1
+        },
+        "injected_user_context": {
+          "count": 1,
+          "chars": 273,
+          "tokens": 67
+        },
+        "skills_instructions": {
+          "count": 1,
+          "chars": 521,
+          "tokens": 120
+        }
+      },
+      "fields": [
+        {
+          "path": "instructions",
+          "role": "",
+          "category": "system_prompt",
+          "source": "main_instructions",
+          "chars": 18339,
+          "tokens": 3776,
+          "preview": "You are Devin, an interactive command line agent from Cognition.\n\nYour job is to use these instructions and the tools av"
+        },
+        {
+          "path": "messages.0.content",
+          "role": "user",
+          "category": "user_prompt",
+          "source": "user_prompt",
+          "chars": 2,
+          "tokens": 1,
+          "preview": "Hi"
+        },
+        {
+          "path": "environment_context.content",
+          "role": "system",
+          "category": "environment_context",
+          "source": "injected_user_context",
+          "chars": 273,
+          "tokens": 67,
+          "preview": "<system_info>\nThe following information is automatically generated context about your current environment.\nCurrent works"
+        },
+        {
+          "path": "skills.content",
+          "role": "system",
+          "category": "system_prompt",
+          "source": "skills_instructions",
+          "chars": 521,
+          "tokens": 120,
+          "preview": "<available_skills>\nThe following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
+        }
+      ]
+    },
+    "skills": {
+      "count": 2,
+      "tokens": 120,
+      "definition_tokens": 76,
+      "instruction_field_count": 1,
+      "instruction_fields": [
+        {
+          "path": "skills.content",
+          "role": "system",
+          "chars": 521,
+          "tokens": 120,
+          "preview": "<available_skills>\nThe following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
+        }
+      ],
+      "items": [
+        {
+          "skill_index": 1,
+          "name": "devin-for-terminal",
+          "description": "Look up Devin CLI documentation (skills, extensibility, configuration, commands, models, troubleshooting)",
+          "file": "/opt/devin/share/devin/docs",
+          "source_path": "skills.content",
+          "chars": 169,
+          "tokens": 39,
+          "preview": "- **devin-for-terminal**: Look up Devin CLI documentation (skills, extensibility, configuration, commands, models, troub"
+        },
+        {
+          "skill_index": 2,
+          "name": "declarative-repo-setup",
+          "description": "Generate and verify a working environment.yaml (Devin snapshot-setup blueprint) for a repo",
+          "file": "builtin:drs",
+          "source_path": "skills.content",
+          "chars": 142,
+          "tokens": 37,
+          "preview": "- **declarative-repo-setup**: Generate and verify a working environment.yaml (Devin snapshot-setup blueprint) for a repo"
+        }
+      ]
+    },
+    "tools": {
+      "count": 23,
+      "names": [
+        "ask_user_question",
+        "edit",
+        "exec",
+        "find_file_by_name",
+        "get_output",
+        "grep",
+        "kill_shell",
+        "mcp_call_tool",
+        "mcp_list_servers",
+        "mcp_list_tools",
+        "mcp_read_resource",
+        "notebook_edit",
+        "notebook_read",
+        "read",
+        "read_subagent",
+        "request_scope",
+        "run_subagent",
+        "skill",
+        "todo_write",
+        "web_search",
+        "webfetch",
+        "write",
+        "write_to_process"
+      ],
+      "tokens": 8874,
+      "items": [
+        {
+          "tool_index": 1,
+          "array_index": 0,
+          "path": "tools.0",
+          "name": "ask_user_question",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 2970,
+          "tokens": 648,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 2,
+          "array_index": 1,
+          "path": "tools.1",
+          "name": "edit",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1787,
+          "tokens": 381,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 3,
+          "array_index": 2,
+          "path": "tools.2",
+          "name": "exec",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 5303,
+          "tokens": 1198,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 4,
+          "array_index": 3,
+          "path": "tools.3",
+          "name": "find_file_by_name",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1219,
+          "tokens": 281,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 5,
+          "array_index": 4,
+          "path": "tools.4",
+          "name": "get_output",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 2023,
+          "tokens": 425,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 6,
+          "array_index": 5,
+          "path": "tools.5",
+          "name": "grep",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1453,
+          "tokens": 319,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 7,
+          "array_index": 6,
+          "path": "tools.6",
+          "name": "kill_shell",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 438,
+          "tokens": 95,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 8,
+          "array_index": 7,
+          "path": "tools.7",
+          "name": "mcp_call_tool",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 686,
+          "tokens": 153,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 9,
+          "array_index": 8,
+          "path": "tools.8",
+          "name": "mcp_list_servers",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 278,
+          "tokens": 63,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 10,
+          "array_index": 9,
+          "path": "tools.9",
+          "name": "mcp_list_tools",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 450,
+          "tokens": 93,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 11,
+          "array_index": 10,
+          "path": "tools.10",
+          "name": "mcp_read_resource",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 599,
+          "tokens": 139,
+          "is_mcp_related": true,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 12,
+          "array_index": 11,
+          "path": "tools.11",
+          "name": "notebook_edit",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 898,
+          "tokens": 207,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 13,
+          "array_index": 12,
+          "path": "tools.12",
+          "name": "notebook_read",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 379,
+          "tokens": 84,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 14,
+          "array_index": 13,
+          "path": "tools.13",
+          "name": "read",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 827,
+          "tokens": 171,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 15,
+          "array_index": 14,
+          "path": "tools.14",
+          "name": "read_subagent",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 843,
+          "tokens": 182,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 16,
+          "array_index": 15,
+          "path": "tools.15",
+          "name": "request_scope",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 650,
+          "tokens": 136,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 17,
+          "array_index": 16,
+          "path": "tools.16",
+          "name": "run_subagent",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 5066,
+          "tokens": 1041,
+          "is_mcp_related": false,
+          "is_subagent_related": true
+        },
+        {
+          "tool_index": 18,
+          "array_index": 17,
+          "path": "tools.17",
+          "name": "skill",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1611,
+          "tokens": 350,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 19,
+          "array_index": 18,
+          "path": "tools.18",
+          "name": "todo_write",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 9936,
+          "tokens": 2115,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 20,
+          "array_index": 19,
+          "path": "tools.19",
+          "name": "web_search",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1195,
+          "tokens": 283,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 21,
+          "array_index": 20,
+          "path": "tools.20",
+          "name": "webfetch",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 279,
+          "tokens": 60,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 22,
+          "array_index": 21,
+          "path": "tools.21",
+          "name": "write",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 742,
+          "tokens": 162,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        },
+        {
+          "tool_index": 23,
+          "array_index": 22,
+          "path": "tools.22",
+          "name": "write_to_process",
+          "type": "function",
+          "keys": [
+            "description",
+            "name",
+            "parameters",
+            "type"
+          ],
+          "chars": 1174,
+          "tokens": 288,
+          "is_mcp_related": false,
+          "is_subagent_related": false
+        }
+      ]
+    },
+    "mcp": {
+      "marker_count": 16,
+      "paths": [
+        "instructions",
+        "tools.10",
+        "tools.10.description",
+        "tools.10.name",
+        "tools.10.parameters.properties.server_name.description",
+        "tools.7",
+        "tools.7.description",
+        "tools.7.name",
+        "tools.7.parameters.properties.server_name.description",
+        "tools.8",
+        "tools.8.description",
+        "tools.8.name",
+        "tools.9",
+        "tools.9.description",
+        "tools.9.name",
+        "tools.9.parameters.properties.server_name.description"
+      ],
+      "count": 4,
+      "tokens": 448,
+      "mention_count": 1,
+      "mention_tokens": 3776,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "mcp_1",
+          "source_type": "text_mention",
+          "is_counted": false,
+          "path": "instructions",
+          "chars": 18339,
+          "tokens": 3776,
+          "preview": "You are Devin, an interactive command line agent from Cognition.\n\nYour job is to use these instructions and the tools av"
+        },
+        {
+          "marker_index": 2,
+          "name": "mcp_call_tool",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.7",
+          "chars": 686,
+          "tokens": 153,
+          "preview": "{\"description\":\"Execute a tool on an MCP server. Use this to interact with external services like Linear, GitHub, Slack,"
+        },
+        {
+          "marker_index": 3,
+          "name": "mcp_list_servers",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.8",
+          "chars": 278,
+          "tokens": 63,
+          "preview": "{\"description\":\"Lists all MCP servers you have access to. Use this first if the user is asking about any third party int"
+        },
+        {
+          "marker_index": 4,
+          "name": "mcp_list_tools",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.9",
+          "chars": 450,
+          "tokens": 93,
+          "preview": "{\"description\":\"List available tools and resources from MCP servers. Use this to discover what capabilities are availabl"
+        },
+        {
+          "marker_index": 5,
+          "name": "mcp_read_resource",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.10",
+          "chars": 599,
+          "tokens": 139,
+          "preview": "{\"description\":\"Read a resource from an MCP server. Resources can be files, database records, API responses, or any data"
+        }
+      ]
+    },
+    "subagents": {
+      "marker_count": 16,
+      "paths": [
+        "instructions",
+        "instructions.subagent.0",
+        "instructions.subagent.1",
+        "tools.14",
+        "tools.14.description",
+        "tools.14.name",
+        "tools.14.parameters.properties.agent_id.description",
+        "tools.14.parameters.properties.block.description",
+        "tools.16",
+        "tools.16.description",
+        "tools.16.name",
+        "tools.16.parameters.properties.is_background.description",
+        "tools.16.parameters.properties.profile.description",
+        "tools.16.parameters.properties.resume.description",
+        "tools.16.parameters.properties.task.description",
+        "tools.16.parameters.properties.title.description"
+      ],
+      "count": 4,
+      "tokens": 1360,
+      "mention_count": 0,
+      "mention_tokens": 0,
+      "items": [
+        {
+          "marker_index": 1,
+          "name": "subagent_explore",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "instructions.subagent.0",
+          "chars": 298,
+          "tokens": 65,
+          "preview": "- `subagent_explore`: Read-only subagent for codebase exploration, research, and search. Use this when you need to find"
+        },
+        {
+          "marker_index": 2,
+          "name": "subagent_general",
+          "source_type": "declaration",
+          "is_counted": true,
+          "path": "instructions.subagent.1",
+          "chars": 334,
+          "tokens": 72,
+          "preview": "- `subagent_general`: General-purpose subagent with full tool access (read, write, edit, exec). Use this when the subage"
+        },
+        {
+          "marker_index": 3,
+          "name": "read_subagent",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.14",
+          "chars": 843,
+          "tokens": 182,
+          "preview": "{\"description\":\"Reads the response from a background subagent, using the agent_id you got from the run_subagent tool or"
+        },
+        {
+          "marker_index": 4,
+          "name": "run_subagent",
+          "source_type": "tool_declaration",
+          "is_counted": true,
+          "path": "tools.16",
+          "chars": 5066,
+          "tokens": 1041,
+          "preview": "{\"description\":\"Launch an independent subagent to handle a task autonomously.\\n\\nSubagents (also referred to as just \\\"a"
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/exa.seat_management_pb.SeatManagementService/GetUserStatus",
+      "model": null,
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": null,
+        "source": "benchmark_default"
+      },
+      "body_bytes": 469,
+      "body_chars": 463,
+      "body_tokens": 262,
+      "text_fields": {
+        "count": 0,
+        "chars": 0,
+        "tokens": 0,
+        "by_category": {},
+        "by_source": {},
+        "fields": []
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 0,
+        "names": [],
+        "tokens": 0,
+        "items": []
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/exa.seat_management_pb.SeatManagementService/GetUserStatus",
+      "model": null,
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": null,
+        "source": "benchmark_default"
+      },
+      "body_bytes": 469,
+      "body_chars": 463,
+      "body_tokens": 259,
+      "text_fields": {
+        "count": 0,
+        "chars": 0,
+        "tokens": 0,
+        "by_category": {},
+        "by_source": {},
+        "fields": []
+      },
+      "skills": {
+        "count": 0,
+        "tokens": 0,
+        "definition_tokens": 0,
+        "instruction_field_count": 0,
+        "instruction_fields": [],
+        "items": []
+      },
+      "tools": {
+        "count": 0,
+        "names": [],
+        "tokens": 0,
+        "items": []
+      },
+      "mcp": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      },
+      "subagents": {
+        "marker_count": 0,
+        "paths": [],
+        "count": 0,
+        "tokens": 0,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/exa.api_server_pb.ApiServerService/GetChatMessage",
+      "model": "swe-1-6-fast",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "swe-1-6-fast",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 59464,
+      "body_chars": 60479,
+      "body_tokens": 13106,
+      "text_fields": {
+        "count": 4,
+        "chars": 19135,
+        "tokens": 3964,
+        "by_category": {
+          "system_prompt": {
+            "count": 2,
+            "chars": 18860,
+            "tokens": 3896
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          },
+          "environment_context": {
+            "count": 1,
+            "chars": 273,
+            "tokens": 67
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 18339,
+            "tokens": 3776
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          },
+          "injected_user_context": {
+            "count": 1,
+            "chars": 273,
+            "tokens": 67
+          },
+          "skills_instructions": {
+            "count": 1,
+            "chars": 521,
+            "tokens": 120
+          }
+        },
+        "fields": [
+          {
+            "path": "instructions",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 18339,
+            "tokens": 3776,
+            "preview": "You are Devin, an interactive command line agent from Cognition.\n\nYour job is to use these instructions and the tools av"
+          },
+          {
+            "path": "messages.0.content",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          },
+          {
+            "path": "environment_context.content",
+            "role": "system",
+            "category": "environment_context",
+            "source": "injected_user_context",
+            "chars": 273,
+            "tokens": 67,
+            "preview": "<system_info>\nThe following information is automatically generated context about your current environment.\nCurrent works"
+          },
+          {
+            "path": "skills.content",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "skills_instructions",
+            "chars": 521,
+            "tokens": 120,
+            "preview": "<available_skills>\nThe following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
+          }
+        ]
+      },
+      "skills": {
+        "count": 2,
+        "tokens": 120,
+        "definition_tokens": 76,
+        "instruction_field_count": 1,
+        "instruction_fields": [
+          {
+            "path": "skills.content",
+            "role": "system",
+            "chars": 521,
+            "tokens": 120,
+            "preview": "<available_skills>\nThe following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
+          }
+        ],
+        "items": [
+          {
+            "skill_index": 1,
+            "name": "devin-for-terminal",
+            "description": "Look up Devin CLI documentation (skills, extensibility, configuration, commands, models, troubleshooting)",
+            "file": "/opt/devin/share/devin/docs",
+            "source_path": "skills.content",
+            "chars": 169,
+            "tokens": 39,
+            "preview": "- **devin-for-terminal**: Look up Devin CLI documentation (skills, extensibility, configuration, commands, models, troub"
+          },
+          {
+            "skill_index": 2,
+            "name": "declarative-repo-setup",
+            "description": "Generate and verify a working environment.yaml (Devin snapshot-setup blueprint) for a repo",
+            "file": "builtin:drs",
+            "source_path": "skills.content",
+            "chars": 142,
+            "tokens": 37,
+            "preview": "- **declarative-repo-setup**: Generate and verify a working environment.yaml (Devin snapshot-setup blueprint) for a repo"
+          }
+        ]
+      },
+      "tools": {
+        "count": 23,
+        "names": [
+          "ask_user_question",
+          "edit",
+          "exec",
+          "find_file_by_name",
+          "get_output",
+          "grep",
+          "kill_shell",
+          "mcp_call_tool",
+          "mcp_list_servers",
+          "mcp_list_tools",
+          "mcp_read_resource",
+          "notebook_edit",
+          "notebook_read",
+          "read",
+          "read_subagent",
+          "request_scope",
+          "run_subagent",
+          "skill",
+          "todo_write",
+          "web_search",
+          "webfetch",
+          "write",
+          "write_to_process"
+        ],
+        "tokens": 8874,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "ask_user_question",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 2970,
+            "tokens": 648,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "edit",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1787,
+            "tokens": 381,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "exec",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 5303,
+            "tokens": 1198,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "find_file_by_name",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1219,
+            "tokens": 281,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "get_output",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 2023,
+            "tokens": 425,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "grep",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1453,
+            "tokens": 319,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "kill_shell",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 438,
+            "tokens": 95,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "mcp_call_tool",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 686,
+            "tokens": 153,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "mcp_list_servers",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 278,
+            "tokens": 63,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "mcp_list_tools",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 450,
+            "tokens": 93,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 11,
+            "array_index": 10,
+            "path": "tools.10",
+            "name": "mcp_read_resource",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 599,
+            "tokens": 139,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 12,
+            "array_index": 11,
+            "path": "tools.11",
+            "name": "notebook_edit",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 898,
+            "tokens": 207,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 13,
+            "array_index": 12,
+            "path": "tools.12",
+            "name": "notebook_read",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 379,
+            "tokens": 84,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 14,
+            "array_index": 13,
+            "path": "tools.13",
+            "name": "read",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 827,
+            "tokens": 171,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 15,
+            "array_index": 14,
+            "path": "tools.14",
+            "name": "read_subagent",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 843,
+            "tokens": 182,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 16,
+            "array_index": 15,
+            "path": "tools.15",
+            "name": "request_scope",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 650,
+            "tokens": 136,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 17,
+            "array_index": 16,
+            "path": "tools.16",
+            "name": "run_subagent",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 5066,
+            "tokens": 1041,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 18,
+            "array_index": 17,
+            "path": "tools.17",
+            "name": "skill",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1611,
+            "tokens": 350,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 19,
+            "array_index": 18,
+            "path": "tools.18",
+            "name": "todo_write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 9936,
+            "tokens": 2115,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 20,
+            "array_index": 19,
+            "path": "tools.19",
+            "name": "web_search",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1195,
+            "tokens": 283,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 21,
+            "array_index": 20,
+            "path": "tools.20",
+            "name": "webfetch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 279,
+            "tokens": 60,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 22,
+            "array_index": 21,
+            "path": "tools.21",
+            "name": "write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 742,
+            "tokens": 162,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 23,
+            "array_index": 22,
+            "path": "tools.22",
+            "name": "write_to_process",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1174,
+            "tokens": 288,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 16,
+        "paths": [
+          "instructions",
+          "tools.10",
+          "tools.10.description",
+          "tools.10.name",
+          "tools.10.parameters.properties.server_name.description",
+          "tools.7",
+          "tools.7.description",
+          "tools.7.name",
+          "tools.7.parameters.properties.server_name.description",
+          "tools.8",
+          "tools.8.description",
+          "tools.8.name",
+          "tools.9",
+          "tools.9.description",
+          "tools.9.name",
+          "tools.9.parameters.properties.server_name.description"
+        ],
+        "count": 4,
+        "tokens": 448,
+        "mention_count": 1,
+        "mention_tokens": 3776,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "mcp_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "instructions",
+            "chars": 18339,
+            "tokens": 3776,
+            "preview": "You are Devin, an interactive command line agent from Cognition.\n\nYour job is to use these instructions and the tools av"
+          },
+          {
+            "marker_index": 2,
+            "name": "mcp_call_tool",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.7",
+            "chars": 686,
+            "tokens": 153,
+            "preview": "{\"description\":\"Execute a tool on an MCP server. Use this to interact with external services like Linear, GitHub, Slack,"
+          },
+          {
+            "marker_index": 3,
+            "name": "mcp_list_servers",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.8",
+            "chars": 278,
+            "tokens": 63,
+            "preview": "{\"description\":\"Lists all MCP servers you have access to. Use this first if the user is asking about any third party int"
+          },
+          {
+            "marker_index": 4,
+            "name": "mcp_list_tools",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.9",
+            "chars": 450,
+            "tokens": 93,
+            "preview": "{\"description\":\"List available tools and resources from MCP servers. Use this to discover what capabilities are availabl"
+          },
+          {
+            "marker_index": 5,
+            "name": "mcp_read_resource",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.10",
+            "chars": 599,
+            "tokens": 139,
+            "preview": "{\"description\":\"Read a resource from an MCP server. Resources can be files, database records, API responses, or any data"
+          }
+        ]
+      },
+      "subagents": {
+        "marker_count": 16,
+        "paths": [
+          "instructions",
+          "instructions.subagent.0",
+          "instructions.subagent.1",
+          "tools.14",
+          "tools.14.description",
+          "tools.14.name",
+          "tools.14.parameters.properties.agent_id.description",
+          "tools.14.parameters.properties.block.description",
+          "tools.16",
+          "tools.16.description",
+          "tools.16.name",
+          "tools.16.parameters.properties.is_background.description",
+          "tools.16.parameters.properties.profile.description",
+          "tools.16.parameters.properties.resume.description",
+          "tools.16.parameters.properties.task.description",
+          "tools.16.parameters.properties.title.description"
+        ],
+        "count": 4,
+        "tokens": 1360,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_explore",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "instructions.subagent.0",
+            "chars": 298,
+            "tokens": 65,
+            "preview": "- `subagent_explore`: Read-only subagent for codebase exploration, research, and search. Use this when you need to find"
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_general",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "instructions.subagent.1",
+            "chars": 334,
+            "tokens": 72,
+            "preview": "- `subagent_general`: General-purpose subagent with full tool access (read, write, edit, exec). Use this when the subage"
+          },
+          {
+            "marker_index": 3,
+            "name": "read_subagent",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.14",
+            "chars": 843,
+            "tokens": 182,
+            "preview": "{\"description\":\"Reads the response from a background subagent, using the agent_id you got from the run_subagent tool or"
+          },
+          {
+            "marker_index": 4,
+            "name": "run_subagent",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.16",
+            "chars": 5066,
+            "tokens": 1041,
+            "preview": "{\"description\":\"Launch an independent subagent to handle a task autonomously.\\n\\nSubagents (also referred to as just \\\"a"
+          }
+        ]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/exa.api_server_pb.ApiServerService/GetChatMessage",
+      "model": "swe-1-6-fast",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "swe-1-6-fast",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 59464,
+      "body_chars": 60479,
+      "body_tokens": 13106,
+      "text_fields": {
+        "count": 4,
+        "chars": 19135,
+        "tokens": 3964,
+        "by_category": {
+          "system_prompt": {
+            "count": 2,
+            "chars": 18860,
+            "tokens": 3896
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          },
+          "environment_context": {
+            "count": 1,
+            "chars": 273,
+            "tokens": 67
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 18339,
+            "tokens": 3776
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          },
+          "injected_user_context": {
+            "count": 1,
+            "chars": 273,
+            "tokens": 67
+          },
+          "skills_instructions": {
+            "count": 1,
+            "chars": 521,
+            "tokens": 120
+          }
+        },
+        "fields": [
+          {
+            "path": "instructions",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 18339,
+            "tokens": 3776,
+            "preview": "You are Devin, an interactive command line agent from Cognition.\n\nYour job is to use these instructions and the tools av"
+          },
+          {
+            "path": "messages.0.content",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          },
+          {
+            "path": "environment_context.content",
+            "role": "system",
+            "category": "environment_context",
+            "source": "injected_user_context",
+            "chars": 273,
+            "tokens": 67,
+            "preview": "<system_info>\nThe following information is automatically generated context about your current environment.\nCurrent works"
+          },
+          {
+            "path": "skills.content",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "skills_instructions",
+            "chars": 521,
+            "tokens": 120,
+            "preview": "<available_skills>\nThe following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
+          }
+        ]
+      },
+      "skills": {
+        "count": 2,
+        "tokens": 120,
+        "definition_tokens": 76,
+        "instruction_field_count": 1,
+        "instruction_fields": [
+          {
+            "path": "skills.content",
+            "role": "system",
+            "chars": 521,
+            "tokens": 120,
+            "preview": "<available_skills>\nThe following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
+          }
+        ],
+        "items": [
+          {
+            "skill_index": 1,
+            "name": "devin-for-terminal",
+            "description": "Look up Devin CLI documentation (skills, extensibility, configuration, commands, models, troubleshooting)",
+            "file": "/opt/devin/share/devin/docs",
+            "source_path": "skills.content",
+            "chars": 169,
+            "tokens": 39,
+            "preview": "- **devin-for-terminal**: Look up Devin CLI documentation (skills, extensibility, configuration, commands, models, troub"
+          },
+          {
+            "skill_index": 2,
+            "name": "declarative-repo-setup",
+            "description": "Generate and verify a working environment.yaml (Devin snapshot-setup blueprint) for a repo",
+            "file": "builtin:drs",
+            "source_path": "skills.content",
+            "chars": 142,
+            "tokens": 37,
+            "preview": "- **declarative-repo-setup**: Generate and verify a working environment.yaml (Devin snapshot-setup blueprint) for a repo"
+          }
+        ]
+      },
+      "tools": {
+        "count": 23,
+        "names": [
+          "ask_user_question",
+          "edit",
+          "exec",
+          "find_file_by_name",
+          "get_output",
+          "grep",
+          "kill_shell",
+          "mcp_call_tool",
+          "mcp_list_servers",
+          "mcp_list_tools",
+          "mcp_read_resource",
+          "notebook_edit",
+          "notebook_read",
+          "read",
+          "read_subagent",
+          "request_scope",
+          "run_subagent",
+          "skill",
+          "todo_write",
+          "web_search",
+          "webfetch",
+          "write",
+          "write_to_process"
+        ],
+        "tokens": 8874,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "ask_user_question",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 2970,
+            "tokens": 648,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "edit",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1787,
+            "tokens": 381,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "exec",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 5303,
+            "tokens": 1198,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "find_file_by_name",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1219,
+            "tokens": 281,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "get_output",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 2023,
+            "tokens": 425,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "grep",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1453,
+            "tokens": 319,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "kill_shell",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 438,
+            "tokens": 95,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "mcp_call_tool",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 686,
+            "tokens": 153,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "mcp_list_servers",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 278,
+            "tokens": 63,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "mcp_list_tools",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 450,
+            "tokens": 93,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 11,
+            "array_index": 10,
+            "path": "tools.10",
+            "name": "mcp_read_resource",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 599,
+            "tokens": 139,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 12,
+            "array_index": 11,
+            "path": "tools.11",
+            "name": "notebook_edit",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 898,
+            "tokens": 207,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 13,
+            "array_index": 12,
+            "path": "tools.12",
+            "name": "notebook_read",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 379,
+            "tokens": 84,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 14,
+            "array_index": 13,
+            "path": "tools.13",
+            "name": "read",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 827,
+            "tokens": 171,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 15,
+            "array_index": 14,
+            "path": "tools.14",
+            "name": "read_subagent",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 843,
+            "tokens": 182,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 16,
+            "array_index": 15,
+            "path": "tools.15",
+            "name": "request_scope",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 650,
+            "tokens": 136,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 17,
+            "array_index": 16,
+            "path": "tools.16",
+            "name": "run_subagent",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 5066,
+            "tokens": 1041,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 18,
+            "array_index": 17,
+            "path": "tools.17",
+            "name": "skill",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1611,
+            "tokens": 350,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 19,
+            "array_index": 18,
+            "path": "tools.18",
+            "name": "todo_write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 9936,
+            "tokens": 2115,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 20,
+            "array_index": 19,
+            "path": "tools.19",
+            "name": "web_search",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1195,
+            "tokens": 283,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 21,
+            "array_index": 20,
+            "path": "tools.20",
+            "name": "webfetch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 279,
+            "tokens": 60,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 22,
+            "array_index": 21,
+            "path": "tools.21",
+            "name": "write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 742,
+            "tokens": 162,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 23,
+            "array_index": 22,
+            "path": "tools.22",
+            "name": "write_to_process",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1174,
+            "tokens": 288,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 16,
+        "paths": [
+          "instructions",
+          "tools.10",
+          "tools.10.description",
+          "tools.10.name",
+          "tools.10.parameters.properties.server_name.description",
+          "tools.7",
+          "tools.7.description",
+          "tools.7.name",
+          "tools.7.parameters.properties.server_name.description",
+          "tools.8",
+          "tools.8.description",
+          "tools.8.name",
+          "tools.9",
+          "tools.9.description",
+          "tools.9.name",
+          "tools.9.parameters.properties.server_name.description"
+        ],
+        "count": 4,
+        "tokens": 448,
+        "mention_count": 1,
+        "mention_tokens": 3776,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "mcp_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "instructions",
+            "chars": 18339,
+            "tokens": 3776,
+            "preview": "You are Devin, an interactive command line agent from Cognition.\n\nYour job is to use these instructions and the tools av"
+          },
+          {
+            "marker_index": 2,
+            "name": "mcp_call_tool",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.7",
+            "chars": 686,
+            "tokens": 153,
+            "preview": "{\"description\":\"Execute a tool on an MCP server. Use this to interact with external services like Linear, GitHub, Slack,"
+          },
+          {
+            "marker_index": 3,
+            "name": "mcp_list_servers",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.8",
+            "chars": 278,
+            "tokens": 63,
+            "preview": "{\"description\":\"Lists all MCP servers you have access to. Use this first if the user is asking about any third party int"
+          },
+          {
+            "marker_index": 4,
+            "name": "mcp_list_tools",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.9",
+            "chars": 450,
+            "tokens": 93,
+            "preview": "{\"description\":\"List available tools and resources from MCP servers. Use this to discover what capabilities are availabl"
+          },
+          {
+            "marker_index": 5,
+            "name": "mcp_read_resource",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.10",
+            "chars": 599,
+            "tokens": 139,
+            "preview": "{\"description\":\"Read a resource from an MCP server. Resources can be files, database records, API responses, or any data"
+          }
+        ]
+      },
+      "subagents": {
+        "marker_count": 16,
+        "paths": [
+          "instructions",
+          "instructions.subagent.0",
+          "instructions.subagent.1",
+          "tools.14",
+          "tools.14.description",
+          "tools.14.name",
+          "tools.14.parameters.properties.agent_id.description",
+          "tools.14.parameters.properties.block.description",
+          "tools.16",
+          "tools.16.description",
+          "tools.16.name",
+          "tools.16.parameters.properties.is_background.description",
+          "tools.16.parameters.properties.profile.description",
+          "tools.16.parameters.properties.resume.description",
+          "tools.16.parameters.properties.task.description",
+          "tools.16.parameters.properties.title.description"
+        ],
+        "count": 4,
+        "tokens": 1360,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_explore",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "instructions.subagent.0",
+            "chars": 298,
+            "tokens": 65,
+            "preview": "- `subagent_explore`: Read-only subagent for codebase exploration, research, and search. Use this when you need to find"
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_general",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "instructions.subagent.1",
+            "chars": 334,
+            "tokens": 72,
+            "preview": "- `subagent_general`: General-purpose subagent with full tool access (read, write, edit, exec). Use this when the subage"
+          },
+          {
+            "marker_index": 3,
+            "name": "read_subagent",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.14",
+            "chars": 843,
+            "tokens": 182,
+            "preview": "{\"description\":\"Reads the response from a background subagent, using the agent_id you got from the run_subagent tool or"
+          },
+          {
+            "marker_index": 4,
+            "name": "run_subagent",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.16",
+            "chars": 5066,
+            "tokens": 1041,
+            "preview": "{\"description\":\"Launch an independent subagent to handle a task autonomously.\\n\\nSubagents (also referred to as just \\\"a"
+          }
+        ]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/exa.api_server_pb.ApiServerService/GetChatMessage",
+      "model": "swe-1-6-fast",
+      "tokenizer": {
+        "library": "tiktoken",
+        "encoding": "o200k_base",
+        "model": "swe-1-6-fast",
+        "source": "benchmark_default"
+      },
+      "body_bytes": 59464,
+      "body_chars": 60479,
+      "body_tokens": 13106,
+      "text_fields": {
+        "count": 4,
+        "chars": 19135,
+        "tokens": 3964,
+        "by_category": {
+          "system_prompt": {
+            "count": 2,
+            "chars": 18860,
+            "tokens": 3896
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          },
+          "environment_context": {
+            "count": 1,
+            "chars": 273,
+            "tokens": 67
+          }
+        },
+        "by_source": {
+          "main_instructions": {
+            "count": 1,
+            "chars": 18339,
+            "tokens": 3776
+          },
+          "user_prompt": {
+            "count": 1,
+            "chars": 2,
+            "tokens": 1
+          },
+          "injected_user_context": {
+            "count": 1,
+            "chars": 273,
+            "tokens": 67
+          },
+          "skills_instructions": {
+            "count": 1,
+            "chars": 521,
+            "tokens": 120
+          }
+        },
+        "fields": [
+          {
+            "path": "instructions",
+            "role": "",
+            "category": "system_prompt",
+            "source": "main_instructions",
+            "chars": 18339,
+            "tokens": 3776,
+            "preview": "You are Devin, an interactive command line agent from Cognition.\n\nYour job is to use these instructions and the tools av"
+          },
+          {
+            "path": "messages.0.content",
+            "role": "user",
+            "category": "user_prompt",
+            "source": "user_prompt",
+            "chars": 2,
+            "tokens": 1,
+            "preview": "Hi"
+          },
+          {
+            "path": "environment_context.content",
+            "role": "system",
+            "category": "environment_context",
+            "source": "injected_user_context",
+            "chars": 273,
+            "tokens": 67,
+            "preview": "<system_info>\nThe following information is automatically generated context about your current environment.\nCurrent works"
+          },
+          {
+            "path": "skills.content",
+            "role": "system",
+            "category": "system_prompt",
+            "source": "skills_instructions",
+            "chars": 521,
+            "tokens": 120,
+            "preview": "<available_skills>\nThe following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
+          }
+        ]
+      },
+      "skills": {
+        "count": 2,
+        "tokens": 120,
+        "definition_tokens": 76,
+        "instruction_field_count": 1,
+        "instruction_fields": [
+          {
+            "path": "skills.content",
+            "role": "system",
+            "chars": 521,
+            "tokens": 120,
+            "preview": "<available_skills>\nThe following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
+          }
+        ],
+        "items": [
+          {
+            "skill_index": 1,
+            "name": "devin-for-terminal",
+            "description": "Look up Devin CLI documentation (skills, extensibility, configuration, commands, models, troubleshooting)",
+            "file": "/opt/devin/share/devin/docs",
+            "source_path": "skills.content",
+            "chars": 169,
+            "tokens": 39,
+            "preview": "- **devin-for-terminal**: Look up Devin CLI documentation (skills, extensibility, configuration, commands, models, troub"
+          },
+          {
+            "skill_index": 2,
+            "name": "declarative-repo-setup",
+            "description": "Generate and verify a working environment.yaml (Devin snapshot-setup blueprint) for a repo",
+            "file": "builtin:drs",
+            "source_path": "skills.content",
+            "chars": 142,
+            "tokens": 37,
+            "preview": "- **declarative-repo-setup**: Generate and verify a working environment.yaml (Devin snapshot-setup blueprint) for a repo"
+          }
+        ]
+      },
+      "tools": {
+        "count": 23,
+        "names": [
+          "ask_user_question",
+          "edit",
+          "exec",
+          "find_file_by_name",
+          "get_output",
+          "grep",
+          "kill_shell",
+          "mcp_call_tool",
+          "mcp_list_servers",
+          "mcp_list_tools",
+          "mcp_read_resource",
+          "notebook_edit",
+          "notebook_read",
+          "read",
+          "read_subagent",
+          "request_scope",
+          "run_subagent",
+          "skill",
+          "todo_write",
+          "web_search",
+          "webfetch",
+          "write",
+          "write_to_process"
+        ],
+        "tokens": 8874,
+        "items": [
+          {
+            "tool_index": 1,
+            "array_index": 0,
+            "path": "tools.0",
+            "name": "ask_user_question",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 2970,
+            "tokens": 648,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 2,
+            "array_index": 1,
+            "path": "tools.1",
+            "name": "edit",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1787,
+            "tokens": 381,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 3,
+            "array_index": 2,
+            "path": "tools.2",
+            "name": "exec",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 5303,
+            "tokens": 1198,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 4,
+            "array_index": 3,
+            "path": "tools.3",
+            "name": "find_file_by_name",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1219,
+            "tokens": 281,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 5,
+            "array_index": 4,
+            "path": "tools.4",
+            "name": "get_output",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 2023,
+            "tokens": 425,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 6,
+            "array_index": 5,
+            "path": "tools.5",
+            "name": "grep",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1453,
+            "tokens": 319,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 7,
+            "array_index": 6,
+            "path": "tools.6",
+            "name": "kill_shell",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 438,
+            "tokens": 95,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 8,
+            "array_index": 7,
+            "path": "tools.7",
+            "name": "mcp_call_tool",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 686,
+            "tokens": 153,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 9,
+            "array_index": 8,
+            "path": "tools.8",
+            "name": "mcp_list_servers",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 278,
+            "tokens": 63,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 10,
+            "array_index": 9,
+            "path": "tools.9",
+            "name": "mcp_list_tools",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 450,
+            "tokens": 93,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 11,
+            "array_index": 10,
+            "path": "tools.10",
+            "name": "mcp_read_resource",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 599,
+            "tokens": 139,
+            "is_mcp_related": true,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 12,
+            "array_index": 11,
+            "path": "tools.11",
+            "name": "notebook_edit",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 898,
+            "tokens": 207,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 13,
+            "array_index": 12,
+            "path": "tools.12",
+            "name": "notebook_read",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 379,
+            "tokens": 84,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 14,
+            "array_index": 13,
+            "path": "tools.13",
+            "name": "read",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 827,
+            "tokens": 171,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 15,
+            "array_index": 14,
+            "path": "tools.14",
+            "name": "read_subagent",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 843,
+            "tokens": 182,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 16,
+            "array_index": 15,
+            "path": "tools.15",
+            "name": "request_scope",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 650,
+            "tokens": 136,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 17,
+            "array_index": 16,
+            "path": "tools.16",
+            "name": "run_subagent",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 5066,
+            "tokens": 1041,
+            "is_mcp_related": false,
+            "is_subagent_related": true
+          },
+          {
+            "tool_index": 18,
+            "array_index": 17,
+            "path": "tools.17",
+            "name": "skill",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1611,
+            "tokens": 350,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 19,
+            "array_index": 18,
+            "path": "tools.18",
+            "name": "todo_write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 9936,
+            "tokens": 2115,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 20,
+            "array_index": 19,
+            "path": "tools.19",
+            "name": "web_search",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1195,
+            "tokens": 283,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 21,
+            "array_index": 20,
+            "path": "tools.20",
+            "name": "webfetch",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 279,
+            "tokens": 60,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 22,
+            "array_index": 21,
+            "path": "tools.21",
+            "name": "write",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 742,
+            "tokens": 162,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          },
+          {
+            "tool_index": 23,
+            "array_index": 22,
+            "path": "tools.22",
+            "name": "write_to_process",
+            "type": "function",
+            "keys": [
+              "description",
+              "name",
+              "parameters",
+              "type"
+            ],
+            "chars": 1174,
+            "tokens": 288,
+            "is_mcp_related": false,
+            "is_subagent_related": false
+          }
+        ]
+      },
+      "mcp": {
+        "marker_count": 16,
+        "paths": [
+          "instructions",
+          "tools.10",
+          "tools.10.description",
+          "tools.10.name",
+          "tools.10.parameters.properties.server_name.description",
+          "tools.7",
+          "tools.7.description",
+          "tools.7.name",
+          "tools.7.parameters.properties.server_name.description",
+          "tools.8",
+          "tools.8.description",
+          "tools.8.name",
+          "tools.9",
+          "tools.9.description",
+          "tools.9.name",
+          "tools.9.parameters.properties.server_name.description"
+        ],
+        "count": 4,
+        "tokens": 448,
+        "mention_count": 1,
+        "mention_tokens": 3776,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "mcp_1",
+            "source_type": "text_mention",
+            "is_counted": false,
+            "path": "instructions",
+            "chars": 18339,
+            "tokens": 3776,
+            "preview": "You are Devin, an interactive command line agent from Cognition.\n\nYour job is to use these instructions and the tools av"
+          },
+          {
+            "marker_index": 2,
+            "name": "mcp_call_tool",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.7",
+            "chars": 686,
+            "tokens": 153,
+            "preview": "{\"description\":\"Execute a tool on an MCP server. Use this to interact with external services like Linear, GitHub, Slack,"
+          },
+          {
+            "marker_index": 3,
+            "name": "mcp_list_servers",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.8",
+            "chars": 278,
+            "tokens": 63,
+            "preview": "{\"description\":\"Lists all MCP servers you have access to. Use this first if the user is asking about any third party int"
+          },
+          {
+            "marker_index": 4,
+            "name": "mcp_list_tools",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.9",
+            "chars": 450,
+            "tokens": 93,
+            "preview": "{\"description\":\"List available tools and resources from MCP servers. Use this to discover what capabilities are availabl"
+          },
+          {
+            "marker_index": 5,
+            "name": "mcp_read_resource",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.10",
+            "chars": 599,
+            "tokens": 139,
+            "preview": "{\"description\":\"Read a resource from an MCP server. Resources can be files, database records, API responses, or any data"
+          }
+        ]
+      },
+      "subagents": {
+        "marker_count": 16,
+        "paths": [
+          "instructions",
+          "instructions.subagent.0",
+          "instructions.subagent.1",
+          "tools.14",
+          "tools.14.description",
+          "tools.14.name",
+          "tools.14.parameters.properties.agent_id.description",
+          "tools.14.parameters.properties.block.description",
+          "tools.16",
+          "tools.16.description",
+          "tools.16.name",
+          "tools.16.parameters.properties.is_background.description",
+          "tools.16.parameters.properties.profile.description",
+          "tools.16.parameters.properties.resume.description",
+          "tools.16.parameters.properties.task.description",
+          "tools.16.parameters.properties.title.description"
+        ],
+        "count": 4,
+        "tokens": 1360,
+        "mention_count": 0,
+        "mention_tokens": 0,
+        "items": [
+          {
+            "marker_index": 1,
+            "name": "subagent_explore",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "instructions.subagent.0",
+            "chars": 298,
+            "tokens": 65,
+            "preview": "- `subagent_explore`: Read-only subagent for codebase exploration, research, and search. Use this when you need to find"
+          },
+          {
+            "marker_index": 2,
+            "name": "subagent_general",
+            "source_type": "declaration",
+            "is_counted": true,
+            "path": "instructions.subagent.1",
+            "chars": 334,
+            "tokens": 72,
+            "preview": "- `subagent_general`: General-purpose subagent with full tool access (read, write, edit, exec). Use this when the subage"
+          },
+          {
+            "marker_index": 3,
+            "name": "read_subagent",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.14",
+            "chars": 843,
+            "tokens": 182,
+            "preview": "{\"description\":\"Reads the response from a background subagent, using the agent_id you got from the run_subagent tool or"
+          },
+          {
+            "marker_index": 4,
+            "name": "run_subagent",
+            "source_type": "tool_declaration",
+            "is_counted": true,
+            "path": "tools.16",
+            "chars": 5066,
+            "tokens": 1041,
+            "preview": "{\"description\":\"Launch an independent subagent to handle a task autonomously.\\n\\nSubagents (also referred to as just \\\"a"
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "body_bytes": 179330,
+    "body_tokens": 39839,
+    "skill_count": 6,
+    "tool_count": 69,
+    "mcp_marker_count": 48,
+    "mcp_mention_count": 3,
+    "subagent_marker_count": 48,
+    "subagent_mention_count": 0
+  },
+  "post_totals": {
+    "body_bytes": 179330,
+    "body_tokens": 39839,
+    "skill_count": 6,
+    "tool_count": 69,
+    "mcp_marker_count": 48,
+    "mcp_mention_count": 3,
+    "subagent_marker_count": 48,
+    "subagent_mention_count": 0
+  },
+  "benchmark": {
+    "schema_version": "hibench.benchmark.v1",
+    "run_id": "devin-2026.7.23-hi",
+    "agent_id": "devin",
+    "agent_version": "2026.7.23",
+    "run_dir": "runs/devin-2026.7.23-hi",
+    "agent_name": "Devin",
+    "agent_image": "hibench/devin:2026.7.23",
+    "prompt_file": "prompts/hi.txt",
+    "prompt_name": "hi",
+    "started_at": "2026-06-21T03:06:30Z",
+    "ended_at": "2026-06-21T03:06:31Z",
+    "subject_workspace": "generated empty Git repository",
+    "real_api_call": false,
+    "process_exit_code": 1,
+    "process_timed_out": false,
+    "request_count": 5,
+    "post_request_count": 5,
+    "has_primary_request": true,
+    "primary_request_index": 3,
+    "request_method": "POST",
+    "request_path": "/exa.api_server_pb.ApiServerService/GetChatMessage",
+    "model": "swe-1-6-fast",
+    "tokenizer_library": "tiktoken",
+    "tokenizer_encoding": "o200k_base",
+    "anthropic_tokenizer_model": "claude-opus-4-8",
+    "anthropic_total_body_tokens": 19557,
+    "total_body_tokens": 13106,
+    "body_tokens": 13106,
+    "body_bytes": 59464,
+    "body_chars": 60479,
+    "text_field_count": 4,
+    "text_tokens": 3964,
+    "system_prompt_tokens": 3896,
+    "environment_context_tokens": 67,
+    "user_prompt_tokens": 1,
+    "assistant_context_tokens": 0,
+    "tool_context_tokens": 0,
+    "other_text_tokens": 0,
+    "main_instructions_tokens": 3776,
+    "developer_instructions_tokens": 120,
+    "permissions_instructions_tokens": 0,
+    "skills_instructions_tokens": 120,
+    "injected_user_context_tokens": 67,
+    "instruction_tokens": 3963,
+    "default_context_tokens": 12837,
+    "skills_count": 2,
+    "skills_tokens": 120,
+    "skill_definition_tokens": 76,
+    "tool_count": 23,
+    "tool_definition_tokens": 8874,
+    "mcp_count": 4,
+    "mcp_tokens": 448,
+    "mcp_marker_count": 16,
+    "mcp_mention_count": 1,
+    "mcp_mention_tokens": 3776,
+    "subagent_count": 4,
+    "subagent_tokens": 1360,
+    "subagent_marker_count": 16,
+    "subagent_mention_count": 0,
+    "subagent_mention_tokens": 0
+  }
+}

@@ -98,6 +98,7 @@ export const AGENT_DISPLAY_NAMES = {
   codex: 'Codex CLI',
   'claude-code': 'Claude Code',
   'cursor-cli': 'Cursor CLI',
+  devin: 'Devin',
   droid: 'Droid',
   'github-cli': 'Copilot CLI',
   'mistral-vibe': 'Mistral Vibe',
@@ -125,6 +126,11 @@ export const AGENT_LOGOS = {
   'cursor-cli': {
     path: '/agent-logos/cursor-cli.svg',
     alt: 'Cursor logo',
+    source: 'official',
+  },
+  devin: {
+    path: '/agent-logos/devin.png',
+    alt: 'Devin logo',
     source: 'official',
   },
   droid: {

@@ -165,6 +165,12 @@ class PyPIPackageCatalog:
     dist_tags: dict[str, str]
 
 
+@dataclass(frozen=True)
+class StaticManifestCatalog:
+    versions: list[str]
+    dist_tags: dict[str, str]
+
+
 def version_catalog_path(
     agent_id: str, storage_dir: str | Path = VERSION_CATALOG_DIR
 ) -> Path:
@@ -323,6 +329,17 @@ def fetch_pypi_metadata(package_name: str, timeout: int = 60) -> dict[str, Any]:
     return payload
 
 
+def fetch_json_url(url: str, timeout: int = 60) -> dict[str, Any]:
+    request = urllib.request.Request(url, headers={"Accept": "application/json"})
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        payload = json.load(response)
+    if not isinstance(payload, dict):
+        raise ValueError(
+            f"unexpected JSON payload for {url}: {type(payload).__name__}"
+        )
+    return payload
+
+
 def pypi_version_sort_key(version: str) -> tuple[int, Version | str]:
     try:
         return (0, Version(version))
@@ -381,6 +398,27 @@ def fetch_cursor_install_versions(url: str, timeout: int = 60) -> list[str]:
     return versions
 
 
+def parse_static_manifest_catalog(
+    source_url: str, payload: dict[str, Any]
+) -> StaticManifestCatalog:
+    version = payload.get("version")
+    if not version:
+        raise ValueError(f"static manifest {source_url} does not define version")
+    version_text = str(version)
+    return StaticManifestCatalog(
+        versions=[version_text],
+        dist_tags={"latest": version_text},
+    )
+
+
+def fetch_static_manifest_catalog(
+    source_url: str, timeout: int = 60
+) -> StaticManifestCatalog:
+    return parse_static_manifest_catalog(
+        source_url, fetch_json_url(source_url, timeout=timeout)
+    )
+
+
 def fetch_agent_version_catalog(agent_id: str, timeout: int = 60) -> VersionCatalog:
     spec = load_agent(agent_id)
     source = spec.version_source
@@ -404,6 +442,13 @@ def fetch_agent_version_catalog(agent_id: str, timeout: int = 60) -> VersionCata
         source_url = str(source.get("url") or "https://cursor.com/install")
         versions = fetch_cursor_install_versions(source_url, timeout=timeout)
         dist_tags["latest"] = versions[-1]
+    elif source_type == "static-manifest":
+        source_url = str(source.get("url") or "")
+        if not source_url:
+            raise ValueError("static-manifest version source must define url")
+        manifest_catalog = fetch_static_manifest_catalog(source_url, timeout=timeout)
+        versions = manifest_catalog.versions
+        dist_tags.update(manifest_catalog.dist_tags)
     else:
         raise ValueError(f"unsupported version source for {agent_id!r}: {source_type}")
     if source_type != "pypi":

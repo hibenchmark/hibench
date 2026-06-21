@@ -5,6 +5,7 @@ from .claude_code import ClaudeCodeParser
 from .cline import ClineParser
 from .codex import CodexParser
 from .cursor_cli import CursorCliParser
+from .devin import DevinParser
 from .droid import DroidParser
 from .github_cli import GitHubCliParser
 from .grok_cli import GrokCliParser
@@ -24,6 +25,7 @@ _PARSERS: dict[str, RequestParser] = {
     "cline": ClineParser(),
     "codex": CodexParser(),
     "cursor-cli": CursorCliParser(),
+    "devin": DevinParser(),
     "droid": DroidParser(),
     "github-cli": GitHubCliParser(),
     "grok-cli": GrokCliParser(),
@@ -40,6 +42,7 @@ _AGENT_PARSER_IDS: dict[str, str] = {
     "cline": "cline",
     "codex": "codex",
     "cursor-cli": "cursor-cli",
+    "devin": "devin",
     "droid": "droid",
     "github-cli": "github-cli",
     "grok-cli": "grok-cli",

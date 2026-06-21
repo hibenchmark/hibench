@@ -1,0 +1,27 @@
+{
+  "schema_version": "hibench.agent_versions.v1",
+  "agent_id": "devin",
+  "source": {
+    "type": "static-manifest",
+    "url": "https://static.devin.ai/cli/current/manifest.json",
+    "platform": "x86_64-unknown-linux"
+  },
+  "fetched_at": "2026-06-21T03:07:49Z",
+  "version_count": 1,
+  "benchmark_version_policy_id": "stable_semver",
+  "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
+  "benchmark_version_count": 1,
+  "benchmark_exclusion_count": 0,
+  "benchmark_exclusions": {},
+  "excluded_benchmark_versions": [],
+  "latest": "2026.7.23",
+  "dist_tags": {
+    "latest": "2026.7.23"
+  },
+  "versions": [
+    "2026.7.23"
+  ],
+  "benchmark_versions": [
+    "2026.7.23"
+  ]
+}

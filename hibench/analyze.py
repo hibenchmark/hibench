@@ -506,15 +506,19 @@ def is_generation_request(summary: dict[str, Any]) -> bool:
 def summarize_request(
     record: dict[str, Any], parser_id: str | None = None
 ) -> dict[str, Any]:
-    body = record.get("json")
+    raw_json = record.get("json")
+    body = raw_json
     body_text = record.get("body_text") or ""
     if body is None:
         body = body_text
+    parser = get_parser(parser_id)
+    body = parser.normalize_body(record, body)
     serialized = compact_json(body) if not isinstance(body, str) else body
-    token_text = body_text or serialized
+    token_text = serialized if raw_json is None and not isinstance(body, str) else (
+        body_text or serialized
+    )
     model = body.get("model") if isinstance(body, dict) else None
     encoding, tokenizer = benchmark_tokenizer(str(model) if model else None)
-    parser = get_parser(parser_id)
     text_fields = collect_text_fields(body, encoding, parser)
     skills = collect_skills(body, encoding, parser)
     marker_hits = collect_marker_hits(body, encoding, parser)

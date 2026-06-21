@@ -155,6 +155,29 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(custom_model["provider"], "openai")
         self.assertEqual(custom_model["baseUrl"], "http://example.test/v1")
 
+    def test_devin_agent_loads(self) -> None:
+        self.assertIn("devin", list_agent_ids())
+        spec = load_agent("devin")
+        self.assertEqual(spec.version, "2026.7.23")
+        self.assertEqual(spec.command, ["-p", "{prompt}"])
+        self.assertEqual(spec.parser_id, "devin")
+        self.assertEqual(spec.version_build_arg, "DEVIN_VERSION")
+        self.assertEqual(
+            spec.version_source,
+            {
+                "type": "static-manifest",
+                "url": "https://static.devin.ai/cli/current/manifest.json",
+                "platform": "x86_64-unknown-linux",
+            },
+        )
+        self.assertEqual(spec.raw["benchmark_version_policy"], "stable_semver")
+        self.assertEqual(spec.env["HIBENCH_DEVIN_API_SERVER_URL"], "{base_url_root}")
+        self.assertEqual(spec.env["HIBENCH_DEVIN_API_KEY"], "hibench-dummy-key")
+        self.assertEqual(spec.env["HOME"], "/devin-home/home")
+        self.assertNotIn("DEVIN_MODEL", spec.env)
+        self.assertNotIn("OPENAI_API_KEY", spec.env)
+        self.assertNotIn("ANTHROPIC_API_KEY", spec.env)
+
     def test_cursor_cli_agent_loads(self) -> None:
         self.assertIn("cursor-cli", list_agent_ids())
         spec = load_agent("cursor-cli")
@@ -393,6 +416,11 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(spec.version, "0.153.0")
         self.assertEqual(spec.image, "hibench/droid:0.153.0")
 
+    def test_devin_agent_version_override_updates_image_tag(self) -> None:
+        spec = load_agent("devin", version="2026.7.22")
+        self.assertEqual(spec.version, "2026.7.22")
+        self.assertEqual(spec.image, "hibench/devin:2026.7.22")
+
     def test_cursor_cli_agent_version_override_updates_image_tag(self) -> None:
         spec = load_agent("cursor-cli", version="2026.06.13-00-00-00-test")
         self.assertEqual(spec.version, "2026.06.13-00-00-00-test")
@@ -532,6 +560,22 @@ class AgentTests(unittest.TestCase):
         self.assertLess(version_arg_index, install_layer_index)
         self.assertIn('"droid@${DROID_VERSION}"', dockerfile)
         self.assertIn("hibench-droid-entrypoint", dockerfile)
+
+    def test_devin_dockerfile_keeps_system_layer_version_independent(self) -> None:
+        dockerfile = (ROOT / "docker/agents/devin/Dockerfile").read_text(
+            encoding="utf-8"
+        )
+        system_layer_index = dockerfile.index("apt-get install")
+        home_index = dockerfile.index("/devin-home/home")
+        version_arg_index = dockerfile.index("ARG DEVIN_VERSION")
+        install_layer_index = dockerfile.index("static.devin.ai/cli/${DEVIN_VERSION}")
+
+        self.assertLess(system_layer_index, home_index)
+        self.assertLess(home_index, version_arg_index)
+        self.assertLess(version_arg_index, install_layer_index)
+        self.assertIn("DEVIN_PLATFORM=x86_64-unknown-linux", dockerfile)
+        self.assertIn("hibench-devin-entrypoint", dockerfile)
+        self.assertIn("devin --version", dockerfile)
 
     def test_cursor_cli_dockerfile_keeps_system_layer_version_independent(self) -> None:
         dockerfile = (ROOT / "docker/agents/cursor-cli/Dockerfile").read_text(

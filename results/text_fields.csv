@@ -2662,6 +2662,15 @@ If editing a git"
 hibench.benchmark.v1,cursor-cli-2026.06.16-20-30-07-a07d3ac-hi,cursor-cli,2026.06.16-20-30-07-a07d3ac,1,3,user_prompt,user_prompt,user,messages.2.content,29,10,"<user_query>
 Hi
 </user_query>"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,1,system_prompt,main_instructions,,instructions,18339,3776,"You are Devin, an interactive command line agent from Cognition.
+
+Your job is to use these instructions and the tools av"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,2,user_prompt,user_prompt,user,messages.0.content,2,1,Hi
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,3,environment_context,injected_user_context,system,environment_context.content,273,67,"<system_info>
+The following information is automatically generated context about your current environment.
+Current works"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,4,system_prompt,skills_instructions,system,skills.content,521,120,"<available_skills>
+The following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
 hibench.benchmark.v1,droid-0.100.0-hi,droid,0.100.0,1,1,environment_context,injected_user_context,user,input.0.content.0.text,1407,369,"<system-reminder>
 
 User system info (linux 6.6.87.2-microsoft-standard-WSL2)

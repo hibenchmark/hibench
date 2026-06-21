@@ -1,0 +1,10 @@
+schema_version,run_id,agent_id,agent_version,request_index,text_index,category,source,role,path,chars,tokens,preview
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,1,system_prompt,main_instructions,,instructions,18339,3776,"You are Devin, an interactive command line agent from Cognition.
+
+Your job is to use these instructions and the tools av"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,2,user_prompt,user_prompt,user,messages.0.content,2,1,Hi
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,3,environment_context,injected_user_context,system,environment_context.content,273,67,"<system_info>
+The following information is automatically generated context about your current environment.
+Current works"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,4,system_prompt,skills_instructions,system,skills.content,521,120,"<available_skills>
+The following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"

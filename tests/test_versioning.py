@@ -27,6 +27,7 @@ from hibench.versioning import (
     fetch_cursor_install_versions,
     fetch_npm_versions,
     fetch_pypi_package_catalog,
+    fetch_static_manifest_catalog,
     is_benchmark_version,
     is_stable_main_release_version,
     is_stable_semver_version,
@@ -162,6 +163,33 @@ class VersioningTests(unittest.TestCase):
         self.assertEqual(catalog.latest, "2026.06.12-19-59-36-f6aba9a")
         self.assertEqual(catalog.benchmark_versions, ["2026.06.12-19-59-36-f6aba9a"])
 
+    def test_fetch_agent_version_catalog_supports_static_manifest_source(
+        self,
+    ) -> None:
+        spec = SimpleNamespace(
+            version_source={
+                "type": "static-manifest",
+                "url": "https://static.example.test/cli/current/manifest.json",
+                "platform": "x86_64-unknown-linux",
+            },
+            raw={"benchmark_version_policy": "stable_semver"},
+        )
+        with patch("hibench.versioning.load_agent", return_value=spec):
+            with patch(
+                "hibench.versioning.fetch_static_manifest_catalog",
+                return_value=SimpleNamespace(
+                    versions=["2026.7.23"], dist_tags={"latest": "2026.7.23"}
+                ),
+            ) as static_manifest:
+                catalog = fetch_agent_version_catalog("devin")
+
+        static_manifest.assert_called_once_with(
+            "https://static.example.test/cli/current/manifest.json", timeout=60
+        )
+        self.assertEqual(catalog.source, spec.version_source)
+        self.assertEqual(catalog.latest, "2026.7.23")
+        self.assertEqual(catalog.benchmark_versions, ["2026.7.23"])
+
     def test_fetch_cursor_install_versions_parses_download_url(self) -> None:
         script = (
             'DOWNLOAD_URL="https://downloads.cursor.com/lab/'
@@ -171,6 +199,29 @@ class VersioningTests(unittest.TestCase):
             versions = fetch_cursor_install_versions("https://cursor.com/install")
 
         self.assertEqual(versions, ["2026.06.12-19-59-36-f6aba9a"])
+
+    def test_fetch_static_manifest_catalog_reads_version(self) -> None:
+        with patch(
+            "hibench.versioning.fetch_json_url",
+            return_value={
+                "version": "2026.7.23",
+                "platforms": {
+                    "x86_64-unknown-linux": {
+                        "url": "https://static.example.test/devin.tar.gz",
+                        "sha256": "abc123",
+                    }
+                },
+            },
+        ) as fetch_json:
+            catalog = fetch_static_manifest_catalog(
+                "https://static.example.test/cli/current/manifest.json"
+            )
+
+        fetch_json.assert_called_once_with(
+            "https://static.example.test/cli/current/manifest.json", timeout=60
+        )
+        self.assertEqual(catalog.versions, ["2026.7.23"])
+        self.assertEqual(catalog.dist_tags, {"latest": "2026.7.23"})
 
     def test_fetch_agent_version_catalog_applies_min_version_policy(self) -> None:
         spec = SimpleNamespace(

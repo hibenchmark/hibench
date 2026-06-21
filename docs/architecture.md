@@ -89,6 +89,21 @@ package directly, sets `CURSOR_ENABLE_AUTHLESS=1`, and points
 `CURSOR_LOCAL_AGENT_BASE_URL` plus a dummy provider key at the OpenAI-compatible recorder,
 so no Cursor account, Cursor backend, or upstream model call is required.
 
+Devin is installed in `docker/agents/devin/Dockerfile` from Cognition's static CLI
+manifest and pinned Linux tarball. The runner executes:
+
+```bash
+devin -p "Hi"
+```
+
+inside the same generated empty Git repo. hibench writes isolated
+`$XDG_DATA_HOME/devin/credentials.toml` and `$XDG_CONFIG_HOME/devin/config.json` at
+container startup with a dummy Devin key and API URLs pointed at the local recorder.
+Devin sends Connect/protobuf API requests; hibench parses the primary
+`ApiServerService/GetChatMessage` payload, while auth/status, telemetry, model-config,
+and session-title requests are treated as auxiliary. No Cognition-hosted session or
+upstream model call is required.
+
 Droid is installed in `docker/agents/droid/Dockerfile` from Factory's `droid` npm
 package. The runner executes:
 
@@ -193,16 +208,17 @@ Cloud account, saved settings, or upstream model call is required.
 ## Version automation
 
 `hibench versions <agent-id> --refresh` fetches the configured npm or PyPI version
-list, merged npm lists for agents that renamed packages, or Cursor's current install
-script release, and stores it in `agent_versions/<agent-id>.json`.
+list, merged npm lists for agents that renamed packages, Cursor's current install
+script release, or a static current manifest such as Devin's CLI manifest, and stores it
+in `agent_versions/<agent-id>.json`.
 
 `hibench benchmark <agent-id>` uses that catalog to run one canonical benchmark per
 selected agent version. The catalog still stores every npm version, but each agent selects
 only comparable benchmark versions by default. Codex uses plain `X.Y.0` stable main
-releases; Claude Code, Cline, Droid, GitHub Copilot CLI, Grok CLI, Kilo Code, OpenCode,
-OpenHands, OpenClaw, Pi, Hermes, and Mistral Vibe use plain stable semver releases such as
-`2.1.177`, `3.0.24`, `0.153.1`, `1.0.62`, `0.2.51`, `7.3.45`, `1.17.5`, `1.16.0`,
-`2026.6.6`, `0.79.3`, `0.16.0`, and `2.16.1`; Cursor CLI uses the install
+releases; Claude Code, Cline, Devin, Droid, GitHub Copilot CLI, Grok CLI, Kilo Code,
+OpenCode, OpenHands, OpenClaw, Pi, Hermes, and Mistral Vibe use plain stable semver
+releases such as `2.1.177`, `3.0.24`, `2026.7.23`, `0.153.1`, `1.0.62`, `0.2.51`,
+`7.3.45`, `1.17.5`, `1.16.0`, `2026.6.6`, `0.79.3`, `0.16.0`, and `2.16.1`; Cursor CLI uses the install
 script's timestamped release as-is because Cursor does not publish an npm/PyPI-style
 historical package catalog for the CLI tarballs. The stable policies exclude
 prereleases, platform/system variants like `*-linux-x64`, and timestamp/internal builds.

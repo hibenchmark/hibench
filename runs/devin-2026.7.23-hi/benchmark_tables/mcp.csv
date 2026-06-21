@@ -1,0 +1,8 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,1,mcp_1,text_mention,False,instructions,18339,3776,"You are Devin, an interactive command line agent from Cognition.
+
+Your job is to use these instructions and the tools av"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,2,mcp_call_tool,tool_declaration,True,tools.7,686,153,"{""description"":""Execute a tool on an MCP server. Use this to interact with external services like Linear, GitHub, Slack,"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,3,mcp_list_servers,tool_declaration,True,tools.8,278,63,"{""description"":""Lists all MCP servers you have access to. Use this first if the user is asking about any third party int"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,4,mcp_list_tools,tool_declaration,True,tools.9,450,93,"{""description"":""List available tools and resources from MCP servers. Use this to discover what capabilities are availabl"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,5,mcp_read_resource,tool_declaration,True,tools.10,599,139,"{""description"":""Read a resource from an MCP server. Resources can be files, database records, API responses, or any data"

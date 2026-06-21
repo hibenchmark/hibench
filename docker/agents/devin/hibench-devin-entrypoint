@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+api_url="${HIBENCH_DEVIN_API_SERVER_URL:-${DEVIN_API_URL:-}}"
+if [[ -z "${api_url}" ]]; then
+  echo "HIBENCH_DEVIN_API_SERVER_URL or DEVIN_API_URL must be set" >&2
+  exit 2
+fi
+
+python3 - <<'PY'
+import json
+import os
+from pathlib import Path
+
+api_url = os.environ.get("HIBENCH_DEVIN_API_SERVER_URL") or os.environ["DEVIN_API_URL"]
+api_key = os.environ.get("HIBENCH_DEVIN_API_KEY", "hibench-dummy-key")
+config_home = Path(os.environ["XDG_CONFIG_HOME"]) / "devin"
+data_home = Path(os.environ["XDG_DATA_HOME"]) / "devin"
+cache_home = Path(os.environ["XDG_CACHE_HOME"]) / "devin"
+home = Path(os.environ["HOME"])
+for path in (config_home, data_home, cache_home, home):
+    path.mkdir(parents=True, exist_ok=True)
+
+credentials = data_home / "credentials.toml"
+credentials.write_text(
+    "\n".join(
+        [
+            f"windsurf_api_key = {json.dumps(api_key)}",
+            f"api_server_url = {json.dumps(api_url)}",
+            'devin_webapp_host = "app.devin.ai"',
+            f"devin_api_url = {json.dumps(api_url)}",
+            "",
+        ]
+    ),
+    encoding="utf-8",
+)
+
+config = {"auto_update": False, "mcpServers": {}}
+(config_home / "config.json").write_text(
+    json.dumps(config, indent=2, sort_keys=True) + "\n",
+    encoding="utf-8",
+)
+PY
+
+exec /usr/local/bin/devin "$@"

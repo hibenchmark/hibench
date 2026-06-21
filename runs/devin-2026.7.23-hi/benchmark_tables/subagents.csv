@@ -1,0 +1,5 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,1,subagent_explore,declaration,True,instructions.subagent.0,298,65,"- `subagent_explore`: Read-only subagent for codebase exploration, research, and search. Use this when you need to find"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,2,subagent_general,declaration,True,instructions.subagent.1,334,72,"- `subagent_general`: General-purpose subagent with full tool access (read, write, edit, exec). Use this when the subage"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,3,read_subagent,tool_declaration,True,tools.14,843,182,"{""description"":""Reads the response from a background subagent, using the agent_id you got from the run_subagent tool or"
+hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,4,run_subagent,tool_declaration,True,tools.16,5066,1041,"{""description"":""Launch an independent subagent to handle a task autonomously.\n\nSubagents (also referred to as just \""a"
