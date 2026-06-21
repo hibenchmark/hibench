@@ -46,6 +46,10 @@ class RequestParser(Protocol):
         self, path: tuple[str, ...], text: str
     ) -> list[MarkerEntry]: ...
 
+    def count_marker_tool_declaration(
+        self, kind: str, path: tuple[str, ...], node: dict[str, Any]
+    ) -> bool: ...
+
     def is_auxiliary_request(self, summary: dict[str, Any]) -> bool: ...
 
 
@@ -109,6 +113,12 @@ class GenericParser:
     ) -> list[MarkerEntry]:
         _ = (path, text)
         return []
+
+    def count_marker_tool_declaration(
+        self, kind: str, path: tuple[str, ...], node: dict[str, Any]
+    ) -> bool:
+        _ = (kind, path, node)
+        return True
 
     def is_auxiliary_request(self, summary: dict[str, Any]) -> bool:
         _ = summary

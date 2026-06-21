@@ -344,7 +344,9 @@ def collect_marker_hits(
                 add_declaration_hits(add, dimension.key, path, node)
         if isinstance(node, dict) and is_tool_item_path(path):
             for dimension in MARKER_DIMENSIONS:
-                if identity_matches_marker(node, set(dimension.identity_markers)):
+                if identity_matches_marker(
+                    node, set(dimension.identity_markers)
+                ) and parser.count_marker_tool_declaration(dimension.key, path, node):
                     add(dimension.key, path, node, "tool_declaration")
         for dimension in MARKER_DIMENSIONS:
             if text_matches_marker(node, set(dimension.text_markers)):

@@ -1020,6 +1020,7 @@ A skill is a set of local instructions.
             "Scan <available_skills> and read SKILL.md when relevant.\n"
             f"{skills_xml}"
         )
+        timestamp_context = "[Sun 2026-06-21 10:21 UTC]"
         record = {
             "method": "POST",
             "path": "/v1/responses",
@@ -1035,7 +1036,9 @@ A skill is a set of local instructions.
                     {
                         "type": "message",
                         "role": "user",
-                        "content": [{"type": "input_text", "text": "Hi"}],
+                        "content": [
+                            {"type": "input_text", "text": f"{timestamp_context} Hi"}
+                        ],
                     },
                 ],
                 "tools": [
@@ -1043,6 +1046,12 @@ A skill is a set of local instructions.
                         "type": "function",
                         "name": "sessions_spawn",
                         "description": "Spawn an isolated sub-agent session.",
+                        "parameters": {},
+                    },
+                    {
+                        "type": "function",
+                        "name": "subagents",
+                        "description": "List available subagents.",
                         "parameters": {},
                     },
                     {
@@ -1065,6 +1074,10 @@ A skill is a set of local instructions.
             summary["text_fields"]["by_category"]["user_prompt"]["tokens"],
             count_tokens("Hi"),
         )
+        self.assertEqual(
+            summary["text_fields"]["by_source"]["injected_user_context"]["tokens"],
+            count_tokens(timestamp_context),
+        )
         self.assertEqual(summary["skills"]["count"], 2)
         self.assertEqual(
             [item["name"] for item in summary["skills"]["items"]],
@@ -1075,10 +1088,16 @@ A skill is a set of local instructions.
             "/openclaw/skills/github/SKILL.md",
         )
         self.assertEqual(summary["skills"]["tokens"], count_tokens(skills_xml))
-        self.assertEqual(summary["tools"]["count"], 2)
+        self.assertEqual(summary["tools"]["count"], 3)
         self.assertEqual(
             [item["name"] for item in summary["tools"]["items"]],
-            ["sessions_spawn", "read"],
+            ["sessions_spawn", "subagents", "read"],
+        )
+        self.assertEqual(summary["subagents"]["count"], 0)
+        self.assertGreaterEqual(summary["subagents"]["mention_count"], 2)
+        self.assertNotIn(
+            "tool_declaration",
+            {item["source_type"] for item in summary["subagents"]["items"]},
         )
 
     def test_summarize_request_classifies_hermes_chat_payload(self) -> None:

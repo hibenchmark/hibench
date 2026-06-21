@@ -1,6 +1,6 @@
 {
   "schema_version": "hibench.github_stars.v1",
-  "updated_at": "2026-06-21T02:00:00Z",
+  "updated_at": "2026-06-21T10:21:42Z",
   "agents": {
     "claude-code": {
       "github_repo": "anthropics/claude-code",
@@ -52,9 +52,9 @@
     },
     "openclaw": {
       "github_repo": "openclaw/openclaw",
-      "github_stars": 379672,
       "github_url": "https://github.com/openclaw/openclaw",
-      "updated_at": "2026-06-21T00:39:28Z"
+      "github_stars": 379741,
+      "updated_at": "2026-06-21T10:21:42Z"
     },
     "opencode": {
       "github_repo": "anomalyco/opencode",
