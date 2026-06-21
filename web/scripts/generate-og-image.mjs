@@ -133,6 +133,15 @@ function tokenValue(run) {
   return run.anthropicTotalTokens || run.totalTokens;
 }
 
+function formatInputCost(tokens) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 4,
+    maximumFractionDigits: 4,
+  }).format((tokens * 5) / 1_000_000);
+}
+
 function themeFor(agentId) {
   if (THEMES[agentId]) return THEMES[agentId];
   let hash = 0;
@@ -378,12 +387,27 @@ function stackedSegmentRects(parts, { x, y, width, height, clipId }) {
     .join('');
 }
 
-function metricBox({ x, y, value, label, accent }) {
+function metricBox({
+  x,
+  y,
+  value,
+  label,
+  accent,
+  width = 160,
+  height = 86,
+  compactValue = false,
+  compactLabel = false,
+  align = 'left',
+}) {
+  const valueClass = compactValue ? 'metric-value metric-value-compact' : 'metric-value';
+  const labelClass = compactLabel ? 'metric-label metric-label-compact' : 'metric-label';
+  const textX = align === 'center' ? x + width / 2 : x + 18;
+  const anchor = align === 'center' ? ' text-anchor="middle"' : '';
   return `
     <g>
-      <rect x="${x}" y="${y}" width="160" height="86" rx="18" fill="rgba(3, 17, 14, 0.74)" stroke="${accent}" stroke-opacity="0.32"/>
-      <text x="${x + 18}" y="${y + 38}" class="metric-value">${escapeXml(value)}</text>
-      <text x="${x + 18}" y="${y + 62}" class="metric-label">${escapeXml(label)}</text>
+      <rect x="${x}" y="${y}" width="${width}" height="${height}" rx="18" fill="rgba(3, 17, 14, 0.74)" stroke="${accent}" stroke-opacity="0.32"/>
+      <text x="${textX}" y="${y + 36}" class="${valueClass}"${anchor}>${escapeXml(value)}</text>
+      <text x="${textX}" y="${y + 60}" class="${labelClass}"${anchor}>${escapeXml(label)}</text>
     </g>
   `;
 }
@@ -469,7 +493,9 @@ function buildAgentSvg(agent, agentCount, assets) {
       .big-number { font: 900 92px/1 Inter, ui-sans-serif, system-ui, sans-serif; fill: #f5fff8; letter-spacing: -4px; }
       .number-label { font: 800 18px Inter, ui-sans-serif, system-ui, sans-serif; fill: #d8fff4; }
       .metric-value { font: 900 34px Inter, ui-sans-serif, system-ui, sans-serif; fill: #f5fff8; }
+      .metric-value-compact { font-size: 25px; letter-spacing: -0.8px; }
       .metric-label { font: 750 14px Inter, ui-sans-serif, system-ui, sans-serif; fill: #a9cabd; text-transform: uppercase; letter-spacing: 0.08em; }
+      .metric-label-compact { font-size: 10px; letter-spacing: 0.05em; }
       .legend-label { font: 800 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #f5fff8; }
       .legend-value { font: 650 13px Inter, ui-sans-serif, system-ui, sans-serif; fill: #a9cabd; }
       .badge { font: 900 42px Inter, ui-sans-serif, system-ui, sans-serif; fill: #020706; letter-spacing: -1px; }
@@ -494,13 +520,13 @@ function buildAgentSvg(agent, agentCount, assets) {
     <text x="64" y="382" class="number-label">Anthropic total request tokens before the first reply</text>
     <text x="64" y="410" class="muted">${escapeXml(totalDeltaLabel)} · first captured ${escapeXml(agent.firstVersion)}</text>
 
-    <rect x="720" y="104" width="430" height="262" rx="26" fill="rgba(9, 28, 23, 0.78)" stroke="#80d2bc" stroke-opacity="0.24"/>
-    <rect x="720" y="104" width="430" height="262" rx="26" fill="url(#top-glow)" opacity="0.42"/>
-    <text x="748" y="144" class="number-label">Latest footprint</text>
-    ${metricBox({ x: 748, y: 166, value: formatNumber(agent.toolCount), label: 'tools', accent: theme.label })}
-    ${metricBox({ x: 958, y: 166, value: formatNumber(agent.skillCount), label: 'skills', accent: '#10b981' })}
-    ${metricBox({ x: 748, y: 268, value: formatNumber(agent.subagentCount), label: 'sub-agents', accent: '#ffb86b' })}
-    ${metricBox({ x: 958, y: 268, value: formatNumber(agent.mcpCount), label: 'MCP', accent: '#ff5c8a' })}
+    <rect x="712" y="110" width="448" height="304" rx="28" fill="rgba(6, 22, 18, 0.66)" stroke="#80d2bc" stroke-opacity="0.2"/>
+    <text x="738" y="150" class="number-label">Latest footprint</text>
+    ${metricBox({ x: 738, y: 164, width: 190, height: 72, value: formatNumber(agent.toolCount), label: 'tools', accent: theme.label })}
+    ${metricBox({ x: 944, y: 164, width: 190, height: 72, value: formatNumber(agent.skillCount), label: 'skills', accent: '#10b981' })}
+    ${metricBox({ x: 738, y: 248, width: 190, height: 72, value: formatNumber(agent.subagentCount), label: 'sub-agents', accent: '#ffb86b' })}
+    ${metricBox({ x: 944, y: 248, width: 190, height: 72, value: formatNumber(agent.mcpCount), label: 'MCP', accent: '#ff5c8a' })}
+    ${metricBox({ x: 738, y: 332, width: 396, height: 72, value: formatInputCost(tokens), label: 'cost to say Hi', accent: '#38bdf8', align: 'center' })}
 
     <rect x="40" y="430" width="1120" height="166" rx="24" fill="rgba(9, 28, 23, 0.78)" stroke="#80d2bc" stroke-opacity="0.24"/>
     <text x="64" y="466" class="number-label">Request composition</text>

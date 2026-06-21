@@ -10,9 +10,19 @@ export function withBase(path: string): string {
 }
 
 const NUM = new Intl.NumberFormat('en-US');
+const USD_PRECISE = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 4,
+  maximumFractionDigits: 4,
+});
 
 export function formatNumber(n: number): string {
   return NUM.format(Math.round(n));
+}
+
+export function formatInputCost(tokens: number): string {
+  return USD_PRECISE.format((tokens * 5) / 1_000_000);
 }
 
 /** Compact token formatting, e.g. 21414 -> "21.4k". */

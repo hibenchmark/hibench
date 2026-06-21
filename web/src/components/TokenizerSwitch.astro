@@ -65,6 +65,12 @@ const { hasAnthropicData, anthropicModel = 'claude-opus-4-8', o200kModel = 'gpt-
 
     const storageKey = 'hibench.tokenizer';
     const numberFormat = new Intl.NumberFormat('en-US');
+    const usdPreciseFormat = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 4,
+      maximumFractionDigits: 4,
+    });
     const storedTokenizer = () => {
       try {
         return localStorage.getItem(storageKey);
@@ -94,6 +100,8 @@ const { hasAnthropicData, anthropicModel = 'claude-opus-4-8', o200kModel = 'gpt-
       const n = asNumber(value);
       return `${n >= 0 ? '+' : ''}${numberFormat.format(n)}`;
     };
+
+    const inputCost = (value) => usdPreciseFormat.format((asNumber(value) * 5) / 1_000_000);
 
     const activeTokenizer = () => {
       const requested = storedTokenizer();
@@ -131,6 +139,8 @@ const { hasAnthropicData, anthropicModel = 'claude-opus-4-8', o200kModel = 'gpt-
         const format = el.dataset.tokenizerFormat || 'number';
         if (format === 'signed') {
           el.textContent = signedNumber(raw);
+        } else if (format === 'input-cost') {
+          el.textContent = inputCost(raw);
         } else {
           el.textContent = numberFormat.format(asNumber(raw));
         }
