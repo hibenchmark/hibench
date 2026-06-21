@@ -42,6 +42,10 @@
     "subject_workspace": "generated-empty-git-repo",
     "notes": "The runner writes an inline Pi models.json with a local OpenAI-compatible recorder provider and returns a synthetic completion after capturing request payloads."
   },
+  "links": {
+    "official_url": "https://pi.dev",
+    "github_repo": "earendil-works/pi"
+  },
   "sources": [
     "https://pi.dev",
     "https://www.npmjs.com/package/@earendil-works/pi-coding-agent"

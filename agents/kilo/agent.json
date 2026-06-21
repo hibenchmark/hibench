@@ -43,6 +43,10 @@
     "host_timeout_seconds": 90,
     "notes": "The runner passes an inline Kilo config with a local OpenAI-compatible recorder provider and returns a synthetic completion after capturing request payloads."
   },
+  "links": {
+    "official_url": "https://kilo.ai/cli",
+    "github_repo": "Kilo-Org/kilocode"
+  },
   "sources": [
     "https://kilo.ai/cli",
     "https://github.com/Kilo-Org/kilocode",

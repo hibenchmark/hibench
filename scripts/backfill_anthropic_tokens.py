@@ -34,11 +34,11 @@ from hibench.anthropic_tokens import (  # noqa: E402
     DEFAULT_RPM,
     AnthropicTokenCounter,
     captured_body_text,
-    load_dotenv_file,
     primary_request_record,
     read_json,
 )
 from hibench.benchmark_export import export_benchmark_results  # noqa: E402
+from hibench.env_config import load_dotenv_file  # noqa: E402
 
 
 def parse_args() -> argparse.Namespace:

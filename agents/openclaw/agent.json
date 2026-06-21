@@ -46,6 +46,10 @@
     ],
     "notes": "The runner writes an isolated OpenClaw config with a local OpenAI Responses-compatible recorder provider and returns a synthetic response after capturing request payloads."
   },
+  "links": {
+    "official_url": "https://openclaw.ai",
+    "github_repo": "openclaw/openclaw"
+  },
   "sources": [
     "https://github.com/openclaw/openclaw",
     "https://www.npmjs.com/package/openclaw"

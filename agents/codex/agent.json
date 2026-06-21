@@ -39,6 +39,10 @@
     "subject_workspace": "generated-empty-git-repo",
     "notes": "The runner points Codex at a local OpenAI-compatible recorder and returns a synthetic completion after capturing request payloads."
   },
+  "links": {
+    "official_url": "https://openai.com/codex/",
+    "github_repo": "openai/codex"
+  },
   "sources": [
     "https://github.com/openai/codex",
     "https://help.openai.com/en/articles/11096431"

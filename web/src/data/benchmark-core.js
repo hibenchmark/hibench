@@ -5,7 +5,7 @@
 // generation. Everything here runs at build time (SSG), so Node `fs` access is
 // fine.
 
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseCsv } from './csv.js';
@@ -34,6 +34,19 @@ function findResultsDir() {
 
 const RESULTS_DIR = findResultsDir();
 
+function findRepoRoot() {
+  let dir = dirname(fileURLToPath(import.meta.url));
+  for (let i = 0; i < 8; i += 1) {
+    if (existsSync(join(dir, 'agents', 'codex', 'agent.json'))) return dir;
+    const parent = dirname(dir);
+    if (parent === dir) break;
+    dir = parent;
+  }
+  throw new Error('Could not locate repo root with agents/codex/agent.json.');
+}
+
+const REPO_ROOT = findRepoRoot();
+
 function loadCsv(name) {
   const path = join(RESULTS_DIR, name);
   if (!existsSync(path)) return [];
@@ -48,6 +61,38 @@ const num = (v) => {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
 };
+
+function readJson(path) {
+  return JSON.parse(readFileSync(path, 'utf8'));
+}
+
+function toGitHubUrl(repo) {
+  return repo ? `https://github.com/${repo}` : undefined;
+}
+
+function loadAgentLinks() {
+  const agentsDir = join(REPO_ROOT, 'agents');
+  const links = {};
+  for (const entry of readdirSync(agentsDir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const path = join(agentsDir, entry.name, 'agent.json');
+    if (!existsSync(path)) continue;
+    const raw = readJson(path);
+    const rawLinks = raw && typeof raw.links === 'object' ? raw.links : {};
+    const officialUrl = rawLinks.official_url || undefined;
+    const githubRepo = rawLinks.github_repo || undefined;
+    const githubUrl = rawLinks.github_url || toGitHubUrl(githubRepo);
+    links[entry.name] = { officialUrl, githubRepo, githubUrl };
+  }
+  return links;
+}
+
+function loadGitHubStars() {
+  const path = join(RESULTS_DIR, 'github_stars.json');
+  if (!existsSync(path)) return {};
+  const raw = readJson(path);
+  return raw && typeof raw.agents === 'object' ? raw.agents : {};
+}
 
 export const AGENT_DISPLAY_NAMES = {
   codex: 'Codex CLI',
@@ -134,6 +179,9 @@ export const AGENT_LOGOS = {
   },
 };
 
+export const AGENT_LINKS = loadAgentLinks();
+const GITHUB_STARS = loadGitHubStars();
+
 function toAgentDisplayName(agentId, agentName) {
   return AGENT_DISPLAY_NAMES[agentId] ?? agentName;
 }
@@ -146,6 +194,21 @@ function toAgentLogo(agentId, agentDisplayName) {
       source: 'generic',
     }
   );
+}
+
+function toAgentLinks(agentId) {
+  const links = { ...(AGENT_LINKS[agentId] ?? {}) };
+  const stars = GITHUB_STARS[agentId];
+  if (!stars || !links.githubRepo) return links;
+  const githubStars = num(stars.github_stars);
+  const githubRepo = String(stars.github_repo || '');
+  const repoMatches =
+    !githubRepo || githubRepo.toLowerCase() === links.githubRepo.toLowerCase();
+  if (githubStars > 0 && repoMatches) {
+    links.githubStars = githubStars;
+    links.githubStarsUpdatedAt = stars.updated_at || '';
+  }
+  return links;
 }
 
 /** Compare two dotted versions numerically (e.g. 2.1.9 < 2.1.100). */
@@ -228,6 +291,7 @@ export function getAgents() {
       agentName: runs[0].agentName,
       agentDisplayName,
       agentLogo: toAgentLogo(agentId, agentDisplayName),
+      agentLinks: toAgentLinks(agentId),
       latest: runs[runs.length - 1],
       firstVersion: runs[0].version,
       versionCount: runs.length,

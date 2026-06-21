@@ -42,6 +42,10 @@
     "subject_workspace": "generated-empty-git-repo",
     "notes": "The runner provides an inline OpenCode config with a local OpenAI-compatible recorder provider and returns a synthetic completion after capturing request payloads."
   },
+  "links": {
+    "official_url": "https://opencode.ai",
+    "github_repo": "anomalyco/opencode"
+  },
   "sources": [
     "https://github.com/anomalyco/opencode",
     "https://www.npmjs.com/package/opencode-ai"

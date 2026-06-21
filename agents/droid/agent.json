@@ -40,6 +40,10 @@
     "subject_workspace": "generated-empty-git-repo",
     "notes": "The runner writes an isolated ~/.factory/settings.json with a BYOK custom OpenAI Responses model whose baseUrl points at the local recorder. Factory API/session sync, keyring use, hooks, sounds, IDE auto-connect, and auto-update are disabled, and the dummy Factory key is only used to satisfy local CLI startup checks."
   },
+  "links": {
+    "official_url": "https://factory.ai/product/cli",
+    "github_repo": "Factory-AI/factory"
+  },
   "sources": [
     "https://docs.factory.ai/llms.txt",
     "https://docs.factory.ai/cli/droid-exec/overview",

@@ -6,6 +6,16 @@ from hibench.agents import ROOT, list_agent_ids, load_agent
 
 
 class AgentTests(unittest.TestCase):
+    def test_agents_have_public_link_metadata(self) -> None:
+        for agent_id in list_agent_ids():
+            with self.subTest(agent_id=agent_id):
+                links = load_agent(agent_id).raw.get("links")
+                self.assertIsInstance(links, dict)
+                self.assertTrue(links["official_url"].startswith("https://"))
+                github_repo = links.get("github_repo", "")
+                if github_repo:
+                    self.assertEqual(github_repo.count("/"), 1)
+
     def test_codex_agent_loads(self) -> None:
         self.assertIn("codex", list_agent_ids())
         spec = load_agent("codex")
@@ -299,9 +309,7 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(config["providers"][0]["backend"], "generic")
         self.assertEqual(spec.env["VIBE_HOME"], "/mistral-vibe-home")
         self.assertEqual(spec.env["HOME"], "/mistral-vibe-home/home")
-        self.assertEqual(
-            spec.env["HIBENCH_MISTRAL_VIBE_API_KEY"], "hibench-dummy-key"
-        )
+        self.assertEqual(spec.env["HIBENCH_MISTRAL_VIBE_API_KEY"], "hibench-dummy-key")
         self.assertNotIn("MISTRAL_API_KEY", spec.env)
 
     def test_openhands_agent_loads(self) -> None:

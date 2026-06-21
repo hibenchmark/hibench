@@ -21,6 +21,10 @@ from .benchmark_runs import (
     benchmark_run_info_from_summary,
     iter_benchmark_run_infos,
 )
+from .github_stars import (
+    github_stars_settings_from_env,
+    github_stars_updater_from_env,
+)
 from .runner import RunResult, ensure_docker_available, purge_docker_image, run_agent
 from .versioning import (
     VersionCatalog,
@@ -462,6 +466,7 @@ def build_benchmark_batch_manifest(
     rerun_existing: bool,
     export_results: bool,
     anthropic_tokenizer: dict[str, Any],
+    github_stars: dict[str, Any],
     results: list[VersionBenchmarkResult],
 ) -> dict[str, Any]:
     return {
@@ -491,6 +496,7 @@ def build_benchmark_batch_manifest(
         "rerun_existing": rerun_existing,
         "export_results": export_results,
         "anthropic_tokenizer": anthropic_tokenizer,
+        "github_stars": github_stars,
         "results": [result.to_dict() for result in results],
     }
 
@@ -550,11 +556,19 @@ def run_benchmark_batch(
     )
     anthropic_counted_run_count = 0
     anthropic_errors: list[dict[str, str]] = []
+    github_settings = github_stars_settings_from_env()
+    github_updater = (
+        github_stars_updater_from_env(out_dir=results_out)
+        if not dry_run and should_export and github_settings["enabled"]
+        else None
+    )
+    github_star_updated_count = 0
+    github_star_errors: list[dict[str, Any]] = []
     export_manifest = None
-    completed_run_export_count = 0
+    aggregate_refresh_count = 0
 
     def after_completed_run(result: VersionBenchmarkResult) -> None:
-        nonlocal anthropic_counted_run_count, completed_run_export_count, export_manifest
+        nonlocal anthropic_counted_run_count
         if result.status not in {"created", "replaced"}:
             return
         if anthropic_counter is not None:
@@ -571,9 +585,6 @@ def run_benchmark_batch(
                         "error": str(exc),
                     }
                 )
-        if should_export:
-            export_manifest = export_benchmark_results(out_dir, results_out)
-            completed_run_export_count += 1
 
     results = run_version_benchmarks(
         agent_id=agent_id,
@@ -585,10 +596,17 @@ def run_benchmark_batch(
         dry_run=dry_run,
         skip_existing=skip_existing,
         stop_on_error=stop_on_error,
-        after_each=(
-            after_completed_run if should_export or anthropic_counter is not None else None
-        ),
+        after_each=after_completed_run if anthropic_counter is not None else None,
     )
+    if should_export:
+        export_manifest = export_benchmark_results(out_dir, results_out)
+        aggregate_refresh_count += 1
+    if github_updater is not None:
+        github_result = github_updater.update_agent(agent_id)
+        if github_result.updated:
+            github_star_updated_count += 1
+        if github_result.error:
+            github_star_errors.append(github_result.to_dict())
     anthropic_tokenizer = {
         "enabled": bool(anthropic_counter),
         "api_key_env": anthropic_settings["api_key_env"],
@@ -602,6 +620,25 @@ def run_benchmark_batch(
         "counted_run_count": anthropic_counted_run_count,
         "error_count": len(anthropic_errors),
         "errors": anthropic_errors,
+    }
+    github_stars = {
+        "enabled": bool(github_updater),
+        "api_base_url": github_settings["api_base_url"],
+        "token_env": github_settings["token_env"],
+        "token_present": github_settings["token_present"],
+        "dotenv_path": github_settings.get("dotenv_path", ""),
+        "disabled_reason": (
+            "dry run"
+            if dry_run
+            else (
+                "aggregate export disabled"
+                if not should_export
+                else github_settings["disabled_reason"]
+            )
+        ),
+        "updated_agent_count": github_star_updated_count,
+        "error_count": len(github_star_errors),
+        "errors": github_star_errors,
     }
 
     manifest = build_benchmark_batch_manifest(
@@ -620,6 +657,7 @@ def run_benchmark_batch(
         rerun_existing=rerun_existing,
         export_results=should_export,
         anthropic_tokenizer=anthropic_tokenizer,
+        github_stars=github_stars,
         results=results,
     )
     out_path = Path(out_dir)
@@ -629,8 +667,6 @@ def run_benchmark_batch(
         json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
-    if should_export and completed_run_export_count == 0:
-        export_manifest = export_benchmark_results(out_dir, results_out)
 
     return BenchmarkBatchResult(
         agent_id=agent_id,
@@ -643,7 +679,7 @@ def run_benchmark_batch(
         manifest=manifest,
         manifest_path=manifest_path,
         export_manifest=export_manifest,
-        aggregate_refresh_count=completed_run_export_count,
+        aggregate_refresh_count=aggregate_refresh_count,
     )
 
 
@@ -861,6 +897,22 @@ def format_benchmark_batch_report(batch: BenchmarkBatchResult) -> str:
                     f"model={anthropic_tokenizer.get('model', '')} "
                     f"counted={anthropic_tokenizer.get('counted_run_count', 0)} "
                     f"errors={anthropic_tokenizer.get('error_count', 0)}"
+                ),
+                "",
+            ]
+        )
+    github_stars = batch.manifest.get("github_stars") or {}
+    if github_stars:
+        status = "enabled" if github_stars.get("enabled") else "disabled"
+        reason = github_stars.get("disabled_reason") or ""
+        suffix = f" ({reason})" if reason and status == "disabled" else ""
+        lines.extend(
+            [
+                (
+                    "github_stars: "
+                    f"{status}{suffix} "
+                    f"updated={github_stars.get('updated_agent_count', 0)} "
+                    f"errors={github_stars.get('error_count', 0)}"
                 ),
                 "",
             ]

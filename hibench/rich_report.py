@@ -91,6 +91,16 @@ def _summary_table(batch: BenchmarkBatchResult) -> Table:
     table.add_row("dry_run", str(batch.manifest["dry_run"]).lower())
     table.add_row("mode", _mode(batch))
     table.add_row("aggregate_export", str(batch.manifest["export_results"]).lower())
+    github_stars = batch.manifest.get("github_stars") or {}
+    if github_stars:
+        status = "enabled" if github_stars.get("enabled") else "disabled"
+        table.add_row(
+            "github_stars",
+            (
+                f"{status} updated={github_stars.get('updated_agent_count', 0)} "
+                f"errors={github_stars.get('error_count', 0)}"
+            ),
+        )
     return table
 
 

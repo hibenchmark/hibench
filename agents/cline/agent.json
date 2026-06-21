@@ -48,6 +48,10 @@
     "host_timeout_seconds": 90,
     "notes": "The container writes an isolated Cline provider settings file with an OpenAI-compatible recorder base URL and dummy key, then runs Cline in JSON one-shot mode."
   },
+  "links": {
+    "official_url": "https://cline.bot",
+    "github_repo": "cline/cline"
+  },
   "sources": [
     "https://github.com/cline/cline",
     "https://docs.cline.bot",

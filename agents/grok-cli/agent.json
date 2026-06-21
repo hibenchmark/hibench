@@ -37,6 +37,9 @@
     "subject_workspace": "generated-empty-git-repo",
     "notes": "The runner writes an isolated Grok config.toml with a custom model pointing at the local OpenAI-compatible recorder and a dummy env-key API key, then captures the main chat completion after Grok's optional session-title preflight."
   },
+  "links": {
+    "official_url": "https://x.ai/cli"
+  },
   "sources": [
     "https://docs.x.ai/build/overview",
     "https://www.npmjs.com/package/@xai-official/grok"

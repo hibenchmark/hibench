@@ -51,6 +51,10 @@
     "notes": "The runner uses Copilot CLI BYOK mode with an OpenAI Responses-compatible local recorder provider, COPILOT_OFFLINE=true, and a synthetic completion so no GitHub Copilot or upstream model call is required.",
     "host_timeout_seconds": 90
   },
+  "links": {
+    "official_url": "https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli",
+    "github_repo": "github/copilot-cli"
+  },
   "sources": [
     "https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli",
     "https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/authenticate-copilot-cli",

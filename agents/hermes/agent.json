@@ -33,6 +33,10 @@
     "subject_workspace": "generated-empty-git-repo",
     "notes": "The runner writes a clean Hermes config.yaml with a local OpenAI-compatible recorder provider and returns a synthetic chat completion after capturing request payloads."
   },
+  "links": {
+    "official_url": "https://hermes-agent.nousresearch.com/",
+    "github_repo": "NousResearch/hermes-agent"
+  },
   "sources": [
     "https://github.com/NousResearch/hermes-agent",
     "https://pypi.org/project/hermes-agent/"

@@ -38,6 +38,10 @@
     "subject_workspace": "generated-empty-git-repo",
     "notes": "The runner writes a clean Vibe config.toml under an isolated VIBE_HOME with a generic OpenAI-compatible provider whose api_base points at the local recorder. Telemetry, update checks, connectors, and remote Vibe Code are disabled so no Mistral account or upstream model call is required."
   },
+  "links": {
+    "official_url": "https://docs.mistral.ai/mistral-vibe/overview",
+    "github_repo": "mistralai/mistral-vibe"
+  },
   "sources": [
     "https://github.com/mistralai/mistral-vibe",
     "https://pypi.org/project/mistral-vibe/",

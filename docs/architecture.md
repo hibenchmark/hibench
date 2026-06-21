@@ -12,6 +12,15 @@ hibench captures what a coding agent sends by default before any real model call
    and auth retry noise.
 6. Save request payloads, stdout/stderr, manifest metadata, a summary, and normalized
    benchmark tables.
+7. When aggregate export is enabled for a single-agent benchmark, refresh
+   `results/github_stars.json` for that agent when it has `links.github_repo`
+   metadata. GitHub stars are fetched after Anthropic token counting and the aggregate
+   dashboard export. `hibench benchmark all` gets the same behavior by delegating to
+   the per-agent benchmark workflow.
+
+Agent detail pages read official links from `agents/<agent-id>/agent.json` and read the
+latest fetched star counts from `results/github_stars.json`; star counts are generated
+metadata, not hard-coded web literals.
 
 ## Agent targets
 

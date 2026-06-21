@@ -37,6 +37,10 @@
     "subject_workspace": "generated-empty-git-repo",
     "notes": "The runner points Claude Code at a local Anthropic Messages-compatible recorder and returns a synthetic completion after capturing request payloads."
   },
+  "links": {
+    "official_url": "https://www.anthropic.com/product/claude-code",
+    "github_repo": "anthropics/claude-code"
+  },
   "sources": [
     "https://code.claude.com/docs/llms.txt",
     "https://code.claude.com/docs/en/setup.md",

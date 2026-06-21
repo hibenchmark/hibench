@@ -540,7 +540,7 @@ class VersioningTests(unittest.TestCase):
         self.assertEqual([result.version for result in results], ["0.1.0", "0.2.0"])
         self.assertEqual(seen, ["0.1.0", "0.2.0"])
 
-    def test_benchmark_batch_exports_aggregate_results_after_each_run(self) -> None:
+    def test_benchmark_batch_exports_aggregate_results_after_batch(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             runs_dir = Path(tmp) / "runs"
             results_dir = Path(tmp) / "results"
@@ -575,13 +575,46 @@ class VersioningTests(unittest.TestCase):
                     tool_count=2,
                 ),
             ]
+            events: list[tuple[str, str]] = []
 
             def fake_run_version_benchmarks(**kwargs):
-                after_each = kwargs["after_each"]
-                self.assertIsNotNone(after_each)
-                for result in run_results:
-                    after_each(result)
+                self.assertIsNone(kwargs["after_each"])
                 return run_results
+
+            class FakeGitHubUpdater:
+                def update_agent(self, agent_id):
+                    events.append(("stars", agent_id))
+                    return SimpleNamespace(
+                        updated=agent_id == "codex",
+                        error="",
+                        to_dict=lambda: {},
+                    )
+
+            def fake_export(*_args, **_kwargs):
+                events.append(("export", ""))
+                return {
+                    "run_count": 2,
+                    "deduplicated_run_count": 0,
+                }
+
+            github_settings = {
+                "enabled": True,
+                "api_base_url": "https://api.github.com",
+                "token_env": "",
+                "token_present": False,
+                "dotenv_path": "",
+                "disabled_reason": "",
+            }
+            anthropic_settings = {
+                "enabled": False,
+                "api_key_env": "ANTHROPIC_API_KEY",
+                "api_key_present": False,
+                "base_url": "https://api.anthropic.com",
+                "model": "claude-test",
+                "rpm": 90.0,
+                "dotenv_path": "",
+                "disabled_reason": "ANTHROPIC_API_KEY is not set",
+            }
 
             with patch("hibench.automation.ensure_docker_available", return_value=True):
                 with patch(
@@ -593,28 +626,41 @@ class VersioningTests(unittest.TestCase):
                         side_effect=fake_run_version_benchmarks,
                     ):
                         with patch(
-                            "hibench.automation.export_benchmark_results",
-                            return_value={
-                                "run_count": 2,
-                                "deduplicated_run_count": 0,
-                            },
-                        ) as export:
-                            batch = run_benchmark_batch(
-                                agent_id="codex",
-                                prompt_path="prompts/hi.txt",
-                                out_dir=runs_dir,
-                                max_versions=2,
-                                build=False,
-                                results_out=results_dir,
-                            )
+                            "hibench.automation.anthropic_tokenizer_settings_from_env",
+                            return_value=anthropic_settings,
+                        ):
+                            with patch(
+                                "hibench.automation.github_stars_settings_from_env",
+                                return_value=github_settings,
+                            ):
+                                with patch(
+                                    "hibench.automation.github_stars_updater_from_env",
+                                    return_value=FakeGitHubUpdater(),
+                                ):
+                                    with patch(
+                                        "hibench.automation.export_benchmark_results",
+                                        side_effect=fake_export,
+                                    ) as export:
+                                        batch = run_benchmark_batch(
+                                            agent_id="codex",
+                                            prompt_path="prompts/hi.txt",
+                                            out_dir=runs_dir,
+                                            max_versions=2,
+                                            build=False,
+                                            results_out=results_dir,
+                                        )
 
             self.assertFalse(batch.has_errors)
-            self.assertEqual(batch.aggregate_refresh_count, 2)
+            self.assertEqual(batch.aggregate_refresh_count, 1)
             export.assert_called()
-            self.assertEqual(export.call_count, 2)
+            self.assertEqual(export.call_count, 1)
+            self.assertEqual(events, [("export", ""), ("stars", "codex")])
+            self.assertEqual(batch.manifest["github_stars"]["updated_agent_count"], 1)
             self.assertTrue((runs_dir / "benchmark_batch.json").exists())
 
-    def test_benchmark_batch_counts_anthropic_tokens_before_each_export(self) -> None:
+    def test_benchmark_batch_counts_anthropic_tokens_before_final_export_and_stars(
+        self,
+    ) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             runs_dir = Path(tmp) / "runs"
             results_dir = Path(tmp) / "results"
@@ -652,6 +698,11 @@ class VersioningTests(unittest.TestCase):
                     events.append(("count", Path(run_dir).name))
                     return SimpleNamespace(updated=True)
 
+            class FakeGitHubUpdater:
+                def update_agent(self, agent_id):
+                    events.append(("stars", agent_id))
+                    return SimpleNamespace(updated=True, error="", to_dict=lambda: {})
+
             def fake_run_version_benchmarks(**kwargs):
                 after_each = kwargs["after_each"]
                 self.assertIsNotNone(after_each)
@@ -670,6 +721,14 @@ class VersioningTests(unittest.TestCase):
                 "base_url": "https://api.anthropic.com",
                 "model": "claude-test",
                 "rpm": 90.0,
+                "disabled_reason": "",
+            }
+            github_settings = {
+                "enabled": True,
+                "api_base_url": "https://api.github.com",
+                "token_env": "",
+                "token_present": False,
+                "dotenv_path": "",
                 "disabled_reason": "",
             }
 
@@ -691,31 +750,40 @@ class VersioningTests(unittest.TestCase):
                                 return_value=FakeCounter(),
                             ):
                                 with patch(
-                                    "hibench.automation.export_benchmark_results",
-                                    side_effect=fake_export,
+                                    "hibench.automation.github_stars_settings_from_env",
+                                    return_value=github_settings,
                                 ):
-                                    batch = run_benchmark_batch(
-                                        agent_id="codex",
-                                        prompt_path="prompts/hi.txt",
-                                        out_dir=runs_dir,
-                                        max_versions=2,
-                                        build=False,
-                                        results_out=results_dir,
-                                    )
+                                    with patch(
+                                        "hibench.automation.github_stars_updater_from_env",
+                                        return_value=FakeGitHubUpdater(),
+                                    ):
+                                        with patch(
+                                            "hibench.automation.export_benchmark_results",
+                                            side_effect=fake_export,
+                                        ):
+                                            batch = run_benchmark_batch(
+                                                agent_id="codex",
+                                                prompt_path="prompts/hi.txt",
+                                                out_dir=runs_dir,
+                                                max_versions=2,
+                                                build=False,
+                                                results_out=results_dir,
+                                            )
 
             self.assertEqual(
                 events,
                 [
                     ("count", "codex-0.1.0-hi"),
-                    ("export", ""),
                     ("count", "codex-0.2.0-hi"),
                     ("export", ""),
+                    ("stars", "codex"),
                 ],
             )
             self.assertEqual(
                 batch.manifest["anthropic_tokenizer"]["counted_run_count"], 2
             )
             self.assertEqual(batch.manifest["anthropic_tokenizer"]["error_count"], 0)
+            self.assertEqual(batch.manifest["github_stars"]["updated_agent_count"], 1)
 
     def test_all_benchmark_batches_write_structured_manifests(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

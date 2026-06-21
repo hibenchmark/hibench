@@ -29,6 +29,7 @@ export interface AgentSummary {
   agentName: string;
   agentDisplayName: string;
   agentLogo: AgentLogo;
+  agentLinks: AgentLinks;
   latest: RunRow;
   firstVersion: string;
   versionCount: number;
@@ -42,6 +43,14 @@ export interface AgentLogo {
   path: string;
   alt: string;
   source: 'official' | 'generic';
+}
+
+export interface AgentLinks {
+  officialUrl?: string;
+  githubRepo?: string;
+  githubUrl?: string;
+  githubStars?: number;
+  githubStarsUpdatedAt?: string;
 }
 
 export interface ToolRow {
@@ -82,6 +91,7 @@ export interface GlobalStats {
 export const AGENT_DISPLAY_NAMES: Record<string, string>;
 export const GENERIC_AGENT_LOGO: string;
 export const AGENT_LOGOS: Record<string, AgentLogo>;
+export const AGENT_LINKS: Record<string, AgentLinks>;
 
 export function compareVersions(a: string, b: string): number;
 export function getPrimaryRuns(): RunRow[];

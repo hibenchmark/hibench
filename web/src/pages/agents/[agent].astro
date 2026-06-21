@@ -5,7 +5,7 @@ import StatCard from '../../components/StatCard.astro';
 import EvolutionChart from '../../components/EvolutionChart.astro';
 import TokenizerSwitch from '../../components/TokenizerSwitch.astro';
 import VersionExplorer from '../../components/VersionExplorer.astro';
-import { withBase, formatInputCost, formatNumber } from '../../lib/format';
+import { withBase, formatCompact, formatInputCost, formatNumber } from '../../lib/format';
 import {
   getAgents,
   getAgentVersions,
@@ -26,6 +26,7 @@ const latest = summary.latest;
 const first = versions[0];
 const previous = versions[versions.length - 2] ?? first;
 const agentName = summary.agentDisplayName;
+const links = summary.agentLinks;
 const hasAnthropicData = versions.length > 0 && versions.every((run) => run.anthropicTotalTokens > 0);
 const anthropicModel = latest.anthropicTokenizerModel || 'claude-opus-4-8';
 
@@ -98,16 +99,60 @@ const versionData = versions.map((run) => ({
         <p class="mt-2 ui-muted">
           Latest <span class="font-medium">v{latest.version}</span>
         </p>
-        <div class="mt-3 flex items-center gap-2">
-          <span
+        <div class="mt-3 flex flex-wrap items-center gap-2">
+          <a
+            href={withBase('/rankings')}
             class="ui-badge rounded-full px-2.5 py-1 text-xs font-semibold tabular-nums"
-            title={`#${rank} of ${allAgents.length} agents by default request tokens`}
+            title="View full rankings"
             data-tokenizer-text
             data-o200k-text={`Rank #${rank} of ${allAgents.length}`}
             data-anthropic-text={`Rank #${anthropicRank} of ${allAgents.length}`}
           >
             Rank #{initialRank} of {allAgents.length}
-          </span>
+          </a>
+          {
+            links.officialUrl && (
+              <a
+                href={links.officialUrl}
+                class="official-link group inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  class="official-link-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18" />
+                  <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18" />
+                </svg>
+                <span>Official site</span>
+              </a>
+            )
+          }
+          {
+            links.githubUrl && links.githubStars ? (
+              <a
+                href={links.githubUrl}
+                class="github-link group inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold tabular-nums"
+                title={`${formatNumber(links.githubStars)} GitHub stars on ${links.githubRepo}${
+                  links.githubStarsUpdatedAt ? ` (updated ${links.githubStarsUpdatedAt})` : ''
+                }`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="github-link-icon" aria-hidden="true" />
+                <span>GitHub</span>
+                <span class="github-link-stars">★ {formatCompact(links.githubStars)}</span>
+              </a>
+            ) : null
+          }
         </div>
       </div>
     </div>
@@ -219,3 +264,62 @@ const versionData = versions.map((run) => ({
     <VersionExplorer versions={versionData} />
   </section>
 </Layout>
+
+<style>
+  .official-link {
+    color: var(--color-secondary);
+    background: rgba(255, 184, 107, 0.12);
+    border: 1px solid rgba(255, 184, 107, 0.22);
+    transition:
+      background 0.15s ease,
+      border-color 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .official-link:hover {
+    background: rgba(255, 184, 107, 0.2);
+    border-color: rgba(255, 184, 107, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .official-link-icon {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .official-link-arrow {
+    padding-left: 0.4rem;
+    margin-left: 0.1rem;
+    border-left: 1px solid rgba(255, 184, 107, 0.3);
+  }
+
+  .github-link {
+    color: var(--color-secondary);
+    background: rgba(255, 184, 107, 0.12);
+    border: 1px solid rgba(255, 184, 107, 0.22);
+    transition:
+      background 0.15s ease,
+      border-color 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .github-link:hover {
+    background: rgba(255, 184, 107, 0.2);
+    border-color: rgba(255, 184, 107, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .github-link-icon {
+    width: 0.95rem;
+    height: 0.95rem;
+    background-color: currentColor;
+    -webkit-mask: url('/github-svgrepo-com.svg') center / contain no-repeat;
+    mask: url('/github-svgrepo-com.svg') center / contain no-repeat;
+  }
+
+  .github-link-stars {
+    padding-left: 0.4rem;
+    margin-left: 0.1rem;
+    border-left: 1px solid rgba(255, 184, 107, 0.3);
+  }
+</style>
