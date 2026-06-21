@@ -6324,6 +6324,10 @@ hibench.benchmark.v1,opencode-1.17.8-hi,opencode,1.17.8,1,1,system_prompt,main_i
 
 You are a deep"
 hibench.benchmark.v1,opencode-1.17.8-hi,opencode,1.17.8,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
+hibench.benchmark.v1,opencode-1.17.9-hi,opencode,1.17.9,1,1,system_prompt,main_instructions,system,messages.0.content,10296,2094,"You are OpenCode, You and the user share the same workspace and collaborate to achieve the user's goals.
+
+You are a deep"
+hibench.benchmark.v1,opencode-1.17.9-hi,opencode,1.17.9,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
 hibench.benchmark.v1,opencode-1.2.19-hi,opencode,1.2.19,1,1,system_prompt,main_instructions,system,messages.0.content,7672,1637,"You are OpenCode, the best coding agent on the planet.
 
 You are an interactive CLI tool that helps users with software e"
