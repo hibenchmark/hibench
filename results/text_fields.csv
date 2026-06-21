@@ -878,6 +878,45 @@ hibench.benchmark.v1,claude-code-2.1.181-hi,claude-code,2.1.181,1,6,system_promp
 You are an interactive agent that helps users with software engineering tasks.
 
 IMPORTANT: Assist with authorized secur"
+hibench.benchmark.v1,claude-code-2.1.182-hi,claude-code,2.1.182,2,1,environment_context,injected_user_context,user,messages.0.content.0.text,306,70,"<system-reminder>
+As you answer the user's questions, you can use the following context:
+# currentDate
+Today's date is 2"
+hibench.benchmark.v1,claude-code-2.1.182-hi,claude-code,2.1.182,2,2,user_prompt,user_prompt,user,messages.0.content.1.text,2,1,Hi
+hibench.benchmark.v1,claude-code-2.1.182-hi,claude-code,2.1.182,2,3,system_prompt,skills_instructions,system,messages.1.content,5995,1350,"Available agent types for the Agent tool:
+- claude: Catch-all for any task that doesn't fit a more specific agent. Fleet"
+hibench.benchmark.v1,claude-code-2.1.182-hi,claude-code,2.1.182,2,4,system_prompt,main_instructions,,system.0.text,74,26,x-anthropic-billing-header: cc_version=2.1.182.894; cc_entrypoint=sdk-cli;
+hibench.benchmark.v1,claude-code-2.1.182-hi,claude-code,2.1.182,2,5,system_prompt,main_instructions,,system.1.text,62,15,"You are a Claude agent, built on Anthropic's Claude Agent SDK."
+hibench.benchmark.v1,claude-code-2.1.182-hi,claude-code,2.1.182,2,6,system_prompt,main_instructions,,system.2.text,5950,1335,"
+You are an interactive agent that helps users with software engineering tasks.
+
+IMPORTANT: Assist with authorized secur"
+hibench.benchmark.v1,claude-code-2.1.183-hi,claude-code,2.1.183,1,1,environment_context,injected_user_context,user,messages.0.content.0.text,306,70,"<system-reminder>
+As you answer the user's questions, you can use the following context:
+# currentDate
+Today's date is 2"
+hibench.benchmark.v1,claude-code-2.1.183-hi,claude-code,2.1.183,1,2,user_prompt,user_prompt,user,messages.0.content.1.text,2,1,Hi
+hibench.benchmark.v1,claude-code-2.1.183-hi,claude-code,2.1.183,1,3,system_prompt,skills_instructions,system,messages.1.content,5995,1350,"Available agent types for the Agent tool:
+- claude: Catch-all for any task that doesn't fit a more specific agent. Fleet"
+hibench.benchmark.v1,claude-code-2.1.183-hi,claude-code,2.1.183,1,4,system_prompt,main_instructions,,system.0.text,74,26,x-anthropic-billing-header: cc_version=2.1.183.aeb; cc_entrypoint=sdk-cli;
+hibench.benchmark.v1,claude-code-2.1.183-hi,claude-code,2.1.183,1,5,system_prompt,main_instructions,,system.1.text,62,15,"You are a Claude agent, built on Anthropic's Claude Agent SDK."
+hibench.benchmark.v1,claude-code-2.1.183-hi,claude-code,2.1.183,1,6,system_prompt,main_instructions,,system.2.text,5950,1335,"
+You are an interactive agent that helps users with software engineering tasks.
+
+IMPORTANT: Assist with authorized secur"
+hibench.benchmark.v1,claude-code-2.1.185-hi,claude-code,2.1.185,1,1,environment_context,injected_user_context,user,messages.0.content.0.text,306,70,"<system-reminder>
+As you answer the user's questions, you can use the following context:
+# currentDate
+Today's date is 2"
+hibench.benchmark.v1,claude-code-2.1.185-hi,claude-code,2.1.185,1,2,user_prompt,user_prompt,user,messages.0.content.1.text,2,1,Hi
+hibench.benchmark.v1,claude-code-2.1.185-hi,claude-code,2.1.185,1,3,system_prompt,skills_instructions,system,messages.1.content,5995,1350,"Available agent types for the Agent tool:
+- claude: Catch-all for any task that doesn't fit a more specific agent. Fleet"
+hibench.benchmark.v1,claude-code-2.1.185-hi,claude-code,2.1.185,1,4,system_prompt,main_instructions,,system.0.text,74,26,x-anthropic-billing-header: cc_version=2.1.185.ecf; cc_entrypoint=sdk-cli;
+hibench.benchmark.v1,claude-code-2.1.185-hi,claude-code,2.1.185,1,5,system_prompt,main_instructions,,system.1.text,62,15,"You are a Claude agent, built on Anthropic's Claude Agent SDK."
+hibench.benchmark.v1,claude-code-2.1.185-hi,claude-code,2.1.185,1,6,system_prompt,main_instructions,,system.2.text,5950,1335,"
+You are an interactive agent that helps users with software engineering tasks.
+
+IMPORTANT: Assist with authorized secur"
 hibench.benchmark.v1,claude-code-2.1.58-hi,claude-code,2.1.58,1,1,user_prompt,user_prompt,user,messages.0.content,3,1,foo
 hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,1,user_prompt,user_prompt,user,messages.0.content,3,1,foo
 hibench.benchmark.v1,claude-code-2.1.61-hi,claude-code,2.1.61,1,1,environment_context,injected_user_context,user,messages.0.content.0.text,305,70,"<system-reminder>
@@ -1336,6 +1375,10 @@ hibench.benchmark.v1,cline-3.0.26-hi,cline,3.0.26,1,1,system_prompt,main_instruc
 hibench.benchmark.v1,cline-3.0.26-hi,cline,3.0.26,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
 hibench.benchmark.v1,cline-3.0.27-hi,cline,3.0.27,1,1,system_prompt,main_instructions,system,messages.0.content,3129,603,"You are Cline, an AI coding agent. Your primary goal is to assist users with various coding tasks by leveraging your kno"
 hibench.benchmark.v1,cline-3.0.27-hi,cline,3.0.27,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
+hibench.benchmark.v1,cline-3.0.28-hi,cline,3.0.28,1,1,system_prompt,main_instructions,system,messages.0.content,3646,701,"You are Cline, an AI coding agent. Your primary goal is to assist users with various coding tasks by leveraging your kno"
+hibench.benchmark.v1,cline-3.0.28-hi,cline,3.0.28,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
+hibench.benchmark.v1,cline-3.0.29-hi,cline,3.0.29,1,1,system_prompt,main_instructions,system,messages.0.content,3646,701,"You are Cline, an AI coding agent. Your primary goal is to assist users with various coding tasks by leveraging your kno"
+hibench.benchmark.v1,cline-3.0.29-hi,cline,3.0.29,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
 hibench.benchmark.v1,cline-3.0.3-hi,cline,3.0.3,1,1,system_prompt,main_instructions,system,messages.0.content,2888,557,"You are Cline, an AI coding agent. Your primary goal is to assist users with various coding tasks by leveraging your kno"
 hibench.benchmark.v1,cline-3.0.3-hi,cline,3.0.3,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
 hibench.benchmark.v1,cline-3.0.4-hi,cline,3.0.4,1,1,system_prompt,main_instructions,system,messages.0.content,2888,557,"You are Cline, an AI coding agent. Your primary goal is to assist users with various coding tasks by leveraging your kno"
@@ -2660,6 +2703,19 @@ Shell: bash
 Workspace Path: /workspace
 If editing a git"
 hibench.benchmark.v1,cursor-cli-2026.06.16-20-30-07-a07d3ac-hi,cursor-cli,2026.06.16-20-30-07-a07d3ac,1,3,user_prompt,user_prompt,user,messages.2.content,29,10,"<user_query>
+Hi
+</user_query>"
+hibench.benchmark.v1,cursor-cli-2026.06.19-20-24-33-653a7fb-hi,cursor-cli,2026.06.19-20-24-33-653a7fb,1,1,system_prompt,main_instructions,system,messages.0.content,21385,4726,"You are an AI coding assistant, powered by gpt-5.
+
+You are an interactive CLI tool that helps users with software engine"
+hibench.benchmark.v1,cursor-cli-2026.06.19-20-24-33-653a7fb-hi,cursor-cli,2026.06.19-20-24-33-653a7fb,1,2,environment_context,injected_user_context,user,messages.1.content,628,155,"<user_info>
+OS Version: linux 6.6.87.2-microsoft-standard-WSL2
+
+Shell: bash
+
+Workspace Path: /workspace
+If editing a git"
+hibench.benchmark.v1,cursor-cli-2026.06.19-20-24-33-653a7fb-hi,cursor-cli,2026.06.19-20-24-33-653a7fb,1,3,user_prompt,user_prompt,user,messages.2.content,29,10,"<user_query>
 Hi
 </user_query>"
 hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,1,system_prompt,main_instructions,,instructions,18339,3776,"You are Devin, an interactive command line agent from Cognition.
@@ -5027,6 +5083,34 @@ The following skills are available for use:
 hibench.benchmark.v1,grok-cli-0.2.57-hi,grok-cli,0.2.57,2,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
 Hi
 </user_query>"
+hibench.benchmark.v1,grok-cli-0.2.58-hi,grok-cli,0.2.58,2,1,system_prompt,main_instructions,system,messages.0.content,12769,2566,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
+hibench.benchmark.v1,grok-cli-0.2.58-hi,grok-cli,0.2.58,2,2,environment_context,injected_user_context,user,messages.1.content,196,52,"<user_info>
+OS Version: linux
+Shell: /bin/sh
+Workspace Path: /workspace
+Today's date: 2026-06-21
+Note: Prefer using rela"
+hibench.benchmark.v1,grok-cli-0.2.58-hi,grok-cli,0.2.58,2,3,system_prompt,skills_instructions,user,messages.2.content,2895,698,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.58-hi,grok-cli,0.2.58,2,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
+Hi
+</user_query>"
+hibench.benchmark.v1,grok-cli-0.2.59-hi,grok-cli,0.2.59,2,1,system_prompt,main_instructions,system,messages.0.content,12769,2566,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
+hibench.benchmark.v1,grok-cli-0.2.59-hi,grok-cli,0.2.59,2,2,environment_context,injected_user_context,user,messages.1.content,196,52,"<user_info>
+OS Version: linux
+Shell: /bin/sh
+Workspace Path: /workspace
+Today's date: 2026-06-21
+Note: Prefer using rela"
+hibench.benchmark.v1,grok-cli-0.2.59-hi,grok-cli,0.2.59,2,3,system_prompt,skills_instructions,user,messages.2.content,2895,698,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.59-hi,grok-cli,0.2.59,2,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
+Hi
+</user_query>"
 hibench.benchmark.v1,grok-cli-0.2.6-hi,grok-cli,0.2.6,1,1,system_prompt,main_instructions,system,messages.0.content,15960,3249,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
 hibench.benchmark.v1,grok-cli-0.2.6-hi,grok-cli,0.2.6,1,2,environment_context,injected_user_context,user,messages.1.content,171,41,"<user_info>
 OS Version: linux
@@ -5038,6 +5122,20 @@ The following skills are available for use:
 
 - create-skill: Interactively create a new Grok skill (SK"
 hibench.benchmark.v1,grok-cli-0.2.6-hi,grok-cli,0.2.6,1,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
+Hi
+</user_query>"
+hibench.benchmark.v1,grok-cli-0.2.60-hi,grok-cli,0.2.60,1,1,system_prompt,main_instructions,system,messages.0.content,12769,2566,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
+hibench.benchmark.v1,grok-cli-0.2.60-hi,grok-cli,0.2.60,1,2,environment_context,injected_user_context,user,messages.1.content,196,52,"<user_info>
+OS Version: linux
+Shell: /bin/sh
+Workspace Path: /workspace
+Today's date: 2026-06-21
+Note: Prefer using rela"
+hibench.benchmark.v1,grok-cli-0.2.60-hi,grok-cli,0.2.60,1,3,system_prompt,skills_instructions,user,messages.2.content,2895,698,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.60-hi,grok-cli,0.2.60,1,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
 Hi
 </user_query>"
 hibench.benchmark.v1,grok-cli-0.2.7-hi,grok-cli,0.2.7,1,1,system_prompt,main_instructions,system,messages.0.content,15960,3249,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
@@ -5608,6 +5706,12 @@ hibench.benchmark.v1,kilo-7.3.5-hi,kilo,7.3.5,1,3,environment_context,injected_u
 Current time: 2026-06-14T23:51:01+00:00
 Working directory: /workspace
 Workspace root folder: /work"
+hibench.benchmark.v1,kilo-7.3.50-hi,kilo,7.3.50,1,1,system_prompt,main_instructions,system,messages.0.content,13712,2809,"You are Kilo, a highly skilled software engineer with extensive knowledge in many programming languages, frameworks, des"
+hibench.benchmark.v1,kilo-7.3.50-hi,kilo,7.3.50,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,kilo-7.3.50-hi,kilo,7.3.50,1,3,environment_context,injected_user_context,user,messages.1.content.1.text,148,42,"<environment_details>
+Current time: 2026-06-21T11:09:27+00:00
+Working directory: /workspace
+Workspace root folder: /work"
 hibench.benchmark.v1,kilo-7.3.6-hi,kilo,7.3.6,1,1,system_prompt,main_instructions,system,messages.0.content,13712,2809,"You are Kilo, a highly skilled software engineer with extensive knowledge in many programming languages, frameworks, des"
 hibench.benchmark.v1,kilo-7.3.6-hi,kilo,7.3.6,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,3,2,Hi
 hibench.benchmark.v1,kilo-7.3.6-hi,kilo,7.3.6,1,3,environment_context,injected_user_context,user,messages.1.content.1.text,148,42,"<environment_details>
@@ -5691,6 +5795,12 @@ hibench.benchmark.v1,mistral-vibe-2.16.0-hi,mistral-vibe,2.16.0,1,2,user_prompt,
 hibench.benchmark.v1,mistral-vibe-2.16.1-hi,mistral-vibe,2.16.1,1,1,system_prompt,main_instructions,system,messages.0.content,26318,6228,"You are Mistral Vibe, a CLI coding agent built by Mistral AI. You work on a local codebase using tools.
 Today's date is"
 hibench.benchmark.v1,mistral-vibe-2.16.1-hi,mistral-vibe,2.16.1,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
+hibench.benchmark.v1,mistral-vibe-2.17.0-hi,mistral-vibe,2.17.0,1,1,system_prompt,main_instructions,system,messages.0.content,26316,6229,"You are Mistral Vibe, a CLI coding agent built by Mistral AI. You work on a local codebase using tools.
+Today's date is"
+hibench.benchmark.v1,mistral-vibe-2.17.0-hi,mistral-vibe,2.17.0,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
+hibench.benchmark.v1,mistral-vibe-2.17.1-hi,mistral-vibe,2.17.1,1,1,system_prompt,main_instructions,system,messages.0.content,26316,6230,"You are Mistral Vibe, a CLI coding agent built by Mistral AI. You work on a local codebase using tools.
+Today's date is"
+hibench.benchmark.v1,mistral-vibe-2.17.1-hi,mistral-vibe,2.17.1,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
 hibench.benchmark.v1,mistral-vibe-2.2.0-hi,mistral-vibe,2.2.0,1,1,system_prompt,main_instructions,system,messages.0.content,22936,5477,"You are Mistral Vibe, a CLI coding agent built by Mistral AI, powered by the Devstral model family. You interact with a"
 hibench.benchmark.v1,mistral-vibe-2.2.0-hi,mistral-vibe,2.2.0,1,2,user_prompt,user_prompt,user,messages.1.content,2,1,Hi
 hibench.benchmark.v1,mistral-vibe-2.2.1-hi,mistral-vibe,2.2.1,1,1,system_prompt,main_instructions,system,messages.0.content,22936,5477,"You are Mistral Vibe, a CLI coding agent built by Mistral AI, powered by the Devstral model family. You interact with a"
@@ -6803,3 +6913,7 @@ hibench.benchmark.v1,pi-0.79.6-hi,pi,0.79.6,1,1,system_prompt,main_instructions,
 hibench.benchmark.v1,pi-0.79.6-hi,pi,0.79.6,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
 hibench.benchmark.v1,pi-0.79.7-hi,pi,0.79.7,1,1,system_prompt,main_instructions,system,messages.0.content,2489,549,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
 hibench.benchmark.v1,pi-0.79.7-hi,pi,0.79.7,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,pi-0.79.8-hi,pi,0.79.8,1,1,system_prompt,main_instructions,system,messages.0.content,2489,549,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
+hibench.benchmark.v1,pi-0.79.8-hi,pi,0.79.8,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,pi-0.79.9-hi,pi,0.79.9,1,1,system_prompt,main_instructions,system,messages.0.content,2489,549,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
+hibench.benchmark.v1,pi-0.79.9-hi,pi,0.79.9,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi

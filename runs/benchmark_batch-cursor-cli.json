@@ -9,11 +9,11 @@
   "benchmark_version_count": 1,
   "benchmark_exclusion_count": 0,
   "excluded_benchmark_versions": [],
-  "selected_version_count": 0,
+  "selected_version_count": 1,
   "requested_versions": [],
   "existing_agent_benchmark_version_count": 4,
-  "skipped_existing_version_count": 1,
-  "candidate_version_count": 0,
+  "skipped_existing_version_count": 0,
+  "candidate_version_count": 1,
   "initial_version_limit": 100,
   "initial_version_limit_applied": false,
   "prompt_file": "prompts/hi.txt",
@@ -24,5 +24,41 @@
   "skip_existing": false,
   "rerun_existing": false,
   "export_results": true,
-  "results": []
+  "anthropic_tokenizer": {
+    "enabled": true,
+    "api_key_env": "ANTHROPIC_API_KEY",
+    "model": "claude-opus-4-8",
+    "base_url": "https://api.anthropic.com",
+    "rpm": 90.0,
+    "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
+    "disabled_reason": "",
+    "counted_run_count": 1,
+    "error_count": 0,
+    "errors": []
+  },
+  "github_stars": {
+    "enabled": true,
+    "api_base_url": "https://api.github.com",
+    "token_env": "",
+    "token_present": false,
+    "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
+    "disabled_reason": "",
+    "updated_agent_count": 0,
+    "error_count": 0,
+    "errors": []
+  },
+  "results": [
+    {
+      "agent_id": "cursor-cli",
+      "version": "2026.06.19-20-24-33-653a7fb",
+      "status": "created",
+      "run_id": "cursor-cli-2026.06.19-20-24-33-653a7fb-hi",
+      "run_dir": "runs/cursor-cli-2026.06.19-20-24-33-653a7fb-hi",
+      "replaced_run_dirs": [],
+      "has_primary_request": true,
+      "total_body_tokens": 16326,
+      "tool_count": 15,
+      "error": ""
+    }
+  ]
 }

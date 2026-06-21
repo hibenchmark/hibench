@@ -2,6 +2,7 @@
 name: weekly-benchmark-update
 description: Run the weekly hibench benchmark and draft the @hibenchmark X update thread from current-vs-last-recorded benchmark findings.
 allowed_tools: read,write,shell
+skills: hibench-communication
 ---
 
 # Weekly Benchmark Update Mode

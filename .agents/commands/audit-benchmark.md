@@ -1,7 +1,7 @@
 ---
 name: audit-benchmark
 description: Audit a hibench run or request for parser, capture, and aggregate-data correctness.
-allowed_tools: read,shell
+allowed_tools: read,shell,sub-agent
 ---
 
 # Benchmark Audit Mode

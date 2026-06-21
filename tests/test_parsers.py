@@ -953,7 +953,27 @@ A skill is a set of local instructions.
                         "type": "function",
                         "function": {
                             "name": "spawn_subagent",
-                            "description": "Spawn a subagent for parallel work.",
+                            "description": (
+                                "Launch a new agent to handle complex tasks.\n\n"
+                                "Available agent types and the tools they have "
+                                "access to:\n\n"
+                                "- **general-purpose**: General-purpose agent for "
+                                "research and multi-step tasks.\n"
+                                "- **explore**: Fast agent specialized for exploring "
+                                "codebases.\n"
+                                "- **plan**: Software architect agent for designing "
+                                "implementation plans.\n\n"
+                                "When using the spawn_subagent tool, specify a "
+                                "subagent_type parameter."
+                            ),
+                            "parameters": {},
+                        },
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "get_command_or_subagent_output",
+                            "description": "Get command or subagent output.",
                             "parameters": {},
                         },
                     },
@@ -985,16 +1005,36 @@ A skill is a set of local instructions.
             ["help", "check-work"],
         )
         self.assertEqual(
+            summary["skills"]["items"][0]["description"],
+            (
+                "Grok documentation and configuration help "
+                "Use when: users ask about setup or configuration."
+            ),
+        )
+        self.assertEqual(
             summary["skills"]["items"][0]["file"],
             "/grok-home/home/.grok/skills/help/SKILL.md",
         )
-        self.assertEqual(summary["tools"]["count"], 2)
+        self.assertEqual(summary["tools"]["count"], 3)
         self.assertEqual(
             [item["name"] for item in summary["tools"]["items"]],
-            ["run_terminal_command", "spawn_subagent"],
+            [
+                "run_terminal_command",
+                "spawn_subagent",
+                "get_command_or_subagent_output",
+            ],
         )
-        self.assertEqual(summary["subagents"]["count"], 1)
+        self.assertEqual(summary["subagents"]["count"], 3)
+        self.assertEqual(
+            [
+                item["name"]
+                for item in summary["subagents"]["items"]
+                if item["is_counted"]
+            ],
+            ["general-purpose", "explore", "plan"],
+        )
         self.assertTrue(summary["tools"]["items"][1]["is_subagent_related"])
+        self.assertTrue(summary["tools"]["items"][2]["is_subagent_related"])
 
     def test_summarize_request_parses_openclaw_responses_payload(self) -> None:
         skills_xml = (

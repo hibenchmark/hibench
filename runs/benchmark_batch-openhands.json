@@ -1,0 +1,53 @@
+{
+  "schema_version": "hibench.benchmark_batch.v1",
+  "agent_id": "openhands",
+  "catalog_path": "agent_versions/openhands.json",
+  "version_count": 34,
+  "benchmark_version_policy_id": "stable_semver",
+  "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
+  "benchmark_min_version": "1.11.0",
+  "benchmark_version_count": 9,
+  "benchmark_exclusion_count": 1,
+  "excluded_benchmark_versions": [
+    "1.15.1"
+  ],
+  "selected_version_count": 0,
+  "requested_versions": [],
+  "existing_agent_benchmark_version_count": 9,
+  "skipped_existing_version_count": 9,
+  "candidate_version_count": 0,
+  "initial_version_limit": 100,
+  "initial_version_limit_applied": false,
+  "prompt_file": "prompts/hi.txt",
+  "out_dir": "runs",
+  "results_out": "results",
+  "dry_run": true,
+  "build": true,
+  "skip_existing": false,
+  "rerun_existing": false,
+  "export_results": false,
+  "anthropic_tokenizer": {
+    "enabled": false,
+    "api_key_env": "ANTHROPIC_API_KEY",
+    "model": "claude-opus-4-8",
+    "base_url": "https://api.anthropic.com",
+    "rpm": 90.0,
+    "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
+    "disabled_reason": "dry run",
+    "counted_run_count": 0,
+    "error_count": 0,
+    "errors": []
+  },
+  "github_stars": {
+    "enabled": false,
+    "api_base_url": "https://api.github.com",
+    "token_env": "",
+    "token_present": false,
+    "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
+    "disabled_reason": "dry run",
+    "updated_agent_count": 0,
+    "error_count": 0,
+    "errors": []
+  },
+  "results": []
+}

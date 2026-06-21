@@ -1,78 +1,78 @@
 {
   "schema_version": "hibench.github_stars.v1",
-  "updated_at": "2026-06-21T10:21:42Z",
+  "updated_at": "2026-06-21T11:10:44Z",
   "agents": {
     "claude-code": {
       "github_repo": "anthropics/claude-code",
-      "github_stars": 133489,
       "github_url": "https://github.com/anthropics/claude-code",
-      "updated_at": "2026-06-21T00:39:22Z"
+      "github_stars": 133551,
+      "updated_at": "2026-06-21T11:04:51Z"
     },
     "cline": {
       "github_repo": "cline/cline",
-      "github_stars": 63574,
       "github_url": "https://github.com/cline/cline",
-      "updated_at": "2026-06-21T00:39:22Z"
+      "github_stars": 63592,
+      "updated_at": "2026-06-21T11:07:05Z"
     },
     "codex": {
       "github_repo": "openai/codex",
-      "github_stars": 92328,
       "github_url": "https://github.com/openai/codex",
-      "updated_at": "2026-06-21T00:39:23Z"
+      "github_stars": 92403,
+      "updated_at": "2026-06-21T11:07:07Z"
     },
     "droid": {
       "github_repo": "Factory-AI/factory",
-      "github_stars": 976,
       "github_url": "https://github.com/Factory-AI/factory",
-      "updated_at": "2026-06-21T00:39:23Z"
+      "github_stars": 976,
+      "updated_at": "2026-06-21T11:07:35Z"
     },
     "github-cli": {
       "github_repo": "github/copilot-cli",
-      "github_stars": 10834,
       "github_url": "https://github.com/github/copilot-cli",
-      "updated_at": "2026-06-21T00:39:23Z"
+      "github_stars": 10831,
+      "updated_at": "2026-06-21T11:07:37Z"
     },
     "hermes": {
       "github_repo": "NousResearch/hermes-agent",
-      "github_stars": 198307,
       "github_url": "https://github.com/NousResearch/hermes-agent",
-      "updated_at": "2026-06-21T00:39:27Z"
+      "github_stars": 198609,
+      "updated_at": "2026-06-21T11:08:40Z"
     },
     "kilo": {
       "github_repo": "Kilo-Org/kilocode",
-      "github_stars": 23356,
       "github_url": "https://github.com/Kilo-Org/kilocode",
-      "updated_at": "2026-06-21T00:39:27Z"
+      "github_stars": 23511,
+      "updated_at": "2026-06-21T11:09:29Z"
     },
     "mistral-vibe": {
       "github_repo": "mistralai/mistral-vibe",
-      "github_stars": 4537,
       "github_url": "https://github.com/mistralai/mistral-vibe",
-      "updated_at": "2026-06-21T00:39:27Z"
+      "github_stars": 4543,
+      "updated_at": "2026-06-21T11:10:03Z"
     },
     "openclaw": {
       "github_repo": "openclaw/openclaw",
       "github_url": "https://github.com/openclaw/openclaw",
-      "github_stars": 379741,
-      "updated_at": "2026-06-21T10:21:42Z"
+      "github_stars": 379746,
+      "updated_at": "2026-06-21T11:10:05Z"
     },
     "opencode": {
       "github_repo": "anomalyco/opencode",
       "github_url": "https://github.com/anomalyco/opencode",
-      "github_stars": 176676,
-      "updated_at": "2026-06-21T02:00:00Z"
+      "github_stars": 176806,
+      "updated_at": "2026-06-21T11:10:07Z"
     },
     "openhands": {
       "github_repo": "OpenHands/OpenHands",
-      "github_stars": 77847,
       "github_url": "https://github.com/OpenHands/OpenHands",
-      "updated_at": "2026-06-21T00:39:28Z"
+      "github_stars": 77884,
+      "updated_at": "2026-06-21T11:10:08Z"
     },
     "pi": {
       "github_repo": "earendil-works/pi",
-      "github_stars": 64286,
       "github_url": "https://github.com/earendil-works/pi",
-      "updated_at": "2026-06-21T00:39:29Z"
+      "github_stars": 64372,
+      "updated_at": "2026-06-21T11:10:44Z"
     }
   }
 }
