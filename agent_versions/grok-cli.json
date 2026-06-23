@@ -5,18 +5,18 @@
     "type": "npm",
     "package": "@xai-official/grok"
   },
-  "fetched_at": "2026-06-21T12:03:09Z",
-  "version_count": 124,
+  "fetched_at": "2026-06-23T08:49:28Z",
+  "version_count": 125,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
-  "benchmark_version_count": 77,
+  "benchmark_version_count": 78,
   "benchmark_exclusion_count": 0,
   "benchmark_exclusions": {},
   "excluded_benchmark_versions": [],
-  "latest": "0.2.59",
+  "latest": "0.2.60",
   "dist_tags": {
-    "alpha": "0.2.60",
-    "latest": "0.2.59"
+    "latest": "0.2.60",
+    "alpha": "0.2.61"
   },
   "versions": [
     "0.1.202-alpha.1",
@@ -142,7 +142,8 @@
     "0.2.57",
     "0.2.58",
     "0.2.59",
-    "0.2.60"
+    "0.2.60",
+    "0.2.61"
   ],
   "benchmark_versions": [
     "0.1.202",
@@ -221,6 +222,7 @@
     "0.2.57",
     "0.2.58",
     "0.2.59",
-    "0.2.60"
+    "0.2.60",
+    "0.2.61"
   ]
 }
