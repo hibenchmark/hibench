@@ -1066,6 +1066,227 @@ hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,1,subagent_explore,dec
 hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,2,subagent_general,declaration,True,instructions.subagent.1,334,72,"- `subagent_general`: General-purpose subagent with full tool access (read, write, edit, exec). Use this when the subage"
 hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,3,read_subagent,tool_declaration,True,tools.14,843,182,"{""description"":""Reads the response from a background subagent, using the agent_id you got from the run_subagent tool or"
 hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,4,run_subagent,tool_declaration,True,tools.16,5066,1041,"{""description"":""Launch an independent subagent to handle a task autonomously.\n\nSubagents (also referred to as just \""a"
+hibench.benchmark.v1,gemini-cli-0.22.0-hi,gemini-cli,0.22.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15533,3135,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.22.0-hi,gemini-cli,0.22.0,1,2,subagent_2,text_mention,False,tools.7.description,513,94,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.22.2-hi,gemini-cli,0.22.2,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15533,3135,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.22.2-hi,gemini-cli,0.22.2,1,2,subagent_2,text_mention,False,tools.7.description,513,94,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.22.3-hi,gemini-cli,0.22.3,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15533,3135,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.22.3-hi,gemini-cli,0.22.3,1,2,subagent_2,text_mention,False,tools.7.description,513,94,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.22.4-hi,gemini-cli,0.22.4,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15533,3135,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.22.4-hi,gemini-cli,0.22.4,1,2,subagent_2,text_mention,False,tools.7.description,513,94,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.22.5-hi,gemini-cli,0.22.5,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15533,3135,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.22.5-hi,gemini-cli,0.22.5,1,2,subagent_2,text_mention,False,tools.7.description,513,94,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.23.0-hi,gemini-cli,0.23.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15531,3133,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.23.0-hi,gemini-cli,0.23.0,1,2,subagent_2,text_mention,False,tools.7.description,511,92,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.24.0-hi,gemini-cli,0.24.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15531,3133,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.24.0-hi,gemini-cli,0.24.0,1,2,subagent_2,text_mention,False,tools.8.description,511,92,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.24.3-hi,gemini-cli,0.24.3,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15531,3133,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.24.3-hi,gemini-cli,0.24.3,1,2,subagent_2,text_mention,False,tools.8.description,511,92,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.24.4-hi,gemini-cli,0.24.4,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15531,3133,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.24.4-hi,gemini-cli,0.24.4,1,2,subagent_2,text_mention,False,tools.8.description,511,92,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.24.5-hi,gemini-cli,0.24.5,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15531,3133,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.24.5-hi,gemini-cli,0.24.5,1,2,subagent_2,text_mention,False,tools.8.description,511,92,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.25.0-hi,gemini-cli,0.25.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15794,3187,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.25.0-hi,gemini-cli,0.25.0,1,2,subagent_2,text_mention,False,tools.8.description,661,122,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.25.1-hi,gemini-cli,0.25.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15794,3187,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.25.1-hi,gemini-cli,0.25.1,1,2,subagent_2,text_mention,False,tools.8.description,661,122,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.25.2-hi,gemini-cli,0.25.2,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,15794,3187,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.25.2-hi,gemini-cli,0.25.2,1,2,subagent_2,text_mention,False,tools.8.description,661,122,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.26.0-hi,gemini-cli,0.26.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18033,3665,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.26.0-hi,gemini-cli,0.26.0,1,2,subagent_2,text_mention,False,tools.7.description,661,122,"Delegates a task to a specialized sub-agent.
+
+Available agents:
+- **codebase_investigator**: The specialized tool for co"
+hibench.benchmark.v1,gemini-cli-0.27.0-hi,gemini-cli,0.27.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,17964,3657,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.27.1-hi,gemini-cli,0.27.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,17964,3657,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.27.2-hi,gemini-cli,0.27.2,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,17964,3657,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.27.3-hi,gemini-cli,0.27.3,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,17964,3657,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.27.4-hi,gemini-cli,0.27.4,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,17964,3657,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.28.0-hi,gemini-cli,0.28.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,17956,3656,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.28.1-hi,gemini-cli,0.28.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,17956,3656,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.28.2-hi,gemini-cli,0.28.2,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,17956,3656,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.29.0-hi,gemini-cli,0.29.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18836,3817,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.29.1-hi,gemini-cli,0.29.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18836,3817,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.29.2-hi,gemini-cli,0.29.2,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18836,3817,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.29.3-hi,gemini-cli,0.29.3,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18836,3817,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.29.4-hi,gemini-cli,0.29.4,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18836,3817,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.29.5-hi,gemini-cli,0.29.5,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18836,3817,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.29.6-hi,gemini-cli,0.29.6,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18836,3817,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.29.7-hi,gemini-cli,0.29.7,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18836,3817,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.30.0-hi,gemini-cli,0.30.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18836,3817,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.30.1-hi,gemini-cli,0.30.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,18836,3817,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.31.0-hi,gemini-cli,0.31.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19344,3921,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.32.0-hi,gemini-cli,0.32.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19716,3987,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.32.1-hi,gemini-cli,0.32.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19716,3987,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.33.0-hi,gemini-cli,0.33.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19592,3960,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.33.1-hi,gemini-cli,0.33.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19592,3960,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.33.2-hi,gemini-cli,0.33.2,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19592,3960,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.34.0-hi,gemini-cli,0.34.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19592,3960,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.35.0-hi,gemini-cli,0.35.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19592,3960,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.35.1-hi,gemini-cli,0.35.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19592,3960,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.35.2-hi,gemini-cli,0.35.2,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19592,3960,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.35.3-hi,gemini-cli,0.35.3,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19592,3960,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.36.0-hi,gemini-cli,0.36.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19777,3989,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.36.0-hi,gemini-cli,0.36.0,1,2,subagent_2,text_mention,False,tools.8.description,292,49,Specialized agent for answering questions about the Gemini CLI application. Invoke this agent for questions regarding CL
+hibench.benchmark.v1,gemini-cli-0.37.0-hi,gemini-cli,0.37.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19777,3989,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.37.0-hi,gemini-cli,0.37.0,1,2,subagent_2,text_mention,False,tools.7.description,292,49,Specialized agent for answering questions about the Gemini CLI application. Invoke this agent for questions regarding CL
+hibench.benchmark.v1,gemini-cli-0.37.1-hi,gemini-cli,0.37.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19777,3989,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.37.1-hi,gemini-cli,0.37.1,1,2,subagent_2,text_mention,False,tools.7.description,292,49,Specialized agent for answering questions about the Gemini CLI application. Invoke this agent for questions regarding CL
+hibench.benchmark.v1,gemini-cli-0.37.2-hi,gemini-cli,0.37.2,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,19777,3989,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.37.2-hi,gemini-cli,0.37.2,1,2,subagent_2,text_mention,False,tools.7.description,292,49,Specialized agent for answering questions about the Gemini CLI application. Invoke this agent for questions regarding CL
+hibench.benchmark.v1,gemini-cli-0.38.0-hi,gemini-cli,0.38.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,20492,4129,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.38.0-hi,gemini-cli,0.38.0,1,2,subagent_2,text_mention,False,tools.7.description,292,49,Specialized agent for answering questions about the Gemini CLI application. Invoke this agent for questions regarding CL
+hibench.benchmark.v1,gemini-cli-0.38.1-hi,gemini-cli,0.38.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,20492,4129,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.38.1-hi,gemini-cli,0.38.1,1,2,subagent_2,text_mention,False,tools.7.description,292,49,Specialized agent for answering questions about the Gemini CLI application. Invoke this agent for questions regarding CL
+hibench.benchmark.v1,gemini-cli-0.38.2-hi,gemini-cli,0.38.2,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,20492,4129,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.38.2-hi,gemini-cli,0.38.2,1,2,subagent_2,text_mention,False,tools.7.description,292,49,Specialized agent for answering questions about the Gemini CLI application. Invoke this agent for questions regarding CL
+hibench.benchmark.v1,gemini-cli-0.39.0-hi,gemini-cli,0.39.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,20532,4137,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.39.0-hi,gemini-cli,0.39.0,1,2,subagent_2,text_mention,False,tools.6.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.39.0-hi,gemini-cli,0.39.0,1,3,subagent_3,text_mention,False,tools.6.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.39.0-hi,gemini-cli,0.39.0,1,4,subagent_4,text_mention,False,tools.6.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.39.1-hi,gemini-cli,0.39.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,20532,4137,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.39.1-hi,gemini-cli,0.39.1,1,2,subagent_2,text_mention,False,tools.6.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.39.1-hi,gemini-cli,0.39.1,1,3,subagent_3,text_mention,False,tools.6.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.39.1-hi,gemini-cli,0.39.1,1,4,subagent_4,text_mention,False,tools.6.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.40.0-hi,gemini-cli,0.40.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,23673,4818,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.40.0-hi,gemini-cli,0.40.0,1,2,subagent_2,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.40.0-hi,gemini-cli,0.40.0,1,3,subagent_3,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.40.0-hi,gemini-cli,0.40.0,1,4,subagent_4,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.40.1-hi,gemini-cli,0.40.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,23673,4818,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.40.1-hi,gemini-cli,0.40.1,1,2,subagent_2,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.40.1-hi,gemini-cli,0.40.1,1,3,subagent_3,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.40.1-hi,gemini-cli,0.40.1,1,4,subagent_4,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.41.0-hi,gemini-cli,0.41.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,23673,4818,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.41.0-hi,gemini-cli,0.41.0,1,2,subagent_2,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.41.0-hi,gemini-cli,0.41.0,1,3,subagent_3,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.41.0-hi,gemini-cli,0.41.0,1,4,subagent_4,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.41.1-hi,gemini-cli,0.41.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,23673,4818,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.41.1-hi,gemini-cli,0.41.1,1,2,subagent_2,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.41.1-hi,gemini-cli,0.41.1,1,3,subagent_3,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.41.1-hi,gemini-cli,0.41.1,1,4,subagent_4,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.41.2-hi,gemini-cli,0.41.2,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,23673,4818,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.41.2-hi,gemini-cli,0.41.2,1,2,subagent_2,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.41.2-hi,gemini-cli,0.41.2,1,3,subagent_3,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.41.2-hi,gemini-cli,0.41.2,1,4,subagent_4,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.42.0-hi,gemini-cli,0.42.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,23886,4871,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.42.0-hi,gemini-cli,0.42.0,1,2,subagent_2,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.42.0-hi,gemini-cli,0.42.0,1,3,subagent_3,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.42.0-hi,gemini-cli,0.42.0,1,4,subagent_4,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.43.0-hi,gemini-cli,0.43.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,23886,4871,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.43.0-hi,gemini-cli,0.43.0,1,2,subagent_2,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.43.0-hi,gemini-cli,0.43.0,1,3,subagent_3,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.43.0-hi,gemini-cli,0.43.0,1,4,subagent_4,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.44.0-hi,gemini-cli,0.44.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,23886,4871,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.44.0-hi,gemini-cli,0.44.0,1,2,subagent_2,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.44.0-hi,gemini-cli,0.44.0,1,3,subagent_3,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.44.0-hi,gemini-cli,0.44.0,1,4,subagent_4,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.44.1-hi,gemini-cli,0.44.1,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,23886,4871,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.44.1-hi,gemini-cli,0.44.1,1,2,subagent_2,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.44.1-hi,gemini-cli,0.44.1,1,3,subagent_3,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.44.1-hi,gemini-cli,0.44.1,1,4,subagent_4,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.45.0-hi,gemini-cli,0.45.0,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,23886,4871,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel
+hibench.benchmark.v1,gemini-cli-0.45.0-hi,gemini-cli,0.45.0,1,2,subagent_2,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.45.0-hi,gemini-cli,0.45.0,1,3,subagent_3,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.45.0-hi,gemini-cli,0.45.0,1,4,subagent_4,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,1,codebase_investigator,declaration,True,systemInstruction.parts.0.text.subagent.0,505,94,"<subagent>
+    <name>codebase_investigator</name>
+    <description>The specialized tool for codebase analysis, architect"
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,2,cli_help,declaration,True,systemInstruction.parts.0.text.subagent.1,374,73,"<subagent>
+    <name>cli_help</name>
+    <description>Specialized agent for answering questions about the Gemini CLI app"
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,3,generalist,declaration,True,systemInstruction.parts.0.text.subagent.2,439,85,"<subagent>
+    <name>generalist</name>
+    <description>A general-purpose AI agent with access to all tools. Highly reco"
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,4,subagent_4,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,5,subagent_5,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,6,subagent_6,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.45.2-hi,gemini-cli,0.45.2,1,1,codebase_investigator,declaration,True,systemInstruction.parts.0.text.subagent.0,505,94,"<subagent>
+    <name>codebase_investigator</name>
+    <description>The specialized tool for codebase analysis, architect"
+hibench.benchmark.v1,gemini-cli-0.45.2-hi,gemini-cli,0.45.2,1,2,cli_help,declaration,True,systemInstruction.parts.0.text.subagent.1,374,73,"<subagent>
+    <name>cli_help</name>
+    <description>Specialized agent for answering questions about the Gemini CLI app"
+hibench.benchmark.v1,gemini-cli-0.45.2-hi,gemini-cli,0.45.2,1,3,generalist,declaration,True,systemInstruction.parts.0.text.subagent.2,439,85,"<subagent>
+    <name>generalist</name>
+    <description>A general-purpose AI agent with access to all tools. Highly reco"
+hibench.benchmark.v1,gemini-cli-0.45.2-hi,gemini-cli,0.45.2,1,4,subagent_4,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.45.2-hi,gemini-cli,0.45.2,1,5,subagent_5,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.45.2-hi,gemini-cli,0.45.2,1,6,subagent_6,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.45.3-hi,gemini-cli,0.45.3,1,1,codebase_investigator,declaration,True,systemInstruction.parts.0.text.subagent.0,505,94,"<subagent>
+    <name>codebase_investigator</name>
+    <description>The specialized tool for codebase analysis, architect"
+hibench.benchmark.v1,gemini-cli-0.45.3-hi,gemini-cli,0.45.3,1,2,cli_help,declaration,True,systemInstruction.parts.0.text.subagent.1,374,73,"<subagent>
+    <name>cli_help</name>
+    <description>Specialized agent for answering questions about the Gemini CLI app"
+hibench.benchmark.v1,gemini-cli-0.45.3-hi,gemini-cli,0.45.3,1,3,generalist,declaration,True,systemInstruction.parts.0.text.subagent.2,439,85,"<subagent>
+    <name>generalist</name>
+    <description>A general-purpose AI agent with access to all tools. Highly reco"
+hibench.benchmark.v1,gemini-cli-0.45.3-hi,gemini-cli,0.45.3,1,4,subagent_4,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.45.3-hi,gemini-cli,0.45.3,1,5,subagent_5,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.45.3-hi,gemini-cli,0.45.3,1,6,subagent_6,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.46.0-hi,gemini-cli,0.46.0,1,1,codebase_investigator,declaration,True,systemInstruction.parts.0.text.subagent.0,505,94,"<subagent>
+    <name>codebase_investigator</name>
+    <description>The specialized tool for codebase analysis, architect"
+hibench.benchmark.v1,gemini-cli-0.46.0-hi,gemini-cli,0.46.0,1,2,cli_help,declaration,True,systemInstruction.parts.0.text.subagent.1,374,73,"<subagent>
+    <name>cli_help</name>
+    <description>Specialized agent for answering questions about the Gemini CLI app"
+hibench.benchmark.v1,gemini-cli-0.46.0-hi,gemini-cli,0.46.0,1,3,generalist,declaration,True,systemInstruction.parts.0.text.subagent.2,439,85,"<subagent>
+    <name>generalist</name>
+    <description>A general-purpose AI agent with access to all tools. Highly reco"
+hibench.benchmark.v1,gemini-cli-0.46.0-hi,gemini-cli,0.46.0,1,4,subagent_4,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.46.0-hi,gemini-cli,0.46.0,1,5,subagent_5,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.46.0-hi,gemini-cli,0.46.0,1,6,subagent_6,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
+hibench.benchmark.v1,gemini-cli-0.47.0-hi,gemini-cli,0.47.0,1,1,codebase_investigator,declaration,True,systemInstruction.parts.0.text.subagent.0,505,94,"<subagent>
+    <name>codebase_investigator</name>
+    <description>The specialized tool for codebase analysis, architect"
+hibench.benchmark.v1,gemini-cli-0.47.0-hi,gemini-cli,0.47.0,1,2,cli_help,declaration,True,systemInstruction.parts.0.text.subagent.1,374,73,"<subagent>
+    <name>cli_help</name>
+    <description>Specialized agent for answering questions about the Gemini CLI app"
+hibench.benchmark.v1,gemini-cli-0.47.0-hi,gemini-cli,0.47.0,1,3,generalist,declaration,True,systemInstruction.parts.0.text.subagent.2,439,85,"<subagent>
+    <name>generalist</name>
+    <description>A general-purpose AI agent with access to all tools. Highly reco"
+hibench.benchmark.v1,gemini-cli-0.47.0-hi,gemini-cli,0.47.0,1,4,subagent_4,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.47.0-hi,gemini-cli,0.47.0,1,5,subagent_5,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.47.0-hi,gemini-cli,0.47.0,1,6,subagent_6,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"
 hibench.benchmark.v1,github-cli-1.0.10-hi,github-cli,1.0.10,1,1,subagent_1,text_mention,False,instructions,32293,6936,"You are the GitHub Copilot CLI, a terminal assistant built by GitHub. You are running in non-interactive mode and have n"
 hibench.benchmark.v1,github-cli-1.0.10-hi,github-cli,1.0.10,1,2,explore,declaration,True,tools.14.description.subagent.0,566,122,- **explore**: Fast agent specialized for exploring codebases and answering questions about code. Use this when you need
 hibench.benchmark.v1,github-cli-1.0.10-hi,github-cli,1.0.10,1,3,task,declaration,True,tools.14.description.subagent.1,399,84,"- **task**: Agent for executing commands with verbose output (tests, builds, lints, dependency installs). Returns brief"

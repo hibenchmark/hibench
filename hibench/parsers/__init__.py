@@ -7,6 +7,7 @@ from .codex import CodexParser
 from .cursor_cli import CursorCliParser
 from .devin import DevinParser
 from .droid import DroidParser
+from .gemini_cli import GeminiCliParser
 from .github_cli import GitHubCliParser
 from .grok_cli import GrokCliParser
 from .hermes import HermesParser
@@ -27,6 +28,7 @@ _PARSERS: dict[str, RequestParser] = {
     "cursor-cli": CursorCliParser(),
     "devin": DevinParser(),
     "droid": DroidParser(),
+    "gemini-cli": GeminiCliParser(),
     "github-cli": GitHubCliParser(),
     "grok-cli": GrokCliParser(),
     "hermes": HermesParser(),
@@ -44,6 +46,7 @@ _AGENT_PARSER_IDS: dict[str, str] = {
     "cursor-cli": "cursor-cli",
     "devin": "devin",
     "droid": "droid",
+    "gemini-cli": "gemini-cli",
     "github-cli": "github-cli",
     "grok-cli": "grok-cli",
     "hermes": "hermes",

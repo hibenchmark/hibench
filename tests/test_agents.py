@@ -155,6 +155,28 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(custom_model["provider"], "openai")
         self.assertEqual(custom_model["baseUrl"], "http://example.test/v1")
 
+    def test_gemini_cli_agent_loads(self) -> None:
+        self.assertIn("gemini-cli", list_agent_ids())
+        spec = load_agent("gemini-cli")
+        self.assertEqual(spec.version, "0.47.0")
+        self.assertEqual(spec.command[:2], ["-p", "{prompt}"])
+        self.assertEqual(spec.parser_id, "gemini-cli")
+        self.assertEqual(spec.version_build_arg, "GEMINI_CLI_VERSION")
+        self.assertEqual(
+            spec.version_source, {"type": "npm", "package": "@google/gemini-cli"}
+        )
+        self.assertEqual(spec.raw["benchmark_version_policy"], "stable_semver")
+        self.assertEqual(spec.raw["benchmark_min_version"], "0.8.0")
+        self.assertEqual(spec.env["GOOGLE_GEMINI_BASE_URL"], "{base_url_root}")
+        self.assertEqual(spec.env["GEMINI_API_KEY"], "hibench-dummy-key")
+        self.assertEqual(spec.env["GEMINI_CLI_TRUST_WORKSPACE"], "true")
+        settings = json.loads(spec.env["HIBENCH_GEMINI_SETTINGS"])
+        self.assertEqual(
+            settings["security"]["auth"]["selectedType"], "gemini-api-key"
+        )
+        self.assertFalse(settings["general"]["enableAutoUpdate"])
+        self.assertFalse(settings["privacy"]["usageStatisticsEnabled"])
+
     def test_devin_agent_loads(self) -> None:
         self.assertIn("devin", list_agent_ids())
         spec = load_agent("devin")

@@ -1,0 +1,39 @@
+{
+  "response": "HiBench capture complete.",
+  "stats": {
+    "models": {
+      "hibench-capture-model": {
+        "api": {
+          "totalRequests": 1,
+          "totalErrors": 0,
+          "totalLatencyMs": 32
+        },
+        "tokens": {
+          "prompt": 0,
+          "candidates": 1,
+          "total": 1,
+          "cached": 0,
+          "thoughts": 0,
+          "tool": 0
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 0,
+      "totalSuccess": 0,
+      "totalFail": 0,
+      "totalDurationMs": 0,
+      "totalDecisions": {
+        "accept": 0,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {}
+    },
+    "files": {
+      "totalLinesAdded": 0,
+      "totalLinesRemoved": 0
+    }
+  }
+}

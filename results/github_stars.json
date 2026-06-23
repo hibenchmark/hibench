@@ -1,6 +1,6 @@
 {
   "schema_version": "hibench.github_stars.v1",
-  "updated_at": "2026-06-21T11:10:44Z",
+  "updated_at": "2026-06-22T17:55:27Z",
   "agents": {
     "claude-code": {
       "github_repo": "anthropics/claude-code",
@@ -73,6 +73,12 @@
       "github_url": "https://github.com/earendil-works/pi",
       "github_stars": 64372,
       "updated_at": "2026-06-21T11:10:44Z"
+    },
+    "gemini-cli": {
+      "github_repo": "google-gemini/gemini-cli",
+      "github_url": "https://github.com/google-gemini/gemini-cli",
+      "github_stars": 105494,
+      "updated_at": "2026-06-22T17:55:27Z"
     }
   }
 }

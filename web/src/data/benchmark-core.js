@@ -100,6 +100,7 @@ export const AGENT_DISPLAY_NAMES = {
   'cursor-cli': 'Cursor CLI',
   devin: 'Devin',
   droid: 'Droid',
+  'gemini-cli': 'Gemini CLI',
   'github-cli': 'Copilot CLI',
   'mistral-vibe': 'Mistral Vibe',
   openhands: 'OpenHands',
@@ -136,6 +137,11 @@ export const AGENT_LOGOS = {
   droid: {
     path: '/agent-logos/droid.svg',
     alt: 'Droid logo',
+    source: 'official',
+  },
+  'gemini-cli': {
+    path: '/agent-logos/gemini-cli.png',
+    alt: 'Gemini CLI logo',
     source: 'official',
   },
   openclaw: {

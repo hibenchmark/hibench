@@ -1617,6 +1617,177 @@ hibench.benchmark.v1,droid-0.153.1-hi,droid,0.153.1,1,17,wiki-video-gen,,input.0
 hibench.benchmark.v1,droid-0.153.1-hi,droid,0.153.1,1,18,install-wiki,,input.0.content.2.text,220,44,"Install a CI action that automatically refreshes the Factory Wiki on each push to the default branch. Use when the user wants to set up automated wiki generation, install wiki CI, or configure wiki refresh.",install-wiki: Install a CI action that automatically refreshes the Factory Wiki on each push to the default branch. Use
 hibench.benchmark.v1,droid-0.153.1-hi,droid,0.153.1,1,19,browse-wiki,,input.0.content.2.text,64,12,Search and read wiki documentation for a repository,browse-wiki: Search and read wiki documentation for a repository
 hibench.benchmark.v1,droid-0.153.1-hi,droid,0.153.1,1,20,incident,,input.0.content.2.text,252,50,"RCA runbook for alerts. Given an alert link (or prompted to provide one), identifies the alert type, verifies tooling/auth, and walks through root cause analysis using deep research. Persists learnings to incident-guidelines for future reuse.","incident: RCA runbook for alerts. Given an alert link (or prompted to provide one), identifies the alert type, verifies"
+hibench.benchmark.v1,gemini-cli-0.26.0-hi,gemini-cli,0.26.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.27.0-hi,gemini-cli,0.27.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.27.1-hi,gemini-cli,0.27.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.27.2-hi,gemini-cli,0.27.2,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.27.3-hi,gemini-cli,0.27.3,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.27.4-hi,gemini-cli,0.27.4,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.28.0-hi,gemini-cli,0.28.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.28.1-hi,gemini-cli,0.28.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.28.2-hi,gemini-cli,0.28.2,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.29.0-hi,gemini-cli,0.29.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.29.1-hi,gemini-cli,0.29.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.29.2-hi,gemini-cli,0.29.2,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.29.3-hi,gemini-cli,0.29.3,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.29.4-hi,gemini-cli,0.29.4,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.29.5-hi,gemini-cli,0.29.5,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.29.6-hi,gemini-cli,0.29.6,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.29.7-hi,gemini-cli,0.29.7,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.30.0-hi,gemini-cli,0.30.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.30.1-hi,gemini-cli,0.30.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.31.0-hi,gemini-cli,0.31.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.32.0-hi,gemini-cli,0.32.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.32.1-hi,gemini-cli,0.32.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.33.0-hi,gemini-cli,0.33.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.33.1-hi,gemini-cli,0.33.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.33.2-hi,gemini-cli,0.33.2,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.34.0-hi,gemini-cli,0.34.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.35.0-hi,gemini-cli,0.35.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.35.1-hi,gemini-cli,0.35.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.35.2-hi,gemini-cli,0.35.2,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.35.3-hi,gemini-cli,0.35.3,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.36.0-hi,gemini-cli,0.36.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.37.0-hi,gemini-cli,0.37.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.37.1-hi,gemini-cli,0.37.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.37.2-hi,gemini-cli,0.37.2,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.38.0-hi,gemini-cli,0.38.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.38.1-hi,gemini-cli,0.38.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.38.2-hi,gemini-cli,0.38.2,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.39.0-hi,gemini-cli,0.39.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.39.1-hi,gemini-cli,0.39.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.40.0-hi,gemini-cli,0.40.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.40.1-hi,gemini-cli,0.40.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.41.0-hi,gemini-cli,0.41.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.41.1-hi,gemini-cli,0.41.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.41.2-hi,gemini-cli,0.41.2,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.42.0-hi,gemini-cli,0.42.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.43.0-hi,gemini-cli,0.43.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.44.0-hi,gemini-cli,0.44.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.44.1-hi,gemini-cli,0.44.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.45.0-hi,gemini-cli,0.45.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.45.2-hi,gemini-cli,0.45.2,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.45.3-hi,gemini-cli,0.45.3,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.45.3-hi,gemini-cli,0.45.3,1,2,antigravity-support,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/antigravity-support/SKILL.md,systemInstruction.parts.0.text,487,109,"Use when the user asks questions, seeks help, or requests instructions related to installing, setting up, or migrating to Antigravity CLI. This skill provides the latest up to date details, requirements, and commands sourced from the official Antigravity CLI documentation.","<skill>
+    <name>antigravity-support</name>
+    <description>Use when the user asks questions, seeks help, or requests"
+hibench.benchmark.v1,gemini-cli-0.46.0-hi,gemini-cli,0.46.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.46.0-hi,gemini-cli,0.46.0,1,2,antigravity-support,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/antigravity-support/SKILL.md,systemInstruction.parts.0.text,487,109,"Use when the user asks questions, seeks help, or requests instructions related to installing, setting up, or migrating to Antigravity CLI. This skill provides the latest up to date details, requirements, and commands sourced from the official Antigravity CLI documentation.","<skill>
+    <name>antigravity-support</name>
+    <description>Use when the user asks questions, seeks help, or requests"
+hibench.benchmark.v1,gemini-cli-0.47.0-hi,gemini-cli,0.47.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,432,97,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"
+hibench.benchmark.v1,gemini-cli-0.47.0-hi,gemini-cli,0.47.0,1,2,antigravity-support,/root/.bun/install/global/node_modules/@google/gemini-cli/bundle/builtin/antigravity-support/SKILL.md,systemInstruction.parts.0.text,487,109,"Use when the user asks questions, seeks help, or requests instructions related to installing, setting up, or migrating to Antigravity CLI. This skill provides the latest up to date details, requirements, and commands sourced from the official Antigravity CLI documentation.","<skill>
+    <name>antigravity-support</name>
+    <description>Use when the user asks questions, seeks help, or requests"
 hibench.benchmark.v1,github-cli-1.0.17-hi,github-cli,1.0.17,1,1,customizing-copilot-cloud-agents-environment,builtin,tools.9.description,346,78,"Guide for customizing the Copilot cloud agent (formerly known as Copilot coding agent) environment, including copilot-setup-steps.yml configuration, preinstalling tools and dependencies, runners, and settings.","<skill>
   <name>customizing-copilot-cloud-agents-environment</name>
   <description>Guide for customizing the Copilot clo"

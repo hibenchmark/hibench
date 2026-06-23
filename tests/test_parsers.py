@@ -253,6 +253,134 @@ A skill is a set of local instructions.
         self.assertEqual(summary["subagents"]["count"], 0)
         self.assertGreaterEqual(summary["subagents"]["mention_count"], 1)
 
+    def test_summarize_request_parses_gemini_cli_payload(self) -> None:
+        system_text = (
+            "You are Gemini CLI.\n\n"
+            "# Available Agent Skills\n"
+            "<available_skills>\n"
+            "  <skill>\n"
+            "    <name>skill-creator</name>\n"
+            "    <description>Create or update Gemini CLI skills.</description>\n"
+            "  </skill>\n"
+            "</available_skills>\n\n"
+            "<available_subagents>\n"
+            "  <subagent>\n"
+            "    <name>codebase_investigator</name>\n"
+            "    <description>Analyze codebases and architecture.</description>\n"
+            "  </subagent>\n"
+            "  <subagent>\n"
+            "    <name>generalist</name>\n"
+            "    <description>General-purpose agent with all tools.</description>\n"
+            "  </subagent>\n"
+            "</available_subagents>"
+        )
+        session_context = (
+            "<session_context>\n"
+            "This is the Gemini CLI.\n"
+            "- **Workspace Directories:**\n"
+            "  - /workspace\n"
+            "</session_context>"
+        )
+        record = {
+            "method": "POST",
+            "path": "/v1beta/models/gemini-3.5-flash:streamGenerateContent?alt=sse",
+            "body_text": "{}",
+            "json": {
+                "contents": [
+                    {"role": "user", "parts": [{"text": session_context}]},
+                    {"role": "user", "parts": [{"text": "Hi"}]},
+                ],
+                "systemInstruction": {
+                    "role": "user",
+                    "parts": [{"text": system_text}],
+                },
+                "tools": [
+                    {
+                        "functionDeclarations": [
+                            {
+                                "name": "read_file",
+                                "description": "Read a file.",
+                                "parametersJsonSchema": {"type": "object"},
+                            },
+                            {
+                                "name": "invoke_agent",
+                                "description": "Invoke a subagent.",
+                                "parametersJsonSchema": {"type": "object"},
+                            },
+                        ]
+                    }
+                ],
+            },
+        }
+
+        summary = summarize_request(record, parser_id="gemini-cli")
+
+        self.assertEqual(summary["model"], "gemini-3.5-flash")
+        self.assertEqual(
+            summary["text_fields"]["by_source"]["main_instructions"]["tokens"],
+            count_tokens(system_text),
+        )
+        self.assertEqual(
+            summary["text_fields"]["by_source"]["injected_user_context"]["tokens"],
+            count_tokens(session_context),
+        )
+        self.assertEqual(
+            summary["text_fields"]["by_category"]["user_prompt"]["tokens"],
+            count_tokens("Hi"),
+        )
+        self.assertEqual(summary["tools"]["count"], 2)
+        self.assertEqual(summary["tools"]["names"], ["invoke_agent", "read_file"])
+        self.assertEqual(summary["skills"]["count"], 1)
+        self.assertEqual(summary["skills"]["items"][0]["name"], "skill-creator")
+        self.assertEqual(summary["subagents"]["count"], 2)
+        self.assertEqual(
+            [
+                item["name"]
+                for item in summary["subagents"]["items"]
+                if item["is_counted"]
+            ],
+            ["codebase_investigator", "generalist"],
+        )
+        self.assertGreaterEqual(summary["subagents"]["mention_count"], 1)
+
+    def test_summarize_request_classifies_gemini_cli_legacy_setup_context(
+        self,
+    ) -> None:
+        system_text = "You are an interactive CLI agent."
+        legacy_context = (
+            "This is the Gemini CLI. We are setting up the context for our chat.\n"
+            "Today's date is Monday, June 22, 2026.\n"
+            "My operating system is: linux\n"
+            "I'm currently working in the directory: /workspace\n"
+            "My setup is complete. I will provide my first command in the next turn."
+        )
+        record = {
+            "method": "POST",
+            "path": "/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse",
+            "body_text": "{}",
+            "json": {
+                "contents": [
+                    {"role": "user", "parts": [{"text": legacy_context}]},
+                    {"role": "user", "parts": [{"text": "Hi"}]},
+                ],
+                "systemInstruction": {
+                    "role": "user",
+                    "parts": [{"text": system_text}],
+                },
+            },
+        }
+
+        summary = summarize_request(record, parser_id="gemini-cli")
+
+        self.assertEqual(
+            summary["text_fields"]["by_source"]["injected_user_context"]["tokens"],
+            count_tokens(legacy_context),
+        )
+        self.assertEqual(
+            summary["text_fields"]["by_category"]["user_prompt"]["tokens"],
+            count_tokens("Hi"),
+        )
+
     def test_summarize_request_parses_opencode_chat_payload(self) -> None:
         skills_xml = (
             "<available_skills>\n"
@@ -1335,6 +1463,7 @@ A skill is a set of local instructions.
         self.assertEqual(get_parser("cursor-cli").parser_id, "cursor-cli")
         self.assertEqual(get_parser("devin").parser_id, "devin")
         self.assertEqual(get_parser("droid").parser_id, "droid")
+        self.assertEqual(get_parser("gemini-cli").parser_id, "gemini-cli")
         self.assertEqual(get_parser("github-cli").parser_id, "github-cli")
         self.assertEqual(get_parser("grok-cli").parser_id, "grok-cli")
         self.assertEqual(get_parser("hermes").parser_id, "hermes")

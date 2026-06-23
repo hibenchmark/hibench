@@ -1,47 +1,40 @@
 {
   "schema_version": "hibench.benchmark_batch.v1",
-  "agent_id": "openclaw",
-  "catalog_path": "agent_versions/openclaw.json",
-  "version_count": 222,
+  "agent_id": "gemini-cli",
+  "catalog_path": "agent_versions/gemini-cli.json",
+  "version_count": 643,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
-  "benchmark_min_version": null,
-  "benchmark_version_count": 65,
-  "benchmark_exclusion_count": 6,
+  "benchmark_min_version": "0.8.0",
+  "benchmark_version_count": 105,
+  "benchmark_exclusion_count": 1,
   "excluded_benchmark_versions": [
-    "0.0.1",
-    "2026.4.5",
-    "2026.4.25",
-    "2026.4.26",
-    "2026.4.27",
-    "2026.5.12"
+    "0.24.2"
   ],
-  "selected_version_count": 1,
-  "requested_versions": [
-    "2026.6.9"
-  ],
-  "existing_agent_benchmark_version_count": 65,
-  "skipped_existing_version_count": 0,
-  "candidate_version_count": 222,
+  "selected_version_count": 0,
+  "requested_versions": [],
+  "existing_agent_benchmark_version_count": 100,
+  "skipped_existing_version_count": 100,
+  "candidate_version_count": 0,
   "initial_version_limit": 100,
-  "initial_version_limit_applied": false,
+  "initial_version_limit_applied": true,
   "prompt_file": "prompts/hi.txt",
   "out_dir": "runs",
   "results_out": "results",
-  "dry_run": false,
-  "build": false,
+  "dry_run": true,
+  "build": true,
   "skip_existing": false,
-  "rerun_existing": true,
-  "export_results": true,
+  "rerun_existing": false,
+  "export_results": false,
   "anthropic_tokenizer": {
-    "enabled": true,
+    "enabled": false,
     "api_key_env": "ANTHROPIC_API_KEY",
     "model": "claude-opus-4-8",
     "base_url": "https://api.anthropic.com",
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
-    "disabled_reason": "",
-    "counted_run_count": 1,
+    "disabled_reason": "dry run",
+    "counted_run_count": 0,
     "error_count": 0,
     "errors": []
   },
@@ -51,25 +44,10 @@
     "token_env": "",
     "token_present": false,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
-    "disabled_reason": "HIBENCH_GITHUB_STARS disabled automatic fetching",
+    "disabled_reason": "dry run",
     "updated_agent_count": 0,
     "error_count": 0,
     "errors": []
   },
-  "results": [
-    {
-      "agent_id": "openclaw",
-      "version": "2026.6.9",
-      "status": "replaced",
-      "run_id": "openclaw-2026.6.9-hi",
-      "run_dir": "runs/openclaw-2026.6.9-hi",
-      "replaced_run_dirs": [
-        "runs/openclaw-2026.6.9-hi"
-      ],
-      "has_primary_request": true,
-      "total_body_tokens": 18747,
-      "tool_count": 33,
-      "error": ""
-    }
-  ]
+  "results": []
 }

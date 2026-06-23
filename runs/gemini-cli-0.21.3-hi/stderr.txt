@@ -1,0 +1,10 @@
+[STARTUP] StartupProfiler.flush() called with 9 phases
+[STARTUP] Recording metric for phase: cli_startup duration: 103.44567499999994
+[STARTUP] Recording metric for phase: load_settings duration: 1.7955179999999018
+[STARTUP] Recording metric for phase: migrate_settings duration: 1.173727000000099
+[STARTUP] Recording metric for phase: parse_arguments duration: 14.938934999999901
+[STARTUP] Recording metric for phase: load_cli_config duration: 28.335699000000204
+[STARTUP] Recording metric for phase: initialize_app duration: 52.09844599999997
+[STARTUP] Recording metric for phase: authenticate duration: 40.359513000000106
+[STARTUP] Recording metric for phase: discover_tools duration: 325.8685170000001
+[STARTUP] Recording metric for phase: initialize_mcp_clients duration: 0.7608560000001034

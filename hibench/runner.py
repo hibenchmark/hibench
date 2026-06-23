@@ -224,9 +224,15 @@ def run_agent(
         subject_workspace = create_empty_git_workspace(temp_path)
         with RequestRecorder(run_dir) as recorder:
             recorder_host_base_url = recorder.host_base_url
-            env = render_env(spec.env, recorder.docker_base_url)
+            use_host_network = bool(
+                spec.raw.get("capture", {}).get("docker_network_host")
+            )
+            agent_base_url = (
+                recorder.localhost_base_url if use_host_network else recorder.docker_base_url
+            )
+            env = render_env(spec.env, agent_base_url)
             command_args = render_command(
-                spec.command, prompt, recorder.docker_base_url
+                spec.command, prompt, agent_base_url
             )
             docker_image = image or spec.image
             container_name = docker_container_name(run_id)
@@ -236,12 +242,18 @@ def run_agent(
                 "--rm",
                 "--name",
                 container_name,
+            ]
+            if use_host_network:
+                docker_command.extend(["--add-host=localhost:host-gateway"])
+            docker_command.extend(
+                [
                 "--add-host=host.docker.internal:host-gateway",
                 "-v",
                 f"{subject_workspace}:/workspace",
                 "-w",
                 "/workspace",
-            ]
+                ]
+            )
             for key, value in sorted(env.items()):
                 docker_command.extend(["-e", f"{key}={value}"])
             docker_command.extend([docker_image, *command_args])

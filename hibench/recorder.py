@@ -13,6 +13,7 @@ REDACTED_HEADERS = {
     "cookie",
     "set-cookie",
     "x-api-key",
+    "x-goog-api-key",
     "openai-api-key",
 }
 SYNTHETIC_ASSISTANT_TEXT = "HiBench capture complete."
@@ -79,6 +80,19 @@ class RequestRecorder:
                             200, recorder.chat_completion_response(request_json)
                         )
                     return
+                if recorder.is_gemini_count_tokens_path(self.path):
+                    self._send_json(200, recorder.gemini_count_tokens_response())
+                    return
+                if recorder.is_gemini_generate_content_path(self.path):
+                    if recorder.is_gemini_stream_generate_content_path(self.path):
+                        self._send_data_sse(
+                            recorder.gemini_generate_content_events(request_json)
+                        )
+                    else:
+                        self._send_json(
+                            200, recorder.gemini_generate_content_response(request_json)
+                        )
+                    return
                 self._send_json(200, recorder.generic_capture_response())
 
             def do_OPTIONS(self) -> None:  # noqa: N802
@@ -119,6 +133,20 @@ class RequestRecorder:
                 self.wfile.write(data)
                 self.wfile.flush()
 
+            def _send_data_sse(self, events: list[dict[str, Any]]) -> None:
+                data = "".join(
+                    f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
+                    for event in events
+                ).encode("utf-8")
+                self.send_response(200)
+                self.send_header("Content-Type", "text/event-stream")
+                self.send_header("Cache-Control", "no-cache")
+                self.send_header("Connection", "close")
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+                self.wfile.flush()
+
         self.server = ThreadingHTTPServer((host, port), Handler)
         self.port = int(self.server.server_address[1])
         self._thread = threading.Thread(target=self.server.serve_forever, daemon=True)
@@ -133,6 +161,10 @@ class RequestRecorder:
     @property
     def host_base_url(self) -> str:
         return f"http://127.0.0.1:{self.port}/v1"
+
+    @property
+    def localhost_base_url(self) -> str:
+        return f"http://localhost:{self.port}/v1"
 
     @property
     def docker_base_url(self) -> str:
@@ -213,6 +245,23 @@ class RequestRecorder:
     @staticmethod
     def is_anthropic_messages_path(path: str) -> bool:
         return RequestRecorder.path_without_query(path).endswith("/messages")
+
+    @staticmethod
+    def is_gemini_count_tokens_path(path: str) -> bool:
+        return RequestRecorder.path_without_query(path).endswith(":countTokens")
+
+    @staticmethod
+    def is_gemini_generate_content_path(path: str) -> bool:
+        normalized = RequestRecorder.path_without_query(path)
+        return normalized.endswith(
+            (":generateContent", ":streamGenerateContent")
+        )
+
+    @staticmethod
+    def is_gemini_stream_generate_content_path(path: str) -> bool:
+        return RequestRecorder.path_without_query(path).endswith(
+            ":streamGenerateContent"
+        )
 
     @staticmethod
     def _model(request_json: dict[str, Any]) -> str:
@@ -426,3 +475,34 @@ class RequestRecorder:
             },
             {"type": "message_stop"},
         ]
+
+    def gemini_count_tokens_response(self) -> dict[str, Any]:
+        return {"totalTokens": 0}
+
+    def gemini_generate_content_response(
+        self, request_json: dict[str, Any]
+    ) -> dict[str, Any]:
+        return {
+            "candidates": [
+                {
+                    "content": {
+                        "parts": [{"text": SYNTHETIC_ASSISTANT_TEXT}],
+                        "role": "model",
+                    },
+                    "finishReason": "STOP",
+                    "index": 0,
+                }
+            ],
+            "usageMetadata": {
+                "promptTokenCount": 0,
+                "candidatesTokenCount": 1,
+                "totalTokenCount": 1,
+            },
+            "modelVersion": self._model(request_json),
+            "responseId": "gemini-hibench-capture",
+        }
+
+    def gemini_generate_content_events(
+        self, request_json: dict[str, Any]
+    ) -> list[dict[str, Any]]:
+        return [self.gemini_generate_content_response(request_json)]

@@ -124,6 +124,43 @@ class RecorderTests(unittest.TestCase):
             self.assertIn("HiBench capture complete.", body)
             self.assertNotIn("[DONE]", body)
 
+    def test_gemini_stream_post_is_captured_and_returns_success_sse(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_name:
+            with RequestRecorder(Path(temp_name)) as recorder:
+                request = Request(
+                    f"{recorder.host_base_url.removesuffix('/v1')}/v1beta/models/gemini-3.5-flash:streamGenerateContent?alt=sse",
+                    data=json.dumps(
+                        {
+                            "contents": [
+                                {"role": "user", "parts": [{"text": "Hi"}]}
+                            ]
+                        }
+                    ).encode("utf-8"),
+                    headers={
+                        "Content-Type": "application/json",
+                        "X-Goog-Api-Key": "secret",
+                    },
+                    method="POST",
+                )
+
+                with urlopen(request, timeout=5) as response:  # noqa: S310
+                    body = response.read().decode("utf-8")
+                    content_type = response.headers.get("Content-Type", "")
+
+            self.assertEqual(response.status, 200)
+            self.assertIn("text/event-stream", content_type)
+            self.assertIn("HiBench capture complete.", body)
+            self.assertIn("finishReason", body)
+            self.assertNotIn("[DONE]", body)
+            record = json.loads(
+                (Path(temp_name) / "requests" / "0001.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(
+                record["path"],
+                "/v1beta/models/gemini-3.5-flash:streamGenerateContent?alt=sse",
+            )
+            self.assertEqual(record["headers"]["X-Goog-Api-Key"], "<redacted>")
+
 
 if __name__ == "__main__":
     unittest.main()

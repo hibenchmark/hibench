@@ -1,0 +1,13 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,1,codebase_investigator,declaration,True,systemInstruction.parts.0.text.subagent.0,505,94,"<subagent>
+    <name>codebase_investigator</name>
+    <description>The specialized tool for codebase analysis, architect"
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,2,cli_help,declaration,True,systemInstruction.parts.0.text.subagent.1,374,73,"<subagent>
+    <name>cli_help</name>
+    <description>Specialized agent for answering questions about the Gemini CLI app"
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,3,generalist,declaration,True,systemInstruction.parts.0.text.subagent.2,439,85,"<subagent>
+    <name>generalist</name>
+    <description>A general-purpose AI agent with access to all tools. Highly reco"
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,4,subagent_4,text_mention,False,tools.7.description,62,12,Invoke a subagent to perform a specific task or investigation.
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,5,subagent_5,text_mention,False,tools.7.parametersJsonSchema.properties.agent_name.description,30,7,Name of the subagent to invoke
+hibench.benchmark.v1,gemini-cli-0.45.1-hi,gemini-cli,0.45.1,1,6,subagent_6,text_mention,False,tools.7.parametersJsonSchema.properties.prompt.description,194,36,"The COMPLETE query to send the subagent. MUST be comprehensive and detailed. Include all context, background, questions,"

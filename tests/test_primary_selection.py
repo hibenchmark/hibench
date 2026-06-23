@@ -96,6 +96,42 @@ class PrimaryRequestSelectionTests(unittest.TestCase):
         self.assertEqual(summary["primary_request_index"], 2)
         self.assertEqual(summary["primary_request"]["model"], "gpt-5")
 
+    def test_summarize_run_skips_gemini_count_tokens_preflight(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            run_dir = Path(tmp) / "20260614T000000Z-gemini-cli-hi"
+            requests_dir = run_dir / "requests"
+            requests_dir.mkdir(parents=True)
+            count_body = {
+                "contents": [{"role": "user", "parts": [{"text": "Hi"}]}],
+            }
+            body = {
+                "contents": [
+                    {"role": "user", "parts": [{"text": "<session_context />"}]},
+                    {"role": "user", "parts": [{"text": "Hi"}]},
+                ],
+                "systemInstruction": {
+                    "role": "user",
+                    "parts": [{"text": "You are Gemini CLI."}],
+                },
+            }
+            write_request(
+                requests_dir,
+                1,
+                "/v1beta/models/gemini-2.5-flash:countTokens",
+                count_body,
+            )
+            write_request(
+                requests_dir,
+                2,
+                "/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse",
+                body,
+            )
+
+            summary = summarize_run(run_dir, parser_id="gemini-cli")
+
+        self.assertEqual(summary["primary_request_index"], 2)
+        self.assertEqual(summary["primary_request"]["model"], "gemini-2.5-flash")
+
     def test_summarize_run_does_not_fallback_to_grok_cli_session_title(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             run_dir = Path(tmp) / "20260614T000000Z-grok-cli-hi"

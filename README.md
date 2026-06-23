@@ -35,6 +35,7 @@ with one counting method.
 | `cursor-cli` | Cursor CLI |
 | `devin` | Devin |
 | `droid` | Droid |
+| `gemini-cli` | Gemini CLI |
 | `github-cli` | GitHub Copilot CLI |
 | `grok-cli` | Grok CLI |
 | `mistral-vibe` | Mistral Vibe |

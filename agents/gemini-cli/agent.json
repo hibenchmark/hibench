@@ -1,0 +1,60 @@
+{
+  "id": "gemini-cli",
+  "display_name": "Gemini CLI",
+  "version": "0.47.0",
+  "image": "hibench/gemini-cli:0.47.0",
+  "parser_id": "gemini-cli",
+  "version_source": {
+    "type": "npm",
+    "package": "@google/gemini-cli"
+  },
+  "benchmark_version_policy": "stable_semver",
+  "benchmark_min_version": "0.8.0",
+  "benchmark_min_version_reason": "Stable versions before 0.8.0 either fail before emitting a provider request or lack the stable noninteractive JSON/local-base-url capture path used by the benchmark.",
+  "benchmark_exclusions": {
+    "0.24.2": "Broken npm package metadata points @google/gemini-cli-core at file:../core, so the published CLI cannot start after install."
+  },
+  "dockerfile": "docker/agents/gemini-cli/Dockerfile",
+  "command": [
+    "-p",
+    "{prompt}",
+    "--output-format",
+    "json",
+    "--model",
+    "gemini-2.5-flash"
+  ],
+  "env": {
+    "HIBENCH_GEMINI_SETTINGS": "{\"security\":{\"auth\":{\"selectedType\":\"gemini-api-key\"}},\"general\":{\"enableAutoUpdate\":false,\"enableNotifications\":false,\"maxAttempts\":1},\"privacy\":{\"usageStatisticsEnabled\":false},\"telemetry\":{\"enabled\":false},\"ui\":{\"useAlternateBuffer\":false,\"terminalBuffer\":false},\"hooksConfig\":{\"enabled\":false}}",
+    "GEMINI_API_KEY": "hibench-dummy-key",
+    "GOOGLE_GEMINI_BASE_URL": "{base_url_root}",
+    "GEMINI_DEFAULT_AUTH_TYPE": "gemini-api-key",
+    "GEMINI_SANDBOX": "false",
+    "GEMINI_CLI_TRUST_WORKSPACE": "true",
+    "NO_BROWSER": "1",
+    "HOME": "/gemini-home/home",
+    "XDG_CACHE_HOME": "/gemini-home/cache",
+    "XDG_CONFIG_HOME": "/gemini-home/config",
+    "XDG_DATA_HOME": "/gemini-home/data",
+    "NO_COLOR": "1",
+    "CI": "1",
+    "TERM": "xterm-256color"
+  },
+  "capture": {
+    "real_api_call": false,
+    "subject_workspace": "generated-empty-git-repo",
+    "docker_network_host": true,
+    "notes": "The runner writes an isolated ~/.gemini/settings.json selecting Gemini API key auth, disables telemetry/autoupdate/sandboxing, trusts only the generated benchmark workspace, maps container localhost to Docker's host gateway so newer Gemini CLI releases accept a localhost recorder URL, and points GOOGLE_GEMINI_BASE_URL at the local recorder with a dummy GEMINI_API_KEY. The CLI sends Gemini generateContent traffic to the recorder; no Google upstream model call is made."
+  },
+  "links": {
+    "official_url": "https://www.geminicli.com/",
+    "github_repo": "google-gemini/gemini-cli"
+  },
+  "sources": [
+    "https://www.geminicli.com/docs/get-started/installation",
+    "https://www.geminicli.com/docs/get-started/authentication",
+    "https://www.geminicli.com/docs/reference/configuration",
+    "https://www.npmjs.com/package/@google/gemini-cli",
+    "https://github.com/google-gemini/gemini-cli",
+    "~/gemini-cli"
+  ]
+}

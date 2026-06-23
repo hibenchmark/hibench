@@ -1,0 +1,4 @@
+schema_version,run_id,agent_id,agent_version,request_index,skill_index,skill_name,skill_file,source_path,definition_chars,definition_tokens,description,preview
+hibench.benchmark.v1,gemini-cli-0.31.0-hi,gemini-cli,0.31.0,1,1,skill-creator,/root/.bun/install/global/node_modules/@google/gemini-cli-core/dist/src/skills/builtin/skill-creator/SKILL.md,systemInstruction.parts.0.text,446,100,"Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.","<skill>
+    <name>skill-creator</name>
+    <description>Guide for creating effective skills. This skill should be used w"

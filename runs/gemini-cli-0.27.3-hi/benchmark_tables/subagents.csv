@@ -1,0 +1,2 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,gemini-cli-0.27.3-hi,gemini-cli,0.27.3,1,1,subagent_1,text_mention,False,systemInstruction.parts.0.text,17964,3657,You are a non-interactive CLI agent specializing in software engineering tasks. Your primary goal is to help users safel

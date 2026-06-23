@@ -502,7 +502,7 @@ def is_generation_request(summary: dict[str, Any]) -> bool:
     return normalized.endswith(("/responses", "/chat/completions")) or (
         normalized.endswith("/messages")
         and not normalized.endswith("/messages/count_tokens")
-    )
+    ) or normalized.endswith((":generateContent", ":streamGenerateContent"))
 
 
 def summarize_request(
