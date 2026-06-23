@@ -155,3 +155,26 @@ Before final copy:
 - no reply reads like a CSV row
 - per-agent image path is listed beside each reply
 - X drafts are character-checked
+
+## Post Example
+
+---
+Claude Code 2.1.186 adds a new tool: SendMessage.
+
+Diff vs 2.1.185:
+• Default Context : 34,221 tokens (+448)
+• Tool count: 26 → 27
+• Skills: 13 
+• Subagents: 5
+
+Claude Code 2.1.186 ranks #1 out of 16 on our benchmark.
+
+Anthropic is continuing to expand the agent tool surface, with SendMessage now joining the toolbox.
+---
+Gemini CLI is new in HiBench.
+
+100 versions captured, from 0.11.0 through 0.47.0. Latest release ranks #11 of 16 by startup footprint: 13,789 tokens (Anthropic tokenizer) / 8,465 tokens (o200k tokenizer).
+
+Counts: 8 tools, 2 skills, 3 subagents, 0 MCP.
+
+Startup footprint, not a quality score.
