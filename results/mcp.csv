@@ -368,6 +368,12 @@ hibench.benchmark.v1,claude-code-2.1.185-hi,claude-code,2.1.185,1,2,mcp_2,text_m
 
 - Fails on auth"
 hibench.benchmark.v1,claude-code-2.1.185-hi,claude-code,2.1.185,1,3,mcp_3,text_mention,False,tools.24.description,18780,4307,Execute a workflow script that orchestrates multiple subagents deterministically. Workflows run in the background — this
+hibench.benchmark.v1,claude-code-2.1.186-hi,claude-code,2.1.186,2,1,mcp_1,text_mention,False,messages.1.content,6042,1361,"Available agent types for the Agent tool:
+- claude: Catch-all for any task that doesn't fit a more specific agent. Fleet"
+hibench.benchmark.v1,claude-code-2.1.186-hi,claude-code,2.1.186,2,2,mcp_2,text_mention,False,tools.23.description,374,81,"Fetches a URL, converts the page to markdown, and answers `prompt` against it using a small fast model.
+
+- Fails on auth"
+hibench.benchmark.v1,claude-code-2.1.186-hi,claude-code,2.1.186,2,3,mcp_3,text_mention,False,tools.25.description,18780,4307,Execute a workflow script that orchestrates multiple subagents deterministically. Workflows run in the background — this
 hibench.benchmark.v1,claude-code-2.1.58-hi,claude-code,2.1.58,1,1,mcp_1,text_mention,False,tools.3.description,1217,273,"
 - Fetches content from a specified URL and processes it using an AI model
 - Takes a URL and a prompt as input

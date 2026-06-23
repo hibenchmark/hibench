@@ -917,6 +917,19 @@ hibench.benchmark.v1,claude-code-2.1.185-hi,claude-code,2.1.185,1,6,system_promp
 You are an interactive agent that helps users with software engineering tasks.
 
 IMPORTANT: Assist with authorized secur"
+hibench.benchmark.v1,claude-code-2.1.186-hi,claude-code,2.1.186,2,1,environment_context,injected_user_context,user,messages.0.content.0.text,306,70,"<system-reminder>
+As you answer the user's questions, you can use the following context:
+# currentDate
+Today's date is 2"
+hibench.benchmark.v1,claude-code-2.1.186-hi,claude-code,2.1.186,2,2,user_prompt,user_prompt,user,messages.0.content.1.text,2,1,Hi
+hibench.benchmark.v1,claude-code-2.1.186-hi,claude-code,2.1.186,2,3,system_prompt,skills_instructions,system,messages.1.content,6042,1361,"Available agent types for the Agent tool:
+- claude: Catch-all for any task that doesn't fit a more specific agent. Fleet"
+hibench.benchmark.v1,claude-code-2.1.186-hi,claude-code,2.1.186,2,4,system_prompt,main_instructions,,system.0.text,74,27,x-anthropic-billing-header: cc_version=2.1.186.75e; cc_entrypoint=sdk-cli;
+hibench.benchmark.v1,claude-code-2.1.186-hi,claude-code,2.1.186,2,5,system_prompt,main_instructions,,system.1.text,62,15,"You are a Claude agent, built on Anthropic's Claude Agent SDK."
+hibench.benchmark.v1,claude-code-2.1.186-hi,claude-code,2.1.186,2,6,system_prompt,main_instructions,,system.2.text,5950,1335,"
+You are an interactive agent that helps users with software engineering tasks.
+
+IMPORTANT: Assist with authorized secur"
 hibench.benchmark.v1,claude-code-2.1.58-hi,claude-code,2.1.58,1,1,user_prompt,user_prompt,user,messages.0.content,3,1,foo
 hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,1,user_prompt,user_prompt,user,messages.0.content,3,1,foo
 hibench.benchmark.v1,claude-code-2.1.61-hi,claude-code,2.1.61,1,1,environment_context,injected_user_context,user,messages.0.content.0.text,305,70,"<system-reminder>

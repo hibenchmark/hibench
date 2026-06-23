@@ -1,12 +1,12 @@
 {
   "schema_version": "hibench.github_stars.v1",
-  "updated_at": "2026-06-22T17:55:27Z",
+  "updated_at": "2026-06-23T09:36:07Z",
   "agents": {
     "claude-code": {
       "github_repo": "anthropics/claude-code",
       "github_url": "https://github.com/anthropics/claude-code",
-      "github_stars": 133551,
-      "updated_at": "2026-06-21T11:04:51Z"
+      "github_stars": 133883,
+      "updated_at": "2026-06-23T09:36:07Z"
     },
     "cline": {
       "github_repo": "cline/cline",
