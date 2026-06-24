@@ -5,7 +5,7 @@
     "type": "pypi",
     "package": "hermes-agent"
   },
-  "fetched_at": "2026-06-23T09:54:04Z",
+  "fetched_at": "2026-06-24T09:55:53Z",
   "version_count": 7,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",

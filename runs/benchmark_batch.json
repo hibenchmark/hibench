@@ -1,26 +1,19 @@
 {
   "schema_version": "hibench.benchmark_batch.v1",
-  "agent_id": "openclaw",
-  "catalog_path": "agent_versions/openclaw.json",
-  "version_count": 224,
+  "agent_id": "hermes",
+  "catalog_path": "agent_versions/hermes.json",
+  "version_count": 7,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": null,
-  "benchmark_version_count": 66,
-  "benchmark_exclusion_count": 6,
-  "excluded_benchmark_versions": [
-    "0.0.1",
-    "2026.4.5",
-    "2026.4.25",
-    "2026.4.26",
-    "2026.4.27",
-    "2026.5.12"
-  ],
-  "selected_version_count": 1,
+  "benchmark_version_count": 7,
+  "benchmark_exclusion_count": 0,
+  "excluded_benchmark_versions": [],
+  "selected_version_count": 0,
   "requested_versions": [],
-  "existing_agent_benchmark_version_count": 65,
-  "skipped_existing_version_count": 65,
-  "candidate_version_count": 1,
+  "existing_agent_benchmark_version_count": 7,
+  "skipped_existing_version_count": 7,
+  "candidate_version_count": 0,
   "initial_version_limit": 100,
   "initial_version_limit_applied": false,
   "prompt_file": "prompts/hi.txt",
@@ -39,7 +32,7 @@
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
     "disabled_reason": "",
-    "counted_run_count": 1,
+    "counted_run_count": 0,
     "error_count": 0,
     "errors": []
   },
@@ -54,18 +47,5 @@
     "error_count": 0,
     "errors": []
   },
-  "results": [
-    {
-      "agent_id": "openclaw",
-      "version": "2026.6.10",
-      "status": "created",
-      "run_id": "openclaw-2026.6.10-hi",
-      "run_dir": "runs/openclaw-2026.6.10-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 18745,
-      "tool_count": 33,
-      "error": ""
-    }
-  ]
+  "results": []
 }

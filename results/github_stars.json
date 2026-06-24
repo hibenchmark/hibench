@@ -1,6 +1,6 @@
 {
   "schema_version": "hibench.github_stars.v1",
-  "updated_at": "2026-06-24T09:39:57Z",
+  "updated_at": "2026-06-24T09:55:54Z",
   "agents": {
     "claude-code": {
       "github_repo": "anthropics/claude-code",
@@ -35,8 +35,8 @@
     "hermes": {
       "github_repo": "NousResearch/hermes-agent",
       "github_url": "https://github.com/NousResearch/hermes-agent",
-      "github_stars": 200345,
-      "updated_at": "2026-06-23T09:54:05Z"
+      "github_stars": 201464,
+      "updated_at": "2026-06-24T09:55:54Z"
     },
     "kilo": {
       "github_repo": "Kilo-Org/kilocode",
