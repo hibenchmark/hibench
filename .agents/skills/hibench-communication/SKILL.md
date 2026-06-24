@@ -176,3 +176,61 @@ Gemini CLI is new in HiBench.
 Counts: 8 tools, 2 skills, 3 subagents, 0 MCP.
 
 Startup footprint, not a quality score.
+---
+Here's the draft, themed around the shared reduction finding.
+
+---
+
+### Main post
+
+**Attach:** `web/public/og-image.png`
+
+```
+Three coding agents reduced their default startup footprint this week.
+
+Claude Code, Devin, and GitHub Copilot CLI all shipped lighter first requests in their latest releases — by different means.
+
+Empty repo. Prompt: "Hi". First model request captured.
+
+Startup footprint, not a quality score.
+
+hibench.dev
+```
+
+---
+
+### Reply 1
+
+**Attach:** `web/public/og/agents/claude-code.png`
+
+```
+Claude Code had the biggest drop.
+
+2.1.187 captures at 30,337 tokens, -3,884 vs 2.1.186. Tools move 27 → 24; AskUserQuestion, EnterPlanMode, and ExitPlanMode no longer appear.
+```
+
+---
+
+### Reply 2
+
+**Attach:** `web/public/og/agents/devin.png`
+
+```
+Devin moved down without changing its surface counts.
+
+2026.8.18 captures at 17,605 tokens, -1,952 vs 2026.7.23. Still 23 tools, 2 skills, 4 subagents, 4 MCP. The visible change is smaller tool definitions.
+```
+
+---
+
+### Reply 3
+
+**Attach:** `web/public/og/agents/github-cli.png`
+
+```
+GitHub Copilot CLI reduced tokens while reshaping its surface.
+
+1.0.64 captures at 18,758 tokens, -661 vs 1.0.63. Tools 17 → 16 with report_intent removed; subagents 5 → 7 with rubber-duck and security-review added.
+```
+
+---
