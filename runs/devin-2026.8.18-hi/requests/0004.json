@@ -1,0 +1,16 @@
+{
+  "index": 4,
+  "captured_at": "2026-06-24T10:01:12Z",
+  "method": "POST",
+  "path": "/exa.seat_management_pb.SeatManagementService/GetCliTeamSettings",
+  "headers": {
+    "accept": "*/*",
+    "authorization": "<redacted>",
+    "connect-protocol-version": "1",
+    "content-length": "469",
+    "content-type": "application/proto",
+    "host": "host.docker.internal:36095"
+  },
+  "body_text": "\n�\u0003\n\u0006chisel\u0012\t2026.8.18\u001a\u0011hibench-dummy-key\"\u0002en*\u0005linux:\t2026.8.18b\u0006chisel�\u0001\u0003\u0003\u0004\u0006�\u0001�\u00036ae6260549247a331ccc9482a092ad0cd9264217f0bca6bbce075dea440e4548882a62c36ee9a6f236f3750c6c54b0b2446a3a58b8e0439e3f9c05992d446da7fad44627d4d616fae927bd6a2fe5d570f5a1b5f4b915196506c6a564fae32854b49ed9ef06b5ef8e249f4f508393a038063e00582310f4f72cc3c3330fd16ff07c93cab7274f8bc034a7ffd538541e10a6054d9c1c4bde4c20a8bb8d904d3343bd1912e19dc8e936bcbf917be46a0aa86b2ff35f861abe5d08c452fcc079a691b72c",
+  "json": null
+}

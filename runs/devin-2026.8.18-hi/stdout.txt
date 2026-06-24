@@ -1,0 +1,4 @@
+[1mWelcome to Devin CLI![0m
+Logged in.
+
+You're all set. Run [1mdevin[0m to get started.

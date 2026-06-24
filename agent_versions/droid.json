@@ -5,19 +5,19 @@
     "type": "npm",
     "package": "droid"
   },
-  "fetched_at": "2026-06-21T12:03:08Z",
-  "version_count": 132,
+  "fetched_at": "2026-06-24T10:01:15Z",
+  "version_count": 135,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": "0.62.1",
   "benchmark_min_version_reason": "Versions before 0.62.1 do not honor the benchmark's local custom-model configuration and stop before a provider request with Factory authentication required.",
-  "benchmark_version_count": 118,
+  "benchmark_version_count": 121,
   "benchmark_exclusion_count": 0,
   "benchmark_exclusions": {},
   "excluded_benchmark_versions": [],
-  "latest": "0.153.1",
+  "latest": "0.157.1",
   "dist_tags": {
-    "latest": "0.153.1"
+    "latest": "0.157.1"
   },
   "versions": [
     "0.0.1",
@@ -151,7 +151,10 @@
     "0.151.0",
     "0.152.0",
     "0.153.0",
-    "0.153.1"
+    "0.153.1",
+    "0.156.2",
+    "0.157.0",
+    "0.157.1"
   ],
   "benchmark_versions": [
     "0.62.1",
@@ -271,6 +274,9 @@
     "0.151.0",
     "0.152.0",
     "0.153.0",
-    "0.153.1"
+    "0.153.1",
+    "0.156.2",
+    "0.157.0",
+    "0.157.1"
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "index": 5,
+  "captured_at": "2026-06-24T10:01:12Z",
+  "method": "POST",
+  "path": "/exa.api_server_pb.ApiServerService/GetCliModelConfigs",
+  "headers": {
+    "accept": "*/*",
+    "authorization": "<redacted>",
+    "connect-protocol-version": "1",
+    "content-length": "469",
+    "content-type": "application/proto",
+    "host": "host.docker.internal:36095"
+  },
+  "body_text": "\n�\u0003\n\u0006chisel\u0012\t2026.8.18\u001a\u0011hibench-dummy-key\"\u0002en*\u0005linux:\t2026.8.18b\u0006chisel�\u0001\u0003\u0003\u0004\u0006�\u0001�\u000378f89d0f0774e2e931e01a37158d79137423692b6cc26eabb656a2430a7cb446d6dfabec56714fbbdbbd2566958b8490df9def817a8d5186d02436bfcfd313c001c5fd62fd4377f241b5db6635276df92e3ed80c6d9ce3668956ebbdd94620de55e57b6bdf6c7edc74adfe0ecefa9326b72d68b31c3ef81fcf43ef3bd9b3b975c1f1e689552e12b3ea3936eb9476123fd0426392047bb4a58469a3e2cb3a89a5e3bcd17cd375f0c0b0ca4ff3fa034abf5905d055af7320df0e54ebacb386fa38aa28",
+  "json": null
+}

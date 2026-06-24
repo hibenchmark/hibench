@@ -1,0 +1,16 @@
+{
+  "index": 7,
+  "captured_at": "2026-06-24T10:01:12Z",
+  "method": "POST",
+  "path": "/exa.seat_management_pb.SeatManagementService/GetUserStatus",
+  "headers": {
+    "accept": "*/*",
+    "authorization": "<redacted>",
+    "connect-protocol-version": "1",
+    "content-length": "463",
+    "content-type": "application/proto",
+    "host": "host.docker.internal:36095"
+  },
+  "body_text": "\n�\u0003\n\u0006chisel\u0012\t0.0.0-dev\u001a\u0011hibench-dummy-key\"\u0002en*\u0005linux:\t0.0.0-devb\u0006chisel�\u0001�\u0003df5d6cbf2a74493f86202261b97b309216863346cf8217906118b0526783780b02e588b55079954cf9f064839265a616e5d3393d910abd06d1128127f82b2548001970484f070155868c79c18c8d795cedc30ccf065c58c093a52871a9b139692c29a1e0e7973873d5ce3e30d6144b68dd1736699a1a63ce687655d52ac9467819341fa6368cfb435fbedc00207c058ae1d436ef2f1fd1938b8cdd156cf6ec6ab04b7fb965bd2f0fe4aff10a3cdafa57edb817138ca5a318ff16984ce4c13a2a658a",
+  "json": null
+}

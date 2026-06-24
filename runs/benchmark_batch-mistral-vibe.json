@@ -11,11 +11,11 @@
   "excluded_benchmark_versions": [
     "2.6.0"
   ],
-  "selected_version_count": 2,
+  "selected_version_count": 0,
   "requested_versions": [],
-  "existing_agent_benchmark_version_count": 49,
-  "skipped_existing_version_count": 49,
-  "candidate_version_count": 2,
+  "existing_agent_benchmark_version_count": 51,
+  "skipped_existing_version_count": 51,
+  "candidate_version_count": 0,
   "initial_version_limit": 100,
   "initial_version_limit_applied": false,
   "prompt_file": "prompts/hi.txt",
@@ -34,7 +34,7 @@
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
     "disabled_reason": "",
-    "counted_run_count": 2,
+    "counted_run_count": 0,
     "error_count": 0,
     "errors": []
   },
@@ -49,30 +49,5 @@
     "error_count": 0,
     "errors": []
   },
-  "results": [
-    {
-      "agent_id": "mistral-vibe",
-      "version": "2.17.0",
-      "status": "created",
-      "run_id": "mistral-vibe-2.17.0-hi",
-      "run_dir": "runs/mistral-vibe-2.17.0-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 8178,
-      "tool_count": 9,
-      "error": ""
-    },
-    {
-      "agent_id": "mistral-vibe",
-      "version": "2.17.1",
-      "status": "created",
-      "run_id": "mistral-vibe-2.17.1-hi",
-      "run_dir": "runs/mistral-vibe-2.17.1-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 8179,
-      "tool_count": 9,
-      "error": ""
-    }
-  ]
+  "results": []
 }

@@ -1,0 +1,13 @@
+{
+  "index": 3,
+  "captured_at": "2026-06-24T10:01:12Z",
+  "method": "GET",
+  "path": "/v3/self",
+  "headers": {
+    "accept": "*/*",
+    "authorization": "<redacted>",
+    "host": "host.docker.internal:36095"
+  },
+  "body_text": "",
+  "json": null
+}

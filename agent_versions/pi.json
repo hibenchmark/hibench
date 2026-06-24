@@ -9,11 +9,11 @@
       "@earendil-works/pi-coding-agent"
     ]
   },
-  "fetched_at": "2026-06-21T12:03:18Z",
-  "version_count": 293,
+  "fetched_at": "2026-06-24T10:10:52Z",
+  "version_count": 296,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
-  "benchmark_version_count": 292,
+  "benchmark_version_count": 295,
   "benchmark_exclusion_count": 1,
   "benchmark_exclusions": {
     "0.70.3": "Broken"
@@ -21,9 +21,9 @@
   "excluded_benchmark_versions": [
     "0.70.3"
   ],
-  "latest": "0.79.9",
+  "latest": "0.80.2",
   "dist_tags": {
-    "latest": "0.79.9",
+    "latest": "0.80.2",
     "legacy-node20": "0.74.2"
   },
   "versions": [
@@ -319,7 +319,10 @@
     "0.79.6",
     "0.79.7",
     "0.79.8",
-    "0.79.9"
+    "0.79.9",
+    "0.79.10",
+    "0.80.1",
+    "0.80.2"
   ],
   "benchmark_versions": [
     "0.6.2",
@@ -613,6 +616,9 @@
     "0.79.6",
     "0.79.7",
     "0.79.8",
-    "0.79.9"
+    "0.79.9",
+    "0.79.10",
+    "0.80.1",
+    "0.80.2"
   ]
 }

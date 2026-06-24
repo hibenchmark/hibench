@@ -930,6 +930,19 @@ hibench.benchmark.v1,claude-code-2.1.186-hi,claude-code,2.1.186,2,6,system_promp
 You are an interactive agent that helps users with software engineering tasks.
 
 IMPORTANT: Assist with authorized secur"
+hibench.benchmark.v1,claude-code-2.1.187-hi,claude-code,2.1.187,2,1,environment_context,injected_user_context,user,messages.0.content.0.text,306,70,"<system-reminder>
+As you answer the user's questions, you can use the following context:
+# currentDate
+Today's date is 2"
+hibench.benchmark.v1,claude-code-2.1.187-hi,claude-code,2.1.187,2,2,user_prompt,user_prompt,user,messages.0.content.1.text,2,1,Hi
+hibench.benchmark.v1,claude-code-2.1.187-hi,claude-code,2.1.187,2,3,system_prompt,skills_instructions,system,messages.1.content,6062,1365,"Available agent types for the Agent tool:
+- claude: Catch-all for any task that doesn't fit a more specific agent. Fleet"
+hibench.benchmark.v1,claude-code-2.1.187-hi,claude-code,2.1.187,2,4,system_prompt,main_instructions,,system.0.text,74,26,x-anthropic-billing-header: cc_version=2.1.187.cfe; cc_entrypoint=sdk-cli;
+hibench.benchmark.v1,claude-code-2.1.187-hi,claude-code,2.1.187,2,5,system_prompt,main_instructions,,system.1.text,62,15,"You are a Claude agent, built on Anthropic's Claude Agent SDK."
+hibench.benchmark.v1,claude-code-2.1.187-hi,claude-code,2.1.187,2,6,system_prompt,main_instructions,,system.2.text,5950,1335,"
+You are an interactive agent that helps users with software engineering tasks.
+
+IMPORTANT: Assist with authorized secur"
 hibench.benchmark.v1,claude-code-2.1.58-hi,claude-code,2.1.58,1,1,user_prompt,user_prompt,user,messages.0.content,3,1,foo
 hibench.benchmark.v1,claude-code-2.1.59-hi,claude-code,2.1.59,1,1,user_prompt,user_prompt,user,messages.0.content,3,1,foo
 hibench.benchmark.v1,claude-code-2.1.61-hi,claude-code,2.1.61,1,1,environment_context,injected_user_context,user,messages.0.content.0.text,305,70,"<system-reminder>
@@ -1900,6 +1913,18 @@ hibench.benchmark.v1,codex-0.141.0-hi,codex,0.141.0,1,4,environment_context,inje
   <current_date>2026-06-18</current_date>
   <timezon"
 hibench.benchmark.v1,codex-0.141.0-hi,codex,0.141.0,1,5,user_prompt,user_prompt,user,input.2.content.0.text,2,1,Hi
+hibench.benchmark.v1,codex-0.142.0-hi,codex,0.142.0,1,1,system_prompt,main_instructions,,instructions,21335,4376,"You are Codex, a coding agent based on GPT-5. You and the user share one workspace, and your job is to collaborate with"
+hibench.benchmark.v1,codex-0.142.0-hi,codex,0.142.0,1,2,system_prompt,permissions_instructions,developer,input.0.content.0.text,341,64,"<permissions instructions>
+Filesystem sandboxing defines which files can be read or written. `sandbox_mode` is `read-onl"
+hibench.benchmark.v1,codex-0.142.0-hi,codex,0.142.0,1,3,system_prompt,skills_instructions,developer,input.0.content.1.text,6028,1283,"<skills_instructions>
+## Skills
+A skill is a set of instructions provided through a `SKILL.md` source. Below is the list"
+hibench.benchmark.v1,codex-0.142.0-hi,codex,0.142.0,1,4,environment_context,injected_user_context,user,input.1.content.0.text,403,101,"<environment_context>
+  <cwd>/workspace</cwd>
+  <shell>bash</shell>
+  <current_date>2026-06-24</current_date>
+  <timezon"
+hibench.benchmark.v1,codex-0.142.0-hi,codex,0.142.0,1,5,user_prompt,user_prompt,user,input.2.content.0.text,2,1,Hi
 hibench.benchmark.v1,codex-0.16.0-hi,codex,0.16.0,1,1,system_prompt,main_instructions,,instructions,23430,5001,"You are a coding agent running in the Codex CLI, a terminal-based coding assistant. Codex CLI is an open source project "
 hibench.benchmark.v1,codex-0.16.0-hi,codex,0.16.0,1,2,environment_context,injected_user_context,user,input.0.content.0.text,161,31,"<environment_context>
 
@@ -2731,6 +2756,19 @@ If editing a git"
 hibench.benchmark.v1,cursor-cli-2026.06.19-20-24-33-653a7fb-hi,cursor-cli,2026.06.19-20-24-33-653a7fb,1,3,user_prompt,user_prompt,user,messages.2.content,29,10,"<user_query>
 Hi
 </user_query>"
+hibench.benchmark.v1,cursor-cli-2026.06.24-00-45-58-9f61de7-hi,cursor-cli,2026.06.24-00-45-58-9f61de7,1,1,system_prompt,main_instructions,system,messages.0.content,21385,4726,"You are an AI coding assistant, powered by gpt-5.
+
+You are an interactive CLI tool that helps users with software engine"
+hibench.benchmark.v1,cursor-cli-2026.06.24-00-45-58-9f61de7-hi,cursor-cli,2026.06.24-00-45-58-9f61de7,1,2,environment_context,injected_user_context,user,messages.1.content,631,155,"<user_info>
+OS Version: linux 6.6.87.2-microsoft-standard-WSL2
+
+Shell: bash
+
+Workspace Path: /workspace
+If editing a git"
+hibench.benchmark.v1,cursor-cli-2026.06.24-00-45-58-9f61de7-hi,cursor-cli,2026.06.24-00-45-58-9f61de7,1,3,user_prompt,user_prompt,user,messages.2.content,29,10,"<user_query>
+Hi
+</user_query>"
 hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,1,system_prompt,main_instructions,,instructions,18339,3776,"You are Devin, an interactive command line agent from Cognition.
 
 Your job is to use these instructions and the tools av"
@@ -2739,6 +2777,15 @@ hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,3,environment_context,
 The following information is automatically generated context about your current environment.
 Current works"
 hibench.benchmark.v1,devin-2026.7.23-hi,devin,2026.7.23,3,4,system_prompt,skills_instructions,system,skills.content,521,120,"<available_skills>
+The following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
+hibench.benchmark.v1,devin-2026.8.18-hi,devin,2026.8.18,8,1,system_prompt,main_instructions,,instructions,18949,3901,"You are Devin, an interactive command line agent from Cognition.
+
+Your job is to use these instructions and the tools av"
+hibench.benchmark.v1,devin-2026.8.18-hi,devin,2026.8.18,8,2,user_prompt,user_prompt,user,messages.0.content,2,1,Hi
+hibench.benchmark.v1,devin-2026.8.18-hi,devin,2026.8.18,8,3,environment_context,injected_user_context,system,environment_context.content,276,67,"<system_info>
+The following information is automatically generated context about your current environment.
+Current works"
+hibench.benchmark.v1,devin-2026.8.18-hi,devin,2026.8.18,8,4,system_prompt,skills_instructions,system,skills.content,521,120,"<available_skills>
 The following skills can be invoked using the `skill` tool. When a built-in skill clearly matches the"
 hibench.benchmark.v1,droid-0.100.0-hi,droid,0.100.0,1,1,environment_context,injected_user_context,user,input.0.content.0.text,1407,369,"<system-reminder>
 
@@ -3534,6 +3581,51 @@ Shell: bash inside WSL2 — real Linux on a W"
 hibench.benchmark.v1,droid-0.153.1-hi,droid,0.153.1,1,5,system_prompt,developer_instructions,user,input.0.content.4.text,376,80,<system-reminder>IMPORTANT: TodoWrite was not called yet. You must call it for any non-trivial task requested by the use
 hibench.benchmark.v1,droid-0.153.1-hi,droid,0.153.1,1,6,user_prompt,user_prompt,user,input.1.content.0.text,2,1,Hi
 hibench.benchmark.v1,droid-0.153.1-hi,droid,0.153.1,1,7,system_prompt,main_instructions,,instructions,5439,1111,"You are Droid, an AI software engineering agent built by Factory.
+
+You are running in non-interactive Exec Mode where yo"
+hibench.benchmark.v1,droid-0.156.2-hi,droid,0.156.2,1,1,system_prompt,developer_instructions,user,input.0.content.0.text,2155,452,"<system-reminder>
+The tools listed below are available in this environment, but their schemas may be omitted from the cu"
+hibench.benchmark.v1,droid-0.156.2-hi,droid,0.156.2,1,2,environment_context,injected_user_context,user,input.0.content.1.text,225,50,"<system-reminder>IMPORTANT - Current date for web search relevance:
+- Today's date is 2026-06-24. Use this date when Web"
+hibench.benchmark.v1,droid-0.156.2-hi,droid,0.156.2,1,3,system_prompt,skills_instructions,user,input.0.content.2.text,6035,1232,"<system-reminder>
+Available skills for the Skill tool are listed below. The Skill tool definition relies on this system"
+hibench.benchmark.v1,droid-0.156.2-hi,droid,0.156.2,1,4,environment_context,injected_user_context,user,input.0.content.3.text,1174,271,"<system-reminder>
+
+User system info (linux 6.6.87.2-microsoft-standard-WSL2)
+Shell: bash inside WSL2 — real Linux on a W"
+hibench.benchmark.v1,droid-0.156.2-hi,droid,0.156.2,1,5,system_prompt,developer_instructions,user,input.0.content.4.text,376,80,<system-reminder>IMPORTANT: TodoWrite was not called yet. You must call it for any non-trivial task requested by the use
+hibench.benchmark.v1,droid-0.156.2-hi,droid,0.156.2,1,6,user_prompt,user_prompt,user,input.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,droid-0.156.2-hi,droid,0.156.2,1,7,system_prompt,main_instructions,,instructions,5439,1111,"You are Droid, an AI software engineering agent built by Factory.
+
+You are running in non-interactive Exec Mode where yo"
+hibench.benchmark.v1,droid-0.157.0-hi,droid,0.157.0,1,1,system_prompt,developer_instructions,user,input.0.content.0.text,2155,452,"<system-reminder>
+The tools listed below are available in this environment, but their schemas may be omitted from the cu"
+hibench.benchmark.v1,droid-0.157.0-hi,droid,0.157.0,1,2,environment_context,injected_user_context,user,input.0.content.1.text,225,50,"<system-reminder>IMPORTANT - Current date for web search relevance:
+- Today's date is 2026-06-24. Use this date when Web"
+hibench.benchmark.v1,droid-0.157.0-hi,droid,0.157.0,1,3,system_prompt,skills_instructions,user,input.0.content.2.text,6035,1232,"<system-reminder>
+Available skills for the Skill tool are listed below. The Skill tool definition relies on this system"
+hibench.benchmark.v1,droid-0.157.0-hi,droid,0.157.0,1,4,environment_context,injected_user_context,user,input.0.content.3.text,1174,271,"<system-reminder>
+
+User system info (linux 6.6.87.2-microsoft-standard-WSL2)
+Shell: bash inside WSL2 — real Linux on a W"
+hibench.benchmark.v1,droid-0.157.0-hi,droid,0.157.0,1,5,system_prompt,developer_instructions,user,input.0.content.4.text,376,80,<system-reminder>IMPORTANT: TodoWrite was not called yet. You must call it for any non-trivial task requested by the use
+hibench.benchmark.v1,droid-0.157.0-hi,droid,0.157.0,1,6,user_prompt,user_prompt,user,input.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,droid-0.157.0-hi,droid,0.157.0,1,7,system_prompt,main_instructions,,instructions,5439,1111,"You are Droid, an AI software engineering agent built by Factory.
+
+You are running in non-interactive Exec Mode where yo"
+hibench.benchmark.v1,droid-0.157.1-hi,droid,0.157.1,1,1,system_prompt,developer_instructions,user,input.0.content.0.text,2155,452,"<system-reminder>
+The tools listed below are available in this environment, but their schemas may be omitted from the cu"
+hibench.benchmark.v1,droid-0.157.1-hi,droid,0.157.1,1,2,environment_context,injected_user_context,user,input.0.content.1.text,225,50,"<system-reminder>IMPORTANT - Current date for web search relevance:
+- Today's date is 2026-06-24. Use this date when Web"
+hibench.benchmark.v1,droid-0.157.1-hi,droid,0.157.1,1,3,system_prompt,skills_instructions,user,input.0.content.2.text,6035,1232,"<system-reminder>
+Available skills for the Skill tool are listed below. The Skill tool definition relies on this system"
+hibench.benchmark.v1,droid-0.157.1-hi,droid,0.157.1,1,4,environment_context,injected_user_context,user,input.0.content.3.text,1174,271,"<system-reminder>
+
+User system info (linux 6.6.87.2-microsoft-standard-WSL2)
+Shell: bash inside WSL2 — real Linux on a W"
+hibench.benchmark.v1,droid-0.157.1-hi,droid,0.157.1,1,5,system_prompt,developer_instructions,user,input.0.content.4.text,376,80,<system-reminder>IMPORTANT: TodoWrite was not called yet. You must call it for any non-trivial task requested by the use
+hibench.benchmark.v1,droid-0.157.1-hi,droid,0.157.1,1,6,user_prompt,user_prompt,user,input.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,droid-0.157.1-hi,droid,0.157.1,1,7,system_prompt,main_instructions,,instructions,5439,1111,"You are Droid, an AI software engineering agent built by Factory.
 
 You are running in non-interactive Exec Mode where yo"
 hibench.benchmark.v1,droid-0.77.0-hi,droid,0.77.0,1,1,environment_context,injected_user_context,user,input.0.content.0.text,1407,369,"<system-reminder>
@@ -4629,6 +4721,13 @@ Hi
 
 <system_reminder>
 <sql_tables>Available tables:"
+hibench.benchmark.v1,github-cli-1.0.64-hi,github-cli,1.0.64,1,1,system_prompt,main_instructions,,instructions,25087,5449,"You are the GitHub Copilot CLI, a terminal assistant built by GitHub. You are running in non-interactive mode and have n"
+hibench.benchmark.v1,github-cli-1.0.64-hi,github-cli,1.0.64,1,2,user_prompt,user_prompt,user,input.0.content.0.text,168,54,"<current_datetime>2026-06-24T10:04:36.641+00:00</current_datetime>
+
+Hi
+
+<system_reminder>
+<sql_tables>Available tables:"
 hibench.benchmark.v1,github-cli-1.0.8-hi,github-cli,1.0.8,1,1,system_prompt,main_instructions,,instructions,32292,6936,"You are the GitHub Copilot CLI, a terminal assistant built by GitHub. You are running in non-interactive mode and have n"
 hibench.benchmark.v1,github-cli-1.0.8-hi,github-cli,1.0.8,1,2,user_prompt,user_prompt,user,input.0.content.0.text,238,65,"<current_datetime>2026-06-14T19:11:07.695Z</current_datetime>
 
@@ -5610,6 +5709,48 @@ The following skills are available for use:
 hibench.benchmark.v1,grok-cli-0.2.61-hi,grok-cli,0.2.61,2,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
 Hi
 </user_query>"
+hibench.benchmark.v1,grok-cli-0.2.62-hi,grok-cli,0.2.62,2,1,system_prompt,main_instructions,system,messages.0.content,12769,2566,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
+hibench.benchmark.v1,grok-cli-0.2.62-hi,grok-cli,0.2.62,2,2,environment_context,injected_user_context,user,messages.1.content,196,52,"<user_info>
+OS Version: linux
+Shell: /bin/sh
+Workspace Path: /workspace
+Today's date: 2026-06-24
+Note: Prefer using rela"
+hibench.benchmark.v1,grok-cli-0.2.62-hi,grok-cli,0.2.62,2,3,system_prompt,skills_instructions,user,messages.2.content,2895,698,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.62-hi,grok-cli,0.2.62,2,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
+Hi
+</user_query>"
+hibench.benchmark.v1,grok-cli-0.2.63-hi,grok-cli,0.2.63,2,1,system_prompt,main_instructions,system,messages.0.content,12769,2566,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
+hibench.benchmark.v1,grok-cli-0.2.63-hi,grok-cli,0.2.63,2,2,environment_context,injected_user_context,user,messages.1.content,196,52,"<user_info>
+OS Version: linux
+Shell: /bin/sh
+Workspace Path: /workspace
+Today's date: 2026-06-24
+Note: Prefer using rela"
+hibench.benchmark.v1,grok-cli-0.2.63-hi,grok-cli,0.2.63,2,3,system_prompt,skills_instructions,user,messages.2.content,2895,698,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.63-hi,grok-cli,0.2.63,2,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
+Hi
+</user_query>"
+hibench.benchmark.v1,grok-cli-0.2.64-hi,grok-cli,0.2.64,2,1,system_prompt,main_instructions,system,messages.0.content,12769,2566,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
+hibench.benchmark.v1,grok-cli-0.2.64-hi,grok-cli,0.2.64,2,2,environment_context,injected_user_context,user,messages.1.content,196,52,"<user_info>
+OS Version: linux
+Shell: /bin/sh
+Workspace Path: /workspace
+Today's date: 2026-06-24
+Note: Prefer using rela"
+hibench.benchmark.v1,grok-cli-0.2.64-hi,grok-cli,0.2.64,2,3,system_prompt,skills_instructions,user,messages.2.content,2895,698,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.64-hi,grok-cli,0.2.64,2,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
+Hi
+</user_query>"
 hibench.benchmark.v1,grok-cli-0.2.7-hi,grok-cli,0.2.7,1,1,system_prompt,main_instructions,system,messages.0.content,15960,3249,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
 hibench.benchmark.v1,grok-cli-0.2.7-hi,grok-cli,0.2.7,1,2,environment_context,injected_user_context,user,messages.1.content,171,41,"<user_info>
 OS Version: linux
@@ -6184,6 +6325,33 @@ hibench.benchmark.v1,kilo-7.3.50-hi,kilo,7.3.50,1,3,environment_context,injected
 Current time: 2026-06-21T11:09:27+00:00
 Working directory: /workspace
 Workspace root folder: /work"
+hibench.benchmark.v1,kilo-7.3.51-hi,kilo,7.3.51,1,1,system_prompt,main_instructions,system,messages.0.content,13712,2809,"You are Kilo, a highly skilled software engineer with extensive knowledge in many programming languages, frameworks, des"
+hibench.benchmark.v1,kilo-7.3.51-hi,kilo,7.3.51,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,kilo-7.3.51-hi,kilo,7.3.51,1,3,environment_context,injected_user_context,user,messages.1.content.1.text,148,42,"<environment_details>
+Current time: 2026-06-24T10:07:09+00:00
+Working directory: /workspace
+Workspace root folder: /work"
+hibench.benchmark.v1,kilo-7.3.52-hi,kilo,7.3.52,1,1,system_prompt,main_instructions,system,messages.0.content,13712,2809,"You are Kilo, a highly skilled software engineer with extensive knowledge in many programming languages, frameworks, des"
+hibench.benchmark.v1,kilo-7.3.52-hi,kilo,7.3.52,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,kilo-7.3.52-hi,kilo,7.3.52,1,3,environment_context,injected_user_context,user,messages.1.content.1.text,139,40,"<environment_details>
+Current time: 2026-06-24T10:08:22+00:00
+Working directory: /workspace
+Workspace root folder: /
+</e"
+hibench.benchmark.v1,kilo-7.3.53-hi,kilo,7.3.53,1,1,system_prompt,main_instructions,system,messages.0.content,13712,2809,"You are Kilo, a highly skilled software engineer with extensive knowledge in many programming languages, frameworks, des"
+hibench.benchmark.v1,kilo-7.3.53-hi,kilo,7.3.53,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,kilo-7.3.53-hi,kilo,7.3.53,1,3,environment_context,injected_user_context,user,messages.1.content.1.text,139,40,"<environment_details>
+Current time: 2026-06-24T10:09:29+00:00
+Working directory: /workspace
+Workspace root folder: /
+</e"
+hibench.benchmark.v1,kilo-7.3.54-hi,kilo,7.3.54,1,1,system_prompt,main_instructions,system,messages.0.content,13712,2809,"You are Kilo, a highly skilled software engineer with extensive knowledge in many programming languages, frameworks, des"
+hibench.benchmark.v1,kilo-7.3.54-hi,kilo,7.3.54,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,kilo-7.3.54-hi,kilo,7.3.54,1,3,environment_context,injected_user_context,user,messages.1.content.1.text,139,40,"<environment_details>
+Current time: 2026-06-24T10:10:40+00:00
+Working directory: /workspace
+Workspace root folder: /
+</e"
 hibench.benchmark.v1,kilo-7.3.6-hi,kilo,7.3.6,1,1,system_prompt,main_instructions,system,messages.0.content,13712,2809,"You are Kilo, a highly skilled software engineer with extensive knowledge in many programming languages, frameworks, des"
 hibench.benchmark.v1,kilo-7.3.6-hi,kilo,7.3.6,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,3,2,Hi
 hibench.benchmark.v1,kilo-7.3.6-hi,kilo,7.3.6,1,3,environment_context,injected_user_context,user,messages.1.content.1.text,148,42,"<environment_details>
@@ -7378,6 +7546,8 @@ hibench.benchmark.v1,pi-0.79.0-hi,pi,0.79.0,1,1,system_prompt,main_instructions,
 hibench.benchmark.v1,pi-0.79.0-hi,pi,0.79.0,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
 hibench.benchmark.v1,pi-0.79.1-hi,pi,0.79.1,1,1,system_prompt,main_instructions,system,messages.0.content,2489,549,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
 hibench.benchmark.v1,pi-0.79.1-hi,pi,0.79.1,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,pi-0.79.10-hi,pi,0.79.10,1,1,system_prompt,main_instructions,system,messages.0.content,2489,549,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
+hibench.benchmark.v1,pi-0.79.10-hi,pi,0.79.10,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
 hibench.benchmark.v1,pi-0.79.2-hi,pi,0.79.2,1,1,system_prompt,main_instructions,system,messages.0.content,2489,549,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
 hibench.benchmark.v1,pi-0.79.2-hi,pi,0.79.2,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
 hibench.benchmark.v1,pi-0.79.3-hi,pi,0.79.3,1,1,system_prompt,main_instructions,system,messages.0.content,2489,549,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
@@ -7394,3 +7564,7 @@ hibench.benchmark.v1,pi-0.79.8-hi,pi,0.79.8,1,1,system_prompt,main_instructions,
 hibench.benchmark.v1,pi-0.79.8-hi,pi,0.79.8,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
 hibench.benchmark.v1,pi-0.79.9-hi,pi,0.79.9,1,1,system_prompt,main_instructions,system,messages.0.content,2489,549,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
 hibench.benchmark.v1,pi-0.79.9-hi,pi,0.79.9,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,pi-0.80.1-hi,pi,0.80.1,1,1,system_prompt,main_instructions,system,messages.0.content,2489,549,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
+hibench.benchmark.v1,pi-0.80.1-hi,pi,0.80.1,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,pi-0.80.2-hi,pi,0.80.2,1,1,system_prompt,main_instructions,system,messages.0.content,2489,549,"You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executi"
+hibench.benchmark.v1,pi-0.80.2-hi,pi,0.80.2,1,2,user_prompt,user_prompt,user,messages.1.content.0.text,2,1,Hi

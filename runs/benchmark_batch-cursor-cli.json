@@ -11,7 +11,7 @@
   "excluded_benchmark_versions": [],
   "selected_version_count": 1,
   "requested_versions": [],
-  "existing_agent_benchmark_version_count": 4,
+  "existing_agent_benchmark_version_count": 5,
   "skipped_existing_version_count": 0,
   "candidate_version_count": 1,
   "initial_version_limit": 100,
@@ -50,10 +50,10 @@
   "results": [
     {
       "agent_id": "cursor-cli",
-      "version": "2026.06.19-20-24-33-653a7fb",
+      "version": "2026.06.24-00-45-58-9f61de7",
       "status": "created",
-      "run_id": "cursor-cli-2026.06.19-20-24-33-653a7fb-hi",
-      "run_dir": "runs/cursor-cli-2026.06.19-20-24-33-653a7fb-hi",
+      "run_id": "cursor-cli-2026.06.24-00-45-58-9f61de7-hi",
+      "run_dir": "runs/cursor-cli-2026.06.24-00-45-58-9f61de7-hi",
       "replaced_run_dirs": [],
       "has_primary_request": true,
       "total_body_tokens": 16326,

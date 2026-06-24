@@ -5,8 +5,8 @@
     "type": "npm",
     "package": "cline"
   },
-  "fetched_at": "2026-06-21T12:03:05Z",
-  "version_count": 241,
+  "fetched_at": "2026-06-24T09:59:24Z",
+  "version_count": 242,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": "3.0.3",
@@ -17,8 +17,8 @@
   "excluded_benchmark_versions": [],
   "latest": "3.0.29",
   "dist_tags": {
-    "nightly": "3.0.29-nightly.1781959435",
-    "latest": "3.0.29"
+    "latest": "3.0.29",
+    "nightly": "3.0.29-nightly.1782219951"
   },
   "versions": [
     "0.1.0",
@@ -261,6 +261,7 @@
     "3.0.27",
     "3.0.28",
     "3.0.29-nightly.1781959435",
+    "3.0.29-nightly.1782219951",
     "3.0.29"
   ],
   "benchmark_versions": [
