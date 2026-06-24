@@ -17,7 +17,6 @@ const hasAnthropicData =
   agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
 const pairs = generateComparePairs(agents, hasAnthropicData);
 const lastUpdated = getLatestBenchmarkDate();
-const { title, description } = compareIndexPageSeo(pairs.length);
 
 const entries = pairs
   .map((pair) => {
@@ -39,9 +38,19 @@ const entries = pairs
   })
   .filter(Boolean)
   .sort((a, b) => b!.spread - a!.spread);
+
+const { title, description, jsonLd } = compareIndexPageSeo(
+  resolveSiteUrl(Astro.site),
+  entries.map((entry) => ({
+    slug: entry!.slug,
+    agentADisplayName: entry!.left.agentDisplayName,
+    agentBDisplayName: entry!.right.agentDisplayName,
+  })),
+  lastUpdated,
+);
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} jsonLd={jsonLd}>
   <header class="mb-8">
     <h1 class="text-3xl font-bold tracking-tight ui-heading">Agent comparisons</h1>
     <p class="mt-3 max-w-2xl ui-muted">

@@ -9,6 +9,7 @@ import worker from '../src/worker.js';
 import {
   agentPageSeo,
   absoluteUrl,
+  compareIndexPageSeo,
   comparePageSeo,
   compareSlug,
   generateComparePairs,
@@ -179,6 +180,41 @@ test('generateComparePairs includes extremes and adjacent ranking pairs', () => 
   assert.ok(slugs.includes('codex-vs-cursor-cli'));
   assert.ok(slugs.includes('cursor-cli-vs-pi'));
   assert.equal(pairs.length, 3);
+});
+
+test('compareIndexPageSeo emits CollectionPage with comparison ItemList', () => {
+  const seo = compareIndexPageSeo(
+    site,
+    [
+      {
+        slug: 'codex-vs-cursor-cli',
+        agentADisplayName: 'Codex CLI',
+        agentBDisplayName: 'Cursor CLI',
+      },
+      {
+        slug: 'codex-vs-pi',
+        agentADisplayName: 'Codex CLI',
+        agentBDisplayName: 'Pi',
+      },
+    ],
+    '2026-06-24T12:00:00Z',
+  );
+
+  assert.match(seo.description, /2 high-intent coding-agent pairs/);
+  assert.equal(seo.jsonLd['@type'], 'CollectionPage');
+  assert.equal(seo.jsonLd.url, 'https://hibench.dev/compare/');
+  assert.equal(seo.jsonLd.dateModified, '2026-06-24T12:00:00Z');
+
+  const list = seo.jsonLd.mainEntity as {
+    numberOfItems: number;
+    itemListElement: { name: string; url: string }[];
+  };
+  assert.equal(list.numberOfItems, 2);
+  assert.equal(list.itemListElement[0].name, 'Codex CLI vs Cursor CLI');
+  assert.equal(
+    list.itemListElement[0].url,
+    'https://hibench.dev/compare/codex-vs-cursor-cli/',
+  );
 });
 
 test('comparePageSeo references both agents in title and datasets', () => {

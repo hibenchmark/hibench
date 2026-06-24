@@ -311,10 +311,50 @@ export function generateComparePairs(
   return [...pairs.values()].sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
-export function compareIndexPageSeo(pairCount: number) {
+export type CompareIndexEntry = {
+  slug: string;
+  agentADisplayName: string;
+  agentBDisplayName: string;
+};
+
+export function compareIndexItemListSchema(
+  site: string,
+  entries: CompareIndexEntry[],
+): JsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Coding agent benchmark comparisons',
+    description:
+      'Side-by-side default footprint comparisons between coding agent pairs.',
+    numberOfItems: entries.length,
+    itemListElement: entries.map((entry, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: `${entry.agentADisplayName} vs ${entry.agentBDisplayName}`,
+      url: absoluteUrl(site, `/compare/${entry.slug}/`),
+      description: `Compare ${entry.agentADisplayName} and ${entry.agentBDisplayName} default token footprint, tools, skills, and sub-agents.`,
+    })),
+  };
+}
+
+export function compareIndexPageSeo(
+  site: string,
+  entries: CompareIndexEntry[],
+  lastUpdated?: string,
+) {
   return {
     title: 'Coding Agent Comparisons | hibench',
-    description: `Side-by-side benchmark comparisons for ${pairCount} high-intent coding-agent pairs: default tokens, tools, skills, and sub-agent footprint.`,
+    description: `Side-by-side benchmark comparisons for ${entries.length} high-intent coding-agent pairs: default tokens, tools, skills, and sub-agent footprint.`,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Coding agent comparisons',
+      description: `Index of ${entries.length} side-by-side hibench benchmark comparisons between coding agent pairs.`,
+      url: absoluteUrl(site, '/compare/'),
+      ...(lastUpdated ? { dateModified: lastUpdated } : {}),
+      mainEntity: compareIndexItemListSchema(site, entries),
+    },
   };
 }
 
