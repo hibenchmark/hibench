@@ -5,6 +5,7 @@ import {
   computeAgentUpdateRow,
   primaryTokenCount,
 } from '../src/data/benchmark-core.js';
+import worker from '../src/worker.js';
 import {
   agentPageSeo,
   absoluteUrl,
@@ -20,6 +21,41 @@ import {
 } from '../src/lib/seo.ts';
 
 const site = 'https://hibench.dev';
+
+test('worker redirects www host to apex while preserving path and query', async () => {
+  const response = await worker.fetch(
+    new Request('https://www.hibench.dev/agents/codex/?metric=anthropic'),
+    {
+      ASSETS: {
+        fetch() {
+          throw new Error('asset fetch should not be called for www redirects');
+        },
+      },
+    },
+  );
+
+  assert.equal(response.status, 301);
+  assert.equal(
+    response.headers.get('location'),
+    'https://hibench.dev/agents/codex/?metric=anthropic',
+  );
+});
+
+test('worker serves static assets for apex host requests', async () => {
+  let seenRequest: Request | null = null;
+  const response = await worker.fetch(new Request('https://hibench.dev/rankings/'), {
+    ASSETS: {
+      fetch(request: Request) {
+        seenRequest = request;
+        return new Response('asset ok', { status: 200 });
+      },
+    },
+  });
+
+  assert.equal(response.status, 200);
+  assert.equal(await response.text(), 'asset ok');
+  assert.equal(seenRequest?.url, 'https://hibench.dev/rankings/');
+});
 
 test('resolveSiteUrl falls back to production origin', () => {
   assert.equal(resolveSiteUrl(), site);
