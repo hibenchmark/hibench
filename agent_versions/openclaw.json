@@ -5,11 +5,11 @@
     "type": "npm",
     "package": "openclaw"
   },
-  "fetched_at": "2026-06-21T12:03:12Z",
-  "version_count": 222,
+  "fetched_at": "2026-06-24T09:39:17Z",
+  "version_count": 224,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
-  "benchmark_version_count": 65,
+  "benchmark_version_count": 66,
   "benchmark_exclusion_count": 6,
   "benchmark_exclusions": {
     "0.0.1": "Placeholder package version; no usable OpenClaw agent CLI for benchmark capture.",
@@ -27,11 +27,11 @@
     "2026.4.27",
     "2026.5.12"
   ],
-  "latest": "2026.6.9",
+  "latest": "2026.6.10",
   "dist_tags": {
     "alpha": "2026.5.19-alpha.1",
-    "beta": "2026.6.10-beta.1",
-    "latest": "2026.6.9"
+    "latest": "2026.6.10",
+    "beta": "2026.6.10-beta.2"
   },
   "versions": [
     "0.0.1",
@@ -255,7 +255,9 @@
     "2026.6.8",
     "2026.6.9-beta.1",
     "2026.6.9",
-    "2026.6.10-beta.1"
+    "2026.6.10-beta.1",
+    "2026.6.10-beta.2",
+    "2026.6.10"
   ],
   "benchmark_versions": [
     "2026.1.29",
@@ -322,6 +324,7 @@
     "2026.6.5",
     "2026.6.6",
     "2026.6.8",
-    "2026.6.9"
+    "2026.6.9",
+    "2026.6.10"
   ]
 }

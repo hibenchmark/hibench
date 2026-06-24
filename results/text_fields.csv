@@ -6634,6 +6634,11 @@ hibench.benchmark.v1,openclaw-2026.6.1-hi,openclaw,2026.6.1,1,1,system_prompt,ma
 ## Tooling
 Available tools are policy-filtered. Names are case-sen"
 hibench.benchmark.v1,openclaw-2026.6.1-hi,openclaw,2026.6.1,1,2,user_prompt,user_prompt,user,input.1.content.0.text,2,1,Hi
+hibench.benchmark.v1,openclaw-2026.6.10-hi,openclaw,2026.6.10,1,1,system_prompt,main_instructions,system,input.0.content.0.text,28056,6350,"You are a personal assistant running inside OpenClaw.
+## Tooling
+Available tools are policy-filtered. Names are case-sen"
+hibench.benchmark.v1,openclaw-2026.6.10-hi,openclaw,2026.6.10,1,2,environment_context,injected_user_context,user,input.1.content.0.text,26,15,[Wed 2026-06-24 09:39 UTC]
+hibench.benchmark.v1,openclaw-2026.6.10-hi,openclaw,2026.6.10,1,3,user_prompt,user_prompt,user,input.1.content.1.text,2,1,Hi
 hibench.benchmark.v1,openclaw-2026.6.5-hi,openclaw,2026.6.5,1,1,system_prompt,main_instructions,system,input.0.content.0.text,27652,6243,"You are a personal assistant running inside OpenClaw.
 ## Tooling
 Available tools are policy-filtered. Names are case-sen"
