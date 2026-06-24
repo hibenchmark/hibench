@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -10,6 +11,11 @@ const base = process.env.BASE_PATH || undefined;
 export default defineConfig({
   site,
   base,
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/_astro/'),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

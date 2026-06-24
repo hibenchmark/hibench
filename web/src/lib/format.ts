@@ -1,6 +1,6 @@
 /** Shared formatting + base-path helpers (usable on server and client). */
 
-const BASE = import.meta.env.BASE_URL || '/';
+const BASE = import.meta.env?.BASE_URL || '/';
 
 /** Prefix an internal path with the configured site base. */
 export function withBase(path: string): string {
@@ -34,4 +34,16 @@ export function formatCompact(n: number): string {
 export function pct(part: number, whole: number): number {
   if (whole <= 0) return 0;
   return (part / whole) * 100;
+}
+
+export function formatBenchmarkDate(iso: string): string {
+  if (!iso) return '';
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return '';
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  }).format(date);
 }

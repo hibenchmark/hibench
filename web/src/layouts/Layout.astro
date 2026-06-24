@@ -2,26 +2,37 @@
 import "../styles/global.css";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import JsonLd from "../components/JsonLd.astro";
 import { withBase } from "../lib/format";
+import { organizationSchema, resolveSiteUrl, webSiteSchema, type JsonLd as JsonLdType } from "../lib/seo";
 
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  jsonLd?: JsonLdType | JsonLdType[];
 }
 
 const {
-  title = "hibench — agent footprint",
-  description = "How much default context, tools, skills, MCP and sub-agent each coding agent consumes.",
+  title = "Coding Agent Default Token Benchmark | hibench",
+  description = "Compare default token footprint, tools, skills, and MCP surface across coding agents. Open-source benchmark with reproducible captures.",
   ogImage = "/og-image.png",
   ogImageAlt = "hibench social preview showing the latest coding-agent benchmark token ranking.",
+  jsonLd = [],
 } = Astro.props;
 
 const pageUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.toString();
+const siteUrl = resolveSiteUrl(Astro.site);
 const ogLogoUrl = new URL(withBase("/favicon.svg"), Astro.site ?? Astro.url).toString();
 const ogImageUrl = new URL(withBase(ogImage), Astro.site ?? Astro.url).toString();
 const imageAlt = ogImageAlt;
+const extraSchemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const structuredData = [
+  organizationSchema(siteUrl),
+  webSiteSchema(siteUrl),
+  ...extraSchemas,
+];
 ---
 
 <!doctype html>
@@ -49,12 +60,15 @@ const imageAlt = ogImageAlt;
     <meta property="og:image:alt" content={imageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@hibenchmark" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content={imageAlt} />
+    <meta property="og:locale" content="en_US" />
 
     <title>{title}</title>
+    <JsonLd data={structuredData} />
   </head>
   <body class="min-h-full antialiased">
     <Nav />

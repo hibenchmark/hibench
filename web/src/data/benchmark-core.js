@@ -415,3 +415,75 @@ export function getGlobalStats() {
     maxTotal: Math.max(...totals),
   };
 }
+
+export function getLatestBenchmarkDate() {
+  const runs = getPrimaryRuns();
+  if (!runs.length) return '';
+  return runs.reduce(
+    (latest, run) => (run.startedAt > latest ? run.startedAt : latest),
+    runs[0].startedAt,
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Recent agent updates (latest capture + delta vs previous version)
+// ---------------------------------------------------------------------------
+
+/** Primary display tokens: Anthropic totals when enabled, else o200k. */
+export function primaryTokenCount(run, useAnthropic) {
+  return useAnthropic ? run.anthropicTotalTokens || run.totalTokens : run.totalTokens;
+}
+
+/** Pure helper: latest vs previous version deltas for one agent. */
+export function computeAgentUpdateRow(latest, previous, useAnthropic) {
+  const primaryTokens = primaryTokenCount(latest, useAnthropic);
+  const previousPrimaryTokens = previous ? primaryTokenCount(previous, useAnthropic) : null;
+  const tokenDelta =
+    previousPrimaryTokens !== null ? primaryTokens - previousPrimaryTokens : null;
+  const tokenDeltaPct =
+    previousPrimaryTokens && previousPrimaryTokens > 0
+      ? (tokenDelta / previousPrimaryTokens) * 100
+      : null;
+
+  return {
+    version: latest.version,
+    previousVersion: previous?.version ?? null,
+    startedAt: latest.startedAt,
+    totalTokens: latest.totalTokens,
+    anthropicTotalTokens: latest.anthropicTotalTokens,
+    primaryTokens,
+    tokenDelta,
+    tokenDeltaPct,
+    toolCount: latest.toolCount,
+    skillCount: latest.skillCount,
+    subagentCount: latest.subagentCount,
+    toolDelta: previous ? latest.toolCount - previous.toolCount : null,
+    skillDelta: previous ? latest.skillCount - previous.skillCount : null,
+    subagentDelta: previous ? latest.subagentCount - previous.subagentCount : null,
+  };
+}
+
+export function getRecentAgentUpdates() {
+  const agents = getAgents();
+  const useAnthropic =
+    agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
+
+  const updates = agents.map((agent) => {
+    const versions = getAgentVersions(agent.agentId);
+    const latest = versions[versions.length - 1];
+    const previous = versions.length > 1 ? versions[versions.length - 2] : null;
+    return {
+      agentId: agent.agentId,
+      agentDisplayName: agent.agentDisplayName,
+      agentLogo: agent.agentLogo,
+      useAnthropic,
+      ...computeAgentUpdateRow(latest, previous, useAnthropic),
+    };
+  });
+
+  return updates.sort((a, b) => {
+    if (a.startedAt > b.startedAt) return -1;
+    if (a.startedAt < b.startedAt) return 1;
+    return 0;
+  });
+}

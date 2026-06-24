@@ -88,6 +88,27 @@ export interface GlobalStats {
   maxTotal: number;
 }
 
+export interface AgentUpdateRow {
+  agentId: string;
+  agentDisplayName: string;
+  agentLogo: AgentLogo;
+  useAnthropic: boolean;
+  version: string;
+  previousVersion: string | null;
+  startedAt: string;
+  totalTokens: number;
+  anthropicTotalTokens: number;
+  primaryTokens: number;
+  tokenDelta: number | null;
+  tokenDeltaPct: number | null;
+  toolCount: number;
+  skillCount: number;
+  subagentCount: number;
+  toolDelta: number | null;
+  skillDelta: number | null;
+  subagentDelta: number | null;
+}
+
 export const AGENT_DISPLAY_NAMES: Record<string, string>;
 export const GENERIC_AGENT_LOGO: string;
 export const AGENT_LOGOS: Record<string, AgentLogo>;
@@ -103,3 +124,13 @@ export function getSkillsForRun(runId: string): SkillRow[];
 export function getSubagentsForRun(runId: string): SubagentRow[];
 export function footprintParts(run: RunRow): FootprintPart[];
 export function getGlobalStats(): GlobalStats;
+export function getLatestBenchmarkDate(): string;
+export type TokenCountable = Pick<RunRow, 'totalTokens' | 'anthropicTotalTokens'>;
+
+export function primaryTokenCount(run: TokenCountable, useAnthropic: boolean): number;
+export function computeAgentUpdateRow(
+  latest: RunRow,
+  previous: RunRow | null,
+  useAnthropic: boolean,
+): Omit<AgentUpdateRow, 'agentId' | 'agentDisplayName' | 'agentLogo' | 'useAnthropic'>;
+export function getRecentAgentUpdates(): AgentUpdateRow[];

@@ -1,11 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import AgentLogo from '../../components/AgentLogo.astro';
+import LastUpdated from '../../components/LastUpdated.astro';
 import StatCard from '../../components/StatCard.astro';
 import EvolutionChart from '../../components/EvolutionChart.astro';
 import TokenizerSwitch from '../../components/TokenizerSwitch.astro';
 import VersionExplorer from '../../components/VersionExplorer.astro';
 import { withBase, formatCompact, formatInputCost, formatNumber } from '../../lib/format';
+import { agentPageSeo, resolveSiteUrl } from '../../lib/seo';
 import {
   getAgents,
   getAgentVersions,
@@ -38,9 +40,11 @@ const allAgentsAnthropic = [...allAgents].sort(
   (a, b) => b.latest.anthropicTotalTokens - a.latest.anthropicTotalTokens,
 );
 const anthropicRank = allAgentsAnthropic.findIndex((a) => a.agentId === agent) + 1 || rank;
-const description = `${agentName} loads ${formatNumber(latest.totalTokens)} default tokens, ${latest.toolCount} tools, ${latest.skillCount} skills, and ${latest.subagentCount} sub-agents in its latest captured hibench request.`;
-const ogImage = `/og/agents/${summary.agentId}.png`;
-const ogImageAlt = `hibench social preview for ${agentName}, showing latest default footprint metrics.`;
+const { title, description, ogImage, ogImageAlt, jsonLd } = agentPageSeo(
+  resolveSiteUrl(Astro.site),
+  summary,
+  hasAnthropicData,
+);
 
 const delta = latest.totalTokens - previous.totalTokens;
 const deltaPct = previous.totalTokens ? (delta / previous.totalTokens) * 100 : 0;
@@ -84,7 +88,7 @@ const versionData = versions.map((run) => ({
 }));
 ---
 
-<Layout title={`${agentName} footprint — hibench`} description={description} ogImage={ogImage} ogImageAlt={ogImageAlt}>
+<Layout title={title} description={description} ogImage={ogImage} ogImageAlt={ogImageAlt} jsonLd={jsonLd}>
   <nav class="mb-6 text-sm ui-subtle">
     <a href={withBase('/agents')} class="ui-link">Agents</a>
     <span class="mx-1.5">/</span>
@@ -99,6 +103,7 @@ const versionData = versions.map((run) => ({
         <p class="mt-2 ui-muted">
           Latest <span class="font-medium">v{latest.version}</span>
         </p>
+        <LastUpdated date={latest.startedAt} class="mt-2" />
         <div class="mt-3 flex flex-wrap items-center gap-2">
           <a
             href={withBase('/rankings')}

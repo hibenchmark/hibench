@@ -1,0 +1,38 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<ol class:list={['mt-6 grid gap-6 text-sm sm:grid-cols-2 lg:grid-cols-4', className]}>
+  <li class="relative pl-9">
+    <span class="brand-mark absolute left-0 top-0 grid h-6 w-6 place-items-center rounded-full text-xs font-bold">1</span>
+    <p class="font-semibold ui-title">Isolate</p>
+    <p class="mt-1 ui-muted">
+      Run each agent in Docker inside a fresh, empty Git repo.
+    </p>
+  </li>
+  <li class="relative pl-9">
+    <span class="brand-mark absolute left-0 top-0 grid h-6 w-6 place-items-center rounded-full text-xs font-bold">2</span>
+    <p class="font-semibold ui-title">Intercept</p>
+    <p class="mt-1 ui-muted">
+      Point it at a local recorder with a dummy key &mdash; no upstream model call.
+    </p>
+  </li>
+  <li class="relative pl-9">
+    <span class="brand-mark absolute left-0 top-0 grid h-6 w-6 place-items-center rounded-full text-xs font-bold">3</span>
+    <p class="font-semibold ui-title">Capture</p>
+    <p class="mt-1 ui-muted">
+      Send the prompt <code class="ui-code rounded px-1">Hi</code> and record the first outbound request body.
+    </p>
+  </li>
+  <li class="relative pl-9">
+    <span class="brand-mark absolute left-0 top-0 grid h-6 w-6 place-items-center rounded-full text-xs font-bold">4</span>
+    <p class="font-semibold ui-title">Count</p>
+    <p class="mt-1 ui-muted">
+      Tokenize every field with <code class="ui-code rounded px-1">o200k_base</code> and break it down.
+    </p>
+  </li>
+</ol>

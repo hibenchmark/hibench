@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CompareTable from '../../components/CompareTable.astro';
+import LastUpdated from '../../components/LastUpdated.astro';
+import TokenizerSwitch from '../../components/TokenizerSwitch.astro';
+import { withBase } from '../../lib/format';
+import {
+  comparePageSeo,
+  generateComparePairs,
+  resolveSiteUrl,
+} from '../../lib/seo';
+import { getAgents, getLatestBenchmarkDate } from '../../data/benchmark';
+
+export async function getStaticPaths() {
+  const agents = getAgents();
+  const hasAnthropicData =
+    agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
+  const pairs = generateComparePairs(agents, hasAnthropicData);
+
+  return pairs.map((pair) => ({
+    params: { slug: pair.slug },
+    props: { agentAId: pair.agentA, agentBId: pair.agentB },
+  }));
+}
+
+interface Props {
+  agentAId: string;
+  agentBId: string;
+}
+
+const { agentAId, agentBId } = Astro.props;
+const agents = getAgents();
+const agentA = agents.find((agent) => agent.agentId === agentAId)!;
+const agentB = agents.find((agent) => agent.agentId === agentBId)!;
+const hasAnthropicData =
+  agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
+const anthropicModel =
+  agents.find((a) => a.latest.anthropicTokenizerModel)?.latest.anthropicTokenizerModel ??
+  'claude-opus-4-8';
+const lastUpdated = getLatestBenchmarkDate();
+const { title, description, jsonLd } = comparePageSeo(
+  resolveSiteUrl(Astro.site),
+  agentA,
+  agentB,
+  hasAnthropicData,
+);
+
+const compareAgent = (agent: typeof agentA) => ({
+  agentId: agent.agentId,
+  agentDisplayName: agent.agentDisplayName,
+  agentLogo: agent.agentLogo,
+  version: agent.latest.version,
+  totalTokens: agent.latest.totalTokens,
+  anthropicTotalTokens: agent.latest.anthropicTotalTokens || agent.latest.totalTokens,
+  toolCount: agent.latest.toolCount,
+  skillCount: agent.latest.skillCount,
+  subagentCount: agent.latest.subagentCount,
+  href: withBase(`/agents/${agent.agentId}`),
+});
+
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <nav class="mb-6 text-sm ui-subtle">
+    <a href={withBase('/compare')} class="ui-link">Compare</a>
+    <span class="mx-1.5">/</span>
+    <span class="ui-muted">
+      {agentA.agentDisplayName} vs {agentB.agentDisplayName}
+    </span>
+  </nav>
+
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold tracking-tight ui-heading">
+      {agentA.agentDisplayName} vs {agentB.agentDisplayName}
+    </h1>
+    <p class="mt-3 max-w-2xl ui-muted">
+      Side-by-side default footprint for the latest captured versions of both agents:
+      request tokens, tool definitions, bundled skills, and sub-agent declarations.
+    </p>
+    <div class="mt-5">
+      <TokenizerSwitch hasAnthropicData={hasAnthropicData} anthropicModel={anthropicModel} />
+    </div>
+    <LastUpdated date={lastUpdated} class="mt-4" />
+  </header>
+
+  <div data-tokenizer-panel="o200k" hidden={hasAnthropicData}>
+    <CompareTable
+      agentA={compareAgent(agentA)}
+      agentB={compareAgent(agentB)}
+      hasAnthropicData={false}
+      anthropicModel={anthropicModel}
+    />
+  </div>
+  <div data-tokenizer-panel="anthropic" hidden={!hasAnthropicData}>
+    <CompareTable
+      agentA={compareAgent(agentA)}
+      agentB={compareAgent(agentB)}
+      hasAnthropicData={true}
+      anthropicModel={anthropicModel}
+    />
+  </div>
+</Layout>

@@ -1,11 +1,9 @@
 ---
 import { withBase } from "../lib/format";
+import { primaryNavLinks } from "../data/site-links";
 
 const path = Astro.url.pathname.replace(/\/$/, "");
-const links = [
-  { href: "/rankings", label: "Rankings" },
-  { href: "/agents", label: "Agents" },
-];
+const links = primaryNavLinks;
 
 function isActive(href: string): boolean {
   const target = withBase(href).replace(/\/$/, "");

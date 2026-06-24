@@ -1,0 +1,15 @@
+---
+import type { JsonLd } from '../lib/seo';
+
+interface Props {
+  data: JsonLd | JsonLd[];
+}
+
+const schemas = Array.isArray(Astro.props.data) ? Astro.props.data : [Astro.props.data];
+---
+
+{
+  schemas.map((schema) => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))
+}

@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AgentLogo from '../../components/AgentLogo.astro';
+import LastUpdated from '../../components/LastUpdated.astro';
+import { withBase, formatNumber } from '../../lib/format';
+import {
+  compareIndexPageSeo,
+  generateComparePairs,
+  primaryTokenMetric,
+  resolveSiteUrl,
+} from '../../lib/seo';
+import { getAgents, getLatestBenchmarkDate } from '../../data/benchmark';
+
+const agents = getAgents();
+const agentById = new Map(agents.map((agent) => [agent.agentId, agent]));
+const hasAnthropicData =
+  agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
+const pairs = generateComparePairs(agents, hasAnthropicData);
+const lastUpdated = getLatestBenchmarkDate();
+const { title, description } = compareIndexPageSeo(pairs.length);
+
+const entries = pairs
+  .map((pair) => {
+    const left = agentById.get(pair.agentA);
+    const right = agentById.get(pair.agentB);
+    if (!left || !right) return null;
+
+    const leftTokens = primaryTokenMetric(left.latest, hasAnthropicData).tokens;
+    const rightTokens = primaryTokenMetric(right.latest, hasAnthropicData).tokens;
+    const spread = Math.max(leftTokens, rightTokens) - Math.min(leftTokens, rightTokens);
+
+    return {
+      slug: pair.slug,
+      href: withBase(`/compare/${pair.slug}`),
+      left,
+      right,
+      spread,
+    };
+  })
+  .filter(Boolean)
+  .sort((a, b) => b!.spread - a!.spread);
+---
+
+<Layout title={title} description={description}>
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold tracking-tight ui-heading">Agent comparisons</h1>
+    <p class="mt-3 max-w-2xl ui-muted">
+      SEO-friendly side-by-side pages for high-intent searches like
+      &ldquo;Claude Code vs Cursor CLI default tokens&rdquo;. Each page compares
+      the latest captured footprint for two benchmarked agents.
+    </p>
+    <LastUpdated date={lastUpdated} class="mt-4" />
+  </header>
+
+  <section class="grid gap-4">
+    {
+      entries.map((entry) => (
+        <a
+          href={entry!.href}
+          class="ui-card group rounded-2xl p-5 transition hover:-translate-y-0.5"
+        >
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex min-w-0 flex-wrap items-center gap-3">
+              <div class="flex min-w-0 items-center gap-2">
+                <AgentLogo
+                  logo={entry!.left.agentLogo}
+                  name={entry!.left.agentDisplayName}
+                  size="sm"
+                />
+                <span class="font-semibold ui-title group-hover:text-[var(--color-primary)]">
+                  {entry!.left.agentDisplayName}
+                </span>
+              </div>
+              <span class="text-xs font-bold uppercase tracking-[0.18em] ui-subtle">vs</span>
+              <div class="flex min-w-0 items-center gap-2">
+                <AgentLogo
+                  logo={entry!.right.agentLogo}
+                  name={entry!.right.agentDisplayName}
+                  size="sm"
+                />
+                <span class="font-semibold ui-title group-hover:text-[var(--color-primary)]">
+                  {entry!.right.agentDisplayName}
+                </span>
+              </div>
+            </div>
+            <p class="text-sm ui-muted">
+              {formatNumber(entry!.spread)} token spread
+            </p>
+          </div>
+        </a>
+      ))
+    }
+  </section>
+</Layout>

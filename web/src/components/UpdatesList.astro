@@ -1,0 +1,131 @@
+---
+import AgentLogo from './AgentLogo.astro';
+import { formatBenchmarkDate, formatNumber } from '../lib/format';
+import type { AgentLogo as AgentLogoType } from '../data/benchmark';
+
+export interface UpdateRow {
+  agentId: string;
+  agentDisplayName: string;
+  agentLogo: AgentLogoType;
+  href: string;
+  version: string;
+  previousVersion: string | null;
+  startedAt: string;
+  primaryTokens: number;
+  tokenDelta: number | null;
+  tokenDeltaPct: number | null;
+  toolCount: number;
+  skillCount: number;
+  subagentCount: number;
+  toolDelta: number | null;
+  skillDelta: number | null;
+}
+
+interface Props {
+  rows: UpdateRow[];
+  tokenLabel: string;
+}
+
+const { rows, tokenLabel } = Astro.props;
+
+const formatSigned = (value: number) => {
+  const sign = value > 0 ? '+' : '';
+  return `${sign}${formatNumber(value)}`;
+};
+
+const formatCountDelta = (delta: number | null) => {
+  if (delta === null) return '—';
+  if (delta === 0) return '0';
+  return formatSigned(delta);
+};
+---
+
+<div class="ui-card overflow-hidden rounded-xl">
+  <div
+    class="ui-table-scroll"
+    role="region"
+    aria-label="Recent benchmark updates"
+    tabindex="0"
+  >
+    <table class="w-full table-fixed text-xs sm:min-w-[44rem] sm:text-sm">
+      <colgroup>
+        <col class="w-[28%] sm:w-[24%]" />
+        <col class="w-[12%] sm:w-[10%]" />
+        <col class="w-[16%] sm:w-[14%]" />
+        <col class="w-[16%] sm:w-[16%]" />
+        <col class="w-[10%] sm:w-[10%]" />
+        <col class="w-[9%] sm:w-[9%]" />
+        <col class="w-[9%] sm:w-[9%]" />
+      </colgroup>
+      <thead>
+        <tr class="border-b border-[rgba(128,210,188,0.14)] text-left">
+          <th scope="col" class="px-3 py-3 font-semibold ui-subtle sm:px-4">Agent</th>
+          <th scope="col" class="px-2 py-3 font-semibold ui-subtle sm:px-3">Version</th>
+          <th scope="col" class="px-2 py-3 font-semibold ui-subtle sm:px-3">Captured</th>
+          <th scope="col" class="px-2 py-3 font-semibold ui-subtle sm:px-3">{tokenLabel}</th>
+          <th scope="col" class="px-2 py-3 font-semibold ui-subtle sm:px-3">Δ tokens</th>
+          <th scope="col" class="px-2 py-3 font-semibold ui-subtle sm:px-3">Tools</th>
+          <th scope="col" class="px-2 py-3 font-semibold ui-subtle sm:px-3">Skills</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => {
+          const captureDate = formatBenchmarkDate(row.startedAt);
+          const deltaTone =
+            row.tokenDelta === null
+              ? 'ui-subtle'
+              : row.tokenDelta > 0
+                ? 'text-[var(--color-hot)]'
+                : row.tokenDelta < 0
+                  ? 'text-[var(--color-primary)]'
+                  : 'ui-muted';
+          return (
+            <tr class="border-b border-[rgba(128,210,188,0.08)] last:border-b-0">
+              <td class="px-3 py-3 sm:px-4">
+                <a href={row.href} class="group flex min-w-0 items-center gap-2">
+                  <AgentLogo logo={row.agentLogo} name={row.agentDisplayName} size="sm" />
+                  <span class="truncate font-medium ui-title group-hover:text-[var(--color-primary)]">
+                    {row.agentDisplayName}
+                  </span>
+                </a>
+              </td>
+              <td class="px-2 py-3 ui-muted sm:px-3">
+                <span class="font-medium ui-title">v{row.version}</span>
+                {row.previousVersion && (
+                  <p class="mt-0.5 text-[0.68rem] ui-subtle">was v{row.previousVersion}</p>
+                )}
+              </td>
+              <td class="px-2 py-3 ui-muted sm:px-3">{captureDate || '—'}</td>
+              <td class="px-2 py-3 font-semibold tabular-nums ui-title sm:px-3">
+                {formatNumber(row.primaryTokens)}
+              </td>
+              <td class={`px-2 py-3 tabular-nums sm:px-3 ${deltaTone}`}>
+                {row.tokenDelta === null ? (
+                  <span class="text-[0.68rem] ui-subtle">First capture</span>
+                ) : (
+                  <div>
+                    <p class="font-medium">{formatSigned(row.tokenDelta)}</p>
+                    {row.tokenDeltaPct !== null && (
+                      <p class="mt-0.5 text-[0.68rem] ui-subtle">
+                        {row.tokenDeltaPct >= 0 ? '+' : ''}
+                        {row.tokenDeltaPct.toFixed(0)}%
+                      </p>
+                    )}
+                  </div>
+                )}
+              </td>
+              <td class="px-2 py-3 ui-muted sm:px-3">
+                <span class="font-medium ui-title">{row.toolCount}</span>
+                <p class="mt-0.5 text-[0.68rem] ui-subtle">{formatCountDelta(row.toolDelta)}</p>
+              </td>
+              <td class="px-2 py-3 ui-muted sm:px-3">
+                <span class="font-medium ui-title">{row.skillCount}</span>
+                <p class="mt-0.5 text-[0.68rem] ui-subtle">{formatCountDelta(row.skillDelta)}</p>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</div>

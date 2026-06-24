@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LastUpdated from '../components/LastUpdated.astro';
+import UpdatesList from '../components/UpdatesList.astro';
+import { withBase } from '../lib/format';
+import { updatesPageSeo, resolveSiteUrl } from '../lib/seo';
+import { getAgents, getLatestBenchmarkDate, getRecentAgentUpdates } from '../data/benchmark';
+
+const agents = getAgents();
+const updates = getRecentAgentUpdates();
+const lastUpdated = getLatestBenchmarkDate();
+const hasAnthropicData = updates.length > 0 && updates[0].useAnthropic;
+const anthropicModel =
+  agents.find((a) => a.latest.anthropicTokenizerModel)?.latest.anthropicTokenizerModel ??
+  'claude-opus-4-8';
+const tokenLabel = hasAnthropicData
+  ? `Tokens (${anthropicModel})`
+  : 'Tokens (o200k)';
+
+const rows = updates.map((update) => ({
+  agentId: update.agentId,
+  agentDisplayName: update.agentDisplayName,
+  agentLogo: update.agentLogo,
+  href: withBase(`/agents/${update.agentId}`),
+  version: update.version,
+  previousVersion: update.previousVersion,
+  startedAt: update.startedAt,
+  primaryTokens: update.primaryTokens,
+  tokenDelta: update.tokenDelta,
+  tokenDeltaPct: update.tokenDeltaPct,
+  toolCount: update.toolCount,
+  skillCount: update.skillCount,
+  subagentCount: update.subagentCount,
+  toolDelta: update.toolDelta,
+  skillDelta: update.skillDelta,
+}));
+
+const seoUpdates = updates.map((update) => ({
+  agentId: update.agentId,
+  agentDisplayName: update.agentDisplayName,
+  version: update.version,
+  startedAt: update.startedAt,
+  primaryTokens: update.primaryTokens,
+  tokenDelta: update.tokenDelta,
+}));
+
+const { title, description, jsonLd } = updatesPageSeo(
+  resolveSiteUrl(Astro.site),
+  seoUpdates,
+  agents.length,
+  lastUpdated,
+  hasAnthropicData,
+);
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold tracking-tight ui-heading">Benchmark updates</h1>
+    <p class="mt-3 max-w-2xl ui-muted">
+      Recent capture activity across benchmarked coding agents. Each row shows the
+      latest version hibench recorded, when it was captured, and how default token
+      footprint changed versus the previous version.
+    </p>
+    <LastUpdated date={lastUpdated} class="mt-4" />
+  </header>
+
+  {rows.length > 0 ? (
+    <>
+      <UpdatesList rows={rows} tokenLabel={tokenLabel} />
+      <p class="mt-4 text-xs ui-subtle">
+        Sorted by most recent capture date. Token deltas compare the latest version
+        to the immediately prior captured version using
+        {hasAnthropicData
+          ? ` Anthropic ${anthropicModel} totals.`
+          : ' the fixed o200k_base tokenizer.'}
+      </p>
+    </>
+  ) : (
+    <section class="ui-card rounded-2xl p-8 text-center">
+      <p class="text-lg font-semibold ui-title">No benchmark captures yet</p>
+      <p class="mt-2 ui-muted">
+        Run hibench captures and export results to populate this changelog.
+      </p>
+    </section>
+  )}
+</Layout>

@@ -1,0 +1,19 @@
+---
+import { formatBenchmarkDate } from '../lib/format';
+
+interface Props {
+  date: string;
+  class?: string;
+}
+
+const { date, class: className = '' } = Astro.props;
+const formatted = formatBenchmarkDate(date);
+---
+
+{
+  formatted && (
+    <p class:list={['text-xs ui-subtle', className]}>
+      Benchmark data last updated {formatted} UTC
+    </p>
+  )
+}

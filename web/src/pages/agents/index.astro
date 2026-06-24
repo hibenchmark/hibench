@@ -1,11 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import AgentLogo from '../../components/AgentLogo.astro';
+import LastUpdated from '../../components/LastUpdated.astro';
 import TokenizerSwitch from '../../components/TokenizerSwitch.astro';
 import { withBase, formatNumber } from '../../lib/format';
-import { getAgents } from '../../data/benchmark';
+import { agentsIndexPageSeo } from '../../lib/seo';
+import { getAgents, getLatestBenchmarkDate } from '../../data/benchmark';
 
 const agents = getAgents();
+const lastUpdated = getLatestBenchmarkDate();
+const { title, description } = agentsIndexPageSeo(agents.length);
 const hasAnthropicData = agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
 const anthropicModel = agents.find((a) => a.latest.anthropicTokenizerModel)?.latest.anthropicTokenizerModel ?? 'claude-opus-4-8';
 const initialAgents = hasAnthropicData
@@ -19,7 +23,7 @@ const anthropicRankByAgentId = new Map(
 );
 ---
 
-<Layout title="Agents — hibench">
+<Layout title={title} description={description}>
   <header class="mb-8">
     <h1 class="text-3xl font-bold tracking-tight ui-heading">Agents</h1>
     <p class="mt-3 max-w-2xl ui-muted">
@@ -29,6 +33,7 @@ const anthropicRankByAgentId = new Map(
     <div class="mt-5">
       <TokenizerSwitch hasAnthropicData={hasAnthropicData} anthropicModel={anthropicModel} />
     </div>
+    <LastUpdated date={lastUpdated} class="mt-4" />
   </header>
 
   <div class="grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-2" data-tokenizer-sort-container>

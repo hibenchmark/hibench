@@ -1,0 +1,28 @@
+# hibench
+
+> Open-source benchmark at https://hibench.dev comparing the default token footprint of coding agents: system prompts, tools, skills, MCP servers, and sub-agents loaded before the first reply.
+
+hibench measures how much context each coding agent injects on its first outbound model request after a minimal `Hi` prompt. Metrics include total request tokens, tool and skill definitions, MCP declarations, and sub-agent surfaces. Token counts use a fixed `o200k_base` encoding so agents stay comparable; Anthropic tokenizer totals are reported when available.
+
+Methodology: each agent runs in an isolated Docker container against an empty Git workspace, points at a local request recorder with a dummy API key, and returns a synthetic completion after the first capture—no real upstream LLM call is required.
+
+## Site
+
+- [Home](https://hibench.dev/): Overview of the default coding-agent context benchmark and latest captures.
+- [Rankings](https://hibench.dev/rankings/): Agents ranked by default request token footprint and related surface counts.
+- [Agents](https://hibench.dev/agents/): Per-agent footprint pages with version history.
+- [Methodology](https://hibench.dev/methodology/): Capture pipeline, measurement scope, and reproducibility notes.
+- [Compare](https://hibench.dev/compare/): Side-by-side default footprint comparisons between agent pairs.
+- [Updates](https://hibench.dev/updates/): Recent benchmark captures with version and token deltas.
+
+## Optional
+
+- [GitHub repository](https://github.com/hibenchmark/hibench): Source code, Docker images, parsers, raw captures, and dashboard export tables. MIT License.
+- [robots.txt](https://hibench.dev/robots.txt): Public site content is open to crawlers (`Allow: /`).
+- [llms.txt](https://hibench.dev/llms.txt): This file.
+
+## Data policy
+
+- Benchmark data on hibench.dev is derived from reproducible, version-pinned Docker captures published from the open-source repository.
+- Captures use local recorders and dummy API keys; default benchmark runs do not send prompts to live model providers.
+- Site metrics and tables may be cited with attribution; source data and tooling are available under the MIT License.

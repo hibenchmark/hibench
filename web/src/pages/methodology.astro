@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CapturePipeline from '../components/CapturePipeline.astro';
+import LastUpdated from '../components/LastUpdated.astro';
+import { withBase } from '../lib/format';
+import { faqSchema } from '../lib/seo';
+import { getAgents, getGlobalStats, getLatestBenchmarkDate } from '../data/benchmark';
+
+const stats = getGlobalStats();
+const agents = getAgents();
+const lastUpdated = getLatestBenchmarkDate();
+
+const title = 'Coding Agent Benchmark Methodology | hibench';
+const description =
+  'How hibench measures default coding-agent context: isolated Docker captures, local request interception, Hi prompt, and o200k_base token counting.';
+
+const methodologyFaq = faqSchema([
+  {
+    question: 'Why prompt coding agents with only Hi?',
+    answer:
+      'A minimal prompt isolates the default footprint each agent injects before user work begins: system instructions, tool schemas, skills, MCP declarations, and sub-agent surfaces.',
+  },
+  {
+    question: 'Does hibench call real LLM providers?',
+    answer:
+      'No. Each agent points at a local recorder with a dummy API key. hibench captures the first outbound request and returns a synthetic successful completion.',
+  },
+  {
+    question: 'Which tokenizer does hibench use?',
+    answer:
+      'Primary comparisons use tiktoken with the fixed o200k_base encoding. Anthropic tokenizer totals are also reported when available for cross-checking.',
+  },
+]);
+---
+
+<Layout title={title} description={description} jsonLd={methodologyFaq}>
+  <header class="mb-10">
+    <h1 class="text-3xl font-bold tracking-tight ui-heading">Methodology</h1>
+    <p class="mt-3 max-w-3xl ui-muted">
+      hibench is an open-source benchmark for the hidden default cost of coding
+      agents. It answers one question: how much context does an agent load before
+      it starts useful work?
+    </p>
+    <LastUpdated date={lastUpdated} class="mt-4" />
+  </header>
+
+  <section class="ui-card rounded-2xl p-8">
+    <h2 class="text-2xl font-semibold tracking-tight ui-title">Capture pipeline</h2>
+    <CapturePipeline />
+  </section>
+
+  <section class="mt-10 grid gap-6 md:grid-cols-3">
+    <article class="ui-card rounded-xl p-6">
+      <h2 class="font-semibold ui-title">What gets measured</h2>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm ui-muted">
+        <li>Total primary request body tokens</li>
+        <li>System and default developer context</li>
+        <li>Declared tools and tool-definition cost</li>
+        <li>Bundled skills and skill-definition cost</li>
+        <li>MCP and sub-agent declarations</li>
+      </ul>
+    </article>
+    <article class="ui-card rounded-xl p-6">
+      <h2 class="font-semibold ui-title">Current coverage</h2>
+      <p class="mt-3 text-3xl font-semibold tabular-nums ui-title">{stats.agentCount}</p>
+      <p class="text-sm ui-muted">agents benchmarked</p>
+      <p class="mt-4 text-3xl font-semibold tabular-nums ui-title">{stats.versionCount}</p>
+      <p class="text-sm ui-muted">captured versions</p>
+    </article>
+    <article class="ui-card rounded-xl p-6">
+      <h2 class="font-semibold ui-title">Reproducibility</h2>
+      <p class="mt-3 text-sm ui-muted">
+        Every agent has a pinned Docker image, version catalog, and one canonical
+        capture per release. Source, parsers, and export tables live on
+        <a
+          href="https://github.com/hibenchmark/hibench"
+          class="ui-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >GitHub</a>.
+      </p>
+      <p class="mt-4 text-sm">
+        <a href={withBase('/rankings')} class="ui-link">View rankings →</a>
+      </p>
+    </article>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="text-2xl font-semibold tracking-tight ui-title">Benchmarked agents</h2>
+    <ul class="mt-4 columns-1 gap-x-8 text-sm sm:columns-2 lg:columns-3">
+      {
+        agents.map((agent) => (
+          <li class="mb-2">
+            <a href={withBase(`/agents/${agent.agentId}`)} class="ui-link">
+              {agent.agentDisplayName}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

@@ -1,18 +1,44 @@
 ---
 import Social from "./Social.astro";
+import { withBase } from "../lib/format";
+import { footerLinks } from "../data/site-links";
 
 const year = new Date().getFullYear();
+const links = footerLinks;
 ---
 
 <footer class="ui-divider mt-8 border-t py-8 text-sm ui-subtle">
   <div
-    class="mx-auto grid max-w-6xl gap-4 px-4 text-center sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:text-left"
+    class="mx-auto grid max-w-6xl gap-6 px-4 text-center sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:text-left"
   >
     <p class="sm:justify-self-start">
       <span class="font-medium ui-muted">hibench</span>
       {year}
     </p>
-    <div class="flex items-center justify-center gap-4 sm:justify-self-center">
+    <nav
+      aria-label="Footer"
+      class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:justify-self-center"
+    >
+      {
+        links.map((link) =>
+          link.external ? (
+            <a
+              href={link.href}
+              class="ui-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.label}
+            </a>
+          ) : (
+            <a href={withBase(link.href)} class="ui-link">
+              {link.label}
+            </a>
+          ),
+        )
+      }
+    </nav>
+    <div class="flex items-center justify-center gap-4 sm:justify-self-end">
       <Social platform="github" username="hibenchmark/hibench" label="Source on GitHub" />
       <Social platform="x" username="hibenchmark" label="Hibench on X" />
     </div>

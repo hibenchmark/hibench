@@ -9,15 +9,18 @@
     "dev": "astro dev",
     "prebuild": "node ./scripts/generate-og-image.mjs",
     "build": "astro build",
+    "test": "tsx --test tests/seo.test.ts",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "^6.4.6",
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "tsx": "^4.22.4"
   }
 }
