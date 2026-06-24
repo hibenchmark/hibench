@@ -168,8 +168,6 @@ Diff vs 2.1.185:
 • Subagents: 5
 
 Claude Code 2.1.186 ranks #1 out of 16 on our benchmark.
-
-Anthropic is continuing to expand the agent tool surface, with SendMessage now joining the toolbox.
 ---
 Gemini CLI is new in HiBench.
 
