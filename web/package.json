@@ -7,9 +7,10 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node ./scripts/generate-og-image.mjs",
+    "prebuild": "node ./scripts/copy-benchmark-data.mjs && node ./scripts/generate-agent-version-data.mjs && node ./scripts/generate-og-image.mjs",
     "build": "astro build",
-    "test": "tsx --test tests/seo.test.ts",
+    "postbuild": "node ./scripts/check-agent-page-size.mjs",
+    "test": "tsx --test tests/seo.test.ts tests/agent-page-size.test.ts",
     "preview": "astro preview",
     "astro": "astro"
   },

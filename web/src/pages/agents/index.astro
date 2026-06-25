@@ -12,9 +12,7 @@ const lastUpdated = getLatestBenchmarkDate();
 const { title, description } = agentsIndexPageSeo(agents.length);
 const hasAnthropicData = agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
 const anthropicModel = agents.find((a) => a.latest.anthropicTokenizerModel)?.latest.anthropicTokenizerModel ?? 'claude-opus-4-8';
-const initialAgents = hasAnthropicData
-  ? [...agents].sort((a, b) => b.latest.anthropicTotalTokens - a.latest.anthropicTotalTokens)
-  : agents;
+const initialAgents = agents;
 const o200kRankByAgentId = new Map(agents.map((agent, index) => [agent.agentId, index + 1]));
 const anthropicRankByAgentId = new Map(
   [...agents]
@@ -41,8 +39,8 @@ const anthropicRankByAgentId = new Map(
       const rank = o200kRankByAgentId.get(a.agentId) ?? index + 1;
       const anthropicRank = anthropicRankByAgentId.get(a.agentId) ?? rank;
       const anthropicTokens = a.latest.anthropicTotalTokens || a.latest.totalTokens;
-      const initialRank = hasAnthropicData ? anthropicRank : rank;
-      const initialTokens = hasAnthropicData ? anthropicTokens : a.latest.totalTokens;
+      const initialRank = rank;
+      const initialTokens = a.latest.totalTokens;
       return (
         <a
           href={withBase(`/agents/${a.agentId}`)}

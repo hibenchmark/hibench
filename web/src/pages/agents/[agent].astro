@@ -8,14 +8,7 @@ import TokenizerSwitch from '../../components/TokenizerSwitch.astro';
 import VersionExplorer from '../../components/VersionExplorer.astro';
 import { withBase, formatCompact, formatInputCost, formatNumber } from '../../lib/format';
 import { agentPageSeo, resolveSiteUrl } from '../../lib/seo';
-import {
-  getAgents,
-  getAgentVersions,
-  getSkillsForRun,
-  getSubagentsForRun,
-  getToolsForRun,
-  footprintParts,
-} from '../../data/benchmark';
+import { buildVersionDatum, getAgents, getAgentVersions } from '../../data/benchmark';
 
 export async function getStaticPaths() {
   return getAgents().map((a) => ({ params: { agent: a.agentId } }));
@@ -43,7 +36,6 @@ const anthropicRank = allAgentsAnthropic.findIndex((a) => a.agentId === agent) +
 const { title, description, ogImage, ogImageAlt, jsonLd } = agentPageSeo(
   resolveSiteUrl(Astro.site),
   summary,
-  hasAnthropicData,
 );
 
 const delta = latest.totalTokens - previous.totalTokens;
@@ -52,12 +44,12 @@ const latestAnthropicTokens = latest.anthropicTotalTokens || latest.totalTokens;
 const previousAnthropicTokens = previous.anthropicTotalTokens || previous.totalTokens;
 const deltaAnthropic = latestAnthropicTokens - previousAnthropicTokens;
 const deltaAnthropicPct = previousAnthropicTokens ? (deltaAnthropic / previousAnthropicTokens) * 100 : 0;
-const initialRank = hasAnthropicData ? anthropicRank : rank;
-const initialTokens = hasAnthropicData ? latestAnthropicTokens : latest.totalTokens;
-const initialDelta = hasAnthropicData ? deltaAnthropic : delta;
-const initialDeltaPct = hasAnthropicData ? deltaAnthropicPct : deltaPct;
+const initialRank = rank;
+const initialTokens = latest.totalTokens;
+const initialDelta = delta;
+const initialDeltaPct = deltaPct;
 
-const versionData = versions.map((run) => ({
+const summaries = versions.map((run) => ({
   version: run.version,
   model: run.model,
   totalTokens: run.totalTokens,
@@ -65,27 +57,11 @@ const versionData = versions.map((run) => ({
   bodyBytes: run.bodyBytes,
   toolCount: run.toolCount,
   skillCount: run.skillCount,
-  mcpCount: run.mcpCount,
   subagentCount: run.subagentCount,
-  parts: footprintParts(run).map((p) => ({ label: p.label, tokens: p.tokens, color: p.color })),
-  tools: getToolsForRun(run.runId).map((t) => ({
-    name: t.name,
-    tokens: t.tokens,
-    isMcp: t.isMcp,
-    isSubagent: t.isSubagent,
-  })),
-  skills: getSkillsForRun(run.runId).map((s) => ({
-    name: s.name,
-    tokens: s.tokens,
-    description: s.description,
-  })),
-  subagents: getSubagentsForRun(run.runId).map((s) => ({
-    name: s.name,
-    tokens: s.tokens,
-    preview: s.preview,
-    sourceType: s.sourceType,
-  })),
 }));
+
+const latestRun = versions[versions.length - 1];
+const initialDetail = latestRun ? buildVersionDatum(latestRun) : null;
 ---
 
 <Layout title={title} description={description} ogImage={ogImage} ogImageAlt={ogImageAlt} jsonLd={jsonLd}>
@@ -185,14 +161,14 @@ const versionData = versions.map((run) => ({
         data-o200k-text="o200k_base · latest request"
         data-anthropic-text={`${anthropicModel} · total-only`}
       >
-        {hasAnthropicData ? `${anthropicModel} · total-only` : 'o200k_base · latest request'}
+        o200k_base · latest request
       </p>
     </div>
     <StatCard label="Tools" value={String(latest.toolCount)} hint="tool definitions" />
     <StatCard label="Skills" value={String(latest.skillCount)} hint="skill entries" />
     <StatCard label="Sub-agents" value={String(latest.subagentCount)} hint="sub-agent declarations" />
     <div class="ui-card rounded-xl p-5">
-      <p class="text-sm font-medium ui-muted">Cost to say “Hi”</p>
+      <p class="text-sm font-medium ui-muted">Normalized input-cost index</p>
       <p
         class="mt-1 text-3xl font-semibold tracking-tight ui-title tabular-nums"
         data-tokenizer-value
@@ -202,7 +178,10 @@ const versionData = versions.map((run) => ({
       >
         {formatInputCost(initialTokens)}
       </p>
-      <p class="mt-1 text-xs ui-subtle">$5 / 1M input tokens</p>
+      <p class="mt-1 text-xs ui-subtle">
+        At a common comparison rate of $5 per million input tokens. Not an
+        estimate of actual agent billing.
+      </p>
     </div>
     <div class="ui-card rounded-xl p-5">
       <p class="text-sm font-medium ui-muted">Since v{previous.version}</p>
@@ -247,10 +226,10 @@ const versionData = versions.map((run) => ({
           </span>
         </div>
       </div>
-      <div data-tokenizer-panel="o200k" hidden={hasAnthropicData}>
+      <div data-tokenizer-panel="o200k">
         <EvolutionChart runs={versions} tokenMetric="o200k" />
       </div>
-      <div data-tokenizer-panel="anthropic" hidden={!hasAnthropicData}>
+      <div data-tokenizer-panel="anthropic" hidden={hasAnthropicData}>
         <EvolutionChart runs={versions} tokenMetric="anthropic" />
       </div>
     </div>
@@ -260,13 +239,21 @@ const versionData = versions.map((run) => ({
   <section class="mt-12">
     <h2 class="mb-1 text-2xl font-semibold tracking-tight ui-title">Version explorer</h2>
     <p class="mb-6 ui-muted">
-      Select any version to inspect its footprint composition and the token cost
-      of each tool, skill, and sub-agent declaration.
+      Select any version to inspect its footprint composition and the token
+      footprint of each tool, skill, and sub-agent declaration.
       <span data-tokenizer-panel="anthropic" hidden>
         Anthropic mode updates total request tokens only; breakdowns remain o200k_base.
       </span>
     </p>
-    <VersionExplorer versions={versionData} />
+    {
+      initialDetail ? (
+        <VersionExplorer agentId={agent!} summaries={summaries} initialDetail={initialDetail} />
+      ) : (
+        <div class="ui-card rounded-xl p-5">
+          <p class="text-sm ui-subtle">No benchmark versions available.</p>
+        </div>
+      )
+    }
   </section>
 </Layout>
 

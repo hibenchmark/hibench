@@ -1,6 +1,6 @@
 ---
 import { formatNumber, pct, withBase } from "../lib/format";
-import type { AgentSummary } from "../data/benchmark";
+import { canonicalTokenCount, type AgentSummary } from "../data/benchmark";
 import AgentLogo from "./AgentLogo.astro";
 
 interface Props {
@@ -11,8 +11,7 @@ interface Props {
 }
 
 const { agents, limit, topCount = 5, flopCount = 5 } = Astro.props;
-const tokenValue = (agent: AgentSummary) =>
-  agent.latest.anthropicTotalTokens || agent.latest.totalTokens;
+const tokenValue = (agent: AgentSummary) => canonicalTokenCount(agent.latest);
 const sorted = [...agents].sort((a, b) => tokenValue(b) - tokenValue(a));
 const ranked = limit
   ? sorted.slice(0, limit)
@@ -248,10 +247,10 @@ function themeFor(agentId: string): AgentTheme {
   <div class="flex items-start justify-between gap-3">
     <div>
       <p class="text-sm font-medium ui-muted">
-        Top 5 + flop 5 token ranking
+        Top 5 and bottom 5 by default footprint
       </p>
       <p class="mt-1 text-xs ui-subtle">
-        heaviest and lightest latest versions · Anthropic total request tokens
+        Largest and smallest latest versions · o200k_base total request tokens
       </p>
     </div>
     <a
@@ -285,7 +284,7 @@ function themeFor(agentId: string): AgentTheme {
             <a
               href={withBase(`/agents/${agent.agentId}`)}
               class="group flex min-w-0 flex-1 basis-0 flex-col items-center justify-end gap-2"
-              aria-label={`${agent.agentDisplayName}: ${formatNumber(tokens)} Anthropic total request tokens`}
+              aria-label={`${agent.agentDisplayName}: ${formatNumber(tokens)} o200k_base total request tokens`}
             >
               <span class="hidden w-full truncate text-center tabular-nums text-xs font-semibold ui-title sm:block sm:text-sm">
                 {formatNumber(tokens)}

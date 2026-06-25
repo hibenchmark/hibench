@@ -37,13 +37,11 @@ const compactLabels: Record<SortKey, string> = {
   subagentCount: 'Sub',
 };
 
-const hasAnthropicData = rows.length > 0 && rows.every((r) => r.anthropicTotalTokens > 0);
-const initialTokenValue = (row: RankRow) =>
-  hasAnthropicData ? row.anthropicTotalTokens : row.totalTokens;
+const initialTokenValue = (row: RankRow) => row.totalTokens;
 const sortedRows = [...rows].sort((a, b) => initialTokenValue(b) - initialTokenValue(a));
 const maxO200k = Math.max(...sortedRows.map((r) => r.totalTokens), 1);
 const maxAnthropic = Math.max(...sortedRows.map((r) => r.anthropicTotalTokens), 1);
-const initialMax = hasAnthropicData ? maxAnthropic : maxO200k;
+const initialMax = maxO200k;
 const initialSortKey: SortKey = 'totalTokens';
 const initialSortDir = 'desc';
 

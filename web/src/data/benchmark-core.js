@@ -405,6 +405,47 @@ export function footprintParts(run) {
   ].filter((p) => p.tokens > 0);
 }
 
+/** Safe filename segment for per-version static JSON under public/data/agents. */
+export function safeVersionFilename(version) {
+  return encodeURIComponent(version);
+}
+
+export function buildVersionDatum(run) {
+  return {
+    version: run.version,
+    model: run.model,
+    totalTokens: run.totalTokens,
+    anthropicTotalTokens: run.anthropicTotalTokens || run.totalTokens,
+    bodyBytes: run.bodyBytes,
+    toolCount: run.toolCount,
+    skillCount: run.skillCount,
+    mcpCount: run.mcpCount,
+    subagentCount: run.subagentCount,
+    parts: footprintParts(run).map((part) => ({
+      label: part.label,
+      tokens: part.tokens,
+      color: part.color,
+    })),
+    tools: getToolsForRun(run.runId).map((tool) => ({
+      name: tool.name,
+      tokens: tool.tokens,
+      isMcp: tool.isMcp,
+      isSubagent: tool.isSubagent,
+    })),
+    skills: getSkillsForRun(run.runId).map((skill) => ({
+      name: skill.name,
+      tokens: skill.tokens,
+      description: skill.description,
+    })),
+    subagents: getSubagentsForRun(run.runId).map((subagent) => ({
+      name: subagent.name,
+      tokens: subagent.tokens,
+      preview: subagent.preview,
+      sourceType: subagent.sourceType,
+    })),
+  };
+}
+
 export function getGlobalStats() {
   const runs = getPrimaryRuns();
   const totals = runs.map((r) => r.totalTokens);
@@ -429,7 +470,20 @@ export function getLatestBenchmarkDate() {
 // Recent agent updates (latest capture + delta vs previous version)
 // ---------------------------------------------------------------------------
 
-/** Primary display tokens: Anthropic totals when enabled, else o200k. */
+/** Canonical site-wide benchmark metric for SSR, SEO, and default rankings. */
+export const PRIMARY_METRIC = 'o200k';
+
+/** Secondary metrics available only through interactive tokenizer UI. */
+export const SECONDARY_METRICS = ['anthropic'];
+
+/** Canonical token count for SEO/SSR (o200k_base / totalTokens). */
+export function canonicalTokenCount(run) {
+  return run.totalTokens;
+}
+
+/**
+ * Tokens for a chosen metric. Pass `useAnthropic: false` for canonical SSR/SEO values.
+ */
 export function primaryTokenCount(run, useAnthropic) {
   return useAnthropic ? run.anthropicTotalTokens || run.totalTokens : run.totalTokens;
 }
@@ -465,8 +519,6 @@ export function computeAgentUpdateRow(latest, previous, useAnthropic) {
 
 export function getRecentAgentUpdates() {
   const agents = getAgents();
-  const useAnthropic =
-    agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
 
   const updates = agents.map((agent) => {
     const versions = getAgentVersions(agent.agentId);
@@ -476,8 +528,8 @@ export function getRecentAgentUpdates() {
       agentId: agent.agentId,
       agentDisplayName: agent.agentDisplayName,
       agentLogo: agent.agentLogo,
-      useAnthropic,
-      ...computeAgentUpdateRow(latest, previous, useAnthropic),
+      useAnthropic: false,
+      ...computeAgentUpdateRow(latest, previous, false),
     };
   });
 

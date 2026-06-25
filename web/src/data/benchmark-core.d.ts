@@ -81,6 +81,35 @@ export interface FootprintPart {
   color: string;
 }
 
+export interface VersionDatum {
+  version: string;
+  model: string;
+  totalTokens: number;
+  anthropicTotalTokens: number;
+  bodyBytes: number;
+  toolCount: number;
+  skillCount: number;
+  mcpCount: number;
+  subagentCount: number;
+  parts: Array<{ label: string; tokens: number; color: string }>;
+  tools: Array<{
+    name: string;
+    tokens: number;
+    isMcp: boolean;
+    isSubagent: boolean;
+  }>;
+  skills: Array<{ name: string; tokens: number; description: string }>;
+  subagents: Array<{
+    name: string;
+    tokens: number;
+    preview: string;
+    sourceType: string;
+  }>;
+}
+
+export function safeVersionFilename(version: string): string;
+export function buildVersionDatum(run: RunRow): VersionDatum;
+
 export interface GlobalStats {
   agentCount: number;
   versionCount: number;
@@ -127,6 +156,9 @@ export function getGlobalStats(): GlobalStats;
 export function getLatestBenchmarkDate(): string;
 export type TokenCountable = Pick<RunRow, 'totalTokens' | 'anthropicTotalTokens'>;
 
+export const PRIMARY_METRIC: 'o200k';
+export const SECONDARY_METRICS: readonly ['anthropic'];
+export function canonicalTokenCount(run: TokenCountable): number;
 export function primaryTokenCount(run: TokenCountable, useAnthropic: boolean): number;
 export function computeAgentUpdateRow(
   latest: RunRow,

@@ -6,12 +6,11 @@ import CapturePipeline from "../components/CapturePipeline.astro";
 import LastUpdated from "../components/LastUpdated.astro";
 import { withBase, formatNumber } from "../lib/format";
 import { homePageSeo } from "../lib/seo";
-import { getAgents, getLatestBenchmarkDate } from "../data/benchmark";
+import { canonicalTokenCount, getAgents, getLatestBenchmarkDate } from "../data/benchmark";
 
 const agents = getAgents();
 const lastUpdated = getLatestBenchmarkDate();
-const homeTokenValue = (agent: (typeof agents)[number]) =>
-  agent.latest.anthropicTotalTokens || agent.latest.totalTokens;
+const homeTokenValue = (agent: (typeof agents)[number]) => canonicalTokenCount(agent.latest);
 const { description, jsonLd } = homePageSeo(agents.length);
 ---
 
@@ -151,7 +150,7 @@ const { description, jsonLd } = homePageSeo(agents.length);
                 {formatNumber(homeTokenValue(a))}
               </p>
               <p class="text-xs ui-subtle">
-                Anthropic total tokens · {a.latest.toolCount} tools · {a.versionCount}{" "}
+                o200k_base total tokens · {a.latest.toolCount} tools · {a.versionCount}{" "}
                 versions
               </p>
             </a>

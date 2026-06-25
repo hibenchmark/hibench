@@ -1,7 +1,11 @@
 /** JSON-LD builders and page SEO helpers for static pages. */
 
-import { primaryTokenCount } from '../data/benchmark-core.js';
+import { canonicalTokenCount, primaryTokenCount } from '../data/benchmark-core.js';
 import { formatBenchmarkDate, formatNumber, withBase } from './format';
+import { METHODOLOGY_REVISION_DATE } from './methodology-date.mjs';
+
+export { METHODOLOGY_REVISION_DATE };
+export { getPageLastModified } from './page-lastmod.js';
 
 export type JsonLd = Record<string, unknown>;
 
@@ -35,9 +39,10 @@ export function absoluteUrl(site: string, path: string): string {
   return new URL(withBase(path), site).toString();
 }
 
-export function primaryTokenMetric(run: TokenRun, hasAnthropicData: boolean) {
-  const tokens = primaryTokenCount(run, hasAnthropicData);
-  const label = hasAnthropicData
+/** Canonical SEO/SSR metric uses o200k (`useAnthropic: false`). */
+export function primaryTokenMetric(run: TokenRun, useAnthropic = false) {
+  const tokens = primaryTokenCount(run, useAnthropic);
+  const label = useAnthropic
     ? 'default Anthropic request tokens'
     : 'default tokens (o200k_base)';
   return { tokens, label };
@@ -92,22 +97,7 @@ export function faqSchema(
 export function homePageSeo(agentCount: number) {
   return {
     description: `Compare how many tokens, tools, skills, and MCP servers ${agentCount} coding agents load on the first request. Open-source benchmark with reproducible captures.`,
-    jsonLd: faqSchema([
-      {
-        question: 'What does hibench measure?',
-        answer:
-          'hibench measures the default context footprint of coding agents: system prompts, tool definitions, bundled skills, MCP servers, and sub-agents sent on the first outbound model request after a simple Hi prompt.',
-      },
-      {
-        question: 'How are coding agents compared?',
-        answer:
-          'Each agent runs in Docker inside a fresh empty Git repo. hibench captures the first outbound request with a local recorder, then counts every field with a single fixed tokenizer (o200k_base) so results stay comparable.',
-      },
-      {
-        question: 'Which coding agents are benchmarked?',
-        answer: `hibench currently benchmarks ${agentCount} agents including Claude Code, Cursor CLI, Codex CLI, Grok CLI, GitHub Copilot CLI, Gemini CLI, Cline, OpenHands, and others.`,
-      },
-    ]),
+    jsonLd: [],
   };
 }
 
@@ -118,16 +108,12 @@ export function agentsIndexPageSeo(agentCount: number) {
   };
 }
 
-export function rankingsPageSeo(
-  site: string,
-  agents: SeoAgentSummary[],
-  hasAnthropicData: boolean,
-) {
+export function rankingsPageSeo(site: string, agents: SeoAgentSummary[]) {
   const agentCount = agents.length;
   return {
     title: 'Coding Agent Token Rankings | hibench',
-    description: `Ranking of ${agentCount} coding agents by default request token footprint, tool count, skill surface, and sub-agent declarations in their latest hibench capture.`,
-    jsonLd: rankingsItemListSchema(site, agents, hasAnthropicData),
+    description: `Ranking of ${agentCount} coding agents by default request token footprint (o200k_base), tool count, skill surface, and sub-agent declarations in their latest hibench capture.`,
+    jsonLd: rankingsItemListSchema(site, agents, false),
   };
 }
 
@@ -154,7 +140,9 @@ export function rankingsItemListSchema(
       'Coding agents ranked by total default request tokens in their latest captured hibench run.',
     numberOfItems: sorted.length,
     itemListElement: sorted.map((agent, index) => {
-      const { tokens } = primaryTokenMetric(agent.latest, useAnthropic);
+      const tokens = useAnthropic
+        ? primaryTokenCount(agent.latest, true)
+        : canonicalTokenCount(agent.latest);
       return {
         '@type': 'ListItem',
         position: index + 1,
@@ -272,11 +260,11 @@ export function parseCompareSlug(
 
 export function rankedAgents(
   agents: SeoAgentSummary[],
-  hasAnthropicData: boolean,
+  useAnthropic = false,
 ): SeoAgentSummary[] {
   return [...agents].sort((a, b) => {
-    const av = primaryTokenMetric(a.latest, hasAnthropicData).tokens;
-    const bv = primaryTokenMetric(b.latest, hasAnthropicData).tokens;
+    const av = primaryTokenCount(a.latest, useAnthropic);
+    const bv = primaryTokenCount(b.latest, useAnthropic);
     return bv - av;
   });
 }
@@ -287,18 +275,33 @@ export type ComparePair = {
   slug: string;
 };
 
+/** High-intent pairs that must stay in the compare index even if ranking adjacency changes. */
+export const INDEXED_COMPARISON_PAIRS: ReadonlyArray<readonly [string, string]> = [
+  ['claude-code', 'codex'],
+  ['claude-code', 'cursor-cli'],
+  ['claude-code', 'gemini-cli'],
+  ['codex', 'cursor-cli'],
+  ['cline', 'opencode'],
+];
+
 export function generateComparePairs(
   agents: SeoAgentSummary[],
-  hasAnthropicData: boolean,
+  useAnthropic = false,
 ): ComparePair[] {
-  const ranked = rankedAgents(agents, hasAnthropicData);
+  const ranked = rankedAgents(agents, useAnthropic);
+  const agentIds = new Set(agents.map((agent) => agent.agentId));
   const pairs = new Map<string, ComparePair>();
 
   const addPair = (idA: string, idB: string) => {
+    if (!agentIds.has(idA) || !agentIds.has(idB) || idA === idB) return;
     const [agentA, agentB] = canonicalComparePair(idA, idB);
     const slug = compareSlug(agentA, agentB);
     pairs.set(slug, { agentA, agentB, slug });
   };
+
+  for (const [idA, idB] of INDEXED_COMPARISON_PAIRS) {
+    addPair(idA, idB);
+  }
 
   if (ranked.length >= 2) {
     addPair(ranked[0].agentId, ranked[ranked.length - 1].agentId);
@@ -401,12 +404,11 @@ export function comparePageSeo(
   site: string,
   agentA: SeoAgentSummary,
   agentB: SeoAgentSummary,
-  hasAnthropicData: boolean,
 ) {
   const nameA = agentA.agentDisplayName;
   const nameB = agentB.agentDisplayName;
-  const tokensA = primaryTokenMetric(agentA.latest, hasAnthropicData);
-  const tokensB = primaryTokenMetric(agentB.latest, hasAnthropicData);
+  const tokensA = primaryTokenMetric(agentA.latest, false);
+  const tokensB = primaryTokenMetric(agentB.latest, false);
   const slug = compareSlug(agentA.agentId, agentB.agentId);
 
   return {
@@ -434,7 +436,6 @@ export type AgentUpdateSummary = {
 export function updatesItemListSchema(
   site: string,
   updates: AgentUpdateSummary[],
-  hasAnthropicData: boolean,
 ): JsonLd {
   return {
     '@context': 'https://schema.org',
@@ -453,9 +454,85 @@ export function updatesItemListSchema(
         position: index + 1,
         name: `${update.agentDisplayName} v${update.version}`,
         url: absoluteUrl(site, `/agents/${update.agentId}/`),
-        description: `${update.agentDisplayName} v${update.version} captured ${formatBenchmarkDate(update.startedAt)} with ${update.primaryTokens.toLocaleString('en-US')} ${hasAnthropicData ? 'Anthropic' : 'o200k'} tokens (${deltaText}).`,
+        description: `${update.agentDisplayName} v${update.version} captured ${formatBenchmarkDate(update.startedAt)} with ${update.primaryTokens.toLocaleString('en-US')} o200k tokens (${deltaText}).`,
       };
     }),
+  };
+}
+
+type DataDownloadFile = {
+  name: string;
+  path: string;
+  encodingFormat: string;
+  optional?: boolean;
+};
+
+const DATA_DOWNLOAD_FILES: DataDownloadFile[] = [
+  { name: 'runs.csv', path: '/data/runs.csv', encodingFormat: 'text/csv' },
+  { name: 'tools.csv', path: '/data/tools.csv', encodingFormat: 'text/csv' },
+  { name: 'skills.csv', path: '/data/skills.csv', encodingFormat: 'text/csv' },
+  { name: 'subagents.csv', path: '/data/subagents.csv', encodingFormat: 'text/csv' },
+  { name: 'mcp.csv', path: '/data/mcp.csv', encodingFormat: 'text/csv', optional: true },
+  {
+    name: 'text_fields.csv',
+    path: '/data/text_fields.csv',
+    encodingFormat: 'text/csv',
+  },
+  { name: 'export.json', path: '/data/export.json', encodingFormat: 'application/json' },
+  {
+    name: 'github_stars.json',
+    path: '/data/github_stars.json',
+    encodingFormat: 'application/json',
+    optional: true,
+  },
+];
+
+export function dataPageSeo(
+  site: string,
+  lastUpdated: string,
+  availableFiles: string[],
+) {
+  const available = new Set(availableFiles);
+  const distributions = DATA_DOWNLOAD_FILES.filter((file) => available.has(file.name)).map(
+    (file) => ({
+      '@type': 'DataDownload',
+      name: file.name,
+      contentUrl: absoluteUrl(site, file.path),
+      encodingFormat: file.encodingFormat,
+    }),
+  );
+
+  return {
+    title: 'Benchmark Dataset Downloads | hibench',
+    description:
+      'Download hibench benchmark exports: runs, tools, skills, sub-agents, MCP, and text-field tables from the open-source coding-agent footprint dataset.',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'Dataset',
+      name: 'hibench coding-agent benchmark exports',
+      description:
+        'Canonical CSV and JSON exports from hibench captures of default coding-agent request footprint.',
+      url: absoluteUrl(site, '/data/'),
+      creator: {
+        '@type': 'Organization',
+        name: 'hibench',
+        url: site,
+      },
+      license: 'https://opensource.org/licenses/MIT',
+      isAccessibleForFree: true,
+      measurementTechnique: 'Isolated Docker capture with local request interception',
+      variableMeasured: [
+        'total_body_tokens',
+        'tool_count',
+        'skill_count',
+        'subagent_count',
+        'mcp_count',
+        'text_field_tokens',
+      ],
+      distribution: distributions,
+      ...(lastUpdated ? { dateModified: lastUpdated } : {}),
+      version: 'hibench.benchmark.v1',
+    },
   };
 }
 
@@ -464,7 +541,6 @@ export function updatesPageSeo(
   updates: AgentUpdateSummary[],
   agentCount: number,
   lastUpdated: string,
-  hasAnthropicData: boolean,
 ) {
   const formattedDate = formatBenchmarkDate(lastUpdated);
   const dateSuffix = formattedDate ? ` Last capture activity: ${formattedDate} UTC.` : '';
@@ -479,18 +555,14 @@ export function updatesPageSeo(
       description: `Changelog of recent hibench benchmark captures across ${agentCount} coding agents.`,
       url: absoluteUrl(site, '/updates/'),
       ...(lastUpdated ? { dateModified: lastUpdated } : {}),
-      mainEntity: updatesItemListSchema(site, updates, hasAnthropicData),
+      mainEntity: updatesItemListSchema(site, updates),
     },
   };
 }
 
-export function agentPageSeo(
-  site: string,
-  summary: SeoAgentSummary,
-  hasAnthropicData: boolean,
-) {
+export function agentPageSeo(site: string, summary: SeoAgentSummary) {
   const agentName = summary.agentDisplayName;
-  const { tokens, label } = primaryTokenMetric(summary.latest, hasAnthropicData);
+  const { tokens, label } = primaryTokenMetric(summary.latest, false);
   const latest = summary.latest;
 
   return {

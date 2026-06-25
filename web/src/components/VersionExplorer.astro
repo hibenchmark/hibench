@@ -1,5 +1,16 @@
 ---
-import { formatNumber, pct } from '../lib/format';
+import { formatNumber, pct, withBase } from '../lib/format';
+
+interface VersionSummary {
+  version: string;
+  model: string;
+  totalTokens: number;
+  anthropicTotalTokens: number;
+  bodyBytes: number;
+  toolCount: number;
+  skillCount: number;
+  subagentCount: number;
+}
 
 interface VersionPart {
   label: string;
@@ -64,22 +75,22 @@ interface TokenListCard {
 }
 
 interface Props {
-  versions: VersionDatum[];
+  agentId: string;
+  summaries: VersionSummary[];
+  initialDetail: VersionDatum;
 }
 
-const { versions } = Astro.props;
-const selectedIndex = Math.max(versions.length - 1, 0);
-const selected = versions[selectedIndex];
-const hasAnthropicData = versions.length > 0 && versions.every((v) => v.anthropicTotalTokens > 0);
-const initialTokenValue = (version: VersionDatum) =>
-  hasAnthropicData ? version.anthropicTotalTokens : version.totalTokens;
-function buildCards(v: VersionDatum): TokenListCard[] {
+const { agentId, summaries, initialDetail } = Astro.props;
+const dataPrefix = withBase(`/data/agents/${agentId}/`);
+const initialTokenValue = (version: { totalTokens: number }) => version.totalTokens;
+
+function buildCards(version: VersionDatum): TokenListCard[] {
   const cards = [
     {
-      title: `Tools by token · ${v.tools.length}`,
+      title: `Tools by token · ${version.tools.length}`,
       emptyText: 'No tool definitions captured for this version.',
       accent: 'linear-gradient(90deg, var(--color-primary), var(--color-secondary))',
-      items: v.tools.map((tool) => ({
+      items: version.tools.map((tool) => ({
         name: tool.name,
         tokens: tool.tokens,
         title: tool.name,
@@ -90,10 +101,10 @@ function buildCards(v: VersionDatum): TokenListCard[] {
       })),
     },
     {
-      title: `Sub-agents by token · ${v.subagents.length}`,
+      title: `Sub-agents by token · ${version.subagents.length}`,
       emptyText: 'No sub-agent declarations captured for this version.',
       accent: 'linear-gradient(90deg, #f59e0b, var(--color-primary))',
-      items: v.subagents.map((subagent) => ({
+      items: version.subagents.map((subagent) => ({
         name: subagent.name,
         tokens: subagent.tokens,
         title: subagent.preview || subagent.sourceType || subagent.name,
@@ -101,10 +112,10 @@ function buildCards(v: VersionDatum): TokenListCard[] {
       })),
     },
     {
-      title: `Skills by token · ${v.skills.length}`,
+      title: `Skills by token · ${version.skills.length}`,
       emptyText: 'No skill entries captured for this version.',
       accent: 'linear-gradient(90deg, #10b981, var(--color-secondary))',
-      items: v.skills.map((skill) => ({
+      items: version.skills.map((skill) => ({
         name: skill.name,
         tokens: skill.tokens,
         title: skill.description || skill.name,
@@ -119,27 +130,32 @@ function buildCards(v: VersionDatum): TokenListCard[] {
   }));
 }
 
-const versionPanels = versions.map((version, index) => ({
-  version,
-  index,
-  maxPart: Math.max(...version.parts.map((part) => part.tokens), 1),
-  cards: buildCards(version),
-}));
+const initialPanel = {
+  version: initialDetail,
+  maxPart: Math.max(...initialDetail.parts.map((part) => part.tokens), 1),
+  cards: buildCards(initialDetail),
+};
+const selectedVersion = initialDetail.version;
 ---
 
-<div class="space-y-6" data-version-explorer>
+<div
+  class="space-y-6"
+  data-version-explorer
+  data-data-prefix={dataPrefix}
+  data-initial-version={selectedVersion}
+>
   {
-    selected ? (
+    summaries.length > 0 ? (
       <>
         <div class="flex flex-wrap items-center gap-3">
           <label class="text-sm font-medium ui-muted" for="version-select">
             Version
           </label>
           <select id="version-select" class="ui-input rounded-lg px-3 py-1.5 text-sm" data-version-select>
-            {versions.map((version, index) => (
+            {summaries.map((version) => (
               <option
-                value={String(index)}
-                selected={index === selectedIndex}
+                value={version.version}
+                selected={version.version === selectedVersion}
                 data-tokenizer-text
                 data-o200k-text={`v${version.version} — ${formatNumber(version.totalTokens)} tokens`}
                 data-anthropic-text={`v${version.version} — ${formatNumber(version.anthropicTotalTokens)} tokens`}
@@ -151,105 +167,103 @@ const versionPanels = versions.map((version, index) => ({
         </div>
 
         <div data-version-details>
-          {versionPanels.map(({ version, index, maxPart, cards }) => (
-            <div class="space-y-6" data-version-panel={String(index)} hidden={index !== selectedIndex}>
-              <div class="grid gap-3 sm:grid-cols-4">
-                <div class="ui-card rounded-xl p-4">
-                  <p class="text-xs font-medium ui-muted">Total tokens</p>
-                  <p
-                    class="mt-0.5 text-2xl font-semibold tabular-nums ui-title"
-                    data-tokenizer-value
-                    data-o200k-value={String(version.totalTokens)}
-                    data-anthropic-value={String(version.anthropicTotalTokens)}
-                  >
-                    {formatNumber(initialTokenValue(version))}
-                  </p>
-                </div>
-                <div class="ui-card rounded-xl p-4">
-                  <p class="text-xs font-medium ui-muted">Tools</p>
-                  <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
-                    {version.toolCount}
-                  </p>
-                </div>
-                <div class="ui-card rounded-xl p-4">
-                  <p class="text-xs font-medium ui-muted">Skills</p>
-                  <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
-                    {version.skillCount}
-                  </p>
-                </div>
-                <div class="ui-card rounded-xl p-4">
-                  <p class="text-xs font-medium ui-muted">Sub-agents</p>
-                  <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
-                    {version.subagentCount}
-                  </p>
+          <div class="space-y-6" data-version-panel>
+            <div class="grid gap-3 sm:grid-cols-4">
+              <div class="ui-card rounded-xl p-4">
+                <p class="text-xs font-medium ui-muted">Total tokens</p>
+                <p
+                  class="mt-0.5 text-2xl font-semibold tabular-nums ui-title"
+                  data-tokenizer-value
+                  data-o200k-value={String(initialPanel.version.totalTokens)}
+                  data-anthropic-value={String(initialPanel.version.anthropicTotalTokens)}
+                >
+                  {formatNumber(initialTokenValue(initialPanel.version))}
+                </p>
+              </div>
+              <div class="ui-card rounded-xl p-4">
+                <p class="text-xs font-medium ui-muted">Tools</p>
+                <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
+                  {initialPanel.version.toolCount}
+                </p>
+              </div>
+              <div class="ui-card rounded-xl p-4">
+                <p class="text-xs font-medium ui-muted">Skills</p>
+                <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
+                  {initialPanel.version.skillCount}
+                </p>
+              </div>
+              <div class="ui-card rounded-xl p-4">
+                <p class="text-xs font-medium ui-muted">Sub-agents</p>
+                <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">
+                  {initialPanel.version.subagentCount}
+                </p>
+              </div>
+            </div>
+
+            <div class="grid gap-4 lg:grid-cols-2">
+              <div class="ui-card rounded-xl p-4 sm:p-5">
+                <h3 class="mb-4 text-sm font-semibold ui-title">
+                  Footprint composition · v{initialPanel.version.version}
+                </h3>
+                <div class="space-y-3">
+                  {initialPanel.version.parts.map((part) => (
+                    <div>
+                      <div class="mb-1 flex justify-between text-sm">
+                        <span class="flex items-center gap-2 ui-muted">
+                          <span class="h-2.5 w-2.5 rounded-sm" style={`background: ${part.color};`}></span>
+                          {part.label}
+                        </span>
+                        <span class="tabular-nums font-medium ui-title">
+                          {formatNumber(part.tokens)}
+                          <span class="ml-1 text-xs font-normal ui-subtle">
+                            {pct(part.tokens, initialPanel.version.totalTokens).toFixed(0)}%
+                          </span>
+                        </span>
+                      </div>
+                      <div class="ui-track h-2 w-full overflow-hidden rounded-full">
+                        <div
+                          class="h-full rounded-full"
+                          style={`width: ${pct(part.tokens, initialPanel.maxPart)}%; background: ${part.color};`}
+                        >
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div class="grid gap-4 lg:grid-cols-2">
+              {initialPanel.cards.map((card) => (
                 <div class="ui-card rounded-xl p-4 sm:p-5">
-                  <h3 class="mb-4 text-sm font-semibold ui-title">
-                    Footprint composition · v{version.version}
-                  </h3>
-                  <div class="space-y-3">
-                    {version.parts.map((part) => (
-                      <div>
-                        <div class="mb-1 flex justify-between text-sm">
-                          <span class="flex items-center gap-2 ui-muted">
-                            <span class="h-2.5 w-2.5 rounded-sm" style={`background: ${part.color};`}></span>
-                            {part.label}
-                          </span>
-                          <span class="tabular-nums font-medium ui-title">
-                            {formatNumber(part.tokens)}
-                            <span class="ml-1 text-xs font-normal ui-subtle">
-                              {pct(part.tokens, version.totalTokens).toFixed(0)}%
+                  <h3 class="mb-4 text-sm font-semibold ui-title">{card.title}</h3>
+                  <div class="max-h-72 space-y-2 overflow-y-auto pr-5 [scrollbar-gutter:stable]">
+                    {card.items.map((item) => (
+                      <div class="flex min-w-0 items-center gap-3 text-sm">
+                        <span class="flex w-36 shrink-0 items-center gap-1 truncate ui-muted" title={item.title}>
+                          <span class="truncate">{item.name}</span>
+                          {item.badges.map((badge) => (
+                            <span class={`shrink-0 text-[10px] ${badge.className}`}>
+                              {badge.label}
                             </span>
-                          </span>
-                        </div>
-                        <div class="ui-track h-2 w-full overflow-hidden rounded-full">
+                          ))}
+                        </span>
+                        <div class="ui-track h-2 min-w-0 flex-1 overflow-hidden rounded-full">
                           <div
                             class="h-full rounded-full"
-                            style={`width: ${pct(part.tokens, maxPart)}%; background: ${part.color};`}
+                            style={`width: ${pct(item.tokens, card.maxTokens)}%; background: ${card.accent};`}
                           >
                           </div>
                         </div>
+                        <span class="w-16 shrink-0 text-right tabular-nums ui-subtle">
+                          {formatNumber(item.tokens)}
+                        </span>
                       </div>
                     ))}
+                    {card.items.length === 0 && <p class="text-sm ui-subtle">{card.emptyText}</p>}
                   </div>
                 </div>
-
-                {cards.map((card) => (
-                  <div class="ui-card rounded-xl p-4 sm:p-5">
-                    <h3 class="mb-4 text-sm font-semibold ui-title">{card.title}</h3>
-                    <div class="max-h-72 space-y-2 overflow-y-auto pr-5 [scrollbar-gutter:stable]">
-                      {card.items.map((item) => (
-                        <div class="flex min-w-0 items-center gap-3 text-sm">
-                          <span class="flex w-36 shrink-0 items-center gap-1 truncate ui-muted" title={item.title}>
-                            <span class="truncate">{item.name}</span>
-                            {item.badges.map((badge) => (
-                              <span class={`shrink-0 text-[10px] ${badge.className}`}>
-                                {badge.label}
-                              </span>
-                            ))}
-                          </span>
-                          <div class="ui-track h-2 min-w-0 flex-1 overflow-hidden rounded-full">
-                            <div
-                              class="h-full rounded-full"
-                              style={`width: ${pct(item.tokens, card.maxTokens)}%; background: ${card.accent};`}
-                            >
-                            </div>
-                          </div>
-                          <span class="w-16 shrink-0 text-right tabular-nums ui-subtle">
-                            {formatNumber(item.tokens)}
-                          </span>
-                        </div>
-                      ))}
-                      {card.items.length === 0 && <p class="text-sm ui-subtle">{card.emptyText}</p>}
-                    </div>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </>
     ) : (
@@ -260,22 +274,195 @@ const versionPanels = versions.map((version, index) => ({
   }
 </div>
 
-<script is:inline>
+<script define:vars={{ initialDetailJson: JSON.stringify(initialDetail) }}>
   (() => {
+    const numberFormat = new Intl.NumberFormat('en-US');
+    const pct = (part, whole) => (whole <= 0 ? 0 : (part / whole) * 100);
+    const esc = (value) =>
+      String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+    const buildCards = (version) => {
+      const cards = [
+        {
+          title: `Tools by token · ${version.tools.length}`,
+          emptyText: 'No tool definitions captured for this version.',
+          accent: 'linear-gradient(90deg, var(--color-primary), var(--color-secondary))',
+          items: version.tools.map((tool) => ({
+            name: tool.name,
+            tokens: tool.tokens,
+            title: tool.name,
+            badges: [
+              ...(tool.isSubagent ? [{ label: 'sub', className: 'text-amber-600' }] : []),
+              ...(tool.isMcp ? [{ label: 'mcp', className: 'text-pink-600' }] : []),
+            ],
+          })),
+        },
+        {
+          title: `Sub-agents by token · ${version.subagents.length}`,
+          emptyText: 'No sub-agent declarations captured for this version.',
+          accent: 'linear-gradient(90deg, #f59e0b, var(--color-primary))',
+          items: version.subagents.map((subagent) => ({
+            name: subagent.name,
+            tokens: subagent.tokens,
+            title: subagent.preview || subagent.sourceType || subagent.name,
+            badges: [],
+          })),
+        },
+        {
+          title: `Skills by token · ${version.skills.length}`,
+          emptyText: 'No skill entries captured for this version.',
+          accent: 'linear-gradient(90deg, #10b981, var(--color-secondary))',
+          items: version.skills.map((skill) => ({
+            name: skill.name,
+            tokens: skill.tokens,
+            title: skill.description || skill.name,
+            badges: [],
+          })),
+        },
+      ];
+
+      return cards.map((card) => ({
+        ...card,
+        maxTokens: Math.max(...card.items.map((item) => item.tokens), 1),
+      }));
+    };
+
+    const applyTokenizerTo = (root) => {
+      const tokenizer = document.documentElement.dataset.tokenizer || 'o200k';
+      root.querySelectorAll('[data-tokenizer-value]').forEach((el) => {
+        const raw = el.dataset[`${tokenizer}Value`];
+        if (raw === undefined || raw === '') return;
+        const n = Number(raw);
+        el.textContent = numberFormat.format(Number.isFinite(n) ? n : 0);
+      });
+    };
+
+    const renderPanel = (version) => {
+      const maxPart = Math.max(...version.parts.map((part) => part.tokens), 1);
+      const cards = buildCards(version);
+      const partsHtml = version.parts
+        .map((part) => {
+          const width = pct(part.tokens, maxPart);
+          const share = pct(part.tokens, version.totalTokens).toFixed(0);
+          return `<div>
+            <div class="mb-1 flex justify-between text-sm">
+              <span class="flex items-center gap-2 ui-muted">
+                <span class="h-2.5 w-2.5 rounded-sm" style="background: ${esc(part.color)};"></span>
+                ${esc(part.label)}
+              </span>
+              <span class="tabular-nums font-medium ui-title">
+                ${numberFormat.format(part.tokens)}
+                <span class="ml-1 text-xs font-normal ui-subtle">${share}%</span>
+              </span>
+            </div>
+            <div class="ui-track h-2 w-full overflow-hidden rounded-full">
+              <div class="h-full rounded-full" style="width: ${width}%; background: ${esc(part.color)};"></div>
+            </div>
+          </div>`;
+        })
+        .join('');
+
+      const cardsHtml = cards
+        .map((card) => {
+          const itemsHtml = card.items
+            .map((item) => {
+              const badges = item.badges
+                .map(
+                  (badge) =>
+                    `<span class="shrink-0 text-[10px] ${esc(badge.className)}">${esc(badge.label)}</span>`,
+                )
+                .join('');
+              const width = pct(item.tokens, card.maxTokens);
+              return `<div class="flex min-w-0 items-center gap-3 text-sm">
+                <span class="flex w-36 shrink-0 items-center gap-1 truncate ui-muted" title="${esc(item.title)}">
+                  <span class="truncate">${esc(item.name)}</span>
+                  ${badges}
+                </span>
+                <div class="ui-track h-2 min-w-0 flex-1 overflow-hidden rounded-full">
+                  <div class="h-full rounded-full" style="width: ${width}%; background: ${esc(card.accent)};"></div>
+                </div>
+                <span class="w-16 shrink-0 text-right tabular-nums ui-subtle">${numberFormat.format(item.tokens)}</span>
+              </div>`;
+            })
+            .join('');
+          const empty = card.items.length === 0 ? `<p class="text-sm ui-subtle">${esc(card.emptyText)}</p>` : '';
+          return `<div class="ui-card rounded-xl p-4 sm:p-5">
+            <h3 class="mb-4 text-sm font-semibold ui-title">${esc(card.title)}</h3>
+            <div class="max-h-72 space-y-2 overflow-y-auto pr-5 [scrollbar-gutter:stable]">
+              ${itemsHtml}
+              ${empty}
+            </div>
+          </div>`;
+        })
+        .join('');
+
+      return `<div class="space-y-6" data-version-panel>
+        <div class="grid gap-3 sm:grid-cols-4">
+          <div class="ui-card rounded-xl p-4">
+            <p class="text-xs font-medium ui-muted">Total tokens</p>
+            <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title" data-tokenizer-value data-o200k-value="${version.totalTokens}" data-anthropic-value="${version.anthropicTotalTokens}">
+              ${numberFormat.format(version.totalTokens)}
+            </p>
+          </div>
+          <div class="ui-card rounded-xl p-4">
+            <p class="text-xs font-medium ui-muted">Tools</p>
+            <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">${version.toolCount}</p>
+          </div>
+          <div class="ui-card rounded-xl p-4">
+            <p class="text-xs font-medium ui-muted">Skills</p>
+            <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">${version.skillCount}</p>
+          </div>
+          <div class="ui-card rounded-xl p-4">
+            <p class="text-xs font-medium ui-muted">Sub-agents</p>
+            <p class="mt-0.5 text-2xl font-semibold tabular-nums ui-title">${version.subagentCount}</p>
+          </div>
+        </div>
+        <div class="grid gap-4 lg:grid-cols-2">
+          <div class="ui-card rounded-xl p-4 sm:p-5">
+            <h3 class="mb-4 text-sm font-semibold ui-title">Footprint composition · v${esc(version.version)}</h3>
+            <div class="space-y-3">${partsHtml}</div>
+          </div>
+          ${cardsHtml}
+        </div>
+      </div>`;
+    };
+
     document.querySelectorAll('[data-version-explorer]').forEach((root) => {
       const select = root.querySelector('[data-version-select]');
-      const panels = Array.from(root.querySelectorAll('[data-version-panel]'));
-      if (!select || panels.length === 0) return;
+      const details = root.querySelector('[data-version-details]');
+      const dataPrefix = root.getAttribute('data-data-prefix') || '';
+      const initialVersion = root.getAttribute('data-initial-version') || '';
+      if (!select || !details || !dataPrefix) return;
 
-      const showSelectedPanel = () => {
-        const selectedPanel = String(select.value);
-        panels.forEach((panel) => {
-          panel.hidden = panel.getAttribute('data-version-panel') !== selectedPanel;
-        });
+      const cache = new Map([[initialVersion, JSON.parse(initialDetailJson)]]);
+
+      const loadVersion = async (version) => {
+        if (cache.has(version)) return cache.get(version);
+        const response = await fetch(`${dataPrefix}${encodeURIComponent(version)}.json`);
+        if (!response.ok) {
+          throw new Error(`Failed to load version data (${response.status})`);
+        }
+        const data = await response.json();
+        cache.set(version, data);
+        return data;
       };
 
-      select.addEventListener('change', showSelectedPanel);
-      showSelectedPanel();
+      select.addEventListener('change', async () => {
+        const version = String(select.value);
+        details.innerHTML = '<p class="text-sm ui-subtle">Loading version details…</p>';
+        try {
+          const data = await loadVersion(version);
+          details.innerHTML = renderPanel(data);
+          applyTokenizerTo(details);
+        } catch (error) {
+          details.innerHTML = `<p class="text-sm text-rose-300">Could not load v${esc(version)} details.</p>`;
+          console.error(error);
+        }
+      });
     });
   })();
 </script>

@@ -9,13 +9,7 @@ import { getAgents, getLatestBenchmarkDate, getRecentAgentUpdates } from '../dat
 const agents = getAgents();
 const updates = getRecentAgentUpdates();
 const lastUpdated = getLatestBenchmarkDate();
-const hasAnthropicData = updates.length > 0 && updates[0].useAnthropic;
-const anthropicModel =
-  agents.find((a) => a.latest.anthropicTokenizerModel)?.latest.anthropicTokenizerModel ??
-  'claude-opus-4-8';
-const tokenLabel = hasAnthropicData
-  ? `Tokens (${anthropicModel})`
-  : 'Tokens (o200k)';
+const tokenLabel = 'Tokens (o200k_base)';
 
 const rows = updates.map((update) => ({
   agentId: update.agentId,
@@ -49,7 +43,6 @@ const { title, description, jsonLd } = updatesPageSeo(
   seoUpdates,
   agents.length,
   lastUpdated,
-  hasAnthropicData,
 );
 ---
 
@@ -69,10 +62,7 @@ const { title, description, jsonLd } = updatesPageSeo(
       <UpdatesList rows={rows} tokenLabel={tokenLabel} />
       <p class="mt-4 text-xs ui-subtle">
         Sorted by most recent capture date. Token deltas compare the latest version
-        to the immediately prior captured version using
-        {hasAnthropicData
-          ? ` Anthropic ${anthropicModel} totals.`
-          : ' the fixed o200k_base tokenizer.'}
+        to the immediately prior captured version using the fixed o200k_base tokenizer.
       </p>
     </>
   ) : (

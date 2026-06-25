@@ -14,6 +14,7 @@ export {
   AGENT_DISPLAY_NAMES,
   AGENT_LOGOS,
   GENERIC_AGENT_LOGO,
+  buildVersionDatum,
   compareVersions,
   computeAgentUpdateRow,
   footprintParts,
@@ -27,5 +28,8 @@ export {
   getSkillsForRun,
   getSubagentsForRun,
   getToolsForRun,
+  PRIMARY_METRIC,
+  SECONDARY_METRICS,
+  canonicalTokenCount,
   primaryTokenCount,
 } from './benchmark-core.js';

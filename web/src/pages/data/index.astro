@@ -1,0 +1,160 @@
+---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+import Layout from '../../layouts/Layout.astro';
+import LastUpdated from '../../components/LastUpdated.astro';
+import { withBase } from '../../lib/format';
+import { dataPageSeo, resolveSiteUrl } from '../../lib/seo';
+import { getGlobalStats, getLatestBenchmarkDate } from '../../data/benchmark';
+
+const publicDataDir = join(process.cwd(), 'public', 'data');
+const catalog = [
+  {
+    file: 'runs.csv',
+    summary:
+      'One row per canonical primary capture: agent, version, tokenizer totals, tool/skill/MCP/sub-agent counts, and capture metadata.',
+  },
+  {
+    file: 'tools.csv',
+    summary: 'Declared tools per primary request with definition size, type, and MCP/sub-agent flags.',
+  },
+  {
+    file: 'skills.csv',
+    summary: 'Bundled skills per run with token cost and preview text.',
+  },
+  {
+    file: 'subagents.csv',
+    summary: 'Declared sub-agent types per run with token cost and source classification.',
+  },
+  {
+    file: 'mcp.csv',
+    summary: 'MCP server declarations per run when present.',
+    optional: true,
+  },
+  {
+    file: 'text_fields.csv',
+    summary:
+      'Tokenized text-field breakdown (instructions, injected context, user prompt, tool context, and related categories).',
+  },
+  {
+    file: 'export.json',
+    summary: 'Export manifest with schema version, row counts, and file inventory.',
+  },
+  {
+    file: 'github_stars.json',
+    summary: 'Optional GitHub star metadata for agents with public repository links.',
+    optional: true,
+  },
+];
+
+const downloads = catalog
+  .map((entry) => {
+    const present = existsSync(join(publicDataDir, entry.file));
+    if (!present && entry.optional) return null;
+    return {
+      ...entry,
+      href: withBase(`/data/${entry.file}`),
+      present,
+    };
+  })
+  .filter(Boolean);
+
+const availableFiles = downloads.filter((entry) => entry!.present).map((entry) => entry!.file);
+const lastUpdated = getLatestBenchmarkDate();
+const stats = getGlobalStats();
+const { title, description, jsonLd } = dataPageSeo(
+  resolveSiteUrl(Astro.site),
+  lastUpdated,
+  availableFiles,
+);
+
+const pythonExample = `import pandas as pd
+
+runs = pd.read_csv("runs.csv")
+latest = runs.sort_values("started_at").groupby("agent_id", as_index=False).tail(1)
+print(latest[["agent_name", "agent_version", "total_body_tokens", "tool_count"]])`;
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold tracking-tight ui-heading">Benchmark data</h1>
+    <p class="mt-3 max-w-3xl ui-muted">
+      Download the canonical hibench export tables used by the dashboard. Files are generated from
+      <code class="rounded bg-black/20 px-1 py-0.5 text-xs">hibench export</code> and copied into
+      <code class="rounded bg-black/20 px-1 py-0.5 text-xs">/data/</code> on each site build.
+    </p>
+    <LastUpdated date={lastUpdated} class="mt-4" />
+  </header>
+
+  <section class="ui-card rounded-2xl p-8">
+    <h2 class="text-xl font-semibold ui-title">Dataset overview</h2>
+    <dl class="mt-4 grid gap-4 text-sm sm:grid-cols-2">
+      <div>
+        <dt class="ui-subtle">Schema version</dt>
+        <dd class="mt-1 font-medium ui-title">hibench.benchmark.v1</dd>
+      </div>
+      <div>
+        <dt class="ui-subtle">Coverage</dt>
+        <dd class="mt-1 font-medium ui-title">
+          {stats.agentCount} agents · {stats.versionCount} captured versions
+        </dd>
+      </div>
+      <div>
+        <dt class="ui-subtle">License</dt>
+        <dd class="mt-1 font-medium ui-title">
+          <a
+            href="https://opensource.org/licenses/MIT"
+            class="ui-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >MIT</a>
+        </dd>
+      </div>
+      <div>
+        <dt class="ui-subtle">Update cadence</dt>
+        <dd class="mt-1 font-medium ui-title">Refreshed when benchmark captures are exported and the site is rebuilt</dd>
+      </div>
+    </dl>
+    <p class="mt-4 text-sm ui-muted">
+      See the <a href={withBase('/methodology')} class="ui-link">methodology</a> for capture rules,
+      tokenizer notes, and how primary requests are selected. Source repository:
+      <a
+        href="https://github.com/hibenchmark/hibench"
+        class="ui-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >hibenchmark/hibench</a>.
+    </p>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="text-2xl font-semibold tracking-tight ui-title">Downloads</h2>
+    <ul class="mt-4 space-y-4">
+      {
+        downloads.map((entry) => (
+          <li class="ui-card rounded-xl p-5">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              {entry!.present ? (
+                <a href={entry!.href} class="font-semibold ui-link" download>
+                  {entry!.file}
+                </a>
+              ) : (
+                <span class="font-semibold ui-title">{entry!.file}</span>
+              )}
+              {!entry!.present ? (
+                <span class="text-xs ui-subtle">Not included in this build</span>
+              ) : null}
+            </div>
+            <p class="mt-2 text-sm ui-muted">{entry!.summary}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-10 ui-card rounded-2xl p-8">
+    <h2 class="text-xl font-semibold ui-title">Example: load runs.csv in Python</h2>
+    <pre class="mt-4 overflow-x-auto rounded-xl bg-black/30 p-4 text-xs leading-relaxed ui-muted"><code>{pythonExample}</code></pre>
+  </section>
+</Layout>

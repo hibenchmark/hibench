@@ -13,9 +13,7 @@ import { getAgents, getLatestBenchmarkDate } from '../../data/benchmark';
 
 const agents = getAgents();
 const agentById = new Map(agents.map((agent) => [agent.agentId, agent]));
-const hasAnthropicData =
-  agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
-const pairs = generateComparePairs(agents, hasAnthropicData);
+const pairs = generateComparePairs(agents, false);
 const lastUpdated = getLatestBenchmarkDate();
 
 const entries = pairs
@@ -24,8 +22,8 @@ const entries = pairs
     const right = agentById.get(pair.agentB);
     if (!left || !right) return null;
 
-    const leftTokens = primaryTokenMetric(left.latest, hasAnthropicData).tokens;
-    const rightTokens = primaryTokenMetric(right.latest, hasAnthropicData).tokens;
+    const leftTokens = primaryTokenMetric(left.latest, false).tokens;
+    const rightTokens = primaryTokenMetric(right.latest, false).tokens;
     const spread = Math.max(leftTokens, rightTokens) - Math.min(leftTokens, rightTokens);
 
     return {
@@ -54,9 +52,9 @@ const { title, description, jsonLd } = compareIndexPageSeo(
   <header class="mb-8">
     <h1 class="text-3xl font-bold tracking-tight ui-heading">Agent comparisons</h1>
     <p class="mt-3 max-w-2xl ui-muted">
-      SEO-friendly side-by-side pages for high-intent searches like
-      &ldquo;Claude Code vs Cursor CLI default tokens&rdquo;. Each page compares
-      the latest captured footprint for two benchmarked agents.
+      Compare the default context footprint of coding agents across tokens,
+      tools, skills, sub-agents, and captured versions. Each page shows the
+      latest captured footprint for two benchmarked agents side by side.
     </p>
     <LastUpdated date={lastUpdated} class="mt-4" />
   </header>

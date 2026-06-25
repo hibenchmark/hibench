@@ -10,36 +10,154 @@ function isActive(href: string): boolean {
   if (target === withBase("/").replace(/\/$/, "")) return path === target;
   return path === target || path.startsWith(`${target}/`);
 }
+
+function linkClass(href: string, block = false): string {
+  const base = block
+    ? "nav-mobile-link block w-full rounded-md px-3 py-3 text-left text-sm transition-colors"
+    : "rounded-md px-2 py-1.5 transition-colors sm:px-3";
+  return [base, isActive(href) ? "nav-link-active font-semibold" : "nav-link"].join(" ");
+}
 ---
 
 <header class="glass-nav sticky top-0 z-30">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-3 sm:px-4">
+  <nav
+    class="relative mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-3 sm:px-4"
+    aria-label="Primary"
+  >
     <a
       href={withBase("/")}
-      class="flex shrink-0 items-center gap-2 font-semibold tracking-tight"
+      class="flex min-w-0 shrink-0 items-center gap-2 font-semibold tracking-tight"
     >
       <span
-        class="brand-mark grid h-7 w-7 place-items-center rounded-md text-sm font-bold"
+        class="brand-mark grid h-7 w-7 shrink-0 place-items-center rounded-md text-sm font-bold"
         >hi</span
       >
-      <span class="brand-text">hibench</span>
+      <span class="brand-text truncate">hibench</span>
     </a>
-    <ul class="flex shrink-0 items-center gap-0.5 text-xs sm:gap-1 sm:text-sm">
+
+    <ul class="hidden items-center gap-0.5 text-xs lg:flex lg:gap-1 lg:text-sm">
       {
         links.map((l) => (
           <li>
-            <a
-              href={withBase(l.href)}
-              class:list={[
-                "rounded-md px-2 py-1.5 transition-colors sm:px-3",
-                isActive(l.href) ? "nav-link-active font-semibold" : "nav-link",
-              ]}
-            >
+            <a href={withBase(l.href)} class={linkClass(l.href)}>
               {l.label}
             </a>
           </li>
         ))
       }
     </ul>
+
+    <button
+      type="button"
+      class="nav-menu-button inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md lg:hidden"
+      id="nav-menu-button"
+      aria-expanded="false"
+      aria-controls="nav-menu-panel"
+      aria-label="Open menu"
+    >
+      <span class="sr-only">Menu</span>
+      <svg
+        class="nav-menu-icon-open h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+      <svg
+        class="nav-menu-icon-close hidden h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
   </nav>
+
+  <div
+    id="nav-menu-backdrop"
+    class="nav-menu-backdrop hidden lg:hidden"
+    hidden
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    id="nav-menu-panel"
+    class="nav-menu-panel hidden lg:hidden"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-label="Site menu"
+  >
+    <ul class="mx-auto flex max-w-6xl flex-col gap-1 px-3 py-3 sm:px-4">
+      {
+        links.map((l) => (
+          <li>
+            <a href={withBase(l.href)} class={linkClass(l.href, true)}>
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </header>
+
+<script>
+  function initNavMenu() {
+    const button = document.getElementById("nav-menu-button");
+    const panel = document.getElementById("nav-menu-panel");
+    const backdrop = document.getElementById("nav-menu-backdrop");
+    if (!button || !panel || !backdrop) return;
+    if (button.dataset.navMenuInit === "1") return;
+    button.dataset.navMenuInit = "1";
+
+    const iconOpen = button.querySelector(".nav-menu-icon-open");
+    const iconClose = button.querySelector(".nav-menu-icon-close");
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+
+    const setOpen = (open: boolean) => {
+      button.setAttribute("aria-expanded", String(open));
+      button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      panel.classList.toggle("hidden", !open);
+      backdrop.classList.toggle("hidden", !open);
+      panel.hidden = !open;
+      backdrop.hidden = !open;
+      iconOpen?.classList.toggle("hidden", open);
+      iconClose?.classList.toggle("hidden", !open);
+      document.documentElement.classList.toggle("nav-menu-open", open);
+    };
+
+    button.addEventListener("click", () => {
+      const isOpen = !panel.hidden;
+      setOpen(!isOpen);
+    });
+
+    backdrop.addEventListener("click", () => setOpen(false));
+
+    panel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !panel.hidden) {
+        setOpen(false);
+        button.focus();
+      }
+    });
+
+    const onViewportChange = (event: MediaQueryListEvent) => {
+      if (event.matches) setOpen(false);
+    };
+    desktopQuery.addEventListener("change", onViewportChange);
+    if (desktopQuery.matches) setOpen(false);
+  }
+
+  initNavMenu();
+  document.addEventListener("astro:page-load", initNavMenu);
+</script>

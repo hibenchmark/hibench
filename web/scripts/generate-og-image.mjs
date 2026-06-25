@@ -19,7 +19,7 @@ const agentOutDir = resolve(publicDir, 'og', 'agents');
 
 const WIDTH = 1200;
 const HEIGHT = 630;
-const TOKENIZER_LABEL = 'Anthropic tokenizer · claude-opus-4-8';
+const TOKENIZER_LABEL = 'o200k_base tokenizer';
 
 const THEMES = {
   'claude-code': {
@@ -137,7 +137,7 @@ function formatDate(isoDate) {
 }
 
 function tokenValue(run) {
-  return run.anthropicTotalTokens || run.totalTokens;
+  return run.totalTokens;
 }
 
 function formatInputCost(tokens) {
@@ -363,7 +363,7 @@ function buildSvg(agents, runCount, assets) {
     <rect x="${cardX}" y="${cardY}" width="1120" height="306" rx="22" fill="rgba(9, 28, 23, 0.78)" stroke="#80d2bc" stroke-opacity="0.24"/>
     <rect x="${cardX}" y="${cardY}" width="1120" height="306" rx="22" fill="url(#top-glow)" opacity="0.4"/>
     <text x="72" y="330" class="eyebrow">Top 5 + bottom 5 current agent releases</text>
-    <text x="72" y="356" class="muted">latest version ranking · Anthropic total request tokens · ${formatNumber(shownAgentCount)} agents shown</text>
+    <text x="72" y="356" class="muted">latest version ranking · o200k_base total request tokens · ${formatNumber(shownAgentCount)} agents shown</text>
     <text x="1128" y="330" text-anchor="end" class="small">${escapeXml(updatedText)}</text>
     <text x="1128" y="354" text-anchor="end" class="small">${formatNumber(runCount)} version captures</text>
 
@@ -524,7 +524,7 @@ function buildAgentSvg(agent, agentCount, assets) {
     <text x="198" y="204" class="muted">rank #${agent.rank} of ${agentCount} current agent releases</text>
 
     <text x="56" y="350" class="big-number">${formatNumber(tokens)}</text>
-    <text x="64" y="382" class="number-label">Anthropic total request tokens before the first reply</text>
+    <text x="64" y="382" class="number-label">o200k_base total request tokens before the first reply</text>
     <text x="64" y="410" class="muted">${escapeXml(totalDeltaLabel)} · first captured ${escapeXml(agent.firstVersion)}</text>
 
     <rect x="712" y="110" width="448" height="304" rx="28" fill="rgba(6, 22, 18, 0.66)" stroke="#80d2bc" stroke-opacity="0.2"/>
@@ -560,8 +560,8 @@ function ogAgentsFromSummaries(summaries) {
       agentLogo: summary.agentLogo,
       firstVersion: summary.firstVersion,
       versionCount: summary.versionCount,
-      minTotal: summary.minAnthropicTotal || summary.minTotal,
-      maxTotal: summary.maxAnthropicTotal || summary.maxTotal,
+      minTotal: summary.minTotal,
+      maxTotal: summary.maxTotal,
       rank: index + 1,
     }));
 }

@@ -15,7 +15,7 @@ export async function getStaticPaths() {
   const agents = getAgents();
   const hasAnthropicData =
     agents.length > 0 && agents.every((a) => a.latest.anthropicTotalTokens > 0);
-  const pairs = generateComparePairs(agents, hasAnthropicData);
+  const pairs = generateComparePairs(agents, false);
 
   return pairs.map((pair) => ({
     params: { slug: pair.slug },
@@ -42,7 +42,6 @@ const { title, description, jsonLd } = comparePageSeo(
   resolveSiteUrl(Astro.site),
   agentA,
   agentB,
-  hasAnthropicData,
 );
 
 const compareAgent = (agent: typeof agentA) => ({
