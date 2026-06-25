@@ -25,8 +25,8 @@ interface Props {
 
 const { agentA, agentB, hasAnthropicData, anthropicModel } = Astro.props;
 
-const tokensA = agentA.totalTokens;
-const tokensB = agentB.totalTokens;
+const tokensA = hasAnthropicData ? agentA.anthropicTotalTokens : agentA.totalTokens;
+const tokensB = hasAnthropicData ? agentB.anthropicTotalTokens : agentB.totalTokens;
 const heavier = tokensA >= tokensB ? 'a' : 'b';
 const lighter = heavier === 'a' ? 'b' : 'a';
 const heavierTokens = heavier === 'a' ? tokensA : tokensB;
@@ -49,7 +49,9 @@ const metrics: MetricRow[] = [
     label: 'Default tokens',
     valueA: tokensA,
     valueB: tokensB,
-    hint: 'o200k_base · latest request',
+    hint: hasAnthropicData
+      ? `Anthropic ${anthropicModel} · latest request`
+      : 'o200k_base · latest request',
   },
   { label: 'Tools', valueA: agentA.toolCount, valueB: agentB.toolCount },
   { label: 'Skills', valueA: agentA.skillCount, valueB: agentB.skillCount },
