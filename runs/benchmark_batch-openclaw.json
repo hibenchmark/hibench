@@ -2,7 +2,7 @@
   "schema_version": "hibench.benchmark_batch.v1",
   "agent_id": "openclaw",
   "catalog_path": "agent_versions/openclaw.json",
-  "version_count": 224,
+  "version_count": 225,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": null,

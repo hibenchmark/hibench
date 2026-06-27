@@ -1,0 +1,44 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,1,subagent_1,text_mention,False,messages.0.content,12769,2566,You are Grok 4.3 released by xAI in April 2026. You are an autonomous agent that completes software engineering tasks. Y
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,2,subagent_2,text_mention,False,messages.2.content,2895,698,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,3,subagent_3,text_mention,False,tools.0.function.description,3853,853,"Run a bash command and return its output.
+IMPORTANT: This tool is for terminal operations like git, npm, docker, etc. DO"
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,4,subagent_4,text_mention,False,tools.5.function.name,24,5,kill_command_or_subagent
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,5,subagent_5,text_mention,False,tools.5.function.description,432,101,"Terminate a running background task, monitor, or subagent.
+
+Usage notes:
+- Pass the task_id of the background task, moni"
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,6,subagent_6,text_mention,False,tools.5.function.parameters.description,98,24,"Input for the `kill_task` tool — terminates a running background task,
+monitor, or subagent by id."
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,7,subagent_7,text_mention,False,tools.7.function.name,30,6,get_command_or_subagent_output
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,8,subagent_8,text_mention,False,tools.7.function.description,477,108,"Get output and status from a background task or subagent.
+
+Usage notes:
+- Use the task_id from a command run with backgr"
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,9,subagent_9,text_mention,False,tools.8.function.name,26,5,wait_commands_or_subagents
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,10,subagent_10,text_mention,False,tools.8.function.description,473,106,"Wait for multiple background tasks or subagents to complete.
+
+Usage notes:
+- task_ids: list of task IDs to wait for (fro"
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,11,subagent_11,text_mention,False,tools.8.function.parameters.description,109,23,"Input for the `wait_tasks` tool — blocks until multiple background tasks /
+sub-agents reach a terminal state."
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,12,subagent_12,text_mention,False,tools.9.function.name,14,3,spawn_subagent
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,13,subagent_13,text_mention,False,tools.9.function.description,1948,419,"Launch a subagent to handle complex, multi-step tasks autonomously.
+
+# Conditions
+
+Use the spawn_subagent tool when at l"
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,14,subagent_14,text_mention,False,tools.9.function.parameters.description,78,21,"Input for the `task` tool — launches a subagent to handle a task
+autonomously."
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,15,subagent_15,text_mention,False,tools.9.function.parameters.properties.prompt.description,22,6,The subagent's prompt.
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,16,subagent_16,text_mention,False,tools.9.function.parameters.properties.subagent_type.description,24,6,Subagent type to launch.
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,17,subagent_17,text_mention,False,tools.9.function.parameters.properties.background.description,152,32,"If set true, subagent will launch in the background and this tool will immediately return a `subagent_id`. Use the task"
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,18,subagent_18,text_mention,False,tools.9.function.parameters.properties.capability_mode.description,147,36,"Capability mode: ""read-only"", ""read-write"", ""execute"", or ""all"". Controls which tools the child can use. Defaults are de"
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,19,subagent_19,text_mention,False,tools.9.function.parameters.properties.resume_from.description,128,28,Resume a previously completed subagent instead of starting fresh. Accepts a `subagent_id` returned by a prior call of th
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,20,subagent_20,text_mention,False,tools.9.function.parameters.properties.cwd.description,172,35,"Working directory for the subagent. Mutually exclusive with isolation=""worktree"" and ignored when resume_from is set (th"
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,21,subagent_21,text_mention,False,tools.13.function.description,1876,475,Start a background monitor that streams events from a long-running script. Each stdout line is an event - you can keep w
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,22,subagent_22,text_mention,False,tools.13.function.parameters.properties.persistent.description,85,19,Run for the lifetime of the session (no timeout). Stop with kill_command_or_subagent.
+hibench.benchmark.v1,grok-cli-0.2.68-hi,grok-cli,0.2.68,1,23,subagent_23,text_mention,False,tools.17.function.description,3031,648,Use this tool when a task has genuine ambiguity about the right approach and getting user input before coding would prev

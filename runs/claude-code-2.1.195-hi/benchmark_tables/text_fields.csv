@@ -1,0 +1,14 @@
+schema_version,run_id,agent_id,agent_version,request_index,text_index,category,source,role,path,chars,tokens,preview
+hibench.benchmark.v1,claude-code-2.1.195-hi,claude-code,2.1.195,2,1,environment_context,injected_user_context,user,messages.0.content.0.text,306,70,"<system-reminder>
+As you answer the user's questions, you can use the following context:
+# currentDate
+Today's date is 2"
+hibench.benchmark.v1,claude-code-2.1.195-hi,claude-code,2.1.195,2,2,user_prompt,user_prompt,user,messages.0.content.1.text,2,1,Hi
+hibench.benchmark.v1,claude-code-2.1.195-hi,claude-code,2.1.195,2,3,system_prompt,skills_instructions,system,messages.1.content,6062,1365,"Available agent types for the Agent tool:
+- claude: Catch-all for any task that doesn't fit a more specific agent. Fleet"
+hibench.benchmark.v1,claude-code-2.1.195-hi,claude-code,2.1.195,2,4,system_prompt,main_instructions,,system.0.text,74,26,x-anthropic-billing-header: cc_version=2.1.195.d80; cc_entrypoint=sdk-cli;
+hibench.benchmark.v1,claude-code-2.1.195-hi,claude-code,2.1.195,2,5,system_prompt,main_instructions,,system.1.text,62,15,"You are a Claude agent, built on Anthropic's Claude Agent SDK."
+hibench.benchmark.v1,claude-code-2.1.195-hi,claude-code,2.1.195,2,6,system_prompt,main_instructions,,system.2.text,5950,1335,"
+You are an interactive agent that helps users with software engineering tasks.
+
+IMPORTANT: Assist with authorized secur"

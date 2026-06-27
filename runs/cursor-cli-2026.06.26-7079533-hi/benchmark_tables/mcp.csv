@@ -1,0 +1,7 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,cursor-cli-2026.06.26-7079533-hi,cursor-cli,2026.06.26-7079533,1,1,mcp_1,text_mention,False,tools.11.function.description,6036,1257,"Launch a new agent to handle complex, multi-step tasks autonomously.
+
+The Task tool launches specialized subagents (subp"
+hibench.benchmark.v1,cursor-cli-2026.06.26-7079533-hi,cursor-cli,2026.06.26-7079533,1,2,mcp_2,text_mention,False,tools.11.function.parameters.properties.readonly.description,124,26,"If true, the subagent will run in readonly mode (""Ask mode"") with restricted write operations and no MCP or internet acc"
+hibench.benchmark.v1,cursor-cli-2026.06.26-7079533-hi,cursor-cli,2026.06.26-7079533,1,3,ListMcpResources,tool_declaration,True,tools.12,578,110,"{""function"":{""description"":""List available resources from configured MCP servers. Each returned resource will include al"
+hibench.benchmark.v1,cursor-cli-2026.06.26-7079533-hi,cursor-cli,2026.06.26-7079533,1,4,FetchMcpResource,tool_declaration,True,tools.13,722,151,"{""function"":{""description"":""Reads a specific resource from an MCP server, identified by server name and resource URI. Op"

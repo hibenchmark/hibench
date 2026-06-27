@@ -5,8 +5,8 @@
     "type": "npm",
     "package": "openclaw"
   },
-  "fetched_at": "2026-06-24T10:10:46Z",
-  "version_count": 224,
+  "fetched_at": "2026-06-27T14:36:37Z",
+  "version_count": 225,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_version_count": 66,
@@ -30,8 +30,8 @@
   "latest": "2026.6.10",
   "dist_tags": {
     "alpha": "2026.5.19-alpha.1",
-    "latest": "2026.6.10",
-    "beta": "2026.6.10-beta.2"
+    "beta": "2026.6.11-beta.1",
+    "latest": "2026.6.10"
   },
   "versions": [
     "0.0.1",
@@ -257,7 +257,8 @@
     "2026.6.9",
     "2026.6.10-beta.1",
     "2026.6.10-beta.2",
-    "2026.6.10"
+    "2026.6.10",
+    "2026.6.11-beta.1"
   ],
   "benchmark_versions": [
     "2026.1.29",

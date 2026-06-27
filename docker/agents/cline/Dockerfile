@@ -37,7 +37,30 @@ RUN printf '%s\n' \
     '  printf "%s\n" "${HIBENCH_CLINE_PROVIDERS_JSON}" > "${CLINE_DATA_DIR}/settings/providers.json"' \
     'fi' \
     '' \
-    'exec cline "$@"' \
+    'prompt="${HIBENCH_CLINE_PROMPT:-}"' \
+    'args=()' \
+    'while [[ "$#" -gt 0 ]]; do' \
+    '  case "$1" in' \
+    '    --hibench-prompt)' \
+    '      if [[ "$#" -lt 2 ]]; then' \
+    '        echo "missing value for --hibench-prompt" >&2' \
+    '        exit 2' \
+    '      fi' \
+    '      prompt="$2"' \
+    '      shift 2' \
+    '      ;;' \
+    '    *)' \
+    '      args+=("$1")' \
+    '      shift' \
+    '      ;;' \
+    '  esac' \
+    'done' \
+    '' \
+    'if [[ -n "${prompt}" ]]; then' \
+    '  printf "%s\n" "${prompt}" | cline "${args[@]}"' \
+    'else' \
+    '  exec cline "${args[@]}"' \
+    'fi' \
     > /usr/local/bin/hibench-cline-entrypoint \
     && chmod +x /usr/local/bin/hibench-cline-entrypoint
 

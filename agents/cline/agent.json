@@ -13,7 +13,6 @@
   "benchmark_min_version_reason": "Versions before 3.0.3 either lack the current noninteractive local-state flags or reject the openai-compatible provider needed for recorder capture.",
   "dockerfile": "docker/agents/cline/Dockerfile",
   "command": [
-    "--json",
     "--cwd",
     "/workspace",
     "--data-dir",
@@ -26,6 +25,7 @@
     "hibench-dummy-key",
     "--timeout",
     "20",
+    "--hibench-prompt",
     "{prompt}"
   ],
   "env": {
@@ -46,7 +46,7 @@
     "real_api_call": false,
     "subject_workspace": "generated-empty-git-repo",
     "host_timeout_seconds": 90,
-    "notes": "The container writes an isolated Cline provider settings file with an OpenAI-compatible recorder base URL and dummy key, then runs Cline in JSON one-shot mode."
+    "notes": "The container writes an isolated Cline provider settings file with an OpenAI-compatible recorder base URL and dummy key, then pipes the prompt to Cline in one-shot mode."
   },
   "links": {
     "official_url": "https://cline.bot",

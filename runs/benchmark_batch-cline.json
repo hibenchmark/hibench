@@ -2,18 +2,18 @@
   "schema_version": "hibench.benchmark_batch.v1",
   "agent_id": "cline",
   "catalog_path": "agent_versions/cline.json",
-  "version_count": 242,
+  "version_count": 248,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": "3.0.3",
-  "benchmark_version_count": 27,
+  "benchmark_version_count": 29,
   "benchmark_exclusion_count": 0,
   "excluded_benchmark_versions": [],
-  "selected_version_count": 0,
+  "selected_version_count": 2,
   "requested_versions": [],
   "existing_agent_benchmark_version_count": 27,
   "skipped_existing_version_count": 27,
-  "candidate_version_count": 0,
+  "candidate_version_count": 2,
   "initial_version_limit": 100,
   "initial_version_limit_applied": false,
   "prompt_file": "prompts/hi.txt",
@@ -32,7 +32,7 @@
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
     "disabled_reason": "",
-    "counted_run_count": 0,
+    "counted_run_count": 1,
     "error_count": 0,
     "errors": []
   },
@@ -47,5 +47,30 @@
     "error_count": 0,
     "errors": []
   },
-  "results": []
+  "results": [
+    {
+      "agent_id": "cline",
+      "version": "3.0.30",
+      "status": "created",
+      "run_id": "cline-3.0.30-hi",
+      "run_dir": "runs/cline-3.0.30-hi",
+      "replaced_run_dirs": [],
+      "has_primary_request": true,
+      "total_body_tokens": 4422,
+      "tool_count": 25,
+      "error": ""
+    },
+    {
+      "agent_id": "cline",
+      "version": "3.0.31",
+      "status": "error",
+      "run_id": "cline-3.0.31-hi",
+      "run_dir": "runs/cline-3.0.31-hi",
+      "replaced_run_dirs": [],
+      "has_primary_request": null,
+      "total_body_tokens": null,
+      "tool_count": null,
+      "error": "no primary request captured for cline 3.0.31 (request_count=0, post_request_count=0, process_timed_out=False, process_exit_code=1)"
+    }
+  ]
 }

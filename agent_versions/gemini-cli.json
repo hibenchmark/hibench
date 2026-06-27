@@ -5,13 +5,13 @@
     "type": "npm",
     "package": "@google/gemini-cli"
   },
-  "fetched_at": "2026-06-24T10:03:24Z",
-  "version_count": 645,
+  "fetched_at": "2026-06-27T14:36:31Z",
+  "version_count": 650,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": "0.8.0",
   "benchmark_min_version_reason": "Stable versions before 0.8.0 either fail before emitting a provider request or lack the stable noninteractive JSON/local-base-url capture path used by the benchmark.",
-  "benchmark_version_count": 105,
+  "benchmark_version_count": 106,
   "benchmark_exclusion_count": 1,
   "benchmark_exclusions": {
     "0.24.2": "Broken npm package metadata points @google/gemini-cli-core at file:../core, so the published CLI cannot start after install."
@@ -19,12 +19,12 @@
   "excluded_benchmark_versions": [
     "0.24.2"
   ],
-  "latest": "0.47.0",
+  "latest": "0.49.0",
   "dist_tags": {
     "false": "0.42.0-nightly.20260512.g11a9edc80",
-    "nightly": "0.48.0-nightly.20260613.g9e5599c32",
-    "preview": "0.48.0-preview.0",
-    "latest": "0.47.0"
+    "nightly": "0.51.0-nightly.20260626.gb14416447",
+    "preview": "0.50.0-preview.1",
+    "latest": "0.49.0"
   },
   "versions": [
     "0.0.1",
@@ -671,7 +671,12 @@
     "0.48.0-preview.0",
     "0.49.0-nightly.20260619.gc22137ea0",
     "0.49.0-nightly.20260624.g6e0bd68e4",
-    "0.49.0-preview.0"
+    "0.49.0-nightly.20260625.gd845bc5d4",
+    "0.49.0-preview.0",
+    "0.49.0",
+    "0.50.0-preview.0",
+    "0.50.0-preview.1",
+    "0.51.0-nightly.20260626.gb14416447"
   ],
   "benchmark_versions": [
     "0.8.0",
@@ -778,6 +783,7 @@
     "0.45.2",
     "0.45.3",
     "0.46.0",
-    "0.47.0"
+    "0.47.0",
+    "0.49.0"
   ]
 }

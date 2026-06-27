@@ -6,7 +6,7 @@
     "url": "https://cursor.com/install",
     "package": "agent-cli-local-package.tar.gz"
   },
-  "fetched_at": "2026-06-24T09:59:50Z",
+  "fetched_at": "2026-06-27T14:36:27Z",
   "version_count": 1,
   "benchmark_version_policy_id": "all_versions",
   "benchmark_version_policy": "all_versions: every fetched source version is benchmarkable unless explicitly excluded",
@@ -14,14 +14,14 @@
   "benchmark_exclusion_count": 0,
   "benchmark_exclusions": {},
   "excluded_benchmark_versions": [],
-  "latest": "2026.06.24-00-45-58-9f61de7",
+  "latest": "2026.06.26-7079533",
   "dist_tags": {
-    "latest": "2026.06.24-00-45-58-9f61de7"
+    "latest": "2026.06.26-7079533"
   },
   "versions": [
-    "2026.06.24-00-45-58-9f61de7"
+    "2026.06.26-7079533"
   ],
   "benchmark_versions": [
-    "2026.06.24-00-45-58-9f61de7"
+    "2026.06.26-7079533"
   ]
 }

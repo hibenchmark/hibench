@@ -5,13 +5,13 @@
     "type": "pypi",
     "package": "mistral-vibe"
   },
-  "fetched_at": "2026-06-24T10:10:44Z",
-  "version_count": 64,
+  "fetched_at": "2026-06-27T14:36:36Z",
+  "version_count": 65,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": "1.2.0",
   "benchmark_min_version_reason": "Versions before 1.2.0 reject the benchmark config schema before making a provider request; 0.0.0 is a yanked placeholder without a usable vibe console script.",
-  "benchmark_version_count": 51,
+  "benchmark_version_count": 52,
   "benchmark_exclusion_count": 1,
   "benchmark_exclusions": {
     "0.0.0": "Yanked placeholder release installs no usable vibe console script.",
@@ -20,9 +20,9 @@
   "excluded_benchmark_versions": [
     "2.6.0"
   ],
-  "latest": "2.17.1",
+  "latest": "2.18.0",
   "dist_tags": {
-    "latest": "2.17.1"
+    "latest": "2.18.0"
   },
   "versions": [
     "0.0.0",
@@ -88,7 +88,8 @@
     "2.16.0",
     "2.16.1",
     "2.17.0",
-    "2.17.1"
+    "2.17.1",
+    "2.18.0"
   ],
   "benchmark_versions": [
     "1.2.0",
@@ -141,6 +142,7 @@
     "2.16.0",
     "2.16.1",
     "2.17.0",
-    "2.17.1"
+    "2.17.1",
+    "2.18.0"
   ]
 }

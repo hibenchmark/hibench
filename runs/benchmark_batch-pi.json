@@ -11,11 +11,11 @@
   "excluded_benchmark_versions": [
     "0.70.3"
   ],
-  "selected_version_count": 3,
+  "selected_version_count": 0,
   "requested_versions": [],
-  "existing_agent_benchmark_version_count": 105,
-  "skipped_existing_version_count": 97,
-  "candidate_version_count": 3,
+  "existing_agent_benchmark_version_count": 108,
+  "skipped_existing_version_count": 100,
+  "candidate_version_count": 0,
   "initial_version_limit": 100,
   "initial_version_limit_applied": true,
   "prompt_file": "prompts/hi.txt",
@@ -34,7 +34,7 @@
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
     "disabled_reason": "",
-    "counted_run_count": 3,
+    "counted_run_count": 0,
     "error_count": 0,
     "errors": []
   },
@@ -49,42 +49,5 @@
     "error_count": 0,
     "errors": []
   },
-  "results": [
-    {
-      "agent_id": "pi",
-      "version": "0.79.10",
-      "status": "created",
-      "run_id": "pi-0.79.10-hi",
-      "run_dir": "runs/pi-0.79.10-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 1255,
-      "tool_count": 4,
-      "error": ""
-    },
-    {
-      "agent_id": "pi",
-      "version": "0.80.1",
-      "status": "created",
-      "run_id": "pi-0.80.1-hi",
-      "run_dir": "runs/pi-0.80.1-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 1255,
-      "tool_count": 4,
-      "error": ""
-    },
-    {
-      "agent_id": "pi",
-      "version": "0.80.2",
-      "status": "created",
-      "run_id": "pi-0.80.2-hi",
-      "run_dir": "runs/pi-0.80.2-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 1255,
-      "tool_count": 4,
-      "error": ""
-    }
-  ]
+  "results": []
 }

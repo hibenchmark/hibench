@@ -65,8 +65,11 @@ class AgentTests(unittest.TestCase):
         spec = load_agent("cline")
         self.assertEqual(spec.version, "3.0.24")
         self.assertEqual(
-            spec.command[:4], ["--json", "--cwd", "/workspace", "--data-dir"]
+            spec.command[:3], ["--cwd", "/workspace", "--data-dir"]
         )
+        self.assertNotIn("--json", spec.command)
+        self.assertIn("--hibench-prompt", spec.command)
+        self.assertEqual(spec.command[-1], "{prompt}")
         self.assertIn("--provider", spec.command)
         self.assertEqual(spec.parser_id, "cline")
         self.assertEqual(spec.version_build_arg, "CLINE_VERSION")

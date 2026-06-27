@@ -2,18 +2,18 @@
   "schema_version": "hibench.benchmark_batch.v1",
   "agent_id": "opencode",
   "catalog_path": "agent_versions/opencode.json",
-  "version_count": 10525,
+  "version_count": 10678,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": null,
-  "benchmark_version_count": 897,
+  "benchmark_version_count": 899,
   "benchmark_exclusion_count": 0,
   "excluded_benchmark_versions": [],
-  "selected_version_count": 0,
+  "selected_version_count": 2,
   "requested_versions": [],
   "existing_agent_benchmark_version_count": 104,
-  "skipped_existing_version_count": 100,
-  "candidate_version_count": 0,
+  "skipped_existing_version_count": 98,
+  "candidate_version_count": 2,
   "initial_version_limit": 100,
   "initial_version_limit_applied": true,
   "prompt_file": "prompts/hi.txt",
@@ -32,7 +32,7 @@
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
     "disabled_reason": "",
-    "counted_run_count": 0,
+    "counted_run_count": 2,
     "error_count": 0,
     "errors": []
   },
@@ -47,5 +47,30 @@
     "error_count": 0,
     "errors": []
   },
-  "results": []
+  "results": [
+    {
+      "agent_id": "opencode",
+      "version": "1.17.10",
+      "status": "created",
+      "run_id": "opencode-1.17.10-hi",
+      "run_dir": "runs/opencode-1.17.10-hi",
+      "replaced_run_dirs": [],
+      "has_primary_request": true,
+      "total_body_tokens": 6677,
+      "tool_count": 9,
+      "error": ""
+    },
+    {
+      "agent_id": "opencode",
+      "version": "1.17.11",
+      "status": "created",
+      "run_id": "opencode-1.17.11-hi",
+      "run_dir": "runs/opencode-1.17.11-hi",
+      "replaced_run_dirs": [],
+      "has_primary_request": true,
+      "total_body_tokens": 6677,
+      "tool_count": 9,
+      "error": ""
+    }
+  ]
 }

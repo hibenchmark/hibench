@@ -2,7 +2,7 @@
   "schema_version": "hibench.benchmark_batch.v1",
   "agent_id": "codex",
   "catalog_path": "agent_versions/codex.json",
-  "version_count": 3049,
+  "version_count": 3112,
   "benchmark_version_policy_id": "stable_main_release",
   "benchmark_version_policy": "stable_main_release: plain X.Y.0 versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": null,
@@ -11,11 +11,11 @@
   "excluded_benchmark_versions": [
     "0.54.0"
   ],
-  "selected_version_count": 1,
+  "selected_version_count": 0,
   "requested_versions": [],
-  "existing_agent_benchmark_version_count": 115,
-  "skipped_existing_version_count": 99,
-  "candidate_version_count": 1,
+  "existing_agent_benchmark_version_count": 116,
+  "skipped_existing_version_count": 100,
+  "candidate_version_count": 0,
   "initial_version_limit": 100,
   "initial_version_limit_applied": true,
   "prompt_file": "prompts/hi.txt",
@@ -34,7 +34,7 @@
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
     "disabled_reason": "",
-    "counted_run_count": 1,
+    "counted_run_count": 0,
     "error_count": 0,
     "errors": []
   },
@@ -49,18 +49,5 @@
     "error_count": 0,
     "errors": []
   },
-  "results": [
-    {
-      "agent_id": "codex",
-      "version": "0.142.0",
-      "status": "created",
-      "run_id": "codex-0.142.0-hi",
-      "run_dir": "runs/codex-0.142.0-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 8710,
-      "tool_count": 11,
-      "error": ""
-    }
-  ]
+  "results": []
 }
