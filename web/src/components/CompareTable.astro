@@ -121,27 +121,60 @@ const formatRatio = (a: number, b: number) => {
 
   <div class="divide-y divide-[rgba(128,210,188,0.12)]">
     {metrics.map((metric) => (
-      <div class="grid gap-3 px-5 py-4 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)] md:items-center">
-        <div>
+      <div class="px-5 py-4">
+        {/* Metric label */}
+        <div class="mb-3">
           <p class="text-sm font-medium ui-muted">{metric.label}</p>
           {metric.hint && <p class="mt-1 text-xs ui-subtle">{metric.hint}</p>}
         </div>
-        <p class="text-2xl font-semibold tabular-nums ui-title md:text-right">
-          {formatNumber(metric.valueA)}
-        </p>
-        <p class="text-2xl font-semibold tabular-nums ui-title md:text-right">
-          {formatNumber(metric.valueB)}
-        </p>
-        <div class="text-sm ui-subtle md:text-right">
-          <p class="font-medium ui-muted">{formatDelta(metric.valueA, metric.valueB)}</p>
-          <p class="mt-0.5">{formatRatio(metric.valueA, metric.valueB)}</p>
+
+        {/* Desktop layout: stays unchanged */}
+        <div class="hidden md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)] md:items-center">
+          <p class="text-2xl font-semibold tabular-nums ui-title text-right">
+            {formatNumber(metric.valueA)}
+          </p>
+          <p class="text-2xl font-semibold tabular-nums ui-title text-right">
+            {formatNumber(metric.valueB)}
+          </p>
+          <div class="text-sm ui-subtle text-right">
+            <p class="font-medium ui-muted">{formatDelta(metric.valueA, metric.valueB)}</p>
+            <p class="mt-0.5">{formatRatio(metric.valueA, metric.valueB)}</p>
+          </div>
+        </div>
+
+        {/* Mobile layout: labeled rows per agent */}
+        <div class="flex flex-col gap-2.5 md:hidden">
+          {/* Agent A row */}
+          <div class="flex items-center justify-between rounded-lg border border-[rgba(128,210,188,0.12)] bg-[rgba(8,17,26,0.4)] px-3 py-2.5">
+            <div class="flex items-center gap-2 min-w-0">
+              <AgentLogo logo={agentA.agentLogo} name={agentA.agentDisplayName} size="sm" />
+              <span class="text-xs font-medium ui-muted truncate">{agentA.agentDisplayName}</span>
+            </div>
+            <span class="text-xl font-semibold tabular-nums ui-title pl-3 shrink-0">
+              {formatNumber(metric.valueA)}
+            </span>
+          </div>
+          {/* Agent B row */}
+          <div class="flex items-center justify-between rounded-lg border border-[rgba(128,210,188,0.12)] bg-[rgba(8,17,26,0.4)] px-3 py-2.5">
+            <div class="flex items-center gap-2 min-w-0">
+              <AgentLogo logo={agentB.agentLogo} name={agentB.agentDisplayName} size="sm" />
+              <span class="text-xs font-medium ui-muted truncate">{agentB.agentDisplayName}</span>
+            </div>
+            <span class="text-xl font-semibold tabular-nums ui-title pl-3 shrink-0">
+              {formatNumber(metric.valueB)}
+            </span>
+          </div>
+          {/* Delta/ratio */}
+          <div class="flex items-center justify-between px-1 text-sm ui-subtle">
+            <span class="font-medium ui-muted">{formatDelta(metric.valueA, metric.valueB)}</span>
+            <span>{formatRatio(metric.valueA, metric.valueB)}</span>
+          </div>
         </div>
       </div>
     ))}
   </div>
 
-  <div class="hidden border-t border-[rgba(128,210,188,0.14)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] ui-subtle md:grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)]">
-    <span>Metric</span>
+  <div class="hidden border-t border-[rgba(128,210,188,0.14)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] ui-subtle md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)]">
     <span class="text-right">{agentA.agentDisplayName}</span>
     <span class="text-right">{agentB.agentDisplayName}</span>
     <span class="text-right">Delta / ratio</span>
