@@ -13,11 +13,11 @@
     "2.1.105",
     "2.1.107"
   ],
-  "selected_version_count": 4,
+  "selected_version_count": 0,
   "requested_versions": [],
-  "existing_agent_benchmark_version_count": 105,
-  "skipped_existing_version_count": 96,
-  "candidate_version_count": 4,
+  "existing_agent_benchmark_version_count": 109,
+  "skipped_existing_version_count": 100,
+  "candidate_version_count": 0,
   "initial_version_limit": 100,
   "initial_version_limit_applied": true,
   "prompt_file": "prompts/hi.txt",
@@ -36,7 +36,7 @@
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
     "disabled_reason": "",
-    "counted_run_count": 4,
+    "counted_run_count": 0,
     "error_count": 0,
     "errors": []
   },
@@ -51,54 +51,5 @@
     "error_count": 0,
     "errors": []
   },
-  "results": [
-    {
-      "agent_id": "claude-code",
-      "version": "2.1.190",
-      "status": "created",
-      "run_id": "claude-code-2.1.190-hi",
-      "run_dir": "runs/claude-code-2.1.190-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 19527,
-      "tool_count": 24,
-      "error": ""
-    },
-    {
-      "agent_id": "claude-code",
-      "version": "2.1.191",
-      "status": "created",
-      "run_id": "claude-code-2.1.191-hi",
-      "run_dir": "runs/claude-code-2.1.191-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 19536,
-      "tool_count": 24,
-      "error": ""
-    },
-    {
-      "agent_id": "claude-code",
-      "version": "2.1.193",
-      "status": "created",
-      "run_id": "claude-code-2.1.193-hi",
-      "run_dir": "runs/claude-code-2.1.193-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 19532,
-      "tool_count": 24,
-      "error": ""
-    },
-    {
-      "agent_id": "claude-code",
-      "version": "2.1.195",
-      "status": "created",
-      "run_id": "claude-code-2.1.195-hi",
-      "run_dir": "runs/claude-code-2.1.195-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 19531,
-      "tool_count": 24,
-      "error": ""
-    }
-  ]
+  "results": []
 }

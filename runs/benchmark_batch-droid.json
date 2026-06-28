@@ -9,11 +9,11 @@
   "benchmark_version_count": 127,
   "benchmark_exclusion_count": 0,
   "excluded_benchmark_versions": [],
-  "selected_version_count": 6,
+  "selected_version_count": 0,
   "requested_versions": [],
-  "existing_agent_benchmark_version_count": 103,
-  "skipped_existing_version_count": 94,
-  "candidate_version_count": 6,
+  "existing_agent_benchmark_version_count": 109,
+  "skipped_existing_version_count": 100,
+  "candidate_version_count": 0,
   "initial_version_limit": 100,
   "initial_version_limit_applied": true,
   "prompt_file": "prompts/hi.txt",
@@ -32,7 +32,7 @@
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
     "disabled_reason": "",
-    "counted_run_count": 6,
+    "counted_run_count": 0,
     "error_count": 0,
     "errors": []
   },
@@ -47,78 +47,5 @@
     "error_count": 0,
     "errors": []
   },
-  "results": [
-    {
-      "agent_id": "droid",
-      "version": "0.157.2",
-      "status": "created",
-      "run_id": "droid-0.157.2-hi",
-      "run_dir": "runs/droid-0.157.2-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 12966,
-      "tool_count": 10,
-      "error": ""
-    },
-    {
-      "agent_id": "droid",
-      "version": "0.157.3",
-      "status": "created",
-      "run_id": "droid-0.157.3-hi",
-      "run_dir": "runs/droid-0.157.3-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 12967,
-      "tool_count": 10,
-      "error": ""
-    },
-    {
-      "agent_id": "droid",
-      "version": "0.158.0",
-      "status": "created",
-      "run_id": "droid-0.158.0-hi",
-      "run_dir": "runs/droid-0.158.0-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 13028,
-      "tool_count": 10,
-      "error": ""
-    },
-    {
-      "agent_id": "droid",
-      "version": "0.158.1",
-      "status": "created",
-      "run_id": "droid-0.158.1-hi",
-      "run_dir": "runs/droid-0.158.1-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 13027,
-      "tool_count": 10,
-      "error": ""
-    },
-    {
-      "agent_id": "droid",
-      "version": "0.159.0",
-      "status": "created",
-      "run_id": "droid-0.159.0-hi",
-      "run_dir": "runs/droid-0.159.0-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 13029,
-      "tool_count": 10,
-      "error": ""
-    },
-    {
-      "agent_id": "droid",
-      "version": "0.159.1",
-      "status": "created",
-      "run_id": "droid-0.159.1-hi",
-      "run_dir": "runs/droid-0.159.1-hi",
-      "replaced_run_dirs": [],
-      "has_primary_request": true,
-      "total_body_tokens": 13024,
-      "tool_count": 10,
-      "error": ""
-    }
-  ]
+  "results": []
 }

@@ -2,7 +2,7 @@
   "schema_version": "hibench.benchmark_batch.v1",
   "agent_id": "codex",
   "catalog_path": "agent_versions/codex.json",
-  "version_count": 3112,
+  "version_count": 3133,
   "benchmark_version_policy_id": "stable_main_release",
   "benchmark_version_policy": "stable_main_release: plain X.Y.0 versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": null,

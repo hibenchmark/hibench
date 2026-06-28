@@ -5,7 +5,7 @@
     "type": "npm",
     "package": "@anthropic-ai/claude-code"
   },
-  "fetched_at": "2026-06-27T14:36:23Z",
+  "fetched_at": "2026-06-28T20:31:42Z",
   "version_count": 447,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",

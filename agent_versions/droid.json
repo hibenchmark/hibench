@@ -5,7 +5,7 @@
     "type": "npm",
     "package": "droid"
   },
-  "fetched_at": "2026-06-27T14:36:29Z",
+  "fetched_at": "2026-06-28T20:31:51Z",
   "version_count": 141,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
