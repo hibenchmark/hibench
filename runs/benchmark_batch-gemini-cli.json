@@ -2,7 +2,7 @@
   "schema_version": "hibench.benchmark_batch.v1",
   "agent_id": "gemini-cli",
   "catalog_path": "agent_versions/gemini-cli.json",
-  "version_count": 651,
+  "version_count": 654,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": "0.8.0",

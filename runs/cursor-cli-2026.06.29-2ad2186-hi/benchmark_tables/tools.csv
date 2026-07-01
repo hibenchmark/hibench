@@ -1,0 +1,16 @@
+schema_version,run_id,agent_id,agent_version,request_index,tool_index,tool_name,tool_type,path,definition_chars,definition_tokens,is_mcp_related,is_subagent_related,keys
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,1,Shell,function,tools.0,12475,2814,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,2,Glob,function,tools.1,1095,249,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,3,Grep,function,tools.2,3368,780,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,4,AwaitShell,function,tools.3,2639,610,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,5,Read,function,tools.4,1654,367,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,6,Delete,function,tools.5,406,86,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,7,ApplyPatch,function,tools.6,3172,800,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,8,EditNotebook,function,tools.7,3153,741,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,9,TodoWrite,function,tools.8,4996,1170,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,10,WriteShellStdin,function,tools.9,1237,306,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,11,AskQuestion,function,tools.10,1743,376,False,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,12,Task,function,tools.11,8255,1764,True,True,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,13,ListMcpResources,function,tools.12,578,110,True,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,14,FetchMcpResource,function,tools.13,722,151,True,False,function|type
+hibench.benchmark.v1,cursor-cli-2026.06.29-2ad2186-hi,cursor-cli,2026.06.29-2ad2186,3,15,SwitchMode,function,tools.14,3480,742,False,False,function|type

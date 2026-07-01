@@ -1,0 +1,2 @@
+[provider-transport-fetch] [model-fetch] error provider=hibench api=openai-responses model=gpt-5 elapsedMs=28330 name=TypeError code=undefined causeName=SocketError causeCode=UND_ERR_SOCKET message=fetch failed
+[agent] run ed133769-abbb-4584-963a-b6978f4d8065 ended with stopReason=stop

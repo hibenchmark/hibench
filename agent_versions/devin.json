@@ -6,7 +6,7 @@
     "url": "https://static.devin.ai/cli/current/manifest.json",
     "platform": "x86_64-unknown-linux"
   },
-  "fetched_at": "2026-06-28T20:31:49Z",
+  "fetched_at": "2026-07-01T11:39:24Z",
   "version_count": 1,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",

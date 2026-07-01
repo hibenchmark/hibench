@@ -1,0 +1,34 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,1,subagent_1,text_mention,False,messages.2.content,2895,698,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,2,subagent_2,text_mention,False,tools.0.function.description,1110,249,"Run a bash command and return its output.
+
+Usage notes:
+  - You can specify an optional timeout in milliseconds (up to 3"
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,3,subagent_3,text_mention,False,tools.5.function.name,24,5,kill_command_or_subagent
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,4,subagent_4,text_mention,False,tools.5.function.description,289,68,"Terminate a running background task, monitor, or subagent.
+
+Usage notes:
+- Pass its task_id (a monitor's task_id is retu"
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,5,subagent_5,text_mention,False,tools.5.function.parameters.description,98,24,"Input for the `kill_task` tool — terminates a running background task,
+monitor, or subagent by id."
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,6,subagent_6,text_mention,False,tools.7.function.name,30,6,get_command_or_subagent_output
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,7,subagent_7,text_mention,False,tools.7.function.description,597,132,"Get output and status from a background task, monitor, or subagent.
+
+Usage notes:
+- Pass task_ids with one or more ids f"
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,8,subagent_8,text_mention,False,tools.8.function.name,14,3,spawn_subagent
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,9,general-purpose,declaration,True,tools.8.function.description.subagent.0,410,85,"- **general-purpose**: General-purpose agent for researching complex questions, searching for code, and executing multi-"
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,10,explore,declaration,True,tools.8.function.description.subagent.1,553,119,- **explore**: Fast agent specialized for exploring codebases. Use this when you need to quickly find files by patterns
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,11,plan,declaration,True,tools.8.function.description.subagent.2,374,74,- **plan**: Software architect agent for designing implementation plans. Use this when you need to plan the implementati
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,12,subagent_12,text_mention,False,tools.8.function.parameters.description,78,21,"Input for the `task` tool — launches a subagent to handle a task
+autonomously."
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,13,subagent_13,text_mention,False,tools.8.function.parameters.properties.prompt.description,49,11,The full task prompt for the subagent to execute.
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,14,subagent_14,text_mention,False,tools.8.function.parameters.properties.subagent_type.description,143,33,"Name of the subagent type to launch. Built-in types: ""general-purpose"", ""explore"", ""plan"". Additional user-defined types"
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,15,subagent_15,text_mention,False,tools.8.function.parameters.properties.background.description,137,29,Set to true to run this subagent in the background. Returns immediately with a subagent_id. Use the task output tool to
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,16,subagent_16,text_mention,False,tools.8.function.parameters.properties.resume_from.description,314,62,Resume from a previously completed subagent's conversation. Pass the subagent_id returned by a prior task call. The new
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,17,subagent_17,text_mention,False,tools.8.function.parameters.properties.cwd.description,218,45,"Explicit working directory for the subagent. The path must exist and be a directory. Mutually exclusive with isolation="""
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,18,subagent_18,text_mention,False,tools.12.function.description,594,127,Start a background monitor that streams events from a long-running script. Each stdout line is an event - you can keep w
+hibench.benchmark.v1,grok-cli-0.2.79-hi,grok-cli,0.2.79,2,19,subagent_19,text_mention,False,tools.12.function.parameters.properties.persistent.description,85,19,Run for the lifetime of the session (no timeout). Stop with kill_command_or_subagent.

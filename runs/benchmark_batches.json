@@ -34,29 +34,29 @@
     {
       "agent_id": "claude-code",
       "has_errors": false,
-      "selected_version_count": 0,
+      "selected_version_count": 2,
       "batch_manifest": "runs/benchmark_batch-claude-code.json",
       "aggregate_refresh_count": 1,
       "manifest": {
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "claude-code",
         "catalog_path": "agent_versions/claude-code.json",
-        "version_count": 447,
+        "version_count": 449,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": null,
-        "benchmark_version_count": 444,
+        "benchmark_version_count": 446,
         "benchmark_exclusion_count": 3,
         "excluded_benchmark_versions": [
           "2.1.69",
           "2.1.105",
           "2.1.107"
         ],
-        "selected_version_count": 0,
+        "selected_version_count": 2,
         "requested_versions": [],
         "existing_agent_benchmark_version_count": 109,
-        "skipped_existing_version_count": 100,
-        "candidate_version_count": 0,
+        "skipped_existing_version_count": 98,
+        "candidate_version_count": 2,
         "initial_version_limit": 100,
         "initial_version_limit_applied": true,
         "prompt_file": "prompts/hi.txt",
@@ -75,7 +75,7 @@
           "rpm": 90.0,
           "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
           "disabled_reason": "",
-          "counted_run_count": 0,
+          "counted_run_count": 2,
           "error_count": 0,
           "errors": []
         },
@@ -90,31 +90,56 @@
           "error_count": 0,
           "errors": []
         },
-        "results": []
+        "results": [
+          {
+            "agent_id": "claude-code",
+            "version": "2.1.196",
+            "status": "created",
+            "run_id": "claude-code-2.1.196-hi",
+            "run_dir": "runs/claude-code-2.1.196-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 19925,
+            "tool_count": 25,
+            "error": ""
+          },
+          {
+            "agent_id": "claude-code",
+            "version": "2.1.197",
+            "status": "created",
+            "run_id": "claude-code-2.1.197-hi",
+            "run_dir": "runs/claude-code-2.1.197-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 19939,
+            "tool_count": 25,
+            "error": ""
+          }
+        ]
       }
     },
     {
       "agent_id": "cline",
       "has_errors": false,
-      "selected_version_count": 0,
+      "selected_version_count": 3,
       "batch_manifest": "runs/benchmark_batch-cline.json",
       "aggregate_refresh_count": 1,
       "manifest": {
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "cline",
         "catalog_path": "agent_versions/cline.json",
-        "version_count": 248,
+        "version_count": 258,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": "3.0.3",
-        "benchmark_version_count": 29,
+        "benchmark_version_count": 32,
         "benchmark_exclusion_count": 0,
         "excluded_benchmark_versions": [],
-        "selected_version_count": 0,
+        "selected_version_count": 3,
         "requested_versions": [],
         "existing_agent_benchmark_version_count": 29,
         "skipped_existing_version_count": 29,
-        "candidate_version_count": 0,
+        "candidate_version_count": 3,
         "initial_version_limit": 100,
         "initial_version_limit_applied": false,
         "prompt_file": "prompts/hi.txt",
@@ -133,7 +158,7 @@
           "rpm": 90.0,
           "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
           "disabled_reason": "",
-          "counted_run_count": 0,
+          "counted_run_count": 3,
           "error_count": 0,
           "errors": []
         },
@@ -148,7 +173,44 @@
           "error_count": 0,
           "errors": []
         },
-        "results": []
+        "results": [
+          {
+            "agent_id": "cline",
+            "version": "3.0.32",
+            "status": "created",
+            "run_id": "cline-3.0.32-hi",
+            "run_dir": "runs/cline-3.0.32-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 4422,
+            "tool_count": 25,
+            "error": ""
+          },
+          {
+            "agent_id": "cline",
+            "version": "3.0.33",
+            "status": "created",
+            "run_id": "cline-3.0.33-hi",
+            "run_dir": "runs/cline-3.0.33-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 4422,
+            "tool_count": 25,
+            "error": ""
+          },
+          {
+            "agent_id": "cline",
+            "version": "3.0.34",
+            "status": "created",
+            "run_id": "cline-3.0.34-hi",
+            "run_dir": "runs/cline-3.0.34-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 4422,
+            "tool_count": 25,
+            "error": ""
+          }
+        ]
       }
     },
     {
@@ -161,7 +223,7 @@
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "codex",
         "catalog_path": "agent_versions/codex.json",
-        "version_count": 3133,
+        "version_count": 3161,
         "benchmark_version_policy_id": "stable_main_release",
         "benchmark_version_policy": "stable_main_release: plain X.Y.0 versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": null,
@@ -214,7 +276,7 @@
     {
       "agent_id": "cursor-cli",
       "has_errors": false,
-      "selected_version_count": 0,
+      "selected_version_count": 1,
       "batch_manifest": "runs/benchmark_batch-cursor-cli.json",
       "aggregate_refresh_count": 1,
       "manifest": {
@@ -228,11 +290,11 @@
         "benchmark_version_count": 1,
         "benchmark_exclusion_count": 0,
         "excluded_benchmark_versions": [],
-        "selected_version_count": 0,
+        "selected_version_count": 1,
         "requested_versions": [],
         "existing_agent_benchmark_version_count": 7,
-        "skipped_existing_version_count": 1,
-        "candidate_version_count": 0,
+        "skipped_existing_version_count": 0,
+        "candidate_version_count": 1,
         "initial_version_limit": 100,
         "initial_version_limit_applied": false,
         "prompt_file": "prompts/hi.txt",
@@ -251,7 +313,7 @@
           "rpm": 90.0,
           "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
           "disabled_reason": "",
-          "counted_run_count": 0,
+          "counted_run_count": 1,
           "error_count": 0,
           "errors": []
         },
@@ -266,7 +328,20 @@
           "error_count": 0,
           "errors": []
         },
-        "results": []
+        "results": [
+          {
+            "agent_id": "cursor-cli",
+            "version": "2026.06.29-2ad2186",
+            "status": "created",
+            "run_id": "cursor-cli-2026.06.29-2ad2186-hi",
+            "run_dir": "runs/cursor-cli-2026.06.29-2ad2186-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 16390,
+            "tool_count": 15,
+            "error": ""
+          }
+        ]
       }
     },
     {
@@ -330,25 +405,25 @@
     {
       "agent_id": "droid",
       "has_errors": false,
-      "selected_version_count": 0,
+      "selected_version_count": 2,
       "batch_manifest": "runs/benchmark_batch-droid.json",
       "aggregate_refresh_count": 1,
       "manifest": {
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "droid",
         "catalog_path": "agent_versions/droid.json",
-        "version_count": 141,
+        "version_count": 143,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": "0.62.1",
-        "benchmark_version_count": 127,
+        "benchmark_version_count": 129,
         "benchmark_exclusion_count": 0,
         "excluded_benchmark_versions": [],
-        "selected_version_count": 0,
+        "selected_version_count": 2,
         "requested_versions": [],
         "existing_agent_benchmark_version_count": 109,
-        "skipped_existing_version_count": 100,
-        "candidate_version_count": 0,
+        "skipped_existing_version_count": 98,
+        "candidate_version_count": 2,
         "initial_version_limit": 100,
         "initial_version_limit_applied": true,
         "prompt_file": "prompts/hi.txt",
@@ -367,7 +442,7 @@
           "rpm": 90.0,
           "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
           "disabled_reason": "",
-          "counted_run_count": 0,
+          "counted_run_count": 2,
           "error_count": 0,
           "errors": []
         },
@@ -382,7 +457,32 @@
           "error_count": 0,
           "errors": []
         },
-        "results": []
+        "results": [
+          {
+            "agent_id": "droid",
+            "version": "0.161.0",
+            "status": "created",
+            "run_id": "droid-0.161.0-hi",
+            "run_dir": "runs/droid-0.161.0-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 13027,
+            "tool_count": 10,
+            "error": ""
+          },
+          {
+            "agent_id": "droid",
+            "version": "0.162.0",
+            "status": "created",
+            "run_id": "droid-0.162.0-hi",
+            "run_dir": "runs/droid-0.162.0-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 13017,
+            "tool_count": 10,
+            "error": ""
+          }
+        ]
       }
     },
     {
@@ -395,7 +495,7 @@
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "gemini-cli",
         "catalog_path": "agent_versions/gemini-cli.json",
-        "version_count": 651,
+        "version_count": 654,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": "0.8.0",
@@ -448,25 +548,25 @@
     {
       "agent_id": "github-cli",
       "has_errors": false,
-      "selected_version_count": 0,
+      "selected_version_count": 2,
       "batch_manifest": "runs/benchmark_batch-github-cli.json",
       "aggregate_refresh_count": 1,
       "manifest": {
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "github-cli",
         "catalog_path": "agent_versions/github-cli.json",
-        "version_count": 735,
+        "version_count": 738,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": "1.0.8",
-        "benchmark_version_count": 58,
+        "benchmark_version_count": 60,
         "benchmark_exclusion_count": 0,
         "excluded_benchmark_versions": [],
-        "selected_version_count": 0,
+        "selected_version_count": 2,
         "requested_versions": [],
         "existing_agent_benchmark_version_count": 58,
         "skipped_existing_version_count": 58,
-        "candidate_version_count": 0,
+        "candidate_version_count": 2,
         "initial_version_limit": 100,
         "initial_version_limit_applied": false,
         "prompt_file": "prompts/hi.txt",
@@ -485,7 +585,7 @@
           "rpm": 90.0,
           "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
           "disabled_reason": "",
-          "counted_run_count": 0,
+          "counted_run_count": 2,
           "error_count": 0,
           "errors": []
         },
@@ -500,31 +600,56 @@
           "error_count": 0,
           "errors": []
         },
-        "results": []
+        "results": [
+          {
+            "agent_id": "github-cli",
+            "version": "1.0.66",
+            "status": "created",
+            "run_id": "github-cli-1.0.66-hi",
+            "run_dir": "runs/github-cli-1.0.66-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 13122,
+            "tool_count": 15,
+            "error": ""
+          },
+          {
+            "agent_id": "github-cli",
+            "version": "1.0.67",
+            "status": "created",
+            "run_id": "github-cli-1.0.67-hi",
+            "run_dir": "runs/github-cli-1.0.67-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 13131,
+            "tool_count": 15,
+            "error": ""
+          }
+        ]
       }
     },
     {
       "agent_id": "grok-cli",
       "has_errors": false,
-      "selected_version_count": 4,
+      "selected_version_count": 7,
       "batch_manifest": "runs/benchmark_batch-grok-cli.json",
       "aggregate_refresh_count": 1,
       "manifest": {
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "grok-cli",
         "catalog_path": "agent_versions/grok-cli.json",
-        "version_count": 137,
+        "version_count": 144,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": null,
-        "benchmark_version_count": 90,
+        "benchmark_version_count": 97,
         "benchmark_exclusion_count": 0,
         "excluded_benchmark_versions": [],
-        "selected_version_count": 4,
+        "selected_version_count": 7,
         "requested_versions": [],
-        "existing_agent_benchmark_version_count": 86,
-        "skipped_existing_version_count": 86,
-        "candidate_version_count": 4,
+        "existing_agent_benchmark_version_count": 90,
+        "skipped_existing_version_count": 90,
+        "candidate_version_count": 7,
         "initial_version_limit": 100,
         "initial_version_limit_applied": false,
         "prompt_file": "prompts/hi.txt",
@@ -543,7 +668,7 @@
           "rpm": 90.0,
           "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
           "disabled_reason": "",
-          "counted_run_count": 4,
+          "counted_run_count": 7,
           "error_count": 0,
           "errors": []
         },
@@ -561,49 +686,85 @@
         "results": [
           {
             "agent_id": "grok-cli",
-            "version": "0.2.70",
+            "version": "0.2.74",
             "status": "created",
-            "run_id": "grok-cli-0.2.70-hi",
-            "run_dir": "runs/grok-cli-0.2.70-hi",
+            "run_id": "grok-cli-0.2.74-hi",
+            "run_dir": "runs/grok-cli-0.2.74-hi",
             "replaced_run_dirs": [],
             "has_primary_request": true,
-            "total_body_tokens": 15388,
-            "tool_count": 25,
-            "error": ""
-          },
-          {
-            "agent_id": "grok-cli",
-            "version": "0.2.71",
-            "status": "created",
-            "run_id": "grok-cli-0.2.71-hi",
-            "run_dir": "runs/grok-cli-0.2.71-hi",
-            "replaced_run_dirs": [],
-            "has_primary_request": true,
-            "total_body_tokens": 15160,
+            "total_body_tokens": 9275,
             "tool_count": 24,
             "error": ""
           },
           {
             "agent_id": "grok-cli",
-            "version": "0.2.72",
+            "version": "0.2.75",
             "status": "created",
-            "run_id": "grok-cli-0.2.72-hi",
-            "run_dir": "runs/grok-cli-0.2.72-hi",
+            "run_id": "grok-cli-0.2.75-hi",
+            "run_dir": "runs/grok-cli-0.2.75-hi",
             "replaced_run_dirs": [],
             "has_primary_request": true,
-            "total_body_tokens": 15160,
+            "total_body_tokens": 9275,
             "tool_count": 24,
             "error": ""
           },
           {
             "agent_id": "grok-cli",
-            "version": "0.2.73",
+            "version": "0.2.76",
             "status": "created",
-            "run_id": "grok-cli-0.2.73-hi",
-            "run_dir": "runs/grok-cli-0.2.73-hi",
+            "run_id": "grok-cli-0.2.76-hi",
+            "run_dir": "runs/grok-cli-0.2.76-hi",
             "replaced_run_dirs": [],
             "has_primary_request": true,
-            "total_body_tokens": 15160,
+            "total_body_tokens": 9275,
+            "tool_count": 24,
+            "error": ""
+          },
+          {
+            "agent_id": "grok-cli",
+            "version": "0.2.77",
+            "status": "created",
+            "run_id": "grok-cli-0.2.77-hi",
+            "run_dir": "runs/grok-cli-0.2.77-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 9275,
+            "tool_count": 24,
+            "error": ""
+          },
+          {
+            "agent_id": "grok-cli",
+            "version": "0.2.78",
+            "status": "created",
+            "run_id": "grok-cli-0.2.78-hi",
+            "run_dir": "runs/grok-cli-0.2.78-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 9275,
+            "tool_count": 24,
+            "error": ""
+          },
+          {
+            "agent_id": "grok-cli",
+            "version": "0.2.79",
+            "status": "created",
+            "run_id": "grok-cli-0.2.79-hi",
+            "run_dir": "runs/grok-cli-0.2.79-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 9275,
+            "tool_count": 24,
+            "error": ""
+          },
+          {
+            "agent_id": "grok-cli",
+            "version": "0.2.80",
+            "status": "created",
+            "run_id": "grok-cli-0.2.80-hi",
+            "run_dir": "runs/grok-cli-0.2.80-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 9304,
             "tool_count": 24,
             "error": ""
           }
@@ -671,25 +832,25 @@
     {
       "agent_id": "kilo",
       "has_errors": false,
-      "selected_version_count": 0,
+      "selected_version_count": 1,
       "batch_manifest": "runs/benchmark_batch-kilo.json",
       "aggregate_refresh_count": 1,
       "manifest": {
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "kilo",
         "catalog_path": "agent_versions/kilo.json",
-        "version_count": 198,
+        "version_count": 199,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": null,
-        "benchmark_version_count": 193,
+        "benchmark_version_count": 194,
         "benchmark_exclusion_count": 0,
         "excluded_benchmark_versions": [],
-        "selected_version_count": 0,
+        "selected_version_count": 1,
         "requested_versions": [],
         "existing_agent_benchmark_version_count": 108,
-        "skipped_existing_version_count": 100,
-        "candidate_version_count": 0,
+        "skipped_existing_version_count": 99,
+        "candidate_version_count": 1,
         "initial_version_limit": 100,
         "initial_version_limit_applied": true,
         "prompt_file": "prompts/hi.txt",
@@ -708,7 +869,7 @@
           "rpm": 90.0,
           "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
           "disabled_reason": "",
-          "counted_run_count": 0,
+          "counted_run_count": 1,
           "error_count": 0,
           "errors": []
         },
@@ -723,33 +884,46 @@
           "error_count": 0,
           "errors": []
         },
-        "results": []
+        "results": [
+          {
+            "agent_id": "kilo",
+            "version": "7.3.63",
+            "status": "created",
+            "run_id": "kilo-7.3.63-hi",
+            "run_dir": "runs/kilo-7.3.63-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 9753,
+            "tool_count": 13,
+            "error": ""
+          }
+        ]
       }
     },
     {
       "agent_id": "mistral-vibe",
       "has_errors": false,
-      "selected_version_count": 0,
+      "selected_version_count": 2,
       "batch_manifest": "runs/benchmark_batch-mistral-vibe.json",
       "aggregate_refresh_count": 1,
       "manifest": {
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "mistral-vibe",
         "catalog_path": "agent_versions/mistral-vibe.json",
-        "version_count": 65,
+        "version_count": 67,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": "1.2.0",
-        "benchmark_version_count": 52,
+        "benchmark_version_count": 54,
         "benchmark_exclusion_count": 1,
         "excluded_benchmark_versions": [
           "2.6.0"
         ],
-        "selected_version_count": 0,
+        "selected_version_count": 2,
         "requested_versions": [],
         "existing_agent_benchmark_version_count": 52,
         "skipped_existing_version_count": 52,
-        "candidate_version_count": 0,
+        "candidate_version_count": 2,
         "initial_version_limit": 100,
         "initial_version_limit_applied": false,
         "prompt_file": "prompts/hi.txt",
@@ -768,7 +942,7 @@
           "rpm": 90.0,
           "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
           "disabled_reason": "",
-          "counted_run_count": 0,
+          "counted_run_count": 2,
           "error_count": 0,
           "errors": []
         },
@@ -783,24 +957,49 @@
           "error_count": 0,
           "errors": []
         },
-        "results": []
+        "results": [
+          {
+            "agent_id": "mistral-vibe",
+            "version": "2.18.1",
+            "status": "created",
+            "run_id": "mistral-vibe-2.18.1-hi",
+            "run_dir": "runs/mistral-vibe-2.18.1-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 8180,
+            "tool_count": 9,
+            "error": ""
+          },
+          {
+            "agent_id": "mistral-vibe",
+            "version": "2.18.3",
+            "status": "created",
+            "run_id": "mistral-vibe-2.18.3-hi",
+            "run_dir": "runs/mistral-vibe-2.18.3-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 8178,
+            "tool_count": 9,
+            "error": ""
+          }
+        ]
       }
     },
     {
       "agent_id": "openclaw",
       "has_errors": false,
-      "selected_version_count": 0,
+      "selected_version_count": 1,
       "batch_manifest": "runs/benchmark_batch-openclaw.json",
       "aggregate_refresh_count": 1,
       "manifest": {
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "openclaw",
         "catalog_path": "agent_versions/openclaw.json",
-        "version_count": 225,
+        "version_count": 227,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": null,
-        "benchmark_version_count": 66,
+        "benchmark_version_count": 67,
         "benchmark_exclusion_count": 6,
         "excluded_benchmark_versions": [
           "0.0.1",
@@ -810,11 +1009,11 @@
           "2026.4.27",
           "2026.5.12"
         ],
-        "selected_version_count": 0,
+        "selected_version_count": 1,
         "requested_versions": [],
         "existing_agent_benchmark_version_count": 66,
         "skipped_existing_version_count": 66,
-        "candidate_version_count": 0,
+        "candidate_version_count": 1,
         "initial_version_limit": 100,
         "initial_version_limit_applied": false,
         "prompt_file": "prompts/hi.txt",
@@ -833,7 +1032,7 @@
           "rpm": 90.0,
           "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
           "disabled_reason": "",
-          "counted_run_count": 0,
+          "counted_run_count": 1,
           "error_count": 0,
           "errors": []
         },
@@ -848,31 +1047,44 @@
           "error_count": 0,
           "errors": []
         },
-        "results": []
+        "results": [
+          {
+            "agent_id": "openclaw",
+            "version": "2026.6.11",
+            "status": "created",
+            "run_id": "openclaw-2026.6.11-hi",
+            "run_dir": "runs/openclaw-2026.6.11-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 18863,
+            "tool_count": 33,
+            "error": ""
+          }
+        ]
       }
     },
     {
       "agent_id": "opencode",
       "has_errors": false,
-      "selected_version_count": 0,
+      "selected_version_count": 1,
       "batch_manifest": "runs/benchmark_batch-opencode.json",
       "aggregate_refresh_count": 1,
       "manifest": {
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "opencode",
         "catalog_path": "agent_versions/opencode.json",
-        "version_count": 10708,
+        "version_count": 10838,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": null,
-        "benchmark_version_count": 899,
+        "benchmark_version_count": 900,
         "benchmark_exclusion_count": 0,
         "excluded_benchmark_versions": [],
-        "selected_version_count": 0,
+        "selected_version_count": 1,
         "requested_versions": [],
         "existing_agent_benchmark_version_count": 106,
-        "skipped_existing_version_count": 100,
-        "candidate_version_count": 0,
+        "skipped_existing_version_count": 99,
+        "candidate_version_count": 1,
         "initial_version_limit": 100,
         "initial_version_limit_applied": true,
         "prompt_file": "prompts/hi.txt",
@@ -906,7 +1118,20 @@
           "error_count": 0,
           "errors": []
         },
-        "results": []
+        "results": [
+          {
+            "agent_id": "opencode",
+            "version": "1.17.12",
+            "status": "ok",
+            "run_id": "opencode-1.17.12-hi",
+            "run_dir": "runs/opencode-1.17.12-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 6671,
+            "tool_count": 9,
+            "error": null
+          }
+        ]
       }
     },
     {
@@ -972,27 +1197,27 @@
     {
       "agent_id": "pi",
       "has_errors": false,
-      "selected_version_count": 0,
+      "selected_version_count": 1,
       "batch_manifest": "runs/benchmark_batch-pi.json",
       "aggregate_refresh_count": 1,
       "manifest": {
         "schema_version": "hibench.benchmark_batch.v1",
         "agent_id": "pi",
         "catalog_path": "agent_versions/pi.json",
-        "version_count": 296,
+        "version_count": 297,
         "benchmark_version_policy_id": "stable_semver",
         "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
         "benchmark_min_version": null,
-        "benchmark_version_count": 295,
+        "benchmark_version_count": 296,
         "benchmark_exclusion_count": 1,
         "excluded_benchmark_versions": [
           "0.70.3"
         ],
-        "selected_version_count": 0,
+        "selected_version_count": 1,
         "requested_versions": [],
         "existing_agent_benchmark_version_count": 108,
-        "skipped_existing_version_count": 100,
-        "candidate_version_count": 0,
+        "skipped_existing_version_count": 99,
+        "candidate_version_count": 1,
         "initial_version_limit": 100,
         "initial_version_limit_applied": true,
         "prompt_file": "prompts/hi.txt",
@@ -1011,7 +1236,7 @@
           "rpm": 90.0,
           "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
           "disabled_reason": "",
-          "counted_run_count": 0,
+          "counted_run_count": 1,
           "error_count": 0,
           "errors": []
         },
@@ -1026,7 +1251,20 @@
           "error_count": 0,
           "errors": []
         },
-        "results": []
+        "results": [
+          {
+            "agent_id": "pi",
+            "version": "0.80.3",
+            "status": "created",
+            "run_id": "pi-0.80.3-hi",
+            "run_dir": "runs/pi-0.80.3-hi",
+            "replaced_run_dirs": [],
+            "has_primary_request": true,
+            "total_body_tokens": 1264,
+            "tool_count": 4,
+            "error": ""
+          }
+        ]
       }
     }
   ]

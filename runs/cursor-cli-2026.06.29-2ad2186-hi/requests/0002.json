@@ -1,0 +1,18 @@
+{
+  "index": 2,
+  "captured_at": "2026-07-01T10:14:27Z",
+  "method": "GET",
+  "path": "/v1/models",
+  "headers": {
+    "accept": "*/*",
+    "accept-encoding": "gzip, deflate",
+    "accept-language": "*",
+    "authorization": "<redacted>",
+    "connection": "keep-alive",
+    "host": "host.docker.internal:46037",
+    "sec-fetch-mode": "cors",
+    "User-Agent": "Cursor-CLI/2026.06.29-2ad2186 (linux x64)"
+  },
+  "body_text": "",
+  "json": null
+}

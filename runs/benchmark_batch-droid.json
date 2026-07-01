@@ -2,18 +2,18 @@
   "schema_version": "hibench.benchmark_batch.v1",
   "agent_id": "droid",
   "catalog_path": "agent_versions/droid.json",
-  "version_count": 141,
+  "version_count": 143,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": "0.62.1",
-  "benchmark_version_count": 127,
+  "benchmark_version_count": 129,
   "benchmark_exclusion_count": 0,
   "excluded_benchmark_versions": [],
-  "selected_version_count": 0,
+  "selected_version_count": 2,
   "requested_versions": [],
   "existing_agent_benchmark_version_count": 109,
-  "skipped_existing_version_count": 100,
-  "candidate_version_count": 0,
+  "skipped_existing_version_count": 98,
+  "candidate_version_count": 2,
   "initial_version_limit": 100,
   "initial_version_limit_applied": true,
   "prompt_file": "prompts/hi.txt",
@@ -32,7 +32,7 @@
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
     "disabled_reason": "",
-    "counted_run_count": 0,
+    "counted_run_count": 2,
     "error_count": 0,
     "errors": []
   },
@@ -47,5 +47,30 @@
     "error_count": 0,
     "errors": []
   },
-  "results": []
+  "results": [
+    {
+      "agent_id": "droid",
+      "version": "0.161.0",
+      "status": "created",
+      "run_id": "droid-0.161.0-hi",
+      "run_dir": "runs/droid-0.161.0-hi",
+      "replaced_run_dirs": [],
+      "has_primary_request": true,
+      "total_body_tokens": 13027,
+      "tool_count": 10,
+      "error": ""
+    },
+    {
+      "agent_id": "droid",
+      "version": "0.162.0",
+      "status": "created",
+      "run_id": "droid-0.162.0-hi",
+      "run_dir": "runs/droid-0.162.0-hi",
+      "replaced_run_dirs": [],
+      "has_primary_request": true,
+      "total_body_tokens": 13017,
+      "tool_count": 10,
+      "error": ""
+    }
+  ]
 }

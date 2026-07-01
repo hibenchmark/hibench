@@ -5,11 +5,11 @@
     "type": "npm",
     "package": "@kilocode/cli"
   },
-  "fetched_at": "2026-06-28T20:34:03Z",
-  "version_count": 198,
+  "fetched_at": "2026-07-01T11:39:31Z",
+  "version_count": 199,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
-  "benchmark_version_count": 193,
+  "benchmark_version_count": 194,
   "benchmark_exclusion_count": 0,
   "benchmark_exclusions": {},
   "excluded_benchmark_versions": [],
@@ -17,7 +17,7 @@
   "dist_tags": {
     "alpha": "0.0.5",
     "next": "1.0.8",
-    "rc": "7.3.52",
+    "rc": "7.3.63",
     "latest": "7.3.54"
   },
   "versions": [
@@ -218,7 +218,8 @@
     "7.3.51",
     "7.3.52",
     "7.3.53",
-    "7.3.54"
+    "7.3.54",
+    "7.3.63"
   ],
   "benchmark_versions": [
     "0.0.1",
@@ -413,6 +414,7 @@
     "7.3.51",
     "7.3.52",
     "7.3.53",
-    "7.3.54"
+    "7.3.54",
+    "7.3.63"
   ]
 }

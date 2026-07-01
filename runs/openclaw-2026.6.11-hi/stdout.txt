@@ -1,0 +1,4 @@
+[provider-transport-fetch] [model-fetch] start provider=hibench api=openai-responses model=gpt-5 method=POST url=http://host.docker.internal:42245/v1/responses timeoutMs=undefined proxy=none policy=custom
+[provider-transport-fetch] [model-fetch] start provider=hibench api=openai-responses model=gpt-5 method=POST url=http://host.docker.internal:42245/v1/responses timeoutMs=undefined proxy=none policy=custom
+[provider-transport-fetch] [model-fetch] response provider=hibench api=openai-responses model=gpt-5 status=200 elapsedMs=47 contentType=text/event-stream
+HiBench capture complete.

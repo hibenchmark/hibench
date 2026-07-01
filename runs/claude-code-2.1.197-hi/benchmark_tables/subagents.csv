@@ -1,0 +1,17 @@
+schema_version,run_id,agent_id,agent_version,request_index,marker_index,marker_name,source_type,is_counted,path,chars,tokens,preview
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,1,claude,declaration,True,messages.1.content.subagent.0,132,32,- claude: Catch-all for any task that doesn't fit a more specific agent. FleetView's default when no agent name is typed
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,2,Explore,declaration,True,messages.1.content.subagent.1,492,101,"- Explore: Read-only search agent for broad fan-out searches — when answering means sweeping many files, directories, or"
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,3,general-purpose,declaration,True,messages.1.content.subagent.2,309,61,"- general-purpose: General-purpose agent for researching complex questions, searching for code, and executing multi-step"
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,4,Plan,declaration,True,messages.1.content.subagent.3,317,62,- Plan: Software architect agent for designing implementation plans. Use this when you need to plan the implementation s
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,5,statusline-setup,declaration,True,messages.1.content.subagent.4,111,26,"- statusline-setup: Use this agent to configure the user's Claude Code status line setting. (Tools: Read, Edit)"
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,6,subagent_6,text_mention,False,tools.0.description,1227,258,"Launch a new agent to handle complex, multi-step tasks. Each agent type has specific capabilities and tools available to"
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,7,subagent_7,text_mention,False,tools.0.input_schema.properties.model.description,254,52,"Optional model override for this agent. Takes precedence over the agent definition's model frontmatter. If omitted, uses"
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,8,subagent_8,text_mention,False,tools.7.description,3031,697,"Use this tool ONLY when explicitly instructed to work in a worktree — either by the user directly, or by project instruc"
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,9,subagent_9,text_mention,False,tools.13.description,655,162,"# SendMessage
+
+Send a message to another agent.
+
+```json
+{""to"": ""researcher"", ""summary"": ""assign task 1"", ""message"": ""st"
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,10,subagent_10,text_mention,False,tools.18.description,1049,221,"DEPRECATED: Background tasks return their output file path in the tool result, and you receive a <task-notification> wit"
+hibench.benchmark.v1,claude-code-2.1.197-hi,claude-code,2.1.197,2,11,subagent_11,text_mention,False,tools.23.description,18780,4307,Execute a workflow script that orchestrates multiple subagents deterministically. Workflows run in the background — this

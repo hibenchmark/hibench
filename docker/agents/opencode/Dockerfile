@@ -36,4 +36,15 @@ ARG OPENCODE_VERSION=1.17.5
 RUN bun install --global "opencode-ai@${OPENCODE_VERSION}" \
     && opencode --version
 
+# opencode fetches its runtime plugin package (@opencode-ai/plugin@<version>)
+# from npm into OPENCODE_CONFIG_DIR on first run. A transient failure of that
+# live fetch makes opencode exit non-zero before it contacts the recorder,
+# producing a capture with zero requests. Pre-install the pinned plugin at build
+# time (mirroring opencode's own generated package.json) so capture runs are
+# hermetic and do not depend on a live npm fetch.
+RUN printf '{"dependencies":{"@opencode-ai/plugin":"%s"}}\n' "${OPENCODE_VERSION}" \
+      > /opencode-config/package.json \
+    && (cd /opencode-config && npm install --no-audit --no-fund --loglevel=error) \
+    && test -d /opencode-config/node_modules/@opencode-ai/plugin
+
 ENTRYPOINT ["opencode"]

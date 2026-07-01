@@ -2,22 +2,22 @@
   "schema_version": "hibench.benchmark_batch.v1",
   "agent_id": "claude-code",
   "catalog_path": "agent_versions/claude-code.json",
-  "version_count": 447,
+  "version_count": 449,
   "benchmark_version_policy_id": "stable_semver",
   "benchmark_version_policy": "stable_semver: plain X.Y.Z versions only; excludes prerelease, platform/system variants, and timestamp/internal builds",
   "benchmark_min_version": null,
-  "benchmark_version_count": 444,
+  "benchmark_version_count": 446,
   "benchmark_exclusion_count": 3,
   "excluded_benchmark_versions": [
     "2.1.69",
     "2.1.105",
     "2.1.107"
   ],
-  "selected_version_count": 0,
+  "selected_version_count": 2,
   "requested_versions": [],
   "existing_agent_benchmark_version_count": 109,
-  "skipped_existing_version_count": 100,
-  "candidate_version_count": 0,
+  "skipped_existing_version_count": 98,
+  "candidate_version_count": 2,
   "initial_version_limit": 100,
   "initial_version_limit_applied": true,
   "prompt_file": "prompts/hi.txt",
@@ -36,7 +36,7 @@
     "rpm": 90.0,
     "dotenv_path": "/home/nasirus/pbi-agent-catalogue/hibench/.env",
     "disabled_reason": "",
-    "counted_run_count": 0,
+    "counted_run_count": 2,
     "error_count": 0,
     "errors": []
   },
@@ -51,5 +51,30 @@
     "error_count": 0,
     "errors": []
   },
-  "results": []
+  "results": [
+    {
+      "agent_id": "claude-code",
+      "version": "2.1.196",
+      "status": "created",
+      "run_id": "claude-code-2.1.196-hi",
+      "run_dir": "runs/claude-code-2.1.196-hi",
+      "replaced_run_dirs": [],
+      "has_primary_request": true,
+      "total_body_tokens": 19925,
+      "tool_count": 25,
+      "error": ""
+    },
+    {
+      "agent_id": "claude-code",
+      "version": "2.1.197",
+      "status": "created",
+      "run_id": "claude-code-2.1.197-hi",
+      "run_dir": "runs/claude-code-2.1.197-hi",
+      "replaced_run_dirs": [],
+      "has_primary_request": true,
+      "total_body_tokens": 19939,
+      "tool_count": 25,
+      "error": ""
+    }
+  ]
 }

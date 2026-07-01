@@ -1,0 +1,15 @@
+schema_version,run_id,agent_id,agent_version,request_index,text_index,category,source,role,path,chars,tokens,preview
+hibench.benchmark.v1,grok-cli-0.2.75-hi,grok-cli,0.2.75,2,1,system_prompt,main_instructions,system,messages.0.content,4986,987,You are Grok released by xAI. You are an autonomous agent that completes software engineering tasks. Your main goal is t
+hibench.benchmark.v1,grok-cli-0.2.75-hi,grok-cli,0.2.75,2,2,environment_context,injected_user_context,user,messages.1.content,196,52,"<user_info>
+OS Version: linux
+Shell: /bin/sh
+Workspace Path: /workspace
+Today's date: 2026-07-01
+Note: Prefer using rela"
+hibench.benchmark.v1,grok-cli-0.2.75-hi,grok-cli,0.2.75,2,3,system_prompt,skills_instructions,user,messages.2.content,2895,698,"<system-reminder>
+The following skills are available for use:
+
+- create-skill: Interactively create a new Grok skill (SK"
+hibench.benchmark.v1,grok-cli-0.2.75-hi,grok-cli,0.2.75,2,4,user_prompt,user_prompt,user,messages.3.content,29,10,"<user_query>
+Hi
+</user_query>"
